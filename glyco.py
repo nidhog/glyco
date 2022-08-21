@@ -62,7 +62,7 @@ def get_glucose_label(device):
 
 def read_from_csv(file_path,
                   device,  # TODO define type
-                  skiprows=1,
+                  skiprows=0,
                   delimiter=',',
                   tsp_lbl='Device Timestamp', tsp_fmt='%d-%m-%Y %H:%M',
                   glucose_lbl='Historic Glucose mmol/L',

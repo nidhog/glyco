@@ -6,7 +6,7 @@ TEST_FILE = 'test/data/tiny_sample.csv'
 class TestReadFile(unittest.TestCase):
     def test_read(self):
         df = gl.read_from_csv(TEST_FILE, device=gl.Devices.ABBOTT)
-        print(df['Device Timestamp'])
+        print(df)
 
 class TestGlyco(unittest.TestCase):
     def setUp(self):
