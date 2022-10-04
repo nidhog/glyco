@@ -1,6 +1,7 @@
 import pandas as pd
 from utils import Units, Devices, weekday_map, is_weekend
 from datetime import datetime as dt, timedelta as tdel
+from matplotlib import pyplot as plt
 
 
 """Warning and Error Messages
@@ -189,5 +190,60 @@ def get_properties(df: pd.DataFrame, glbl: str=_GLUCOSE_COL,
 
 def convert_unit(g: float, from_unit: str, to_unit: str) -> float:
     raise NotImplementedError(error_not_implemented_method)
+
+
+"""Plotting Utils
+"""
+PLOT_GMAX = 9
+PLOT_GMIN = 4
+def init_plot(l=8, w=6, gmin=PLOT_GMIN, gmax=PLOT_GMAX):
+    """Initialize plot
+
+    :param l: length, defaults to 8
+    :param w: width, defaults to 6
+    :return:
+    """
+    plt.figure(num=None, figsize=(l, w), dpi=120, facecolor='w', edgecolor='k')
+    plt.ylim(gmin, gmax)
+
+def end_plot(r=45, legend=True, save_to : str =None, show = True):
+    """End plot by rotating xticks, adding legend and showing the plot
+
+    :param r:
+    :return:
+    """
+    plt.xticks(rotation=r)
+    if legend:
+        plt.legend()
+    if save_to:
+        plt.savefig(save_to)
+    if show:
+        plt.show()
+
+def autoplot(func, l=8, w=6, r=45, gmin=PLOT_GMIN, gmax=PLOT_GMAX, legend=True, save_to=None):
+    def wrapper(*args, **kwargs):
+        init_plot(l, w, gmin, gmax)
+        func(*args, **kwargs)
+        end_plot(r, legend, save_to)
+    return wrapper
+
+"""Plotting
+"""
+@autoplot
+def plot_glucose(df: pd.DataFrame, glbl: str = _GLUCOSE_COL, tlbl: str = _TIMESTAMP_COL, from_time=None, to_time=None):
+    """Plots the glucose curve for a given dataframe and time frame
+    """
+    plot_df = df[from_time:to_time]
+    # TODO make as similar to pyplot as possible
+    for d in plot_df.date.unique():
+        plt.axvline(d, color='brown', linestyle='--', alpha=0.5)
+    plt.axhline(GLUCOSE_LIMIT_DEFAULT)
+    plt.axhline(GLUCOSE_LIMIT_DEFAULT - 1)
+    plt.axhline(GLUCOSE_LIMIT_DEFAULT + 1)
+    plt.axhline(plot_df[glbl].median())
+    
+    if glbl not in plot_df.keys():
+        raise KeyError(f"Glucose Column {glbl} does not seem to be in the DataFrame.")
+    plt.plot(plot_df[tlbl], plot_df[glbl])
 
 
