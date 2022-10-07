@@ -1,3 +1,6 @@
+from typing import Callable
+from click import option
+from numpy import source
 import pandas as pd
 from utils import Units, Devices, weekday_map, is_weekend
 from datetime import datetime as dt, timedelta as tdel
@@ -37,6 +40,12 @@ _HOUR_COL = 'hour'
 _DAYOFWEEK_COL = 'dayofweek'
 _WEEKDAY_COL = 'weekday'
 _ISWEEKEND_COL = 'is_weekend'
+
+# Meals
+_meal_note_col = 'Notes'
+_meal_ref_col = 'Reference'
+_optional_cols = [_meal_note_col, _meal_ref_col]
+meal_default_cols = [_TIMESTAMP_COL, _meal_ref_col, _meal_ref_col]
 
 """File reading
 """
@@ -102,6 +111,7 @@ def prepare_glucose(df: pd.DataFrame,
     Adds interpolated glucose measures to fill in the gaps.
     """
 
+    # TODO turn into function
     # get datetime, date, hour etc. from timestamp
     df[tlbl] = pd.to_datetime(df[tsp_lbl], format=tsp_fmt)
     df[dlbl] = df[tlbl].dt.date
@@ -245,5 +255,43 @@ def plot_glucose(df: pd.DataFrame, glbl: str = _GLUCOSE_COL, tlbl: str = _TIMEST
     if glbl not in plot_df.keys():
         raise KeyError(f"Glucose Column {glbl} does not seem to be in the DataFrame.")
     plt.plot(plot_df[tlbl], plot_df[glbl])
+
+"""FreeStyle Libre Utils
+"""
+_freestyle_rec_type_col = "Record Type"
+_freestyle_notes_rec_type = 6
+def infer_events_from_notes(df, filter_notes_map: Callable = None):
+    """
+    filter_notes_map example: `lambda x: False if not x else str(x).startswith('food')`
+    """
+    events_df = df[df[_freestyle_rec_type_col]==_freestyle_notes_rec_type]
+    if filter_notes_map:
+        events_df = events_df[events_df[_meal_note_col].map(filter_notes_map)]
+    return events_df 
+
+"""Events
+"""
+_default_event_session_seconds = 2*60*60
+def sessionize_events(events_df, event_timestamp: str = _TIMESTAMP_COL, session_seconds: int = _default_event_session_seconds):
+    # TODO 
+    assert all(events_df[event_timestamp] == events_df.index)
+    edf = events_df.sort_index()
+    edf['dt_next_event']= edf[event_timestamp].diff().dt.total_seconds()
+    edf['event_session_start'] = (edf.dt_next_event.isnull()) | (edf.dt_next_event > session_seconds)
+    edf['event_session_id'] = edf[edf['event_session_start']].t.rank(method='first').astype(int)
+    edf['event_session_id'] = edf['event_session_id'].fillna(method='ffill').astype(int)
+    return edf
+
+    
+
+"""Meals
+"""
+def get_meals(source_df):
+    """Creates a unified meals dataframe
+    from a DataFrame with time of the meal (and optionally notes or references)
+    """
+
+    for optional_col in _optional_cols:
+        meals_df[optional_col] = source_df[optional_col]
 
 
