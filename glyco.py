@@ -2,10 +2,11 @@ from typing import Callable
 from click import option
 from numpy import source
 import pandas as pd
-from utils import Units, Devices, weekday_map, is_weekend
+
 from datetime import datetime as dt, timedelta as tdel
 from matplotlib import pyplot as plt
 
+from utils import Units, Devices, weekday_map, is_weekend, autoplot
 
 """Warning and Error Messages
 """
@@ -44,6 +45,9 @@ _ISWEEKEND_COL = 'is_weekend'
 # Meals
 _meal_note_col = 'Notes'
 _meal_ref_col = 'Reference'
+_freestyle_rec_type_col = "Record Type"
+_freestyle_notes_rec_type = 6
+_freestyle_glucose_rec_type = 0
 _optional_cols = [_meal_note_col, _meal_ref_col]
 meal_default_cols = [_TIMESTAMP_COL, _meal_ref_col, _meal_ref_col]
 
@@ -59,6 +63,7 @@ def read_csv(file_path: str, delimiter: str=',', skiprows: int=0,
             dlbl=_DATE_COL,
             # TODO take in those inputs as map
             # TODO take inputs for porperties and transforms
+            filter_glucose_rows=True,
             ):
     """Reads a glucose CSV file.
     The file needs to have at least: one column for glucose, one timestamp column.
@@ -68,9 +73,11 @@ def read_csv(file_path: str, delimiter: str=',', skiprows: int=0,
         is_valid_entry(device=device, unit=unit)
         set_columns_by_device_unit(device=device, unit=unit)
     df = pd.read_csv(filepath_or_buffer=file_path, delimiter=delimiter, skiprows=skiprows)
+    df = df if not(filter_glucose_rows) else df[df[_freestyle_rec_type_col]==_freestyle_glucose_rec_type]
     if not only_read_as_is:
         df = prepare_glucose(df, glucose_col=glucose_col, tsp_lbl=t_col, tsp_fmt=t_fmt, unit=unit, glbl=glbl, tlbl=tlbl, dlbl=dlbl)
         df = get_properties(df, glbl=glbl, tlbl=tlbl, glim=glim)
+
     return df
 
 # Verify the file
@@ -201,42 +208,6 @@ def get_properties(df: pd.DataFrame, glbl: str=_GLUCOSE_COL,
 def convert_unit(g: float, from_unit: str, to_unit: str) -> float:
     raise NotImplementedError(error_not_implemented_method)
 
-
-"""Plotting Utils
-"""
-PLOT_GMAX = 9
-PLOT_GMIN = 4
-def init_plot(l=8, w=6, gmin=PLOT_GMIN, gmax=PLOT_GMAX):
-    """Initialize plot
-
-    :param l: length, defaults to 8
-    :param w: width, defaults to 6
-    :return:
-    """
-    plt.figure(num=None, figsize=(l, w), dpi=120, facecolor='w', edgecolor='k')
-    plt.ylim(gmin, gmax)
-
-def end_plot(r=45, legend=True, save_to : str =None, show = True):
-    """End plot by rotating xticks, adding legend and showing the plot
-
-    :param r:
-    :return:
-    """
-    plt.xticks(rotation=r)
-    if legend:
-        plt.legend()
-    if save_to:
-        plt.savefig(save_to)
-    if show:
-        plt.show()
-
-def autoplot(func, l=8, w=6, r=45, gmin=PLOT_GMIN, gmax=PLOT_GMAX, legend=True, save_to=None):
-    def wrapper(*args, **kwargs):
-        init_plot(l, w, gmin, gmax)
-        func(*args, **kwargs)
-        end_plot(r, legend, save_to)
-    return wrapper
-
 """Plotting
 """
 @autoplot
@@ -258,8 +229,6 @@ def plot_glucose(df: pd.DataFrame, glbl: str = _GLUCOSE_COL, tlbl: str = _TIMEST
 
 """FreeStyle Libre Utils
 """
-_freestyle_rec_type_col = "Record Type"
-_freestyle_notes_rec_type = 6
 def infer_events_from_notes(df, filter_notes_map: Callable = None):
     """
     filter_notes_map example: `lambda x: False if not x else str(x).startswith('food')`
