@@ -63,6 +63,7 @@ def read_csv(file_path: str, delimiter: str=',', skiprows: int=0,
             dlbl=_DATE_COL,
             # TODO take in those inputs as map
             # TODO take inputs for porperties and transforms
+            interpolate=True, interp_met: str='polynomial', interp_ord: int=1, rolling_avg: int=3,
             filter_glucose_rows=True,
             ):
     """Reads a glucose CSV file.
@@ -73,9 +74,10 @@ def read_csv(file_path: str, delimiter: str=',', skiprows: int=0,
         is_valid_entry(device=device, unit=unit)
         set_columns_by_device_unit(device=device, unit=unit)
     df = pd.read_csv(filepath_or_buffer=file_path, delimiter=delimiter, skiprows=skiprows)
-    df = df if not(filter_glucose_rows) else df[df[_freestyle_rec_type_col]==_freestyle_glucose_rec_type]
+    df = df if not(filter_glucose_rows) else filter_glucose_by_column_val(df)
     if not only_read_as_is:
-        df = prepare_glucose(df, glucose_col=glucose_col, tsp_lbl=t_col, tsp_fmt=t_fmt, unit=unit, glbl=glbl, tlbl=tlbl, dlbl=dlbl)
+        df = prepare_glucose(df, glucose_col=glucose_col, tsp_lbl=t_col, tsp_fmt=t_fmt, unit=unit, glbl=glbl, tlbl=tlbl, dlbl=dlbl, interpolate=interpolate, 
+        interp_met=interp_met, interp_ord=interp_ord, rolling_avg=rolling_avg)
         df = get_properties(df, glbl=glbl, tlbl=tlbl, glim=glim)
 
     return df
@@ -101,6 +103,9 @@ def set_columns_by_device_unit():
     """
     raise NotImplementedError(error_not_implemented_method)
 
+def filter_glucose_by_column_val(df, filter_col=_freestyle_rec_type_col, filter_val=_freestyle_glucose_rec_type):
+    return df[df[filter_col]==filter_val]
+
 def prepare_glucose(df: pd.DataFrame,
                    glucose_col: str,
                    tsp_lbl: str,
@@ -109,7 +114,7 @@ def prepare_glucose(df: pd.DataFrame,
                    glbl: str=_GLUCOSE_COL,
                    tlbl: str=_TIMESTAMP_COL,
                    dlbl: str=_DATE_COL,
-                   interpolate: bool=True, interp_met: str='polynomial', interp_ord: int=2, rolling_avg: int=3,
+                   interpolate: bool=True, interp_met: str='polynomial', interp_ord: int=1, rolling_avg: int=3,
                    extra_shift_in_time: int = 7):
     """Creates extra columns for hours, days, etc. 
     Sorts the dataframe by time.

@@ -7,8 +7,8 @@ weekday_map = {0: 'Mon', 1: 'Tue', 2: 'Wed',
                3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}
 
 # Plotting vars
-PLOT_GMAX = 9
-PLOT_GMIN = 4
+PLOT_GMAX = 12
+PLOT_GMIN = 3
 
 # Utility function that returns True if a weekday number refers to a weekend
 def is_weekend(x): return 1 if x % 7 > 4 else 0
