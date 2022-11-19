@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: glyco
+Version: 0.0.1
+Summary: Read and analyse continuous glucose monitoring data
+Author-email: Ismail Elouafiq <contact@ismail.bio>
+License: MIT License
+        
+        Copyright (c) [2022] [Ismail Elouafiq]
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Project-URL: Homepage, https://github.com/nidhog/glyco
+Project-URL: Visual, https://ismail.bio/glyco
+Project-URL: Author, https://ismail.bio
+Keywords: glucose,glyco,cgm,health
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Healthcare Industry
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+License-File: LICENSE
+
+# Continuous Glucose Monitoring data analysis in Python
+Glyco aims to be an Open Source library to analyze glucose data (from CGMs) in Python.
+
+# To do:
+* [ ] if read df returns error tell check if you need to skiprows
+* [ ] handle meals
+* [ ] add day summaries
+* [ ] handle exercise
+* [ ] add glycemic variability calculations
+* [ ] handle other CGM sources
+* [ ] add conversion of glucose units
+* [ ] move to utils
+
+# Data samples
+* *sample_glucose* : a glucose sample from `Freestyle Libre` data. The data glucose is in `mmol/L`.
+* 
+* 
+
+# Disclaimer
+Glyco is not a medical product and shall not be used to diagnose or treat any medical conditions.

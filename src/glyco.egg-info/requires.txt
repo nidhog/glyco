@@ -1,0 +1,13 @@
+matplotlib
+pandas
+scipy
+numpy
+matplotlib
+matplotlib-inline
+
+[dev]
+black
+bumpver
+isort
+pip-tools
+pytest

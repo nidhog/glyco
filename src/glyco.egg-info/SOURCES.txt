@@ -1,0 +1,12 @@
+LICENSE
+pyproject.toml
+src/glyco/__init__.py
+src/glyco/glyco.py
+src/glyco/meal.py
+src/glyco/utils.py
+src/glyco.egg-info/PKG-INFO
+src/glyco.egg-info/SOURCES.txt
+src/glyco.egg-info/dependency_links.txt
+src/glyco.egg-info/entry_points.txt
+src/glyco.egg-info/requires.txt
+src/glyco.egg-info/top_level.txt
