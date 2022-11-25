@@ -43,6 +43,13 @@ _HOUR_COL = "hour"
 _DAYOFWEEK_COL = "dayofweek"
 _WEEKDAY_COL = "weekday"
 _ISWEEKEND_COL = "is_weekend"
+# Used for smoothening the glucose curve
+_default_glucose_curve_kwargs = {
+    'interpolate': True,
+    'interp_met':'polynomial',
+    'interp_ord':1,
+    'rolling_avg':3,
+}
 
 # Meals
 _meal_note_col = "Notes"
@@ -63,23 +70,17 @@ def read_csv(
     timestamp_fmt: str = TIMESTAMP_FMT_DEFAULT,
     glucose_col: str = GLUCOSE_MMOL_COL_DEFAULT,
     glucose_unit: str = Units.mmol.value,
-    device: str = Devices.abbott.value,
-    add_unified_stats_and_properties=True,
-    # TODO take in those inputs as map
-    # TODO take inputs for porperties and transforms
-    interpolate=True,
-    interp_met: str = "polynomial",
-    interp_ord: int = 1,
-    rolling_avg: int = 3,
-    glucose_lim=GLUCOSE_LIMIT_DEFAULT,  # predefined glucose limit used for AUC calculation
+    calculate_glucose_properties: bool=True,
+    glucose_lim: int=GLUCOSE_LIMIT_DEFAULT,  # predefined glucose limit used for AUC calculation
     filter_glucose_rows=True,
     delimiter: str = ",",
     skiprows: int = 0,
     generated_glucose_col: str = _GLUCOSE_COL,
     generated_date_col: str = _DATE_COL,
     generated_timestamp_col=_TIMESTAMP_COL,
-    pandas_kwargs: Dict = None,
-):
+    glucose_curve_kwargs: Dict = None,
+    extra_pandas_kwargs: Dict = None,
+) -> pd.DataFrame:
     """Reads a glucose CSV file.
     The file needs to have at least: one column for glucose, one timestamp column.
 
@@ -91,27 +92,24 @@ def read_csv(
         glucose_col (str, optional): _description_. Defaults to GLUCOSE_MMOL_COL_DEFAULT.
         glucose_unit (str, optional): _description_. Defaults to Units.mmol.value.
         device (str, optional): _description_. Defaults to Devices.abbott.value.
-        add_unified_stats_and_properties (bool, optional): _description_. Defaults to True.
-        interpolate (bool, optional): _description_. Defaults to True.
-        interp_met (str, optional): _description_. Defaults to "polynomial".
-        interp_ord (int, optional): _description_. Defaults to 1.
-        rolling_avg (int, optional): _description_. Defaults to 3.
-        glucose_lim (_type_, optional): _description_. Defaults to GLUCOSE_LIMIT_DEFAULT.
+        calculate_glucose_properties (bool, optional): _description_. Defaults to True.
+        glucose_lim (int, optional): _description_. Defaults to GLUCOSE_LIMIT_DEFAULT.
         delimiter (str, optional): _description_. Defaults to ",".
         skiprows (int, optional): _description_. Defaults to 0.
         generated_glucose_col (str, optional): _description_. Defaults to _GLUCOSE_COL.
         generated_date_col (str, optional): _description_. Defaults to _DATE_COL.
         generated_timestamp_col (_type_, optional): _description_. Defaults to _TIMESTAMP_COL.
-        pandas_kwargs (Dict, optional): _description_. Defaults to None.
+        glucose_curve_kwargs (Dict, optional): _description_. Defaults to None.
+        extra_pandas_kwargs (Dict, optional): _description_. Defaults to None.
 
     Returns:
-        _type_: _description_
+        pd.DataFrame: Glucose Unified Dataframe
     """
     df = pd.read_csv(
         filepath_or_buffer=file_path,
         delimiter=delimiter,
         skiprows=skiprows,
-        **pandas_kwargs,
+        **extra_pandas_kwargs,
     )
     df = (
         df
@@ -122,7 +120,9 @@ def read_csv(
             filter_val=_freestyle_glucose_rec_type,
         )
     )
-    if add_unified_stats_and_properties:
+    if calculate_glucose_properties:
+        if glucose_curve_kwargs is None:
+            glucose_curve_kwargs = _default_glucose_curve_kwargs
         df = prepare_glucose(
             df,
             glucose_col=glucose_col,
@@ -132,10 +132,7 @@ def read_csv(
             glbl=generated_glucose_col,
             tlbl=generated_timestamp_col,
             dlbl=generated_date_col,
-            interpolate=interpolate,
-            interp_met=interp_met,
-            interp_ord=interp_ord,
-            rolling_avg=rolling_avg,
+            **glucose_curve_kwargs
         )
         df = get_properties(
             df,
@@ -164,10 +161,6 @@ def read_csv_old(
     dlbl=_DATE_COL,
     # TODO take in those inputs as map
     # TODO take inputs for porperties and transforms
-    interpolate=True,
-    interp_met: str = "polynomial",
-    interp_ord: int = 1,
-    rolling_avg: int = 3,
     filter_glucose_rows=True,
     pandas_kwargs=None,
 ):
