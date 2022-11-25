@@ -3,24 +3,27 @@ import enum
 from matplotlib import pyplot as plt
 
 # Map for the weekday number and the name of the weekday
-weekday_map = {0: 'Mon', 1: 'Tue', 2: 'Wed',
-               3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}
+weekday_map = {0: "Mon", 1: "Tue", 2: "Wed", 3: "Thu", 4: "Fri", 5: "Sat", 6: "Sun"}
 
 # Plotting vars
 PLOT_GMAX = 12
 PLOT_GMIN = 3
 
 # Utility function that returns True if a weekday number refers to a weekend
-def is_weekend(x): return 1 if x % 7 > 4 else 0
+def is_weekend(x):
+    return 1 if x % 7 > 4 else 0
+
 
 # Define devices that are currently implemented
 class Devices(enum.Enum):
     abbott = "abbott"  # FreeStyle Libre
 
+
 class Units(enum.Enum):
     mmol = "mmol/L"
     # mgdl = "mg/dL"
     # gl = "g/L" # TODO handle more units
+
 
 def find_nearest(df, pivot, col, n_iter=100):
     """Finds nearest value to a pivot in a dataframe column
@@ -37,9 +40,9 @@ def find_nearest(df, pivot, col, n_iter=100):
     n = items.copy()
     for i in range(n_iter):
         m = min(n, key=lambda x: abs(x - pivot))
-        q=df.loc[m][col]
-        if type(q)==pd.Series:
-            q=q[0]
+        q = df.loc[m][col]
+        if type(q) == pd.Series:
+            q = q[0]
         if pd.isna(q):
             n.remove(m)
         else:
@@ -48,6 +51,8 @@ def find_nearest(df, pivot, col, n_iter=100):
 
 """Plotting Utils
 """
+
+
 def init_plot(l=8, w=6, gmin=PLOT_GMIN, gmax=PLOT_GMAX):
     """Initialize plot
 
@@ -55,10 +60,11 @@ def init_plot(l=8, w=6, gmin=PLOT_GMIN, gmax=PLOT_GMAX):
     :param w: width, defaults to 6
     :return:
     """
-    plt.figure(num=None, figsize=(l, w), dpi=120, facecolor='w', edgecolor='k')
+    plt.figure(num=None, figsize=(l, w), dpi=120, facecolor="w", edgecolor="k")
     plt.ylim(gmin, gmax)
 
-def end_plot(r=45, legend=True, save_to : str =None, show = True):
+
+def end_plot(r=45, legend=True, save_to: str = None, show=True):
     """End plot by rotating xticks, adding legend and showing the plot
 
     :param r:
@@ -72,9 +78,13 @@ def end_plot(r=45, legend=True, save_to : str =None, show = True):
     if show:
         plt.show()
 
-def autoplot(func, l=8, w=6, r=45, gmin=PLOT_GMIN, gmax=PLOT_GMAX, legend=True, save_to=None):
+
+def autoplot(
+    func, l=8, w=6, r=45, gmin=PLOT_GMIN, gmax=PLOT_GMAX, legend=True, save_to=None
+):
     def wrapper(*args, **kwargs):
         init_plot(l, w, gmin, gmax)
         func(*args, **kwargs)
         end_plot(r, legend, save_to)
+
     return wrapper

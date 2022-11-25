@@ -1,7 +1,7 @@
 LICENSE
 pyproject.toml
 src/glyco/__init__.py
-src/glyco/glyco.py
+src/glyco/glucose.py
 src/glyco/meal.py
 src/glyco/utils.py
 src/glyco.egg-info/PKG-INFO
