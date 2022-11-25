@@ -1,4 +1,4 @@
-from typing import Callable, Dict
+from typing import Callable, Dict, List
 from click import option
 from numpy import source
 import pandas as pd
@@ -78,8 +78,7 @@ def read_csv(
     generated_glucose_col: str = _GLUCOSE_COL,
     generated_date_col: str = _DATE_COL,
     generated_timestamp_col=_TIMESTAMP_COL,
-    glucose_curve_kwargs: Dict = None,
-    extra_pandas_kwargs: Dict = None,
+    glucose_curve_kwargs: Dict = None
 ) -> pd.DataFrame:
     """Reads a glucose CSV file.
     The file needs to have at least: one column for glucose, one timestamp column.
@@ -100,7 +99,6 @@ def read_csv(
         generated_date_col (str, optional): _description_. Defaults to _DATE_COL.
         generated_timestamp_col (_type_, optional): _description_. Defaults to _TIMESTAMP_COL.
         glucose_curve_kwargs (Dict, optional): _description_. Defaults to None.
-        extra_pandas_kwargs (Dict, optional): _description_. Defaults to None.
 
     Returns:
         pd.DataFrame: Glucose Unified Dataframe
@@ -108,8 +106,7 @@ def read_csv(
     df = pd.read_csv(
         filepath_or_buffer=file_path,
         delimiter=delimiter,
-        skiprows=skiprows,
-        **extra_pandas_kwargs,
+        skiprows=skiprows
     )
     df = (
         df
