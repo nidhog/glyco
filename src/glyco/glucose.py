@@ -1,6 +1,4 @@
-from typing import Callable, Dict, List
-from click import option
-from numpy import source
+from typing import Dict
 import pandas as pd
 
 from datetime import datetime as dt, timedelta as tdel
@@ -40,11 +38,11 @@ _AUCMIN_MIN = "auc_min"
 # time derivatives
 _DATE_COL = "date"  # TODO
 _HOUR_COL = "hour"
-_DAYOFWEEK_COL = "dayofweek"
-_WEEKDAY_COL = "weekday"
+_DAYOFWEEK_COL = "weekday_number"
+_WEEKDAY_COL = "weekday_name"
 _ISWEEKEND_COL = "is_weekend"
 # Used for smoothening the glucose curve
-_default_glucose_curve_kwargs = {
+_default_glucose_prep_kwargs = {
     'interpolate': True,
     'interp_met':'polynomial',
     'interp_ord':1,
@@ -78,7 +76,7 @@ def read_csv(
     generated_glucose_col: str = _GLUCOSE_COL,
     generated_date_col: str = _DATE_COL,
     generated_timestamp_col=_TIMESTAMP_COL,
-    glucose_curve_kwargs: Dict = None
+    glucose_prep_kwargs: Dict = None
 ) -> pd.DataFrame:
     """Reads a glucose CSV file.
     The file needs to have at least: one column for glucose, one timestamp column.
@@ -118,8 +116,8 @@ def read_csv(
         )
     )
     if calculate_glucose_properties:
-        if glucose_curve_kwargs is None:
-            glucose_curve_kwargs = _default_glucose_curve_kwargs
+        if glucose_prep_kwargs is None:
+            glucose_prep_kwargs = _default_glucose_prep_kwargs
         df = prepare_glucose(
             df,
             glucose_col=glucose_col,
@@ -129,7 +127,7 @@ def read_csv(
             glbl=generated_glucose_col,
             tlbl=generated_timestamp_col,
             dlbl=generated_date_col,
-            **glucose_curve_kwargs
+            **glucose_prep_kwargs
         )
         df = get_properties(
             df,
@@ -141,65 +139,10 @@ def read_csv(
     return df
 
 
-def read_csv_old(
-    file_path: str,
-    delimiter: str = ",",
-    skiprows: int = 0,
-    t_col: str = TIMESTAMP_COL_DEFAULT,
-    t_fmt: str = TIMESTAMP_FMT_DEFAULT,
-    glucose_col: str = GLUCOSE_MMOL_COL_DEFAULT,
-    device: str = Devices.abbott.value,
-    set_labels_by_device: bool = False,
-    unit: str = Units.mmol.value,
-    only_read_as_is=False,
-    glbl=_GLUCOSE_COL,
-    tlbl=_TIMESTAMP_COL,
-    glim=GLUCOSE_LIMIT_DEFAULT,  # predefined glucose limit used for AUC calculation
-    dlbl=_DATE_COL,
-    # TODO take in those inputs as map
-    # TODO take inputs for porperties and transforms
-    filter_glucose_rows=True,
-    pandas_kwargs=None,
-):
-    """Reads a glucose CSV file.
-    The file needs to have at least: one column for glucose, one timestamp column.
-
-    """
-    if set_labels_by_device:
-        is_valid_entry(device=device, unit=unit)
-        set_columns_by_device_unit(device=device, unit=unit)
-    df = pd.read_csv(
-        filepath_or_buffer=file_path,
-        delimiter=delimiter,
-        skiprows=skiprows,
-        **pandas_kwargs,
-    )
-    df = df if not (filter_glucose_rows) else filter_glucose_by_column_val(df)
-    if not only_read_as_is:
-        df = prepare_glucose(
-            df,
-            glucose_col=glucose_col,
-            tsp_lbl=t_col,
-            tsp_fmt=t_fmt,
-            unit=unit,
-            glbl=glbl,
-            tlbl=tlbl,
-            dlbl=dlbl,
-            interpolate=interpolate,
-            interp_met=interp_met,
-            interp_ord=interp_ord,
-            rolling_avg=rolling_avg,
-        )
-        df = get_properties(df, glbl=glbl, tlbl=tlbl, glim=glim)
-
-    return df
-
-
 # Verify the file
 # List of implemented devices and units
 implemented_devices = list(map(lambda x: x.name, Devices))
 implemented_units = list(map(lambda x: x.name, Units))
-
 
 def is_valid_entry(device: str, unit: str) -> bool:
     """Verifies the device and unit are implemented.
@@ -239,8 +182,20 @@ def filter_glucose_by_column_val(
     return df[df[filter_col] == filter_val]
 
 
+# TODO turn into function
+# get datetime, date, hour etc. from timestamp
+def get_time_values(df, tlbl, dlbl, tsp_lbl, tsp_fmt, weekday_map=weekday_map):
+    df[tlbl] = pd.to_datetime(df[tsp_lbl], format=tsp_fmt)
+    df[dlbl] = df[tlbl].dt.date
+    df[f"{dlbl}_str"] = df[dlbl].map(lambda x: x.strftime(DATE_FMT_DEFAULT))
+    df[_HOUR_COL] = df[tlbl].dt.hour
+    df[_DAYOFWEEK_COL] = df[tlbl].dt.weekday
+    df[_WEEKDAY_COL] = df[_DAYOFWEEK_COL].map(weekday_map)
+    df[_ISWEEKEND_COL] = df[_DAYOFWEEK_COL].map(is_weekend)
+    return df
+
 def prepare_glucose(
-    df: pd.DataFrame,
+    glucose_dataframe: pd.DataFrame,
     glucose_col: str,
     tsp_lbl: str,
     tsp_fmt: str,
@@ -278,16 +233,7 @@ def prepare_glucose(
     Returns:
         _type_: _description_
     """
-
-    # TODO turn into function
-    # get datetime, date, hour etc. from timestamp
-    df[tlbl] = pd.to_datetime(df[tsp_lbl], format=tsp_fmt)
-    df[dlbl] = df[tlbl].dt.date
-    df[f"{dlbl}_str"] = df[dlbl].map(lambda x: x.strftime(DATE_FMT_DEFAULT))
-    df[_HOUR_COL] = df[tlbl].dt.hour
-    df[_DAYOFWEEK_COL] = df[tlbl].dt.weekday
-    df[_WEEKDAY_COL] = df[_DAYOFWEEK_COL].map(weekday_map)
-    df[_ISWEEKEND_COL] = df[_DAYOFWEEK_COL].map(is_weekend)
+    df = get_time_values(glucose_dataframe, tlbl, dlbl=dlbl, tsp_lbl=tsp_lbl, tsp_fmt=tsp_fmt, weekday_map=weekday_map)
 
     if extra_shift_in_time:
         df = add_shifted_time(df, tlbl, dlbl, extra_shift_in_time)

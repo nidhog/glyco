@@ -11,7 +11,7 @@ PLOT_GMIN = 3
 
 # Utility function that returns True if a weekday number refers to a weekend
 def is_weekend(x):
-    return 1 if x % 7 > 4 else 0
+    return True if x % 7 > 4 else False
 
 
 # Define devices that are currently implemented
