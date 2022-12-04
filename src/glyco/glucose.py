@@ -261,8 +261,15 @@ def prepare_glucose(
     return df
 
 
-def add_shifted_time(df, tlbl, dlbl, extra_shift_in_time):
-    """"""
+def add_shifted_time(df: pd.DataFrame, tlbl: str, dlbl: str, extra_shift_in_time: int):
+    """_summary_
+
+    Args:
+        df (pd.DataFrame): _description_
+        tlbl (str): _description_
+        dlbl (str): _description_
+        extra_shift_in_time (int): _description_
+    """
     shift_tlbl = f"shifted_{tlbl}"
     shift_dlbl = f"shifted_{dlbl}"
 
@@ -276,10 +283,10 @@ def add_shifted_time(df, tlbl, dlbl, extra_shift_in_time):
     return df
 
 
+
+
 """Properties and Stats
 """
-
-
 def set_derivative(
     df: pd.DataFrame, glucose_col: str, timestamp_col: str
 ) -> pd.DataFrame:
