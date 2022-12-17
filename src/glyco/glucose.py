@@ -1,7 +1,7 @@
-from typing import Dict, Optional
+from typing import Dict, Optional, Union
 import pandas as pd
 
-from datetime import datetime as dt, timedelta as tdel
+from datetime import datetime as dt, timedelta as tdel, date as date_type
 from matplotlib import pyplot as plt
 
 from .utils import Units, Devices, find_nearest, weekday_map, is_weekend, autoplot
@@ -398,8 +398,8 @@ def plot_glucose(
     df: pd.DataFrame,
     glbl: str = _GLUCOSE_COL,
     tlbl: str = _TIMESTAMP_COL,
-    from_time=None,
-    to_time=None,
+    from_time: Optional[Union[str, pd.Timestamp, date_type]] = None,
+    to_time: Optional[Union[str, pd.Timestamp, date_type]] = None,
 ):
     """Plots the glucose curve for a given dataframe and time frame
 
