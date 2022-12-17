@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Optional
 import pandas as pd
 
 from datetime import datetime as dt, timedelta as tdel
@@ -75,8 +75,8 @@ def read_csv(
     skiprows: int = 0,
     generated_glucose_col: str = _GLUCOSE_COL,
     generated_date_col: str = _DATE_COL,
-    generated_timestamp_col=_TIMESTAMP_COL,
-    glucose_prep_kwargs: Dict = None
+    generated_timestamp_col: str =_TIMESTAMP_COL,
+    glucose_prep_kwargs: Optional[Dict] = _default_glucose_prep_kwargs
 ) -> pd.DataFrame:
     """Reads a glucose CSV file.
     The file needs to have at least: one column for glucose, one timestamp column.
@@ -144,25 +144,32 @@ def read_csv(
 implemented_devices = list(map(lambda x: x.name, Devices))
 implemented_units = list(map(lambda x: x.name, Units))
 
-def is_valid_entry(device: str, unit: str) -> bool:
+def is_valid_entry(device: str, unit: str, fail_on_invalid: bool = True) -> bool:
     """Verifies the device and unit are implemented.
 
     Args:
-        device (str): _description_
-        unit (str): _description_
+        device (str): name of the device used, e.g.: abbott
+        unit (str): unit used, e.g.: mg/dL, mmol/L
+        fail_on_invalid (bool): defaults to True. 
+            If True raise an exception on an invalid entry.
+
 
     Raises:
-        NotImplementedError: _description_
+        NotImplementedError: if fail_on_invalid is set to True and entry is invalid.
 
     Returns:
-        bool: _description_
+        bool: True if the entry is valid. 
+        If the entry is invalid, an exception is raised if fail_on_invalid is True
+        Otherwise False is returned.
     """
-    if device in implemented_devices and unit in implemented_units:
+    if device.lower() in implemented_devices and unit.lower() in implemented_units:
         return True
-    raise NotImplementedError(
-        f"Device '{device}' or unit {unit} are not yet supported.\n\
-    We currently only support:\n- Devices: {implemented_devices}.\n- Units: {implemented_units}."
-    )
+    elif fail_on_invalid:
+        raise NotImplementedError(
+            f"Device '{device}' or unit {unit} are not yet supported.\n\
+        We currently only support:\n- Devices: {implemented_devices}.\n- Units: {implemented_units}."
+        )
+    return False
 
 
 def set_columns_by_device_unit():
