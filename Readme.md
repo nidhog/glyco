@@ -1,5 +1,15 @@
 # Continuous Glucose Monitoring data analysis in Python
-Glyco aims to be an Open Source library to analyze glucose data (from CGMs) in Python.
+Glyco aims to be an Open Source Python library to analyze glucose data from Continuous Glucose Monitoring (CGM).
+
+There is very little work related to glucose analysis fro healthy individuals. Glyco aims to make analysing healthy individual glucose data easier. 
+
+## Main features
+### 1 - Processing and cleaning
+### 2 - Plotting and Visual analysis (EDA)
+### 3 - Statistical analysis
+### 4 - Meal, activities and events analysis
+### 5 - Advanced analysis: Ranking meals, predictions
+
 
 # To do:
 * [ ] if read df returns error tell check if you need to skiprows
@@ -12,9 +22,15 @@ Glyco aims to be an Open Source library to analyze glucose data (from CGMs) in P
 * [ ] move to utils
 
 # Data samples
+This is a short description of the data samples provided.
 * *sample_glucose* : a glucose sample from `Freestyle Libre` data. The data glucose is in `mmol/L`.
 * 
 * 
 
 # Disclaimer
-Glyco is not a medical product and shall not be used to diagnose or treat any medical conditions.
+Glyco is not a medical product and shall not be used to diagnose, treat or evaluate any medical conditions.
+Glyco should not be used for analysing data of individuals with diabetes. Glyco is not intended to be used on individuals using insulin.
+
+# Documentation
+
+## TODO: <TODO/> Quickstart guide, Link to doc
