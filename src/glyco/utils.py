@@ -20,9 +20,16 @@ class Devices(enum.Enum):
 
 
 class Units(enum.Enum):
-    mmol = "mmol/L"
-    # mgdl = "mg/dL"
-    # gl = "g/L" # TODO handle more units
+    mmolL = "mmol/L"
+    mgdL = "mg/dL"
+    gL = "g/L" # TODO handle more units
+
+
+# Will be used to convert glucose to mmol/L (Glucose in mmol/L = units_to_mmolL_factor[input unit] * Glucose in input unit)
+units_to_mmolL_factor = {
+    Units.mmolL.value: 1,
+    Units.mgdL.value: 1/18.0182
+    }
 
 
 def find_nearest(df, pivot, col, n_iter=100):

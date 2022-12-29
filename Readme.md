@@ -22,9 +22,9 @@ There is very little work related to glucose analysis fro healthy individuals. G
 * [ ] move to utils
 
 # Data samples
-This is a short description of the data samples provided.
+This is a short description of the data samples provided. All these files are included under the `data/` folder.
 * *sample_glucose* : a glucose sample from `Freestyle Libre` data. The data glucose is in `mmol/L`.
-* 
+  * *tiny_sample.csv* : Same as *sample_glucose* with less rows.
 * 
 
 # Disclaimer

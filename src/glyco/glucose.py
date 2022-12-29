@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime as dt, timedelta as tdel, date as date_type
 from matplotlib import pyplot as plt
 
-from .utils import Units, Devices, find_nearest, weekday_map, is_weekend, autoplot
+from .utils import Units, Devices, find_nearest, weekday_map, is_weekend, autoplot, units_to_mmolL_factor
 
 """Warning and Error Messages
 """
@@ -42,6 +42,7 @@ _DAYOFWEEK_COL = "weekday_number"
 _WEEKDAY_COL = "weekday_name"
 _ISWEEKEND_COL = "is_weekend"
 # Used for smoothening the glucose curve
+# FIXME: _default_glucose_prep_kwargs to GlucoseTransform dataclass
 _default_glucose_prep_kwargs = {
     'interpolate': True,
     'interp_met':'polynomial',
@@ -58,6 +59,8 @@ _freestyle_glucose_rec_type = 0
 _optional_cols = [_meal_note_col, _meal_ref_col]
 meal_default_cols = [_TIMESTAMP_COL, _meal_ref_col, _meal_ref_col]
 
+general_date_type = Union[str, pd.Timestamp, date_type]
+
 """File reading
 """
 
@@ -67,7 +70,7 @@ def read_csv(
     timestamp_col: str = TIMESTAMP_COL_DEFAULT,
     timestamp_fmt: str = TIMESTAMP_FMT_DEFAULT,
     glucose_col: str = GLUCOSE_MMOL_COL_DEFAULT,
-    glucose_unit: str = Units.mmol.value,
+    glucose_unit: str = Units.mmolL.value,
     calculate_glucose_properties: bool=True,
     glucose_lim: int=GLUCOSE_LIMIT_DEFAULT,  # predefined glucose limit used for AUC calculation
     filter_glucose_rows=True,
@@ -87,7 +90,7 @@ def read_csv(
         timestamp_col (str, optional): _description_. Defaults to TIMESTAMP_COL_DEFAULT.
         timestamp_fmt (str, optional): _description_. Defaults to TIMESTAMP_FMT_DEFAULT.
         glucose_col (str, optional): _description_. Defaults to GLUCOSE_MMOL_COL_DEFAULT.
-        glucose_unit (str, optional): _description_. Defaults to Units.mmol.value.
+        glucose_unit (str, optional): _description_. Defaults to Units.mmolL.value.
         device (str, optional): _description_. Defaults to Devices.abbott.value.
         calculate_glucose_properties (bool, optional): _description_. Defaults to True.
         glucose_lim (int, optional): _description_. Defaults to GLUCOSE_LIMIT_DEFAULT.
@@ -106,6 +109,37 @@ def read_csv(
         delimiter=delimiter,
         skiprows=skiprows
     )
+
+    df = read_df(
+        df,
+        timestamp_col,
+        timestamp_fmt,
+        glucose_col,
+        glucose_unit,
+        calculate_glucose_properties,
+        glucose_lim,
+        filter_glucose_rows,
+        generated_glucose_col,
+        generated_date_col,
+        generated_timestamp_col,
+        glucose_prep_kwargs,
+    )
+
+    return df
+
+def read_df(df: pd.Dataframe,
+    timestamp_col: str = TIMESTAMP_COL_DEFAULT,
+    timestamp_fmt: str = TIMESTAMP_FMT_DEFAULT,
+    glucose_col: str = GLUCOSE_MMOL_COL_DEFAULT,
+    glucose_unit: str = Units.mmolL.value,
+    calculate_glucose_properties: bool = True,
+    glucose_lim: int=GLUCOSE_LIMIT_DEFAULT,  # predefined glucose limit used for AUC calculation
+    filter_glucose_rows=True,
+    generated_glucose_col: str = _GLUCOSE_COL,
+    generated_date_col: str = _DATE_COL,
+    generated_timestamp_col: str =_TIMESTAMP_COL,
+    glucose_prep_kwargs: Optional[Dict] = _default_glucose_prep_kwargs
+):
     df = (
         df
         if not (filter_glucose_rows)
@@ -135,9 +169,7 @@ def read_csv(
             tlbl=generated_timestamp_col,
             glim=glucose_lim,
         )
-
     return df
-
 
 # Verify the file
 # List of implemented devices and units
@@ -206,7 +238,7 @@ def prepare_glucose(
     glucose_col: str,
     tsp_lbl: str,
     tsp_fmt: str,
-    unit: str = Units.mmol.value,
+    unit: str = Units.mmolL.value,
     glbl: str = _GLUCOSE_COL,
     tlbl: str = _TIMESTAMP_COL,
     dlbl: str = _DATE_COL,
@@ -248,8 +280,8 @@ def prepare_glucose(
     # convert to mmol/L
     df[glbl] = (
         df[glucose_col]
-        if unit == Units.mmol.value
-        else convert_unit(df[glucose_col], from_unit=unit, to_unit=Units.mmol.value)
+        if unit == Units.mmolL.value
+        else convert_unit(df[glucose_col], from_unit=unit, to_unit=Units.mmolL.value)
     )
 
     # index by time and keep time column
@@ -386,6 +418,9 @@ def get_properties(
 
 def convert_unit(g: float, from_unit: str, to_unit: str) -> float:
     """"""
+    if to_unit == Units.mmolL:
+        if from_unit in implemented_units:
+            return g * units_to_mmolL_factor[from_unit] # TODO fix inconsistency between implemented units and dict keys
     raise NotImplementedError(error_not_implemented_method)
 
 
@@ -398,8 +433,8 @@ def plot_glucose(
     df: pd.DataFrame,
     glbl: str = _GLUCOSE_COL,
     tlbl: str = _TIMESTAMP_COL,
-    from_time: Optional[Union[str, pd.Timestamp, date_type]] = None,
-    to_time: Optional[Union[str, pd.Timestamp, date_type]] = None,
+    from_time: Optional[general_date_type] = None,
+    to_time: Optional[general_date_type] = None,
 ):
     """Plots the glucose curve for a given dataframe and time frame
 
