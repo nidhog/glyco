@@ -460,3 +460,86 @@ def plot_glucose(
     if glbl not in plot_df.keys():
         raise KeyError(f"Glucose Column {glbl} does not seem to be in the DataFrame.")
     plt.plot(plot_df[tlbl], plot_df[glbl])
+
+@autoplot
+def plot_daily_trend(df: pd.DataFrame, glbl: str = _GLUCOSE_COL):
+    plot_percentiles(df, stat_col=glbl, percentiles=[0.01, 0.05])
+
+def plot_percentiles(df, stat_col, percentiles, group_by_col=_HOUR_COL, color='green'):
+    """By default, groups by column and plots percentiles of glucose
+    """
+    _, _, med, perc_l, perc_h = get_percentiles_and_stats(
+        df, percentiles, stat_col, group_by_col)
+    plt.plot(med, label='Median')
+    for i in range(len(percentiles)):
+        plt.fill_between(
+            # TODO enable changing alpha and label
+            med.index, perc_l[i], perc_h[i], color=color, alpha=0.2, label=f"{100*(1-percentiles[i])}th")
+    plt.title('Trend of {} for the percentiles: {} as well as {}'.format(stat_col,
+                                                                         ', '.join(
+                                                                             [str(int(i*100)) for i in percentiles]),
+                                                                         ', '.join([str(int((1-i)*100)) for i in percentiles])))
+    plt.xlabel(group_by_col)
+    plt.ylabel(stat_col)
+
+def get_percentiles_and_stats(df: pd.DataFrame, percentiles: list, stat_col: str, group_by_col: str):
+    grouped = df.groupby([group_by_col])[stat_col]
+    mean = grouped.mean()
+    med = grouped.median()
+    dev = grouped.std()
+    perc_l = [grouped.quantile(q) for q in percentiles]
+    perc_h = [grouped.quantile(1-q) for q in percentiles]
+    return mean, dev, med, perc_l, perc_h # FIXME: use dataclass, do we need mean, med?
+
+def plot_comparison(df, glbl=_GLUCOSE_COL, compare_by=_WEEKDAY_COL, outliers=False, label_map=None, method='box', sort_vals = False):
+    """
+
+    :param df: dataframe containing the values to be compared and the comparison field
+    :param glbl: label of the box plot values in the dataframe (Y-axis, defaults to the glucose label _GLUCOSE_COL)
+    :param compare_by: field to compare by (X-axis, defaults to weekend label WEEKENDLBL)
+    :param outliers: boolean to show or not show outliers, defaults to False
+    :param label_map: lambda function to map the unique values of the compare_by field to some labels,
+    defaults to None (showing original)
+    :return:
+    """
+    all_vals = df[compare_by].unique()
+    if sort_vals: all_vals.sort()
+    if method == 'box':
+        plt.boxplot([df[df[compare_by] == i][glbl].dropna() for i in all_vals],
+                    labels=all_vals if label_map is None else [
+                        label_map(i) for i in all_vals],
+                    showfliers=outliers)
+    else:
+        raise NotImplementedError(f"Method {method} not implemented for comparison please use one of: 'box'")
+    plt.title('Comparing {} by {}. Outliers are {}.'.
+                format(glbl, compare_by, 'shown' if outliers else 'not shown'))
+
+
+def get_response_bounds(df: pd.DataFrame, event_time: pd.Timestamp, pre_pad_min: int = 20, post_pad_min: int = 0, resp_time_min: int = 120, glbl: str = _GLUCOSE_COL, t_lbl: str = _TIMESTAMP_COL):
+    # TODO improve inputs
+    """ Assumes indexing by time
+    """
+    df_time = find_nearest(df, event_time, glbl, t_lbl, n_iter=100)
+    start = df_time - tdel(minutes=pre_pad_min)
+    end = df_time + tdel(minutes=resp_time_min) + tdel(minutes=post_pad_min)
+    return start, end, df_time
+
+
+def plot_response_to_event(df: pd.DataFrame, event_time: pd.Timestamp, event_title: Optional[str] = None, pre_pad_min: int = 20, post_pad_min: int = 0, resp_time_min: int = 120, glbl: str = _GLUCOSE_COL, t_lbl: str = _TIMESTAMP_COL, auc_lim=GLUCOSE_LIMIT_DEFAULT, show_auc=True, use_local_min=False):
+    # TODO: clean inputs AUC/pre-pad, have multi-options large, medium, small
+    """Plots the response to a specific event given by its event time.
+    """
+    s, e, t = get_response_bounds(df, event_time, pre_pad_min, post_pad_min, resp_time_min, glbl=glbl, t_lbl=t_lbl)
+    plot_df = df.loc[s:e][glbl]
+    plt.plot(plot_df)
+    if show_auc:
+        alim = auc_lim if not(use_local_min) else plot_df.mean()
+        lim_df = plot_df.map(lambda x: x if x>alim else alim)
+        plt.gca()
+        plt.axhline(alim, color='red', label='limit', linestyle='--', alpha=0.3)
+        plt.fill_between(lim_df.index,  lim_df, [alim for a in lim_df.index], color='green', alpha=0.1, label=f"Estimated glucose quantity consumed")
+
+    plt.axvline(t, color='black', label='Event time', linestyle='--', alpha=0.1)
+    if event_title:
+        plt.title(event_title)
+

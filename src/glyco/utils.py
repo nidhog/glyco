@@ -32,7 +32,7 @@ units_to_mmolL_factor = {
     }
 
 
-def find_nearest(df, pivot, col, n_iter=100):
+def find_nearest(df: pd.DataFrame, pivot: pd.Timestamp, col: str, n_iter: int = 100):
     """Finds nearest value to a pivot in a dataframe column
     Returns None if no value is found. Returns the column value otherwise.
 
