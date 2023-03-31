@@ -219,22 +219,24 @@ def read_df(df: pd.DataFrame, # TODO: rename to 'get_glucose_from_df'
     if calculate_glucose_properties:
         if glucose_prep_kwargs is None:
             glucose_prep_kwargs = _default_glucose_prep_kwargs
-        df = prepare_glucose(
-            glucose_df=df,
-            glucose_col=glucose_col,
-            tsp_lbl=timestamp_col,
-            timestamp_fmt=timestamp_fmt,
-            unit=glucose_unit,
-            glbl=generated_glucose_col,
-            tlbl=generated_timestamp_col,
-            dlbl=generated_date_col,
-            **glucose_prep_kwargs
-        )
-        df = get_properties(
-            df,
-            glbl=generated_glucose_col,
-            tlbl=generated_timestamp_col,
-            glim=glucose_lim,
+        
+        df =( 
+            prepare_glucose(
+                glucose_df=df,
+                glucose_col=glucose_col,
+                tsp_lbl=timestamp_col,
+                timestamp_fmt=timestamp_fmt,
+                unit=glucose_unit,
+                glbl=generated_glucose_col,
+                tlbl=generated_timestamp_col,
+                dlbl=generated_date_col,
+                **glucose_prep_kwargs
+            ).pipe(
+                get_properties, 
+                glbl=generated_glucose_col,
+                tlbl=generated_timestamp_col,
+                glim=glucose_lim
+            )    
         )
     return df
 
@@ -289,8 +291,9 @@ def filter_glucose_by_column_val(
 
 
 # TODO turn into function
+# TODO hide function as private or don't import in init
 # get datetime, date, hour etc. from timestamp
-def get_time_values(df, tlbl, dlbl, tsp_lbl, timestamp_fmt, weekday_map=weekday_map):
+def add_time_values(df, tlbl, dlbl, tsp_lbl, timestamp_fmt, weekday_map=weekday_map):
     # TODO: cleanup
     # df.assign(
     #     tlbl = lambda x: pd.to_datetime(x[tsp_lbl], format=tsp_fmt),
@@ -357,7 +360,7 @@ def prepare_glucose(
     Returns:
         _type_: _description_
     """
-    df = get_time_values(glucose_df, tlbl=tlbl, dlbl=dlbl, tsp_lbl=tsp_lbl, timestamp_fmt=timestamp_fmt, weekday_map=weekday_map)
+    df = add_time_values(glucose_df, tlbl=tlbl, dlbl=dlbl, tsp_lbl=tsp_lbl, timestamp_fmt=timestamp_fmt, weekday_map=weekday_map)
 
     if extra_shift_in_time:
         df = add_shifted_time(df, tlbl, dlbl, extra_shift_in_time)
