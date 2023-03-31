@@ -28,7 +28,8 @@ class Units(enum.Enum):
 # Will be used to convert glucose to mmol/L (Glucose in mmol/L = units_to_mmolL_factor[input unit] * Glucose in input unit)
 units_to_mmolL_factor = {
     Units.mmolL.value: 1,
-    Units.mgdL.value: 1/18.0182
+    Units.mgdL.value: 1/18.0182,
+    Units.gL.value: 100/18.0182
     }
 
 
