@@ -43,7 +43,7 @@ _AUC_COL = "auc_mean"
 _AUCLIM_COL = "auc_lim"
 _AUCMIN_MIN = "auc_min"
 # time derivatives
-_DATE_COL = "date"  # TODO
+_DATE_COL = "date"
 _HOUR_COL = "hour"
 _DAYOFWEEK_COL = "weekday_number"
 _WEEKDAY_COL = "weekday_name"
@@ -175,7 +175,7 @@ def read_df(df: pd.DataFrame, # TODO: rename to 'get_glucose_from_df'
     unit_autodetect : bool = False,
     calculate_glucose_properties: bool = True,
     glucose_lim: int=DEFAULT_GLUC_LIMIT,  # predefined glucose limit used for AUC calculation
-    filter_glucose_rows=True,
+    filter_glucose_rows=False,
     generated_glucose_col: str = GLUCOSE_COL,
     generated_date_col: str = _DATE_COL,
     generated_timestamp_col: str =TIMESTAMP_COL,
@@ -287,31 +287,26 @@ def set_columns_by_device_unit():
 def filter_glucose_by_column_val(
     df: pd.DataFrame, filter_col: str=_freestyle_rec_type_col, filter_val=_freestyle_glucose_rec_type
 ):
+    logger.info(f"Selecting only columns with a {filter_col} with the value {filter_val}")
     return df[df[filter_col] == filter_val]
 
 
 # TODO turn into function
 # TODO hide function as private or don't import in init
 # get datetime, date, hour etc. from timestamp
-def add_time_values(df, tlbl, dlbl, tsp_lbl, timestamp_fmt, weekday_map=weekday_map):
-    # TODO: cleanup
-    # df.assign(
-    #     tlbl = lambda x: pd.to_datetime(x[tsp_lbl], format=tsp_fmt),
-    #     dlbl,
-    #     f"{dlbl}_str",
-    #     _HOUR_COL,
-    #     _DAYOFWEEK_COL,
-    #     _WEEKDAY_COL,
-    #     _ISWEEKEND_COL,
-        
-    # )
+def add_time_values(df, tlbl: str = TIMESTAMP_COL, tsp_lbl: str = DEFAULT_INPUT_TSP_COL, timestamp_fmt: str = DEFAULT_INPUT_TSP_FMT, dlbl: str = _DATE_COL, weekday_map=weekday_map, timestamp_is_formatted: bool = False):
     ndf = df.copy()
-    try:
-        ndf[tlbl] = pd.to_datetime(ndf[tsp_lbl], format=timestamp_fmt)
-    except ValueError as e:
-        raise ValueError(f"Failed to convert timestamp '{tsp_lbl}' using the format '{timestamp_fmt}'."\
-            f"Error: '{e}'."\
-            f"Verify that you are using the correct 'timestamp_fmt' as input")
+    # if timestamp is not a string but already a pd.Timestamp type
+    if timestamp_is_formatted:
+        ndf[tlbl] = ndf[tsp_lbl]
+    # else convert timestamp using timestamp_fmt
+    else:
+        try:
+            ndf[tlbl] = pd.to_datetime(ndf[tsp_lbl], format=timestamp_fmt)
+        except ValueError as e:
+            raise ValueError(f"Failed to convert timestamp '{tsp_lbl}' using the format '{timestamp_fmt}'."\
+                f"Error: '{e}'."\
+                f"Verify that you are using the correct 'timestamp_fmt' as input")
     ndf[dlbl] = ndf[tlbl].dt.date
     ndf[f"{dlbl}_str"] = ndf[dlbl].map(lambda x: x.strftime(DEFAULT_OUT_DATE_FMT) if type(x)==pd.DatetimeIndex else x)
     ndf[_HOUR_COL] = ndf[tlbl].dt.hour
@@ -581,12 +576,13 @@ def plot_trend_by_weekday(df: pd.DataFrame, glbl=GLUCOSE_COL):
 def plot_percentiles(df, stat_col, percentiles, group_by_col=_HOUR_COL, color='green', label=None):
     """By default, groups by column and plots percentiles of glucose
     """
+    # TODO use only get_stats and remove get_percentiles_and_stats
     _, _, med, perc_l, perc_h = get_percentiles_and_stats(
         df, percentiles, stat_col, group_by_col)
 
     stats_df = df.pipe(
         get_stats,
-        stats_col=stat_col, 
+        stats_cols=stat_col, 
         group_by_col=group_by_col, 
         percentiles=percentiles
     )
@@ -606,15 +602,17 @@ def plot_percentiles(df, stat_col, percentiles, group_by_col=_HOUR_COL, color='g
     plt.ylabel(stat_col)
 
 
-def get_stats(df: pd.DataFrame, stats_col: str, group_by_col: str, percentiles: Optional[list] = None):
-    # TODO: use instead of get_perc
-    return (df
-        .groupby(group_by_col)
-        [stats_col]
-        .describe(percentiles=percentiles)
-    )
+def get_stats(df: pd.DataFrame, stats_cols: Union[list, str], group_by_col: str = None, percentiles: Optional[list] = None):
+    if group_by_col:
+        return (df
+            .groupby(group_by_col)
+            [stats_cols]
+            .describe(percentiles=percentiles)
+        )
+    return df[stats_cols].describe(percentiles=percentiles)
     
 def get_percentiles_and_stats(df: pd.DataFrame, percentiles: list, stat_col: str, group_by_col: str):
+    # TODO replace completely with get_stats
     grouped = df.groupby([group_by_col])[stat_col]
     mean = grouped.mean()
     med = grouped.median()
@@ -683,31 +681,23 @@ Outputs
 - Write image plot or responses
 """
 def write_glucose(gdf : pd.DataFrame, output_file : str):
-    # TODO logging
+    # TODO Do we need this? to csv already handled
     # raise NotImplementedError("Writing is not yet implemented, "\
     #     "please make use of pandas DataFrame writing functions")
-    print("Writing is not yet implemented, "\
-    "please make use of pandas DataFrame writing functions")
+    logger.info("Writing glucose data to %s", output_file)
+    gdf.to_csv(output_file)
 
 """
 Day/Week Metrics
 """
 _summary_cols = [GLUCOSE_COL, _AUC_COL, _DG_COL, _DT_COL, _DGDT_COL]
 # TODO fill
-def get_metrics_by_day(gdf : pd.DataFrame, day_col : str =_DATE_COL):
-    ddf = gdf.groupby(day_col)[_summary_cols].mean()
-    return ddf
+def get_metrics_by_day(gdf : pd.DataFrame, day_col : str =_DATE_COL, percentiles: list = None, summary_cols : list = _summary_cols):
+    return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=day_col)
 
-def get_metrics_by_week(gdf : pd.DataFrame, week_col : str =_DATE_COL):
-    ddf = gdf.groupby(week_col)[_summary_cols].mean()
-    return ddf
+def get_metrics_by_hour(gdf : pd.DataFrame, hour_col : str =_HOUR_COL, percentiles: list = None, summary_cols : list = _summary_cols):
+    return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=hour_col)
 
-def get_metrics_general(gdf : pd.DataFrame):
-    ddf = gdf.copy()
-    # calculate AUC, std, mean, min, max
-    return ddf
+def get_metrics(gdf : pd.DataFrame, percentiles : list = None, summary_cols : list = _summary_cols, group_by_col: str = None):
+    return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=group_by_col)
 
-def describe_glucose(gdf : pd.DataFrame):
-    # calculate AUC, std, mean, min, max
-    rprint(gdf)
-    pass
