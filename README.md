@@ -15,7 +15,7 @@ df = gl.read_csv('examples/sample_glucose.csv')
 # Plot glucose hourly trend
 gl.plot_trend_by_hour(df)
 ```
-![image](docs/images/stats-glucose-plot.png "Figure 0.a")
+![image](docs/images/stats-glucose-hourtrend.png "Figure 0.a")
 ## The easiest library to manipulate glucose data
 *Glyco does not add any more complexity.*
 
