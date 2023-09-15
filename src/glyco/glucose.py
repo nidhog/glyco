@@ -190,6 +190,18 @@ def read_csv(
     return df
 
 def validate_glucose_columns(df: pd.DataFrame, glucose_col: str, timestamp_col: str):
+    """Validates the glucose and timestamp columns in the dataframe.
+    Currently, only checks their existence.
+
+    Args:
+        df (pd.DataFrame): the glucose dataframe.
+        glucose_col (str): the glucose column name.
+        timestamp_col (str): the timestamp column name.
+
+    Raises:
+        ValueError: raised if the glucose column does not exist in the dataframe.
+        ValueError: raised if the timestamp column does not exist in the dataframe.
+    """
     if glucose_col not in df.columns:
         raise ValueError(f"The Glucose column '{glucose_col}' is not in the input columns."\
             "Please provide 'glucose_col' as input.")
@@ -390,6 +402,29 @@ def filter_glucose_by_column_val(
 # TODO hide function as private or don't import in init
 # get datetime, date, hour etc. from timestamp
 def add_time_values(df, tlbl: str = TIMESTAMP_COL, tsp_lbl: str = DEFAULT_INPUT_TSP_COL, timestamp_fmt: str = DEFAULT_INPUT_TSP_FMT, dlbl: str = _DATE_COL, weekday_map=weekday_map, timestamp_is_formatted: bool = False):
+    """Adds generated time-values to the dataframe based on the timestamp. These include:
+    Date, Date string, Hour, Weekday number, Weekday name, Is or is not a weekend day.
+
+    Args:
+        df (_type_): the glucose dataframe.
+        tlbl (str, optional): the name of the new timestamp column generated with datetime values.
+            Defaults to the value of TIMESTAMP_COL.
+        tsp_lbl (str, optional): the name of the input timestamp column used. Defaults to DEFAULT_INPUT_TSP_COL.
+        timestamp_fmt (str, optional): the format of the values used in the input timestamp column used.
+            Not needed if the timestamp is already formatted, see argument 'timestamp_is_formatted'.
+            Defaults to DEFAULT_INPUT_TSP_FMT.
+        dlbl (str, optional): label used for the date. Defaults to _DATE_COL.
+        weekday_map (_type_, optional): label used for the weekday. Defaults to weekday_map.
+        timestamp_is_formatted (bool, optional): whether or not the timestamp in the input is already formatted.
+            If it is, this will not be converted using 'timestamp_fmt'. Defaults to False.
+
+    Raises:
+        ValueError: raised if the timestamp conversion using 'timestamp_fmt' fails.
+
+    Returns:
+        pd.DataFrame: the glucose dataframe with the generated time values.
+            See the documentation on generated time values for the naming of columns.
+    """
     ndf = df.copy()
     # if timestamp is not a string but already a pd.Timestamp type
     if timestamp_is_formatted:
@@ -866,18 +901,57 @@ def plot_comparison(df: pd.DataFrame, glbl: str=GLUCOSE_COL, compare_by: str=_WE
 
 
 def get_response_bounds(df: pd.DataFrame, event_time: pd.Timestamp, pre_pad_min: int = 20, post_pad_min: int = 0, resp_time_min: int = 120, glbl: str = GLUCOSE_COL, t_lbl: str = TIMESTAMP_COL):
-    # TODO improve inputs
-    """ Assumes indexing by time
+    """Finds the boundaries of a glucose response (used for plotting) by:
+    - Finding the nearest time with a glucose value, 'g_event_time', to the event time 'event_time'.
+    - Setting the start of the glucose bounds to: 'g_event_time - pre_pad_min'
+    - Setting the end to: 'g_event_time + resp_time_min + post_pad_min'
+    Assumes the glucose dataframe is indexed by time
+
+    Args:
+        df (pd.DataFrame): The glucose dataframe.
+        event_time (pd.Timestamp): Time of the event we want to investigate.
+        pre_pad_min (int, optional): Number of minutes used for padding the start time boundary. Defaults to 20.
+        post_pad_min (int, optional): Number of minutes used for padding the end time boundary. Defaults to 0.
+        resp_time_min (int, optional): The approximate number of minutes it takes for a glucose response to this event.
+            Defaults to 120.
+        glbl (str, optional): the glucose column name. Defaults to GLUCOSE_COL.
+        t_lbl (str, optional): the timestamp column name. Defaults to TIMESTAMP_COL.
+
+    Returns:
+        Tuple(datetime, datatime, datetime): A tuple containing:
+            - the start time.
+            - the end time.
+            - the nearest time to the event time with a glucose value in the dataframe.
+    # TODO: find nearest takes a lot of time, use something easier
     """
-    df_time = find_nearest(df, event_time, glbl, t_lbl, n_iter=100)
-    start = df_time - tdel(minutes=pre_pad_min)
-    end = df_time + tdel(minutes=resp_time_min) + tdel(minutes=post_pad_min)
-    return start, end, df_time
+    g_event_time = find_nearest(df, event_time, glbl, t_lbl, n_iter=100)
+    start = g_event_time - tdel(minutes=pre_pad_min)
+    end = g_event_time + tdel(minutes=resp_time_min) + tdel(minutes=post_pad_min)
+    return start, end, g_event_time
 
 
-def plot_response_at_time(glucose_df: pd.DataFrame, event_time: pd.Timestamp, event_title: Optional[str] = None, pre_pad_min: int = 20, post_pad_min: int = 0, resp_time_min: int = 120, glbl: str = GLUCOSE_COL, t_lbl: str = TIMESTAMP_COL, auc_lim=DEFAULT_GLUC_LIMIT, show_auc=True, use_local_min=False):
-    """Plots the response to a specific event given by its event time.
+def plot_response_at_time(glucose_df: pd.DataFrame, event_time: pd.Timestamp, event_title: Optional[str] = None, pre_pad_min: int = 20, post_pad_min: int = 0, resp_time_min: int = 120, glbl: str = GLUCOSE_COL, t_lbl: str = TIMESTAMP_COL, auc_lim: int=DEFAULT_GLUC_LIMIT, show_auc: bool=True, use_local_min: bool=False):
+    """Plots the glucose response around a specific event given by its event time.
+    Estimates the start and end of the glucose response to the event.
     TODO: clean inputs AUC/pre-pad, have multi-options large, medium, small
+    
+    Args:
+        glucose_df (pd.DataFrame): the glucose dataframe.
+        event_time (pd.Timestamp): the time of the event to investigate.
+        event_title (Optional[str], optional): the name/title of the event. Defaults to None.
+        pre_pad_min (int, optional): number of minutes minutes used for padding
+            the start of the glucose response. Defaults to 20.
+        post_pad_min (int, optional): number of minutes minutes used for padding
+            the end of the glucose response. Defaults to 0.
+        resp_time_min (int, optional): Approximate number of minutes it takes for a glucose response to this event.
+            Defaults to 120.
+        glbl (str, optional): the glucose column name. Defaults to GLUCOSE_COL.
+        t_lbl (str, optional): the timestamp column name. Defaults to TIMESTAMP_COL.
+        auc_lim (int, optional): the limit above which to show the area under the curve
+            (if 'use_local_min' this will be overriden). Defaults to DEFAULT_GLUC_LIMIT.
+        show_auc (bool, optional): whether or not to show the area under the curve. Defaults to True.
+        use_local_min (bool, optional): whether or not to use the local glucose mean to plot the area under the curve.
+            Overrides 'auc_lim'. Defaults to False.
     """
     s, e, t = get_response_bounds(glucose_df, event_time, pre_pad_min, post_pad_min, resp_time_min, glbl=glbl, t_lbl=t_lbl)
     plot_df = glucose_df.loc[s:e][glbl]
@@ -899,11 +973,13 @@ Outputs
 - Write image plot or responses
 """
 def write_glucose(gdf : pd.DataFrame, output_file : str):
-    """
+    """Writes glucose to a csv file
+
+    Args:
+        gdf (pd.DataFrame): the glucose dataframe.
+        output_file (str): the output file path.
     """
     # TODO Do we need this? to csv already handled
-    # raise NotImplementedError("Writing is not yet implemented, "\
-    #     "please make use of pandas DataFrame writing functions")
     logger.info("Writing glucose data to %s", output_file)
     gdf.to_csv(output_file)
 
@@ -911,46 +987,54 @@ def write_glucose(gdf : pd.DataFrame, output_file : str):
 Day/Week Metrics
 """
 _summary_cols = [GLUCOSE_COL, _AUC_COL, _DG_COL, _DT_COL, _DGDT_COL]
-# TODO fill
+
 def get_metrics_by_day(gdf : pd.DataFrame, day_col : str =_DATE_COL, percentiles: list = None, summary_cols : list = _summary_cols):
-    """_summary_
+    """
+    Get metrics and statistics by day related to specific columns of a dataframe.
 
     Args:
-        gdf (pd.DataFrame): _description_
-        day_col (str, optional): _description_. Defaults to _DATE_COL.
-        percentiles (list, optional): _description_. Defaults to None.
-        summary_cols (list, optional): _description_. Defaults to _summary_cols.
+        gdf (pd.DataFrame): the glucose dataframe.
+        day_col (str, optional): the day column name. Defaults to _HOUR_COL.
+        percentiles (Optional[List[float]], optional): a list of percentiles to plot 
+            (each value between 0 and 1). Defaults to None.
+        summary_cols (Union[List[str], str]): the glucose column name, or a column name,
+            or a list of column names for which to get stats. Defaults to _summary_cols.
 
     Returns:
-        _type_: _description_
+        pd.Series or pd.DataFrame: descriptive statistics grouped hour
     """
     return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=day_col)
 
-def get_metrics_by_hour(gdf : pd.DataFrame, hour_col : str =_HOUR_COL, percentiles: list = None, summary_cols : list = _summary_cols):
-    """_summary_
+def get_metrics_by_hour(gdf : pd.DataFrame, hour_col : str =_HOUR_COL, percentiles : Optional[List[float]] = None, summary_cols : Union[List[str], str] = _summary_cols):
+    """Get metrics and statistics by hour related to specific columns of a dataframe.
 
     Args:
-        gdf (pd.DataFrame): _description_
-        hour_col (str, optional): _description_. Defaults to _HOUR_COL.
-        percentiles (list, optional): _description_. Defaults to None.
-        summary_cols (list, optional): _description_. Defaults to _summary_cols.
+        gdf (pd.DataFrame): the glucose dataframe.
+        hour_col (str, optional): the hour column name. Defaults to _HOUR_COL.
+        percentiles (Optional[List[float]], optional): a list of percentiles to plot 
+            (each value between 0 and 1). Defaults to None.
+        summary_cols (Union[List[str], str]): the glucose column name, or a column name,
+            or a list of column names for which to get stats. Defaults to _summary_cols.
 
     Returns:
-        _type_: _description_
+        pd.Series or pd.DataFrame: descriptive statistics grouped hour
     """
     return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=hour_col)
 
-def get_metrics(gdf : pd.DataFrame, percentiles : list = None, summary_cols : list = _summary_cols, group_by_col: str = None):
-    """_summary_
+def get_metrics(gdf : pd.DataFrame, percentiles : Optional[List[float]] = None, summary_cols : Union[List[str], str] = _summary_cols, group_by_col: Optional[str] = None):
+    """Get metrics and statistics related to specific columns of a dataframe.
 
     Args:
-        gdf (pd.DataFrame): _description_
-        percentiles (list, optional): _description_. Defaults to None.
-        summary_cols (list, optional): _description_. Defaults to _summary_cols.
-        group_by_col (str, optional): _description_. Defaults to None.
+        gdf (pd.DataFrame): the glucose dataframe.
+        percentiles (Optional[List[float]], optional): a list of percentiles to plot 
+            (each value between 0 and 1). Defaults to None.
+        summary_cols (Union[List[str], str]): the glucose column name, or a column name,
+            or a list of column names for which to get stats. Defaults to _summary_cols.
+        group_by_col (str, optional): the name of the column to group values by. 
+            Defaults to None.
 
     Returns:
-        _type_: _description_
+       pd.Series or pd.DataFrame: descriptive statistics grouped by the given column
     """
     return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=group_by_col)
 
