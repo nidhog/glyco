@@ -4,12 +4,13 @@ from os.path import isfile, join
 
 from datetime import timedelta as tdel
 from datetime import datetime as dt
+from sqlite3 import Timestamp
 import pandas as pd
 from matplotlib import pyplot as plt
 
-from typing import Callable, Iterable
+from typing import Callable, Iterable, Optional
 
-from glyco.glucose import DEFAULT_INPUT_TSP_COL, DEFAULT_INPUT_TSP_FMT, add_time_values
+from glyco.glucose import _AUC_COL, _AUCLIM_COL, _AUCMIN_MIN, DEFAULT_INPUT_TSP_COL, DEFAULT_INPUT_TSP_FMT, add_time_values
 from .utils import find_nearest, autoplot
 
 from .constants import GLUCOSE_COL, TIMESTAMP_COL
@@ -53,7 +54,8 @@ def read_meals(events_folder_path, file_ext: str = None, shift_time_function=shi
         if isfile(join(events_folder_path, f)) and (file_ext is None or f.endswith(file_ext))
     ]
     events_df = pd.DataFrame(event_files, columns=event_default_cols)
-    events_df.index = events_df[TIMESTAMP_COL]
+    events_df['itsp'] = events_df['tsp']
+    events_df = events_df.set_index('itsp')
     events_df = add_time_values(events_df, tlbl=TIMESTAMP_COL, tsp_lbl=TIMESTAMP_COL, timestamp_is_formatted=True)
     return events_df
 
@@ -74,7 +76,7 @@ def read_events_csv(file_path,
                     tsp_col: str = TIMESTAMP_COL, 
                     ref_col: str = _event_ref_col, 
                     note_col: str = None, 
-                    tsp_fmt : str = DEFAULT_INPUT_TSP_FMT, 
+                    timestamp_fmt : str = DEFAULT_INPUT_TSP_FMT, 
                     timestamp_is_formatted: bool = False, 
                     delimiter: str = ",",
                     skiprows: int = 0
@@ -90,14 +92,14 @@ def read_events_csv(file_path,
         tsp_col=tsp_col, 
         ref_col=ref_col, 
         note_col=note_col, 
-        tsp_fmt=tsp_fmt, 
+        timestamp_fmt=timestamp_fmt, 
         timestamp_is_formatted=timestamp_is_formatted
         )
     return df
 
-def read_events_df(edf: pd.DataFrame, tsp_col: str = TIMESTAMP_COL, ref_col: str = _event_ref_col, note_col: str = None, tsp_fmt : str = DEFAULT_INPUT_TSP_FMT, timestamp_is_formatted: bool = False):
+def read_events_df(edf: pd.DataFrame, tsp_col: str = TIMESTAMP_COL, ref_col: str = _event_ref_col, note_col: str = None, timestamp_fmt : str = DEFAULT_INPUT_TSP_FMT, timestamp_is_formatted: bool = False):
     validate_event_columns(df = edf, ref_col=ref_col, note_col=note_col, tsp_col=tsp_col)
-    events_df = add_time_values(df=edf, tsp_lbl=tsp_col, tlbl=TIMESTAMP_COL, timestamp_fmt=tsp_fmt, timestamp_is_formatted=timestamp_is_formatted)
+    events_df = add_time_values(df=edf, tsp_lbl=tsp_col, tlbl=TIMESTAMP_COL, timestamp_fmt=timestamp_fmt, timestamp_is_formatted=timestamp_is_formatted)
     events_df[_event_ref_col] = events_df[ref_col]
     events_df[_event_note_col] = events_df[ref_col] if note_col is None else events_df[note_col]
     return events_df
@@ -114,7 +116,7 @@ def infer_events_from_notes(df, filter_notes_map: Callable = None):
     events_df = df[df[_freestyle_rec_type_col]==_freestyle_notes_rec_type]
     if filter_notes_map:
         events_df = events_df[events_df[_event_note_col].map(filter_notes_map)]
-    return events_df 
+    return events_df
 
 """Events
 """
@@ -132,17 +134,74 @@ session_id = 'session_id'
 estimated_start = 'estimated_start'
 estimated_end = 'estimated_end'
 session_len = 'session_len'
+estimated_len = 'estimated_len'
 
 # TODO: timestamp origin must be a new field
+def get_event_sessions(events_df: pd.DataFrame, glucose_df: pd.DataFrame, event_tsp: str = TIMESTAMP_COL, session_seconds: int = _default_event_session_seconds):
+    # define 10 minutes delta
+    delta = 10 * 60
+    jump = tdel(seconds=session_seconds + delta)
+    delta = tdel(seconds=delta)
+    edf = (
+        events_df.sort_values(event_tsp)
+       .assign(
+           **{
+               _next_event: lambda x: x[event_tsp].diff().dt.total_seconds(),
+               _prev_event: lambda x: x[event_tsp].diff(-1).dt.total_seconds().map(abs),
+               is_session_first: lambda x: (x[_next_event].isnull()) | (x[_next_event] > session_seconds),
+               is_session_last: lambda x: (x[_prev_event].isnull()) | (x[_prev_event] > session_seconds)
+               }
+            )
+        .assign(
+            **{
+                session_first: lambda x: x.loc[x[is_session_first], event_tsp],
+                session_last: lambda x: x.loc[x[is_session_last], event_tsp],
+                session_id: lambda x: x.loc[x[is_session_first], event_tsp].rank(method='first')
+                }
+            )
+        .assign(
+            **{
+                session_id : lambda x: x[session_id].fillna(method='ffill').astype(int),
+                session_last: lambda x: x[session_last].fillna(method='bfill'),
+                session_first: lambda x: x[session_first].fillna(method='ffill'),
+            })
+    )
+    
+    g_range = lambda t: glucose_df.loc[t - delta: t + jump].index
+    edf = edf.assign(
+                    **{
+                        estimated_start: lambda x: x[session_first].map(
+                                lambda t: g_range(t).min()
+                            )
+                        ,
+                        estimated_end: lambda x: x[session_last].map(
+                            lambda t: g_range(t).max()
+                        )
+                    }
+                )
+
+    # fill empty fields
+    edf = (
+        edf.assign(
+            **{
+                estimated_start: lambda x: x[estimated_start].fillna(method='ffill'),
+                estimated_end: lambda x: x[estimated_end].fillna(method='bfill'),
+                # TODO session_len: session_seconds
+            }
+        ).assign(
+            estimated_len = lambda x: (x[estimated_end]-x[estimated_start]).dt.total_seconds()
+        )
+        .set_index(event_tsp, drop=False)
+    )
+    return edf
+
 def sessionize_events(events_df: pd.DataFrame, gdf: pd.DataFrame, event_timestamp: str = _original_timestamp, session_seconds: int = _default_event_session_seconds):    
     """
-    TODO document
+    TODO REMOVE 
     TODO takes very long to run
     FIXME OPTIMISE takes too long
     """
     edf = events_df.sort_values(event_timestamp)
-    # TODO define column names outside
-    # TODO check if the index is conserved: assert all(edf.index == events_df.index)
     edf[_next_event]= edf[event_timestamp].diff().dt.total_seconds()
     edf[_prev_event]= edf[event_timestamp].diff(-1).dt.total_seconds().map(abs)
     # TODO change name to is_session_first
@@ -154,6 +213,7 @@ def sessionize_events(events_df: pd.DataFrame, gdf: pd.DataFrame, event_timestam
     edf[session_id] = edf[edf[is_session_first]][event_timestamp].rank(method='first').astype(int)
     edf[session_id] = edf[session_id].fillna(method='ffill').astype(int)
 
+    # define 10 minutes delta
     delta = 10 * 60
     jump = session_seconds + delta
     edf[estimated_start] = edf[session_first].map(lambda x: x if not type(x)==pd.Timestamp else find_nearest(gdf, x - tdel(seconds=delta), TIMESTAMP_COL)) # TODO replace with search start method
@@ -207,6 +267,18 @@ TODO:
 * add plotting multiple sessions
 * add comparing meals
 """
+def plot_compare_sessions():
+    # TODO
+    pass
+
+def plot_day_sessions():
+    # TODO
+    pass
+
+def plot_all_sessions():
+    # TODO plot day with sessions
+    pass
+
 def plot_session_response(glucose_df, sessions_df, session_id, session_title=None, use_notes_as_title=False, notes_col='Notes', show_events=False, glbl=GLUCOSE_COL, pre_pad_min=20, post_pad_min=0, resp_time_min=120, t_lbl=None, show_auc=True):
     """Plots the response to a specific event given by its event time.
     """
@@ -235,3 +307,54 @@ def plot_auc_above_threshold(values, threshold):
         plt.axhline(threshold, color='red', label='limit', linestyle='--', alpha=0.3)
         plt.fill_between(lim_df.index,  lim_df, [threshold for a in lim_df.index], color='green', alpha=0.1, label=f"Estimated glucose quantity consumed")
 
+
+"""Event Pattern recognition
+"""
+
+def auto_recognise_meals(gdf: pd.DataFrame, g_col: str = GLUCOSE_COL, tsp_col: str = TIMESTAMP_COL, lim : Optional[float] = None):
+    if lim is None:
+        lim = gdf[g_col].mean()
+    g_events = gdf[gdf[g_col]>lim][[g_col, tsp_col]]
+    e_sessions = get_event_sessions(
+        events_df = g_events, 
+        glucose_df = gdf, 
+        event_tsp=tsp_col, 
+        session_seconds=60*60
+        )
+    # TODO select only some?
+    meal_events = e_sessions
+    return meal_events
+
+
+"""Event metrics
+"""
+def get_event_metrics(gdf, start, end):
+    stats = None
+    return stats
+
+
+def get_event_auc(gdf, start, end):
+    d = gdf[start:end].copy() # TODO use .loc
+    auc_min = sum(d[_AUCMIN_MIN])/(15*60)
+    auc_mean = sum(d[_AUC_COL])/(15*60)
+    auc_lim = sum(d[_AUCLIM_COL])/(15*60)
+    return auc_mean, auc_min, auc_lim
+
+_METRIC_AUCLIM_COL = 'auc_min'
+_METRIC_AUC_COL = 'auc_mean'
+_METRIC_AUCMIN_MIN = 'auc_lim'
+
+def get_sessions_auc(esdf, gdf):
+    edf = esdf.copy()
+    sdf = edf[[session_id, session_first, session_last]].groupby(session_id).min()
+    sdf['aucs'] = sdf.apply(
+                lambda x: get_event_auc(gdf, x[session_first], x[session_last])
+                , axis=1
+            )
+    
+    edf[_METRIC_AUC_COL], edf[_METRIC_AUCMIN_MIN], edf[_METRIC_AUCLIM_COL] = \
+    zip(
+        *edf.session_id.map(lambda x: sdf.loc[x, 'aucs'])
+        )
+
+    return edf
