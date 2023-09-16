@@ -1,3 +1,4 @@
+"""Handles Meals and Events"""
 import os
 from os.path import isfile, join
 

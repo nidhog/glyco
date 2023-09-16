@@ -1,3 +1,4 @@
+"""Defines glucose functions used in glyco"""
 from cProfile import label
 from enum import Enum, auto
 import logging
