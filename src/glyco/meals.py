@@ -1,20 +1,18 @@
-from asyncio import events
 import os
 from os.path import isfile, join
 
 from datetime import timedelta as tdel
 from datetime import datetime as dt
-from sqlite3 import Timestamp
 import pandas as pd
 from matplotlib import pyplot as plt
 
 from typing import Callable, Iterable, Optional
 
-from glyco.glucose import _AUC_COL, _AUCLIM_COL, _AUCMIN_MIN, DEFAULT_INPUT_TSP_COL, DEFAULT_INPUT_TSP_FMT, add_time_values
-from .utils import find_nearest, autoplot
+from glyco.glucose import _AUC_COL, _AUCLIM_COL, _AUCMIN_MIN, DEFAULT_INPUT_TSP_FMT, general_date_type, add_time_values
+from .utils import find_nearest
 
 from .constants import GLUCOSE_COL, TIMESTAMP_COL
-from typedframe import TypedDataFrame, DATE_TIME_DTYPE
+from typedframe import TypedDataFrame
 
 # TODO: complete and use schema
 class EventSession(TypedDataFrame):
@@ -33,15 +31,53 @@ _freestyle_glucose_rec_type = 0
 _optional_cols = [_event_note_col, _event_ref_col]
 event_default_cols = [TIMESTAMP_COL, _event_note_col, _event_ref_col]
 
-def shift_time_fwd(t, h=1, m=0):
+def shift_time_fwd(t, h: int=1, m: int=0):
+    """Shifts time forward
+
+    Args:
+        t (datetime.datetime): _description_
+        h (int, optional): number of hours. Defaults to 1.
+        m (int, optional): number of minutes. Defaults to 0.
+
+    Returns:
+        datetime.datetime: shifted time 't' forward by 'h' hours and 'm' minutes
+    """
     return t + tdel(hours=h, minutes=m)
 
 
 def shift_time_bck(t, h=1, m=0):
+    """Shifts time backward
+
+    Args:
+        t (datetime.datetime): _description_
+        h (int, optional): number of hours. Defaults to 1.
+        m (int, optional): number of minutes. Defaults to 0.
+
+    Returns:
+        datetime.datetime: shifted time 't' backwards by 'h' hours and 'm' minutes
+    """
     return t - tdel(hours=h, minutes=m)
 
 
-def read_meals(events_folder_path, file_ext: str = None, shift_time_function=shift_time_fwd, hours=1, minutes=0):
+def read_meals(events_folder_path: str, file_ext: Optional[str] = None, shift_time_function: Callable=shift_time_fwd, hours: int=1, minutes: int=0):
+    """Read meals or other events from a folder. Used for using photos taken as events.
+    - Each file with the corresponding extension is assumed to be an event/meal.
+    - The time of the event is assumed to be the time of creation of the file.
+    - Time can be shifted forwards or backwards to account for different timezones.
+
+    Args:
+        events_folder_path (str): the path of the folders where the pictures/files are.
+        file_ext (Optional[str], optional): the extension of files. If None all files will be considered. Defaults to None.
+        shift_time_function (Callable, optional): function to shift time forwards or backwards. Defaults to shift_time_fwd.
+        hours (int, optional): number of hours. Defaults to 1.
+        minutes (int, optional): number of minutes. Defaults to 0.
+
+    Returns:
+        pd.DataFrame: events dataframe:
+            - indexed by the event timestamp.
+            - contains the column TIMESTAMP_COL with the timestamp.
+            - generated time values columns from from the timestamp.
+    """
     event_files = [
         (
             shift_time_function(
@@ -54,7 +90,7 @@ def read_meals(events_folder_path, file_ext: str = None, shift_time_function=shi
         if isfile(join(events_folder_path, f)) and (file_ext is None or f.endswith(file_ext))
     ]
     events_df = pd.DataFrame(event_files, columns=event_default_cols)
-    events_df['itsp'] = events_df['tsp']
+    events_df['itsp'] = events_df[TIMESTAMP_COL]
     events_df = events_df.set_index('itsp')
     events_df = add_time_values(events_df, tlbl=TIMESTAMP_COL, tsp_lbl=TIMESTAMP_COL, timestamp_is_formatted=True)
     return events_df
@@ -72,7 +108,7 @@ def validate_event_columns(df: pd.DataFrame, ref_col: str, note_col: str, tsp_co
             raise ValueError(f"The Event notes column '{note_col}' is not in the input columns."\
                 "Please provide 'note_col' as input or give 'None' if the column does not exist.")
     
-def read_events_csv(file_path, 
+def read_events_csv(file_path: str, 
                     tsp_col: str = TIMESTAMP_COL, 
                     ref_col: str = _event_ref_col, 
                     note_col: str = None, 
@@ -138,6 +174,36 @@ estimated_len = 'estimated_len'
 
 # TODO: timestamp origin must be a new field
 def get_event_sessions(events_df: pd.DataFrame, glucose_df: pd.DataFrame, event_tsp: str = TIMESTAMP_COL, session_seconds: int = _default_event_session_seconds):
+    """Generates an Event Sessions DataFrame from an Events DataFrame and a Glucose DataFrame.
+    The glucose dataframe is used for finding the estimated_start, estimated_end and estimated_len values.
+    Events are sorted by their corresponding timestamp.
+
+    Args:
+        events_df (pd.DataFrame): the events dataframe (with times of events)
+        glucose_df (pd.DataFrame): the glucose dataframe
+        event_tsp (str, optional): the timestamp in the events dataframe. Defaults to TIMESTAMP_COL.
+        session_seconds (int, optional): lenght of a session: if time between two events is lower than
+            the session lenght, they are grouped in the same session.
+            Defaults to the value of _default_event_session_seconds.
+
+    Returns:
+        pd.DataFrame: The Event Sessions dataframe,
+            sorted by the event timestamp (first event at the start of the dataframe),
+            contains rows per event (NOT per event session),
+            contains the following columns:
+            
+                - All columns present in the events dataframe.
+                - 'session_id' the id of the event session, unique per session, may include multiple events.
+                - 'dt_next_event' time to next event. NaN if it does not apply.
+                - 'dt_prev_event' time from previous event. NaN if it does not apply
+                - 'is_session_first' wether or not this is the first event of the session it belongs to.
+                - 'is_session_last' wether or not this is the last event of the session it belongs to.
+                - 'session_first' datetime of the first event in the session.
+                - 'session_last' datetime of the last event in the session.
+                - 'estimated_start' estimated datetime start of the event session (different from the first event)
+                - 'estimated_end' estimated datetime end of the event session (different from the last event)
+                - 'estimated_len' estimated timedelta lenght of the session in seconds
+    """
     # define 10 minutes delta
     delta = 10 * 60
     jump = tdel(seconds=session_seconds + delta)
@@ -196,7 +262,7 @@ def get_event_sessions(events_df: pd.DataFrame, glucose_df: pd.DataFrame, event_
     return edf
 
 def sessionize_events(events_df: pd.DataFrame, gdf: pd.DataFrame, event_timestamp: str = _original_timestamp, session_seconds: int = _default_event_session_seconds):    
-    """
+    """DEPRECATED
     TODO REMOVE 
     TODO takes very long to run
     FIXME OPTIMISE takes too long
@@ -279,8 +345,28 @@ def plot_all_sessions():
     # TODO plot day with sessions
     pass
 
-def plot_session_response(glucose_df, sessions_df, session_id, session_title=None, use_notes_as_title=False, notes_col='Notes', show_events=False, glbl=GLUCOSE_COL, pre_pad_min=20, post_pad_min=0, resp_time_min=120, t_lbl=None, show_auc=True):
-    """Plots the response to a specific event given by its event time.
+def plot_session_response(glucose_df: pd.DataFrame, sessions_df: pd.DataFrame, session_id: int, session_title: Optional[str]=None, use_notes_as_title: str=False, notes_col: str='Notes', show_events: bool=False, glbl: str=GLUCOSE_COL, show_auc=True):
+    """Plots the glucose response during one specific event session given by its session id.
+
+    Args:
+        glucose_df (_type_): 
+        sessions_df (_type_): 
+        session_id (_type_): the id of the session to plot
+
+    Args:
+        glucose_df (pd.DataFrame): the glucose dataframe.
+        sessions_df (pd.DataFrame): the event sessions dataframe.
+        session_id (int): the id of the session to plot.
+        session_title (Optional[str], optional): the title of the session used in the plot.
+            Overriden by 'use_notes_as_title'. Defaults to None.
+        use_notes_as_title (str, optional): whether or not to use the Notes column for the event title.
+            Overrides 'session_title'. Defaults to False.
+        notes_col (str, optional): the name of the notes column, only used in combination with 'use_notes_as_title'.
+            Defaults to 'Notes'.
+        show_events (bool, optional): whether or not to show each specific event in the event session.
+            Defaults to False.
+        glbl (str, optional): the glucose column name in the glucose dataframe. Defaults to GLUCOSE_COL.
+        show_auc (bool, optional): whether or not to show the area under the curve in the plot. Defaults to True.
     """
     session = sessions_df[sessions_df['session_id']==session_id]
     start = session.iloc[-1]['estimated_start']
@@ -300,18 +386,34 @@ def plot_session_response(glucose_df, sessions_df, session_id, session_title=Non
         [plt.axvline(session.iloc[i]['t'], color='black', linestyle='--', alpha=0.1) for i in range(len(session))]
     plt.xticks(rotation=45)
 
+def plot_auc_above_threshold(values: Iterable, threshold: float):
+    """Plot area under the curve between some values and a specific threshold.
 
-def plot_auc_above_threshold(values, threshold):
-        lim_df = values.map(lambda x: x if x>threshold else threshold)
-        plt.gca()
-        plt.axhline(threshold, color='red', label='limit', linestyle='--', alpha=0.3)
-        plt.fill_between(lim_df.index,  lim_df, [threshold for a in lim_df.index], color='green', alpha=0.1, label=f"Estimated glucose quantity consumed")
+    Args:
+        values (_type_): values under which to plot the area under the curve (in Y-axis).
+        threshold (_type_): threshold above which to plot the area under the curve (in Y-axis).
+    """
+    lim_df = values.map(lambda x: x if x>threshold else threshold)
+    plt.gca()
+    plt.axhline(threshold, color='red', label='limit', linestyle='--', alpha=0.3)
+    plt.fill_between(lim_df.index,  lim_df, [threshold for a in lim_df.index], color='green', alpha=0.1, label=f"Estimated glucose quantity consumed")
 
 
 """Event Pattern recognition
 """
 
 def auto_recognise_meals(gdf: pd.DataFrame, g_col: str = GLUCOSE_COL, tsp_col: str = TIMESTAMP_COL, lim : Optional[float] = None):
+    """Automatically recognises meals based on the change in glucose values.
+    Whenever glucose values start rising above a specific value and drop, this part will be considered a meal session.
+    See Automatic meal recognition documentation under [Meals and Events](docs/meals_and_events.md).
+
+    Args:
+        gdf (pd.DataFrame): the glucose dataframe.
+        g_col (str, optional): the glucose column name. Defaults to GLUCOSE_COL.
+        tsp_col (str, optional): the timestamp column name. Defaults to TIMESTAMP_COL.
+        lim (Optional[float], optional): the glucose limit above which to detect a meal.
+            If None, the mean of glucose in the dataframe will be used. Defaults to None.
+    """
     if lim is None:
         lim = gdf[g_col].mean()
     g_events = gdf[gdf[g_col]>lim][[g_col, tsp_col]]
@@ -321,7 +423,7 @@ def auto_recognise_meals(gdf: pd.DataFrame, g_col: str = GLUCOSE_COL, tsp_col: s
         event_tsp=tsp_col, 
         session_seconds=60*60
         )
-    # TODO select only some?
+    # TODO select only some of the events instead of keeping all?
     meal_events = e_sessions
     return meal_events
 
@@ -333,7 +435,20 @@ def get_event_metrics(gdf, start, end):
     return stats
 
 
-def get_event_auc(gdf, start, end):
+def get_event_auc(gdf: pd.DataFrame, start: general_date_type, end: general_date_type):
+    """Get Area under the curve values for a time range.
+
+    Args:
+        gdf (pd.DataFrame): the glucose dataframe.
+        start (general_date_type): string or datetime or date from which the event started.
+        end (general_date_type): string or datetime or date at which the event ended.
+
+    Returns:
+        Tuple(float, float, float): Tuple containing Area Under the Curve (AUC) values for:
+            - auc_mean: Area Under the Curve above the mean glucose.
+            - auc_min: Area Under the Curve above the smallest glucose value.
+            - auc_lim: Area Under the Curve above a predefined limit
+    """
     d = gdf[start:end].copy() # TODO use .loc
     auc_min = sum(d[_AUCMIN_MIN])/(15*60)
     auc_mean = sum(d[_AUC_COL])/(15*60)
@@ -344,7 +459,19 @@ _METRIC_AUCLIM_COL = 'auc_min'
 _METRIC_AUC_COL = 'auc_mean'
 _METRIC_AUCMIN_MIN = 'auc_lim'
 
-def get_sessions_auc(esdf, gdf):
+def get_sessions_auc(esdf: pd.DataFrame, gdf: pd.DataFrame):
+    """Adds area under the curve values to Event Sessions DataFrame.
+
+    Args:
+        esdf (pd.DataFrame): the event sessions dataframe.
+        gdf (pd.DataFrame): the glucose dataframe.
+
+    Returns:
+        pd.DataFrame: the event sessions dataframe with area under the curve columns added:
+            - auc_mean: Area Under the Curve above the mean glucose.
+            - auc_min: Area Under the Curve above the smallest glucose value.
+            - auc_lim: Area Under the Curve above a predefined limit
+    """
     edf = esdf.copy()
     sdf = edf[[session_id, session_first, session_last]].groupby(session_id).min()
     sdf['aucs'] = sdf.apply(
