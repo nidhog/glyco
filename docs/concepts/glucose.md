@@ -1,7 +1,8 @@
 ## How Glyco represents glucose data
+Glyco represents glucose data as a pandas DataFrame.
 
-To represent glucose data, Glyco uses a format that is as independent as possible from: the measurement device, the unit of measurement, the timestamp format used, the type of storage etc. 
-This will be based on top of pandas dataframes, since those are a goto tool for all forms of data processing and analysis.
+From reading any glucose data Glyco generates a format that is as independent as possible from: the measurement device, the unit of measurement, the timestamp format used, the type of storage etc. 
+Glyco does all the preprocessing and cleaning necessary to generate a glucose dataframe ready for analysis.
 
 We will call this the **Generated Glucose Dataframe**, **Universal Glucose Dataframe** or for simplification we will sometimes refer to it as the **Glucose Dataframe**.
 

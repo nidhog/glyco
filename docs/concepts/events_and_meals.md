@@ -1,4 +1,6 @@
-## The unified Meals dataframe
+## The Events and Meals dataframes
+> This is how glyco represents data about meals or other types of events such as: exercise, supplements, or other activities and interventions.
+
 This is generated from either:
 * A dataframe with meal times that contains: 
   * *Required* A timestamp column (datetime.Timestamp) (with both time and date)
@@ -44,7 +46,7 @@ Theoretically, the area under the curve of glucose is:
 We will use the following proxies:
 * Area Under the Curve
   * `AUC_min` Above minimum
-  * `AUC_meam` Above minimum
+  * `AUC_mean` Above mean
   * `AUC_lim` Above a predefined threshold
   * `AUC_min_relative` Above the min of the event itself
 
