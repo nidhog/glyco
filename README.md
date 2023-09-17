@@ -1,4 +1,7 @@
 # Glyco - Analysing Continuous Glucose Data in Python
+
+**|** &nbsp; **Overview** &nbsp; **|** [Examples](https://github.com/nidhog/glyco/blob/main/docs/examples.md) **|**
+
 Glyco is a glucose data analysis Python library for glucose data analysis.
 
 * ***Easy to setup:*** you can get started with glyco very fast. 
@@ -15,7 +18,7 @@ df = gl.read_csv('examples/sample_glucose.csv')
 # Plot glucose hourly trend
 gl.plot_trend_by_hour(df)
 ```
-![image](docs/images/stats-glucose-hourtrend.png "Figure 0.a")
+![image](https://github.com/nidhog/glyco/blob/main/docs/images/stats-glucose-hourtrend.png "Figure 0.a")
 ## The easiest library to manipulate glucose data
 *Glyco does not add any more complexity.*
 
@@ -31,15 +34,15 @@ glucose = gl.read_csv(file_path='my_glucose_data.csv')
 This returns a glucose dataframe, takes care of: pre-processing the timestamps and dates, cleaning missing data, making the curve smoother and converting units.
 ## What you can do with Glyco
 Glyco provides a range of features for handling continuous glucose data, as shown in the figure below:
-![image](docs/images/basic-features.png "Figure 1.a")
-![image](docs/images/basic-features-example.png "Figure 1.b")
+![image](https://github.com/nidhog/glyco/blob/main/docs/images/basic-features.png "Figure 1.a")
+![image](https://github.com/nidhog/glyco/blob/main/docs/images/basic-features-example.png "Figure 1.b")
 
 1. **Read and Write glucose data** Glyco handles data from different sources including CSV files (such as FreeStyleLibre or DexCom) and dataframes, and using this data is as simple as:
 
     ```Python
     glucose = gl.read_csv(file_path='my_glucose_data.csv')
     ```
-    You can find more in the [glucose documentation](docs/glucose.md).
+    You can find more in the [glucose documentation](https://github.com/nidhog/glyco/blob/main/docs/concepts/glucose.md).
 2. **Clean and Process glucose data** you do not need to worry about missing values, errors and outliers. Glyco handles different types of cleaning and processing, so you can focus on analysing the data.
 3. **Plotting and visual analysis (EDA)** to easily explore glucose data, and aid you in understanding patterns and trends.
 
@@ -54,34 +57,34 @@ Glyco provides a range of features for handling continuous glucose data, as show
     day_metrics = gl.get_metrics_by_day(glucose)
     day_metrics = gl.get_metrics_by_day(glucose)
     ```
-    Which results in a dataframe containing metrics such as: mean glucose, maximum glucose, standard deviation, area under the curve and more. To learn more about metrics, feel free to look at the [metrics documentation](docs/metrics.md).
+    Which results in a dataframe containing metrics such as: mean glucose, maximum glucose, standard deviation, area under the curve and more. To learn more about metrics, feel free to look at the [metrics documentation](https://github.com/nidhog/glyco/blob/main/docs/concepts/metrics.md).
 
 Most inputs and outputs in Glyco are pandas dataframes. This means that you can use features of pandas on along with the ones provided by glyco.
 
 ## More things you can do with glyco
 Glyco can also aid you in more advanced tasks such as detecting meals, comparing the impact of different meals or activities or any type of event. 
-![image](docs/images/advanced-features.png "Figure 2.a" )
-![image](docs/images/advanced-features-example.png "Figure 2.b" )
+![image](https://github.com/nidhog/glyco/blob/main/docs/images/advanced-features.png "Figure 2.a" )
+![image](https://github.com/nidhog/glyco/blob/main/docs/images/advanced-features-example.png "Figure 2.b" )
 
 1. **Automatically infer Meals, or activities**, or other events that impact glucose.
     ```Python
     # you can detect events from variations in glucose
     events = gl.get_events_from_variations(glucose)
     ```
-    Different methods are used for infering events. More on this in the [meals and events documentation](docs/meals_and_events.md).
+    Different methods are used for infering events. More on this in the [meals and events documentation](https://github.com/nidhog/glyco/blob/main/docs/concepts/events_and_meals.md).
 2. **Provide events and match them to the glucose data** and analyse them to see how they impact glucose.
     ```Python
     # you can provide a list or dataframe that contains the event times
     events = gl.get_events(event_times)
     ```
-    You can even get the events from a folder of pictures. More on this in the [meals and events documentation](docs/meals_and_events.md).
+    You can even get the events from a folder of pictures. More on this in the [meals and events documentation](https://github.com/nidhog/glyco/blob/main/docs/concepts/events_and_meals.md)).
 3. **Advanced analysis of events**, including metrics for meals or events and how they impact glucose. As well as ranking meals and more, to further aid in understanding the glucose data.
 
 ## Limitations
 * The metric calculations for days assumes the device timezone is the user's timezone.
 
 > ***Disclaimer*** Glyco is not a medical product and shall not be used to diagnose, treat or evaluate any medical conditions.
-For more on the intended use and indications of use please read the [healthcare considerations document](docs/extra/healthcare.md).
+For more on the intended use and indications of use please read the [healthcare considerations document](https://github.com/nidhog/glyco/blob/main/docs/extra/healthcare.md).
 
 ## Built on the shoulders of giants
 Glyco is built using the following libraries:
