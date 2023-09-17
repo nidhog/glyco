@@ -5,7 +5,7 @@
 ### 1. General Information
 
 **Intended Use Statement:** 
-Glyco is intended to be used in a non-clinical setting to analyse continuous glucose monitoring data from healthy individuals. Glyco uses statistical methods and machine learning algorithms to extract useful information from glucose data. In addition, Glyco also enables visualising the glucose data to get insights from the continuous glucose monitoring time series.
+Glyco is intended to be used in a non-clinical setting to analyse continuous glucose monitoring data from healthy individuals. Glyco uses statistical methods to extract useful information from glucose data. In addition, Glyco also enables visualising the glucose data to get insights from the continuous glucose monitoring time series.
 
 Glyco is intended to be used on time series of glucose in units sepcified under [units.md](units.md).
 
