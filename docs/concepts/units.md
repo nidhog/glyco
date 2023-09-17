@@ -1,38 +1,31 @@
-## The Unified glucose dataframe
-This is generated either from a pandas Dataframe or Freestyle Libre data, Dexcom data or any other data that contains the following required columns:
-* A glucose column (in either mmol/L, or mg/dL).
-* A timestamp column (with both time and date).
+## Which glucose units are supported by Glyco
+Glyco supports different units for glucose:
+* **mmol/L**: this is the main unit used in the dataframes. All glucose data will be converted to mmol/L before usage.
+* **mg/dL**: conversion for mg/dL is handled automatically by glyco.
+* **g/L**: conversion for g/L is handled automatically by glyco.
+* **Data in all other units** can also be used in glyco, but you must provide how it should be converted to mmol/L.
 
-From the above, glyco generates the Unified glucose dataframe with the following columns:
-* **Index column** timestamp: datetime.Time **REQUIRED**
-* timestamp (other than the index): datetime.Time **REQUIRED**
-* original glucose in original unit: G_orig. original format **REQUIRED**
-* corrected glucose in mmol/L: G. float **REQUIRED**
-* Time related:
-  * date, hour, week, year
-  * shifted date, hour, week, year
-* Difference in time dt :
-* Difference in glucose dg:
-* derivative: 
+## Unit autodetection
+You have the option to let glyco automatically detect the unit of your glucose column.
 
+> For example, the `read_csv` and `read_df` funcitons in glyco, have an argument `unit_autodetect`. When this is set to `True`, glyco tries to infer the units.
 
+This can be useful if you are unsure which unit it is or if your workflow uses different files with different units.
 
-## Freestyle Libre data 
-[You can find a link to a sample of Freestyle Libre data here](../test/data/sample_glucose.csv)
+To do so, Glyco makes use of the `autodetect_unit` function, which currently works as follows:
+* sample the glucose data (select up to 100 values from the data).
+* estimate the unit from the mean and standard deviation of the sample.
 
-The FreeStyle Libre sensor provides this data in the form of a csv file. 
+A warning message is shown whenever `autodetect_unit` is used because it can cause unexpected behaviour.
+## Default unit
+By default Glyco uses mmol/L as a glucose unit. Most functions included in glyco expect the glucose data to be in `mmol/L`.
 
-The important fields in these files are:
-* `Device`: same in all the dataset `FreeStyle LibreLink`
-* `Serial Number`: same for all rows `b59d4499-1a07-462b-b7da-a179f2093996`
-* `Device Timestamp`: time of the glucose measurement based on the device (phone).
-* `Historic Glucose mmol/L`: glucose values in mmol/L.
-* The above field can be different, in certain cases it is given in the `mg/dL` unit.
-* `Record Type` this field is important, the main values to consider are:
-  * 0: Glucose scans.
-  * 1: Notes. Exercise/Meals. We can use these to generate events.
-  * 6: Food carbs.
-* `Notes` notes that the user enters manually, if any.
+## Implemented units
+All implemented units are found under the `Units` Enum under `utils.py`.
+Currently glyco only includes the following units:
+* **mmol per liter** mmolL = "mmol/L"
+* **mg per deciliter** mgdL = "mg/dL"
+* **g per liter** mgdL = "mg/dL"
 
-There are other fields in the data that are not relevant in this case.
-
+## Unit conversion
+Glyco automatically converts when reading glucose data to the mmol/L unit by using the `convert_to_mmol` function.
