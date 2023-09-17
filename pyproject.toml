@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "glyco"
+version = "0.0.1"
+description = "Read and analyse continuous glucose monitoring data"
+readme = "README.md"
+authors = [{ name = "Ismail Elouafiq", email = "contact@ismail.bio" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Healthcare Industry",
+    "Topic :: Scientific/Engineering :: Bio-Informatics"
+]
+keywords = ["glucose", "glyco", "cgm", "health"]
+dependencies = [
+    "matplotlib",
+    "pandas",
+    "scipy",
+    "numpy",
+    "matplotlib",
+    "matplotlib-inline",
+]
+requires-python = ">=3.9"
+
+[project.optional-dependencies]
+dev = ["black", "bumpver", "isort", "pip-tools", "pytest"]
+
+[project.urls]
+Homepage = "https://github.com/nidhog/glyco"
+Visual = "https://ismail.bio/glyco"
+Author = "https://ismail.bio"
+
+[project.scripts]
+glyco = "glyco.__main__:main"
