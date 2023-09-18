@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "glyco"
-version = "0.0.1"
+version = "0.0.1rc0"
 description = "Read and analyse continuous glucose monitoring data"
 readme = "README.md"
 authors = [{ name = "Ismail Elouafiq", email = "contact@ismail.bio" }]
@@ -18,7 +18,13 @@ classifiers = [
     "Intended Audience :: Healthcare Industry",
     "Topic :: Scientific/Engineering :: Bio-Informatics"
 ]
-keywords = ["glucose", "glyco", "cgm", "health"]
+keywords = [
+    "glucose",
+    "glyco",
+    "cgm",
+    "continuous glucose monitoring",
+    "health",
+    "healthcare"]
 dependencies = [
     "matplotlib",
     "pandas",
@@ -26,8 +32,9 @@ dependencies = [
     "numpy",
     "matplotlib",
     "matplotlib-inline",
-]
-requires-python = ">=3.9"
+    "rich",
+    "seaborn"]
+requires-python = ">=3.7"
 
 [project.optional-dependencies]
 dev = ["black", "bumpver", "isort", "pip-tools", "pytest"]
