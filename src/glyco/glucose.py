@@ -6,7 +6,6 @@ from typing import Callable, Dict, Optional, Union, List
 import pandas as pd
 # TODO: add logging
 # TODO use pydantic or dataclasses typedframe
-from typedframe import TypedDataFrame, DATE_TIME_DTYPE
 from datetime import datetime as dt, timedelta as tdel, date as date_type
 from matplotlib import pyplot as plt
 
@@ -74,10 +73,6 @@ general_date_type = Union[str, pd.Timestamp, date_type]
 # class FreeStyleInput(TypedDataFrame):
 #     schema = {
 #     }
-class GlucoseData(TypedDataFrame):
-    schema = {
-    }
-
 """File reading
 """
 

@@ -13,16 +13,7 @@ from glyco.glucose import _AUC_COL, _AUCLIM_COL, _AUCMIN_MIN, DEFAULT_INPUT_TSP_
 from .utils import find_nearest
 
 from .constants import GLUCOSE_COL, TIMESTAMP_COL
-from typedframe import TypedDataFrame
 
-# TODO: complete and use schema
-class EventSession(TypedDataFrame):
-    schema = {
-    }
-
-class MealSession(EventSession):
-    schema = {
-    }
 
 _event_note_col = 'event_notes'
 _event_ref_col = 'event_reference'
