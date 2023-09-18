@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "glyco"
-version = "0.0.1rc0"
+version = "0.0.1rc1"
 description = "Read and analyse continuous glucose monitoring data"
 readme = "README.md"
 authors = [{ name = "Ismail Elouafiq", email = "contact@ismail.bio" }]

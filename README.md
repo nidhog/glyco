@@ -18,7 +18,7 @@ df = gl.read_csv('examples/sample_glucose.csv')
 # Plot glucose hourly trend
 gl.plot_trend_by_hour(df)
 ```
-![image](https://github.com/nidhog/glyco/blob/main/docs/images/stats-glucose-hourtrend.png "Figure 0.a")
+![image](https://raw.githubusercontent.com/nidhog/glyco/main/docs/images/stats-glucose-hourtrend.png "Figure 0.a")
 ## The easiest library to manipulate glucose data
 *Glyco does not add any more complexity.*
 
@@ -34,8 +34,8 @@ glucose = gl.read_csv(file_path='my_glucose_data.csv')
 This returns a glucose dataframe, takes care of: pre-processing the timestamps and dates, cleaning missing data, making the curve smoother and converting units.
 ## What you can do with Glyco
 Glyco provides a range of features for handling continuous glucose data, as shown in the figure below:
-![image](https://github.com/nidhog/glyco/blob/main/docs/images/basic-features.png "Figure 1.a")
-![image](https://github.com/nidhog/glyco/blob/main/docs/images/basic-features-example.png "Figure 1.b")
+![image](https://raw.githubusercontent.com/nidhog/glyco/main/docs/images/basic-features.png "Figure 1.a")
+![image](https://raw.githubusercontent.com/nidhog/glyco/main/docs/images/basic-features-example.png "Figure 1.b")
 
 1. **Read and Write glucose data** Glyco handles data from different sources including CSV files (such as FreeStyleLibre or DexCom) and dataframes, and using this data is as simple as:
 
@@ -63,8 +63,8 @@ Most inputs and outputs in Glyco are pandas dataframes. This means that you can 
 
 ## More things you can do with glyco
 Glyco can also aid you in more advanced tasks such as detecting meals, comparing the impact of different meals or activities or any type of event. 
-![image](https://github.com/nidhog/glyco/blob/main/docs/images/advanced-features.png "Figure 2.a" )
-![image](https://github.com/nidhog/glyco/blob/main/docs/images/advanced-features-example.png "Figure 2.b" )
+![image](https://raw.githubusercontent.com/nidhog/glyco/main/docs/images/advanced-features.png "Figure 2.a" )
+![image](https://raw.githubusercontent.com/nidhog/glyco/main/docs/images/advanced-features-example.png "Figure 2.b" )
 
 1. **Automatically infer Meals, or activities**, or other events that impact glucose.
     ```Python
@@ -91,3 +91,5 @@ Glyco is built using the following libraries:
 * Pandas and Numpy.
 * Matplotlib and Seaborn.
 * Rich for beautiful text displays.
+
+> [Contact the author here](https://ismail.bio/about)
