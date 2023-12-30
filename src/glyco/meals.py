@@ -9,10 +9,15 @@ from matplotlib import pyplot as plt
 
 from typing import Callable, Iterable, Optional
 
-from glyco.glucose import _AUC_COL, _AUCLIM_COL, _AUCMIN_MIN, DEFAULT_INPUT_TSP_FMT, general_date_type, add_time_values
+from glyco.glucose import (
+    GLUCOSE_COL,
+    TIMESTAMP_COL,
+    _AUC_COL,
+    _AUCLIM_COL,
+    _AUCMIN_MIN,
+    DEFAULT_INPUT_TSP_FMT,
+    general_date_type, add_time_values)
 from .utils import find_nearest
-
-from .constants import GLUCOSE_COL, TIMESTAMP_COL
 
 
 _event_note_col = 'event_notes'
@@ -138,7 +143,8 @@ def read_events_df(edf: pd.DataFrame, tsp_col: str = TIMESTAMP_COL, ref_col: str
 """Freestyle Libre Specific
 """
 def infer_events_from_notes(df, filter_notes_map: Callable = None):
-    """
+    """Assume the notes column is referring to events and use those instead
+
     filter_notes_map example: `lambda x: False if not x else str(x).startswith('food')`
     """
     events_df = df[df[_freestyle_rec_type_col]==_freestyle_notes_rec_type]
@@ -337,7 +343,7 @@ def plot_all_sessions():
     # TODO plot day with sessions
     pass
 
-def plot_session_response(glucose_df: pd.DataFrame, sessions_df: pd.DataFrame, session_id: int, session_title: Optional[str]=None, use_notes_as_title: str=False, notes_col: str='Notes', show_events: bool=False, glbl: str=GLUCOSE_COL, show_auc=True):
+def plot_session_response(glucose_df: pd.DataFrame, sessions_df: pd.DataFrame, session_id: int, use_notes_as_title: str=False, session_title: Optional[str]=None, notes_col: str='Notes', show_events: bool=False, events_tsp: str = TIMESTAMP_COL, glbl: str=GLUCOSE_COL, show_auc=True):
     """Plots the glucose response during one specific event session given by its session id.
 
     Args:
@@ -349,14 +355,15 @@ def plot_session_response(glucose_df: pd.DataFrame, sessions_df: pd.DataFrame, s
         glucose_df (pd.DataFrame): the glucose dataframe.
         sessions_df (pd.DataFrame): the event sessions dataframe.
         session_id (int): the id of the session to plot.
-        session_title (Optional[str], optional): the title of the session used in the plot.
-            Overriden by 'use_notes_as_title'. Defaults to None.
         use_notes_as_title (str, optional): whether or not to use the Notes column for the event title.
             Overrides 'session_title'. Defaults to False.
+        session_title (Optional[str], optional): the title of the session used in the plot.
+            Overriden by 'use_notes_as_title'. Defaults to None.
         notes_col (str, optional): the name of the notes column, only used in combination with 'use_notes_as_title'.
             Defaults to 'Notes'.
         show_events (bool, optional): whether or not to show each specific event in the event session.
             Defaults to False.
+        events_tsp (str, optional): timestamp column for event sessions, only used for showing events.
         glbl (str, optional): the glucose column name in the glucose dataframe. Defaults to GLUCOSE_COL.
         show_auc (bool, optional): whether or not to show the area under the curve in the plot. Defaults to True.
     """
@@ -371,11 +378,11 @@ def plot_session_response(glucose_df: pd.DataFrame, sessions_df: pd.DataFrame, s
 
     plt.axvline(session.iloc[-1]['session_first'], color='red', label='First event', linestyle='--', alpha=0.1)
     if use_notes_as_title:
-        session_title = f"Session with the events: ({'; '.join([x for x in session[notes_col]])})"
+        session_title = f"Session with the events: ({'; '.join([x for x in session[notes_col] if x and isinstance(x, str)])})"
     if session_title:
         plt.title(session_title)
     if show_events:
-        [plt.axvline(session.iloc[i]['t'], color='black', linestyle='--', alpha=0.1) for i in range(len(session))]
+        [plt.axvline(session.iloc[i][events_tsp], color='black', linestyle='--', alpha=0.1) for i in range(len(session))]
     plt.xticks(rotation=45)
 
 def plot_auc_above_threshold(values: Iterable, threshold: float):
