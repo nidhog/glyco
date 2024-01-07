@@ -50,7 +50,6 @@ _DAYOFWEEK_COL = "weekday_number"
 _WEEKDAY_COL = "weekday_name"
 _ISWEEKEND_COL = "is_weekend"
 # Used for smoothening the glucose curve
-# FIXME: _default_glucose_prep_kwargs to GlucoseTransform dataclass
 _default_glucose_prep_kwargs = {
     'interpolate': True,
     'interp_met':'polynomial',
@@ -81,18 +80,6 @@ general_date_type = Union[str, pd.Timestamp, date_type]
 
 """File reading
 """
-
-# TODO LIST idiomatic: 
-# * use chaining to make code readable
-# * never mutate
-# * use agg([min, mean etc.]) instead of groupby repeats
-# * use unstack when plotting
-# * use the right type in gdf
-# * remove useless heavy columns only use necessary
-# * types int64 not need that much memory
-# * use chaining with assign with specific placement
-# * no need for date_str
-# * handle different timezones
 def read_csv(
     file_path: str,
     timestamp_col: str = DEFAULT_INPUT_TSP_COL,
@@ -195,12 +182,6 @@ def read_csv(
         mask_private_info=mask_private_info,
         private_info_kwargs=private_info_kwargs,
     )
-    # TODO: only one tsp
-    # TODO: only return important columns
-    # TODO: use insert to choose a position for columns
-    # TODO use assign instead
-    # TODO filter glucose record type only
-
     return df
 
 def validate_glucose_columns(df: pd.DataFrame, glucose_col: str, timestamp_col: str):
@@ -224,7 +205,7 @@ def validate_glucose_columns(df: pd.DataFrame, glucose_col: str, timestamp_col: 
             "Please provide 'timestamp_col' as input.")
     
 
-def read_df(df: pd.DataFrame, # TODO: rename to 'get_glucose_from_df'
+def read_df(df: pd.DataFrame,
     timestamp_col: str = DEFAULT_INPUT_TSP_COL,
     timestamp_fmt: str = DEFAULT_INPUT_TSP_FMT,
     glucose_col: str = DEFAULT_INPUT_GLUC_COL,
@@ -299,8 +280,8 @@ def read_df(df: pd.DataFrame, # TODO: rename to 'get_glucose_from_df'
     # df = convert_tsp(ndf=df, tlbl=generated_timestamp_col, tsp_lbl=timestamp_col, timestamp_fmt=timestamp_fmt)
     if unit_autodetect:
         glucose_unit = autodetect_unit(df[glucose_col])
-        logger.info("Autodetected unit is (%s)", glucose_unit)
-    # filter based on the values of a column
+    logger.info("Using the glucose unit (%s)", glucose_unit)
+    # filter rows based on the values of a column (filter_val)
     df = (
         df
         if not (filter_glucose_rows)
@@ -317,11 +298,10 @@ def read_df(df: pd.DataFrame, # TODO: rename to 'get_glucose_from_df'
         tsp_col=timestamp_col,
         tsp_fmt=timestamp_fmt,
         **private_info_kwargs)
-        # TODO use unit autodet for std
     # add calculated glucose properties
     if calculate_glucose_properties:
         if glucose_prep_kwargs is None:
-            glucose_prep_kwargs = _default_glucose_prep_kwargs # TODO: why would it be None
+            glucose_prep_kwargs = _default_glucose_prep_kwargs
         
         df =(
             # 
@@ -411,9 +391,6 @@ def filter_glucose_by_column_val(
     return df[df[filter_col] == filter_val]
 
 
-# TODO turn into function
-# TODO hide function as private or don't import in init
-# get datetime, date, hour etc. from timestamp
 def add_time_values(df, tlbl: str = TIMESTAMP_COL, tsp_lbl: str = DEFAULT_INPUT_TSP_COL, timestamp_fmt: str = DEFAULT_INPUT_TSP_FMT, dlbl: str = _DATE_COL, weekday_map=weekday_map, timestamp_is_formatted: bool = False):
     """Adds generated time-values to the dataframe based on the timestamp. These include:
     Date, Date string, Hour, Weekday number, Weekday name, Is or is not a weekend day.
@@ -559,10 +536,7 @@ def prepare_glucose(
     df = df.set_index('idx').sort_index()
     # interpolate and smoothen glucose
     if interpolate:
-        # TODO handle Nan
-        # TODO FIX missing values should still be nan otherwise averaged
         df[glbl] = df[glbl].rolling(window=rolling_avg).mean()
-        # TODO smoothen methods
         df[glbl] = df[glbl].interpolate(method=interp_met, order=interp_ord)
         df = df[df[glbl].map(lambda g: g > 0 and g < 30)]
     return df
@@ -707,7 +681,7 @@ def convert_to_mmolL(g: float, from_unit: str) -> float:
         float: converted glucose value
     """
     if from_unit in implemented_units:
-        return g * units_to_mmolL_factor[from_unit] # TODO fix inconsistency between implemented units and dict keys
+        return g * units_to_mmolL_factor[from_unit]
     raise NotImplementedError(error_not_implemented_method)
 
 
@@ -774,7 +748,6 @@ def plot_glucose(
         KeyError: if the glucose column is not in the glucose dataframe
     """
     plot_df = df[from_time:to_time]
-    # TODO make as similar to pyplot as possible
 
     if glbl not in plot_df.keys():
         raise KeyError(f"Glucose Column {glbl} does not seem to be in the DataFrame.")
@@ -899,8 +872,7 @@ def plot_day_curve(df: pd.DataFrame, d: str, glbl: str = GLUCOSE_COL, tlbl: str 
 
     
     if extended:
-        from datetime import datetime as dt
-        # TODO this is too hacky
+        # TODO find a cleaner way to do this
         xt = df.loc[d: (dt.strptime(d, '%Y-%m-%d')+tdel(days=1, hours=7)).strftime('%Y-%m-%d %H')]
         plt.plot(xt[tlbl], xt[glbl], color='brown', alpha=0.5, label='sleep')
 
@@ -1082,7 +1054,6 @@ def write_glucose(gdf : pd.DataFrame, output_file : str):
         gdf (pd.DataFrame): the glucose dataframe.
         output_file (str): the output file path.
     """
-    # TODO Do we need this? to csv already handled
     logger.info("Writing glucose data to %s", output_file)
     gdf.to_csv(output_file)
 

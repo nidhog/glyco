@@ -39,7 +39,7 @@ class Units(enum.Enum):
     """
     mmolL = "mmol/L"
     mgdL = "mg/dL"
-    gL = "g/L" # TODO handle more units
+    gL = "g/L"
 
 
 # Will be used to convert glucose to mmol/L (Glucose in mmol/L = units_to_mmolL_factor[input unit] * Glucose in input unit)
@@ -59,7 +59,6 @@ def find_nearest(df: pd.DataFrame, pivot: pd.Timestamp, col: str, n_iter: int = 
         col (str): column of the dataframe to search in
         n_iter (int, optional): number of iterations before saying there is nothing. Defaults to 100.
     """
-    # TODO add prioritise smaller or larger value
     items = list(df.index)
     n = items.copy()
     for i in range(n_iter):
