@@ -804,7 +804,7 @@ def plot_percentiles(df: pd.DataFrame, stat_col: str, percentiles: List[float], 
         label (str, optional): the title of the plot. 
             Defaults to None.
     """
-    # TODO use only get_stats and remove get_percentiles_and_stats
+    # TODO use only get_stats and remove get_percentiles_and_stats?
     _, _, med, perc_l, perc_h = get_percentiles_and_stats(
         df, percentiles, stat_col, group_by_col)
 
@@ -911,14 +911,14 @@ def get_percentiles_and_stats(df: pd.DataFrame, percentiles: List[float], stat_c
     Returns:
         Tuple[float]: mean, standard deviation, percentiles, 1-percentiles
     """
-    # TODO replace completely with get_stats
+    # TODO replace completely with get_stats?
     grouped = df.groupby([group_by_col])[stat_col]
     mean = grouped.mean()
     med = grouped.median()
     dev = grouped.std()
     perc_l = [grouped.quantile(q) for q in percentiles]
     perc_h = [grouped.quantile(1-q) for q in percentiles]
-    return mean, dev, med, perc_l, perc_h # FIXME: use dataclass, do we need mean, med?
+    return mean, dev, med, perc_l, perc_h
 
 def plot_comparison(df: pd.DataFrame, glbl: str=GLUCOSE_COL, compare_by: str=_WEEKDAY_COL, outliers: bool=False, label_map: Union[Callable, Dict]=None, method: str='box', sort_vals: bool = False, label: Optional[str] = None):
     """
@@ -1147,6 +1147,3 @@ def describe_glucose(df: pd.DataFrame, glucose_col: str = GLUCOSE_COL, timestamp
     console.print(
         f"[bold magenta]First rows in the data:[/bold magenta]\n",
         df[[timestamp_col, glucose_col]].head())
-
-
-

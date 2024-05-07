@@ -64,6 +64,6 @@ def mask_private_information(gdf: pd.DataFrame, remove_columns: List[str], repla
         logger.info("Removing the following privacy columns: %s...", ', '.join(remove_columns))
         try:
             df = df.drop(columns=remove_columns, errors='raise')
-        except KeyError as err:
+        except KeyError:
             logger.warn(f"One of the columns {remove_columns} was not found, column deletion skipped!")
     return df, added_noise, replaced_values_orig
