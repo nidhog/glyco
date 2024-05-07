@@ -16,9 +16,14 @@ from glyco.glucose import (
     _AUCLIM_COL,
     _AUCMIN_MIN,
     DEFAULT_INPUT_TSP_FMT,
-    general_date_type, add_time_values)
-from .utils import find_nearest
+    general_date_type,
+    add_time_values,
+    error_not_implemented_method
+)
+from glyco.utils import find_nearest
 
+import logging
+logger = logging.getLogger(__name__)
 
 _event_note_col = 'event_notes'
 _event_ref_col = 'event_reference'
@@ -114,7 +119,6 @@ def read_events_csv(file_path: str,
                     delimiter: str = ",",
                     skiprows: int = 0
                     ):
-    # TODO NEXT finish
     df = pd.read_csv(
         filepath_or_buffer=file_path,
         delimiter=delimiter,
@@ -259,69 +263,70 @@ def get_event_sessions(events_df: pd.DataFrame, glucose_df: pd.DataFrame, event_
     )
     return edf
 
-def sessionize_events(events_df: pd.DataFrame, gdf: pd.DataFrame, event_timestamp: str = _original_timestamp, session_seconds: int = _default_event_session_seconds):    
-    """DEPRECATED
-    TODO REMOVE 
-    TODO takes very long to run
-    FIXME OPTIMISE takes too long
-    """
-    edf = events_df.sort_values(event_timestamp)
-    edf[_next_event]= edf[event_timestamp].diff().dt.total_seconds()
-    edf[_prev_event]= edf[event_timestamp].diff(-1).dt.total_seconds().map(abs)
-    # TODO change name to is_session_first
-    edf[is_session_first] = (edf[_next_event].isnull()) | (edf[_next_event] > session_seconds)
-    edf[is_session_last] = (edf[_prev_event].isnull()) | (edf[_prev_event] > session_seconds)
-    # TODO ? find end? edf['event_session_end'] = (edf.dt_next_event.notnull()) & (edf.dt_next_event > session_seconds)
-    edf[session_first] = edf[edf[is_session_first]][event_timestamp]
-    edf[session_last] = edf[edf[is_session_last]][event_timestamp]
-    edf[session_id] = edf[edf[is_session_first]][event_timestamp].rank(method='first').astype(int)
-    edf[session_id] = edf[session_id].fillna(method='ffill').astype(int)
+# Commented in case some of the logic is needed
+# def sessionize_events(events_df: pd.DataFrame, gdf: pd.DataFrame, event_timestamp: str = _original_timestamp, session_seconds: int = _default_event_session_seconds):    
+#     """DEPRECATED
+#     TODO REMOVE 
+#     TODO takes very long to run
+#     FIXME OPTIMISE takes too long
+#     """
+#     edf = events_df.sort_values(event_timestamp)
+#     edf[_next_event]= edf[event_timestamp].diff().dt.total_seconds()
+#     edf[_prev_event]= edf[event_timestamp].diff(-1).dt.total_seconds().map(abs)
+#     # TODO change name to is_session_first
+#     edf[is_session_first] = (edf[_next_event].isnull()) | (edf[_next_event] > session_seconds)
+#     edf[is_session_last] = (edf[_prev_event].isnull()) | (edf[_prev_event] > session_seconds)
+#     # TODO ? find end? edf['event_session_end'] = (edf.dt_next_event.notnull()) & (edf.dt_next_event > session_seconds)
+#     edf[session_first] = edf[edf[is_session_first]][event_timestamp]
+#     edf[session_last] = edf[edf[is_session_last]][event_timestamp]
+#     edf[session_id] = edf[edf[is_session_first]][event_timestamp].rank(method='first').astype(int)
+#     edf[session_id] = edf[session_id].fillna(method='ffill').astype(int)
 
-    # define 10 minutes delta
-    delta = 10 * 60
-    jump = session_seconds + delta
-    edf[estimated_start] = edf[session_first].map(lambda x: x if not type(x)==pd.Timestamp else find_nearest(gdf, x - tdel(seconds=delta), TIMESTAMP_COL)) # TODO replace with search start method
-    # FIXME error here NaT needs to be filled
-    edf[estimated_end] = edf[session_last].map(lambda x: x if not type(x)==pd.Timestamp else find_nearest(gdf, x + tdel(seconds=jump), TIMESTAMP_COL)) # TODO replace with search end method
+#     # define 10 minutes delta
+#     delta = 10 * 60
+#     jump = session_seconds + delta
+#     edf[estimated_start] = edf[session_first].map(lambda x: x if not type(x)==pd.Timestamp else find_nearest(gdf, x - tdel(seconds=delta), TIMESTAMP_COL)) # TODO replace with search start method
+#     # FIXME error here NaT needs to be filled
+#     edf[estimated_end] = edf[session_last].map(lambda x: x if not type(x)==pd.Timestamp else find_nearest(gdf, x + tdel(seconds=jump), TIMESTAMP_COL)) # TODO replace with search end method
     
 
 
-    # Fill empty fields
-    edf[session_first] = edf[session_first].fillna(method='ffill')
-    edf[estimated_start] = edf[estimated_start].fillna(method='ffill')
-    edf[session_last] = edf[session_last].fillna(method='bfill')
-    edf[estimated_end] = edf[estimated_end].fillna(method='bfill')
-    edf[session_len] = session_seconds
+#     # Fill empty fields
+#     edf[session_first] = edf[session_first].fillna(method='ffill')
+#     edf[estimated_start] = edf[estimated_start].fillna(method='ffill')
+#     edf[session_last] = edf[session_last].fillna(method='bfill')
+#     edf[estimated_end] = edf[estimated_end].fillna(method='bfill')
+#     edf[session_len] = session_seconds
     
-    # TODO is it better to resort by index
-    edf.sort_index()
-    return edf
+#     # TODO is it better to resort by index
+#     edf.sort_index()
+#     return edf
 
 # TODO get events automatically
 def get_events_infer(gdf: pd.DataFrame, limit: float = None):
-    events = None
-    return events
+    """Not implemented"""
+    raise NotImplementedError(error_not_implemented_method)
 
 # TODO this is freestyle libre specific
 def get_events_from_fs_notes(gdf: pd.DataFrame, edf: pd.DataFrame):
-    events = None
-    return events
+    """Not implemented"""
+    raise NotImplementedError(error_not_implemented_method)
 
 def get_events_from_df(gdf: pd.DataFrame, edf: pd.DataFrame):
-    events = None
-    return events
+    """Not implemented"""
+    raise NotImplementedError(error_not_implemented_method)
 
 def get_events_from_times(gdf: pd.DataFrame, event_times: Iterable):
-    events = None
-    return events
+    """Not implemented"""
+    raise NotImplementedError(error_not_implemented_method)
 
 def get_event_metrics(gdf, edf, eid):
-    metrics = None
-    return metrics
+    """Not implemented"""
+    raise NotImplementedError(error_not_implemented_method)
 
 def describe_event(gdf, edf, eid):
-    metrics = None
-    return metrics
+    """Not implemented"""
+    raise NotImplementedError(error_not_implemented_method)
 
 
 
@@ -332,16 +337,16 @@ TODO:
 * add comparing meals
 """
 def plot_compare_sessions():
-    # TODO
-    pass
+    """Not implemented"""
+    raise NotImplementedError(error_not_implemented_method)
 
 def plot_day_sessions():
-    # TODO
-    pass
+    """Not implemented"""
+    raise NotImplementedError(error_not_implemented_method)
 
 def plot_all_sessions():
-    # TODO plot day with sessions
-    pass
+    """Not implemented"""
+    raise NotImplementedError(error_not_implemented_method)
 
 def plot_session_response(glucose_df: pd.DataFrame, sessions_df: pd.DataFrame, session_id: int, use_notes_as_title: str=False, session_title: Optional[str]=None, notes_col: str='Notes', show_events: bool=False, events_tsp: str = TIMESTAMP_COL, glbl: str=GLUCOSE_COL, show_auc=True):
     """Plots the glucose response during one specific event session given by its session id.
@@ -374,7 +379,7 @@ def plot_session_response(glucose_df: pd.DataFrame, sessions_df: pd.DataFrame, s
     truncated_glucose = glucose_df[start:end][glbl]
     plt.plot(truncated_glucose)
     if show_auc:
-        plot_auc_above_threshold(truncated_glucose, truncated_glucose.mean())
+        _plot_auc_above_threshold(truncated_glucose, truncated_glucose.mean())
 
     plt.axvline(session.iloc[-1]['session_first'], color='red', label='First event', linestyle='--', alpha=0.1)
     if use_notes_as_title:
@@ -385,7 +390,7 @@ def plot_session_response(glucose_df: pd.DataFrame, sessions_df: pd.DataFrame, s
         [plt.axvline(session.iloc[i][events_tsp], color='black', linestyle='--', alpha=0.1) for i in range(len(session))]
     plt.xticks(rotation=45)
 
-def plot_auc_above_threshold(values: Iterable, threshold: float):
+def _plot_auc_above_threshold(values: Iterable, threshold: float):
     """Plot area under the curve between some values and a specific threshold.
 
     Args:
@@ -422,7 +427,7 @@ def auto_recognise_meals(gdf: pd.DataFrame, g_col: str = GLUCOSE_COL, tsp_col: s
         event_tsp=tsp_col, 
         session_seconds=60*60
         )
-    # TODO select only some of the events instead of keeping all?
+    # TODO select only some of the events instead of keeping all of them?
     meal_events = e_sessions
     return meal_events
 
@@ -430,8 +435,8 @@ def auto_recognise_meals(gdf: pd.DataFrame, g_col: str = GLUCOSE_COL, tsp_col: s
 """Event metrics
 """
 def get_event_metrics(gdf, start, end):
-    stats = None
-    return stats
+    """Not implemented"""
+    raise NotImplementedError(error_not_implemented_method)
 
 
 def get_event_auc(gdf: pd.DataFrame, start: general_date_type, end: general_date_type):

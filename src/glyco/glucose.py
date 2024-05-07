@@ -1144,6 +1144,7 @@ def describe_glucose(df: pd.DataFrame, glucose_col: str = GLUCOSE_COL, timestamp
         table.add_row(stat.capitalize(), f"{value:.2f}")
 
     console.print(table)
+    console.print(f"Columns in the data: [bold yellow]{', '.join(df.columns)}[/bold yellow]")
     console.print(
         f"[bold magenta]First rows in the data:[/bold magenta]\n",
         df[[timestamp_col, glucose_col]].head())

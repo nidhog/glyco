@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "glyco"
-version = "0.0.1rc1"
+version = "0.0.1rc2"
 description = "Read and analyse continuous glucose monitoring data"
 readme = "README.md"
 authors = [{ name = "Ismail Elouafiq", email = "contact@ismail.bio" }]
@@ -26,7 +26,6 @@ keywords = [
     "health",
     "healthcare"]
 dependencies = [
-    "matplotlib",
     "pandas",
     "scipy",
     "numpy",
