@@ -1,17 +1,15 @@
-"""Defines glucose functions used in glyco"""
+import hashlib
 import logging
-from typing import Callable, Dict, Optional, Union, List
-import pandas as pd
+from datetime import date as date_type, datetime as dt, timedelta as tdel
+from typing import Callable, Dict, List, Optional, Union
 
-from datetime import datetime as dt, timedelta as tdel, date as date_type
+import pandas as pd
 from matplotlib import pyplot as plt
+from rich.console import Console
+from rich.table import Table
 
 from glyco.privacy import mask_private_information
-import hashlib
-
-from glyco.utils import Units, Devices, end_plot, find_nearest, weekday_map, is_weekend, autoplot, units_to_mmolL_factor
-from rich import print as rprint # TODO: add pretty printing descriptions
-
+from glyco.utils import Devices, Units, end_plot, find_nearest, is_weekend, units_to_mmolL_factor, weekday_map
 
 logger = logging.getLogger(__name__)
 """Warning and Error Messages
@@ -282,15 +280,12 @@ def read_df(df: pd.DataFrame,
         glucose_unit = autodetect_unit(df[glucose_col])
     logger.info("Using the glucose unit (%s)", glucose_unit)
     # filter rows based on the values of a column (filter_val)
-    df = (
-        df
-        if not (filter_glucose_rows)
-        else filter_glucose_by_column_val(
+    if filter_glucose_rows:
+        df = filter_glucose_by_column_val(
             df,
             filter_col=_freestyle_rec_type_col,
-            filter_val=_freestyle_glucose_rec_type,
+            filter_val=_freestyle_glucose_rec_type
         )
-    )
     # mask private information
     if mask_private_info:
         df, _, _ = mask_private_information(gdf=df,
@@ -300,9 +295,6 @@ def read_df(df: pd.DataFrame,
         **private_info_kwargs)
     # add calculated glucose properties
     if calculate_glucose_properties:
-        if glucose_prep_kwargs is None:
-            glucose_prep_kwargs = _default_glucose_prep_kwargs
-        
         df =(
             # 
             prepare_glucose(
@@ -1115,9 +1107,46 @@ def get_metrics(gdf : pd.DataFrame, percentiles : Optional[List[float]] = None, 
     """
     return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=group_by_col)
 
-def describe_glucose(gdf : pd.DataFrame):
-    """Describes a Glucose Dataframe using text.
+def describe_glucose(df: pd.DataFrame, glucose_col: str = GLUCOSE_COL, timestamp_col: str = TIMESTAMP_COL, default_unit: str = Units.mmolL.value):
+    """Describes the glucose DataFrame by providing a summary with the total number of days, start and end dates,
+    and overall summary statistics of glucose including the unit of measurement.
+
+    Args:
+        df (pd.DataFrame): The glucose dataframe.
+        glucose_col (str): Column name for glucose data.
+        timestamp_col (str): Column name for timestamp data.
+        default_unit (str): Default unit for glucose measurements.
     """
+    console = Console()
+    # Ensure timestamps are converted to datetime if not already done
+    if not pd.api.types.is_datetime64_any_dtype(df[timestamp_col]):
+        df[timestamp_col] = pd.to_datetime(df[timestamp_col])
+
+    start_date = df[timestamp_col].min()
+    end_date = df[timestamp_col].max()
+    total_days = (end_date - start_date).days + 1
+
+    # Printing the overall summary
+    console.print("[bold magenta]Glucose Data Summary[/bold magenta]")
+    console.print(
+        f"• Total number of days in the data: [bold green]{total_days}[/bold green]\n"
+        f"• Starting at: [bold green]{start_date.strftime('%Y-%m-%d %H:%M')}[/bold green]\n"
+        f"• Ending at: [bold green]{end_date.strftime('%Y-%m-%d %H:%M')}[/bold green]"
+    )
+
+    glucose_stats = get_stats(df, glucose_col)
+    table = Table(title="Glucose Statistics", show_header=True, header_style="bold magenta")
+    table.add_column("Measure", style="dim")
+    table.add_column(f"Value in {default_unit}")
+
+    for stat in ['mean', 'std', 'min', '25%', '50%', '75%', 'max']:
+        value = glucose_stats.get(stat, 'N/A')
+        table.add_row(stat.capitalize(), f"{value:.2f}")
+
+    console.print(table)
+    console.print(
+        f"[bold magenta]First rows in the data:[/bold magenta]\n",
+        df[[timestamp_col, glucose_col]].head())
 
 
 
