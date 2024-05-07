@@ -6,10 +6,10 @@ import pandas as pd
 from datetime import datetime as dt, timedelta as tdel, date as date_type
 from matplotlib import pyplot as plt
 
-from .privacy import mask_private_information
+from glyco.privacy import mask_private_information
 import hashlib
 
-from .utils import Units, Devices, end_plot, find_nearest, weekday_map, is_weekend, autoplot, units_to_mmolL_factor
+from glyco.utils import Units, Devices, end_plot, find_nearest, weekday_map, is_weekend, autoplot, units_to_mmolL_factor
 from rich import print as rprint # TODO: add pretty printing descriptions
 
 
@@ -1062,6 +1062,7 @@ Day/Week Metrics
 """
 _summary_cols = [GLUCOSE_COL, _AUC_COL, _DG_COL, _DT_COL, _DGDT_COL]
 
+
 def get_metrics_by_day(gdf : pd.DataFrame, day_col : str =_DATE_COL, percentiles: list = None, summary_cols : list = _summary_cols):
     """
     Get metrics and statistics by day related to specific columns of a dataframe.
@@ -1079,6 +1080,7 @@ def get_metrics_by_day(gdf : pd.DataFrame, day_col : str =_DATE_COL, percentiles
     """
     return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=day_col)
 
+
 def get_metrics_by_hour(gdf : pd.DataFrame, hour_col : str =_HOUR_COL, percentiles : Optional[List[float]] = None, summary_cols : Union[List[str], str] = _summary_cols):
     """Get metrics and statistics by hour related to specific columns of a dataframe.
 
@@ -1094,6 +1096,7 @@ def get_metrics_by_hour(gdf : pd.DataFrame, hour_col : str =_HOUR_COL, percentil
         pd.Series or pd.DataFrame: descriptive statistics grouped hour
     """
     return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=hour_col)
+
 
 def get_metrics(gdf : pd.DataFrame, percentiles : Optional[List[float]] = None, summary_cols : Union[List[str], str] = _summary_cols, group_by_col: Optional[str] = None):
     """Get metrics and statistics related to specific columns of a dataframe.
@@ -1111,4 +1114,10 @@ def get_metrics(gdf : pd.DataFrame, percentiles : Optional[List[float]] = None, 
        pd.Series or pd.DataFrame: descriptive statistics grouped by the given column
     """
     return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=group_by_col)
+
+def describe_glucose(gdf : pd.DataFrame):
+    """Describes a Glucose Dataframe using text.
+    """
+
+
 

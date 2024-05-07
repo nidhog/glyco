@@ -80,6 +80,18 @@ Glyco can also aid you in more advanced tasks such as detecting meals, comparing
     You can even get the events from a folder of pictures. More on this in the [meals and events documentation](https://github.com/nidhog/glyco/blob/main/docs/concepts/events_and_meals.md)).
 3. **Advanced analysis of events**, including metrics for meals or events and how they impact glucose. As well as ranking meals and more, to further aid in understanding the glucose data.
 
+4. **On Privacy and Personally Identifieable Information** *Glyco also enables making the glucose data more private by hiding sensitive information*
+    ```Python
+    # you can set the 'mask_private_info' to true
+    anonymised_df = gl.read_csv(
+        file_path='my_glucose_data.csv',
+        mask_private_info=True
+        )
+    ```
+    The mask_private_info masks private information by: resetting the minimum datetime, removing specific columns (such as the device serial number), replacing categorical columns using a hash function and adding noise to the glucose data.
+
+    More details on how to use the privacy feature in [the privacy documentation here](https://github.com/nidhog/glyco/blob/main/docs/extra/privacy.md).
+
 ## Limitations
 * The metric calculations for days assumes the device timezone is the user's timezone.
 
