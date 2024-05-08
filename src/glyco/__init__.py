@@ -3,6 +3,10 @@ Glyco
 
 Glyco is a glucose data analysis library.
 """
-from .glucose import *
+from glyco.glucose import *
 
-from .meals import *
+from glyco.meals import *
+
+from glyco.utils import *
+
+from glyco.privacy import *
