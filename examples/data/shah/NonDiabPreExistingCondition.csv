@@ -1,0 +1,128 @@
+RecID,PtID,MedicalCondition,PreExistDuration,PreExistMedCurr,MedCondStatus,MedCondResDtDaysFromEnroll,MedCondResDtApprox
+1,43,Glaucoma,10yr-<20yr,No,NULL,NULL,NULL
+2,14,Seasonal allergy,1yr-<5yr,Yes,NULL,NULL,NULL
+3,8,Attention deficit/hyperactivity disorder,1yr-<5yr,Yes,NULL,NULL,NULL
+4,13,Enuresis,3m-<6m,Yes,NULL,NULL,NULL
+5,10,Acne,1yr-<5yr,Yes,NULL,NULL,NULL
+6,37,Peanut allergy,5yr-<10yr,No,NULL,NULL,NULL
+7,17,Peanut allergy,5yr-<10yr,No,NULL,NULL,NULL
+8,38,Acne,1yr-<5yr,Yes,NULL,NULL,NULL
+9,38,Seasonal allergy,5yr-<10yr,Yes,NULL,NULL,NULL
+10,28,Attention deficit disorder,1yr-<5yr,Yes,NULL,NULL,NULL
+11,28,Ventricular septal defect,10yr-<20yr,No,NULL,NULL,NULL
+12,28,Atrial septal defect,10yr-<20yr,No,NULL,NULL,NULL
+13,44,Seasonal allergy,1yr-<5yr,Yes,NULL,NULL,NULL
+14,11,Peanut allergy,5yr-<10yr,No,NULL,NULL,NULL
+15,11,Seasonal allergy,1yr-<5yr,Yes,NULL,NULL,NULL
+16,40,Attention deficit disorder,1yr-<5yr,Yes,NULL,NULL,NULL
+17,31,Mood disorder NOS,1yr-<5yr,Yes,NULL,NULL,NULL
+18,31,Attention deficit/hyperactivity disorder,1yr-<5yr,Yes,NULL,NULL,NULL
+1,184,Seasonal allergy,10yr-<20yr,Yes,NULL,NULL,NULL
+2,100,Migraine headache,>=20yr,Yes,NULL,NULL,NULL
+3,69,Depression,1yr-<5yr,Yes,NULL,NULL,NULL
+4,186,Myasthenia gravis,10yr-<20yr,Yes,NULL,NULL,NULL
+5,186,Acne,5yr-<10yr,Yes,NULL,NULL,NULL
+6,186,Gastroesophageal reflux,10yr-<20yr,Yes,NULL,NULL,NULL
+7,186,Anxiety,10yr-<20yr,Yes,NULL,NULL,NULL
+8,186,Insomnia,10yr-<20yr,Yes,NULL,NULL,NULL
+9,186,Back pain,10yr-<20yr,Yes,NULL,NULL,NULL
+10,81,Hypertension,5yr-<10yr,Yes,NULL,NULL,NULL
+11,152,Heartburn,>=20yr,Yes,NULL,NULL,NULL
+12,67,Migraine headache,>=20yr,Yes,NULL,NULL,NULL
+13,67,Depression,>=20yr,Yes,NULL,NULL,NULL
+14,120,Hypothyroidism,1yr-<5yr,Yes,NULL,NULL,NULL
+15,77,Seasonal allergy,>=20yr,Yes,NULL,NULL,NULL
+16,77,Depression,10yr-<20yr,Yes,NULL,NULL,NULL
+17,137,Hypertension,10yr-<20yr,Yes,NULL,NULL,NULL
+18,137,Anxiety,10yr-<20yr,Yes,NULL,NULL,NULL
+19,137,Hyperlipidemia,10yr-<20yr,Yes,NULL,NULL,NULL
+20,103,Depression,1yr-<5yr,Yes,NULL,NULL,NULL
+21,92,Asthma,10yr-<20yr,Yes,NULL,NULL,NULL
+22,99,Hypothyroidism,>=20yr,Yes,NULL,NULL,NULL
+23,99,Asthma,5yr-<10yr,Yes,NULL,NULL,NULL
+24,166,Basal cell carcinoma,5yr-<10yr,Yes,NULL,NULL,NULL
+25,144,Asthma,>=20yr,Yes,NULL,NULL,NULL
+26,148,Osteopenia,1yr-<5yr,No,NULL,NULL,NULL
+27,162,Hypertension,1yr-<5yr,Yes,NULL,NULL,NULL
+28,65,Depression,5yr-<10yr,No,NULL,NULL,NULL
+29,198,Rheumatoid arthritis,1yr-<5yr,Yes,NULL,NULL,NULL
+30,198,Interstitial lung disease,1yr-<5yr,Yes,NULL,NULL,NULL
+31,80,Attention deficit/hyperactivity disorder,10yr-<20yr,No,NULL,NULL,NULL
+32,147,Hip replacement,1yr-<5yr,No,NULL,NULL,NULL
+33,61,Migraine headache,1yr-<5yr,Yes,NULL,NULL,NULL
+34,82,Migraine headache,1yr-<5yr,Yes,NULL,NULL,NULL
+35,82,Hypothyroidism,5yr-<10yr,Yes,NULL,NULL,NULL
+36,175,Allergy NOS,>=20yr,Yes,NULL,NULL,NULL
+37,51,Narcolepsy,1yr-<5yr,Yes,NULL,NULL,NULL
+38,200,Tinnitus,>=20yr,No,NULL,NULL,NULL
+39,164,Hypothyroidism,>=20yr,Yes,NULL,NULL,NULL
+40,164,Hyperlipidemia,>=20yr,Yes,NULL,NULL,NULL
+41,109,Anxiety,1yr-<5yr,Yes,NULL,NULL,NULL
+42,58,Headache,>=20yr,Yes,NULL,NULL,NULL
+43,85,Hip replacement,1yr-<5yr,No,NULL,NULL,NULL
+44,111,Anxiety,6m-<12m,Yes,NULL,NULL,NULL
+45,111,Depression,6m-<12m,Yes,NULL,NULL,NULL
+46,121,Acne,1yr-<5yr,Yes,NULL,NULL,NULL
+47,57,Viral hepatitis B,>=20yr,No,NULL,NULL,NULL
+48,57,Rheumatoid arthritis,5yr-<10yr,Yes,NULL,NULL,NULL
+49,57,Hypertension,>=20yr,Yes,NULL,NULL,NULL
+50,57,Gastroesophageal reflux,5yr-<10yr,Yes,NULL,NULL,NULL
+51,150,Depression,1yr-<5yr,Yes,NULL,NULL,NULL
+52,150,Anxiety,1yr-<5yr,Yes,NULL,NULL,NULL
+53,91,Anxiety,1yr-<5yr,Yes,NULL,NULL,NULL
+54,153,Depression,>=20yr,Yes,NULL,NULL,NULL
+55,153,Migraine headache,>=20yr,Yes,NULL,NULL,NULL
+56,138,Nausea,6m-<12m,Yes,NULL,NULL,NULL
+57,138,Upset stomach,6m-<12m,Yes,NULL,NULL,NULL
+58,66,Acid reflux (oesophageal),1yr-<5yr,Yes,NULL,NULL,NULL
+59,66,Benign prostatic hyperplasia,1yr-<5yr,Yes,NULL,NULL,NULL
+60,181,Attention deficit disorder,1yr-<5yr,Yes,NULL,NULL,NULL
+61,60,Hypertension,>=20yr,Yes,NULL,NULL,NULL
+62,60,Hypercholesterolemia,>=20yr,Yes,NULL,NULL,NULL
+63,201,Hypertension,>=20yr,Yes,NULL,NULL,NULL
+64,156,Hypothyroidism,>=20yr,Yes,NULL,NULL,NULL
+65,156,Hypertension,>=20yr,Yes,NULL,NULL,NULL
+66,156,Seasonal allergy,>=20yr,Yes,NULL,NULL,NULL
+67,102,Hypertension,1yr-<5yr,Yes,NULL,NULL,NULL
+68,102,Depression,>=20yr,Yes,NULL,NULL,NULL
+69,179,Hypertension,>=20yr,Yes,NULL,NULL,NULL
+70,179,Aortic regurgitation,>=20yr,Yes,NULL,NULL,NULL
+71,96,Acne,1yr-<5yr,Yes,NULL,NULL,NULL
+72,59,Acne,1yr-<5yr,Yes,NULL,NULL,NULL
+73,165,Hypothyroidism,1yr-<5yr,Yes,NULL,NULL,NULL
+74,165,Celiac disease,10yr-<20yr,No,NULL,NULL,NULL
+75,165,Hypertension,10yr-<20yr,Yes,NULL,NULL,NULL
+76,165,Osteoporosis,>=20yr,No,NULL,NULL,NULL
+77,165,Pernicious anemia,>=20yr,Yes,NULL,NULL,NULL
+78,158,Osteoarthritis,10yr-<20yr,No,NULL,NULL,NULL
+79,84,Hypothyroidism,10yr-<20yr,Yes,NULL,NULL,NULL
+80,190,Implantable defibrillator insertion,1yr-<5yr,Yes,NULL,NULL,NULL
+81,190,Hyperlipidemia,1yr-<5yr,Yes,NULL,NULL,NULL
+82,190,Hypertension,1yr-<5yr,Yes,NULL,NULL,NULL
+83,127,Asthma,>=20yr,Yes,NULL,NULL,NULL
+84,155,Glaucoma,1yr-<5yr,Yes,NULL,NULL,NULL
+85,155,Osteopenia,1yr-<5yr,No,NULL,NULL,NULL
+86,155,Hyperlipidemia,1yr-<5yr,Yes,NULL,NULL,NULL
+87,155,Hypertension,5yr-<10yr,Yes,NULL,NULL,NULL
+88,105,Gastroesophageal reflux,3m-<6m,Yes,NULL,NULL,NULL
+89,74,Hyperlipidemia,1yr-<5yr,Yes,NULL,NULL,NULL
+90,74,Supraventricular tachycardia,1yr-<5yr,Yes,NULL,NULL,NULL
+91,74,Hypercholesteremia,1yr-<5yr,Yes,NULL,NULL,NULL
+92,74,Gastroesophageal reflux,1yr-<5yr,Yes,NULL,NULL,NULL
+93,74,Depression,1yr-<5yr,Yes,NULL,NULL,NULL
+94,87,Hypothyroidism,>=20yr,Yes,NULL,NULL,NULL
+95,87,Osteoporosis,>=20yr,Yes,NULL,NULL,NULL
+96,87,Depression,1yr-<5yr,Yes,NULL,NULL,NULL
+97,87,Irritable bowel syndrome,1yr-<5yr,No,NULL,NULL,NULL
+98,87,Gastroesophageal reflux,1yr-<5yr,Yes,NULL,NULL,NULL
+99,87,Fibrocystic breast disease,1yr-<5yr,No,NULL,NULL,NULL
+100,87,Seasonal allergy,>=20yr,Yes,NULL,NULL,NULL
+101,87,Rheumatoid arthritis,10yr-<20yr,Yes,NULL,NULL,NULL
+102,87,Sjogren's,5yr-<10yr,No,NULL,NULL,NULL
+103,87,Goiter,1yr-<5yr,No,NULL,NULL,NULL
+104,87,Hearing loss,5yr-<10yr,No,NULL,NULL,NULL
+105,118,Depression,10yr-<20yr,Yes,NULL,NULL,NULL
+106,118,Deep vein thrombosis,10yr-<20yr,Yes,NULL,NULL,NULL
+107,118,Hyperlipidemia,10yr-<20yr,Yes,NULL,NULL,NULL
+108,133,Hypertension,5yr-<10yr,Yes,NULL,NULL,NULL
+109,133,Depression,5yr-<10yr,Yes,NULL,NULL,NULL

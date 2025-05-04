@@ -195,6 +195,7 @@ def validate_glucose_columns(df: pd.DataFrame, glucose_col: str, timestamp_col: 
         ValueError: raised if the glucose column does not exist in the dataframe.
         ValueError: raised if the timestamp column does not exist in the dataframe.
     """
+    # TODO: verify it's a valid number
     if glucose_col not in df.columns:
         raise ValueError(f"The Glucose column '{glucose_col}' is not in the input columns."\
             "Please provide 'glucose_col' as input.")
@@ -415,13 +416,14 @@ def add_time_values(df, tlbl: str = TIMESTAMP_COL, tsp_lbl: str = DEFAULT_INPUT_
     else:
         ndf = convert_tsp(ndf=ndf, tlbl=tlbl, tsp_lbl=tsp_lbl, timestamp_fmt=timestamp_fmt)
     ndf[dlbl] = ndf[tlbl].dt.date
-    ndf[f"{dlbl}_str"] = ndf[dlbl].map(lambda x: x.strftime(DEFAULT_OUT_DATE_FMT) if type(x)==pd.DatetimeIndex else x)
+    ndf[f"{dlbl}_str"] = ndf[dlbl].map(lambda x: x.strftime(DEFAULT_OUT_DATE_FMT) if type(x)==pd.DatetimeIndex else str(x))
     ndf[_HOUR_COL] = ndf[tlbl].dt.hour
     ndf[_DAYOFWEEK_COL] = ndf[tlbl].dt.weekday
     ndf = ndf.assign()
     ndf[_WEEKDAY_COL] = ndf[_DAYOFWEEK_COL].map(weekday_map)
     ndf[_ISWEEKEND_COL] = ndf[_DAYOFWEEK_COL].map(is_weekend)
     return ndf
+
 
 def convert_tsp(ndf: pd.DataFrame, tlbl: str, tsp_lbl: str, timestamp_fmt: str) -> None:
     """
@@ -517,10 +519,11 @@ def prepare_glucose(
         df = add_shifted_time(df, tlbl, dlbl, extra_shift_in_time)
 
     # convert to mmol/L
+    df[glucose_col] = pd.to_numeric(df[glucose_col].str.replace(',', '.'), errors="coerce")
     df[glbl] = (
-        pd.to_numeric(df[glucose_col])
+        df[glucose_col]
         if unit == Units.mmolL.value
-        else convert_to_mmolL(pd.to_numeric(df[glucose_col]), from_unit=unit)
+        else convert_to_mmolL(df[glucose_col], from_unit=unit)
     )
 
     # index by time and keep time column
@@ -529,7 +532,8 @@ def prepare_glucose(
     # interpolate and smoothen glucose
     if interpolate:
         df[glbl] = df[glbl].rolling(window=rolling_avg).mean()
-        df[glbl] = df[glbl].interpolate(method=interp_met, order=interp_ord)
+        df[glbl] = df[glbl].fillna(method="ffill").fillna(method="bfill") 
+        df[glbl] = df[glbl].interpolate(method=interp_met, order=interp_ord, limit_direction="both")
         df = df[df[glbl].map(lambda g: g > 0 and g < 30)]
     return df
 
@@ -552,7 +556,7 @@ def add_shifted_time(df: pd.DataFrame, tlbl: str, dlbl: str, shift_hours_back: i
 
     df[shift_tlbl] = df[tlbl].map(lambda x: x - tdel(hours=shift_hours_back))
     df[shift_dlbl] = df[shift_tlbl].dt.date
-    df[f"{shift_dlbl}_str"] = df[shift_dlbl].map(lambda x: x.strftime(DEFAULT_OUT_DATE_FMT))
+    df[f"{shift_dlbl}_str"] = df[shift_dlbl].map(lambda x: x.strftime(DEFAULT_OUT_DATE_FMT) if pd.notna(x) else "")
     df[f"shifted_{_HOUR_COL}"] = df[shift_tlbl].dt.hour
     df[f"shifted_{_DAYOFWEEK_COL}"] = df[shift_tlbl].dt.weekday
     df[f"shifted_{_WEEKDAY_COL}"] = df[f"shifted_{_DAYOFWEEK_COL}"].map(weekday_map)
@@ -640,7 +644,8 @@ def get_properties(
     tlbl: str = TIMESTAMP_COL,
     glim: float = DEFAULT_GLUC_LIMIT,
 ):
-    """Apply prepare_glucose first
+    """Adds the derivative columns and area under the curve columns to the dataframe.
+    Requires applying the prepare_glucose function first.
 
     Args:
         df (pd.DataFrame): _description_
@@ -651,8 +656,6 @@ def get_properties(
     Returns:
         _type_: _description_
     """
-    # Generated values: derivative, integral, stats
-    # set derivative and area under the curve properties
     df = set_derivative(df, glbl, tlbl)
     df = set_auc(df, glbl, tlbl, glim)
     return df
@@ -715,13 +718,14 @@ def autodetect_unit(glucose_values: pd.Series) -> str:
 
 """Plotting
 """
-
 def plot_glucose(
     df: pd.DataFrame,
     glbl: str = GLUCOSE_COL,
     tlbl: str = TIMESTAMP_COL,
     from_time: Optional[general_date_type] = None,
     to_time: Optional[general_date_type] = None,
+    title: Optional[str] = None,
+    label: str = 'Glucose in mmol/L'
 ):
     """Plots the glucose curve for a given dataframe, and optional time frame
 
@@ -735,6 +739,11 @@ def plot_glucose(
         to_time (Union[str, pd.Timestamp, date_type], optional): time or date to stop plotting at.
             Could be a string or timestamp or date.
             Defaults to None.
+        title (Optional[str], optional): title of the plot.
+            If None, it generates automatically showing dates.
+            Defaults to None.
+        label (str, optional): label of the lineplot.
+            Defaults to Glucose in mmol/.
 
     Raises:
         KeyError: if the glucose column is not in the glucose dataframe
@@ -748,11 +757,11 @@ def plot_glucose(
     plt.axhline(DEFAULT_GLUC_LIMIT)
     plt.axhline(DEFAULT_GLUC_LIMIT - 1)
     plt.axhline(DEFAULT_GLUC_LIMIT + 1)
-    plt.axhline(plot_df[glbl].median())
-    plt.plot(plot_df[tlbl], plot_df[glbl], label='Glucose in mmol/L')
+    plt.axhline(plot_df[glbl].median(), color='black')
+    plt.plot(plot_df[tlbl], plot_df[glbl], label=label)
     plt.xlabel("Time")
     plt.ylabel("Glucose")
-    plt.title(f"Glucose variation from: '{plot_df.index[0].date()}'' to:'{plot_df.index[-1].date()}'")
+    plt.title(title) if title else plt.title(f"Glucose variation from: '{plot_df.index[0].date()}'' to:'{plot_df.index[-1].date()}'")
 
 
 def plot_trend_by_hour(df: pd.DataFrame, glbl: str = GLUCOSE_COL):
@@ -831,7 +840,16 @@ def plot_percentiles(df: pd.DataFrame, stat_col: str, percentiles: List[float], 
     plt.xlabel(group_by_col)
     plt.ylabel(stat_col)
 
+
 def plot_sleep_trends(df: pd.DataFrame, glbl: str = GLUCOSE_COL, sleep_time_filter_col: str = f'shifted_{_HOUR_COL}', sleep_time_hour: int = 24 - (_default_shift_hours + 2)):
+    """Plots sleep
+
+    Args:
+        df (pd.DataFrame): _description_
+        glbl (str, optional): _description_. Defaults to GLUCOSE_COL.
+        sleep_time_filter_col (str, optional): Column to use for filtering sleep time. Defaults to f'shifted_{_HOUR_COL}'.
+        sleep_time_hour (int, optional): Total sleep hours to consider. Defaults to 24-(_default_shift_hours + 2).
+    """
     # filter sleep glucose data
     gdf = df[df[sleep_time_filter_col] >= sleep_time_hour]
     # make new plotting time
@@ -847,14 +865,20 @@ def plot_sleep_trends(df: pd.DataFrame, glbl: str = GLUCOSE_COL, sleep_time_filt
     plt.xlabel('Day (sleep from evening of this day)')
     end_plot()
 
-def plot_day_curve(df: pd.DataFrame, d: str, glbl: str = GLUCOSE_COL, tlbl: str = TIMESTAMP_COL, extended=False):
-    """Plots day glucose curve
 
-    :param df: Dataframe containing glucose
-    :param glbl: Name of the glucose column
-    :return:
+def plot_day_curve(df: pd.DataFrame, day_str: str, glbl: str = GLUCOSE_COL, tlbl: str = TIMESTAMP_COL, extended=False):
+    """Plots a glucose curve for a specific day.
+    Can be extended to show the following night as well.
+
+    Args:
+        df (pd.DataFrame): Dataframe containing glucose
+        day_str (str): Day string TODO: verify that this can be other than str
+        glbl (str, optional): Name of the glucose column. Defaults to GLUCOSE_COL.
+        tlbl (str, optional): Name of the timestamp column. Defaults to TIMESTAMP_COL.
+        extended (bool, optional): If true, shows the extended day with the 
+            nighttime (sleeping period). Defaults to False.
     """
-    plot_df = df.loc[d]
+    plot_df = df.loc[day_str]
     #plt.axvline(d, color='brown', linestyle='--', alpha=0.5)
     plt.axhline(plot_df[glbl].mean(), color='red', linestyle='--', alpha=0.5, label='Day Average')
     plt.axhline(df[glbl].mean(), color='brown', linestyle='--', alpha=0.2, label='Your general Average')
@@ -864,8 +888,7 @@ def plot_day_curve(df: pd.DataFrame, d: str, glbl: str = GLUCOSE_COL, tlbl: str 
 
     
     if extended:
-        # TODO find a cleaner way to do this
-        xt = df.loc[d: (dt.strptime(d, '%Y-%m-%d')+tdel(days=1, hours=7)).strftime('%Y-%m-%d %H')]
+        xt = df.loc[day_str: (dt.strptime(day_str, '%Y-%m-%d')+tdel(days=1, hours=7)).strftime('%Y-%m-%d %H')]
         plt.plot(xt[tlbl], xt[glbl], color='brown', alpha=0.5, label='sleep')
 
 def get_stats(df: pd.DataFrame, stats_cols: Union[List, str], group_by_col: str = None, percentiles: Optional[List[float]] = None):
@@ -1055,6 +1078,7 @@ Day/Week Metrics
 _summary_cols = [GLUCOSE_COL, _AUC_COL, _DG_COL, _DT_COL, _DGDT_COL]
 
 
+# TODO add fasting hours to day metrics
 def get_metrics_by_day(gdf : pd.DataFrame, day_col : str =_DATE_COL, percentiles: list = None, summary_cols : list = _summary_cols):
     """
     Get metrics and statistics by day related to specific columns of a dataframe.

@@ -1,0 +1,1695 @@
+RecID,PtID,DateDaysFromEnroll,Week_Day,Wake_Time,CGM_Calibration_Time,Breakfast_Time,Lunch_Time,Dinner_Time,Snack1_Time,Snack2_Time,Snack3_Time,Snack4_Time,Snack5_Time,Snack6_Time,Ex1_Time,Ex1_DurationMin,Ex1_Type,Ex1_Intensity,Ex2_Time,Ex2_DurationMin,Ex2_Type,Ex2_Intensity,Alcohol_Time,Alcohol_NumDrinks,Alcohol1_Type,Alcohol2_Type,Alcohol3_Type,Alcohol4_Type,Alcohol5_Type,Alcohol6_Type,Alcohol7_Type,Alcohol8_Type,Alcohol9_Type,Alcohol10_Type,Bedtime
+1,30,0,Wednesday,,12:30 PM,,11:00 AM,5:30 PM,,12:00 PM,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,
+2,30,1,Thursday,7:45 AM,11:30 PM,8:00 AM,11:20 AM,7:00 PM,4:00 PM,5:30 PM,,,,,11:00 AM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,
+3,30,2,Friday,7:45 AM,,8:00 AM,11:20 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,30,3,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+5,30,4,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,30,5,Monday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+7,30,6,Tuesday,7:30 AM,10:45 PM,8:00 AM,12:20 PM,,,3:00 PM,,,,,11:30 AM,20,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+8,30,7,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+9,30,8,Thursday,,11:42 PM,,,,9:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+10,30,9,Friday,8:00 AM,5:15 PM,8:15 AM,12:30 PM,6:00 PM,10:00 AM,1:30 PM,4:30 PM,9:30 PM,,,10:00 AM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+11,30,36,Thursday,,9:03pm,,,,,,8:30pm,,,,,,,,,,,,,,,,,,,,,,,,
+12,30,37,Friday,7:45 AM,9:44 AM,8:00 AM,11:45 AM,6:00 PM,3:00 PM,,,,,,12:30 PM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,
+13,30,38,Saturday,7:45 AM,11:05 PM,8:15 AM,2:30 PM,6:00 PM,10:15 AM,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+14,30,39,Sunday,9:30 AM,,9:40 AM,12:30 PM,5:30 PM,2:00 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+15,30,40,Monday,7:15 AM,1:20 AM,7:45 AM,11:45 AM,5:30 PM,4:00 PM,8:15 PM,,,,,12:30 PM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,
+16,30,41,Tuesday,7:15 AM,11:25 AM,7:30 AM,11:45 AM,6:00 PM,4:15 PM,,,,,,12:15 PM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,
+17,30,42,Wednesday,7:45 AM,11:11 AM,7:50 AM,11:45 AM,6:00 PM,4:15 PM,,,,,,12:15 PM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,
+18,30,43,Thursday,7:35 AM,,7:50 AM,11:45 AM,5:45 PM,4:15 PM,,,,,,12:15 PM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,
+19,30,44,Friday,7:45 AM,10:17 AM,7:50 AM,11:45 AM,6:00 PM,4:00 PM,8:00 PM,,,,,12:15 PM,15,Aerobic,Mild,3:00 PM,45,Aerobic,Mild,,,,,,,,,,,,,
+20,30,45,Saturday,8:15 AM,,8:30 AM,12:00 PM,5:00 PM,10:00 AM,3:00 PM,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,
+21,48,0,Monday,,12:00 AM,,10:50 AM,7:16 PM,3:52 PM,8:57 PM,,,,,5:30 PM,60,Aerobic,Intense,,,,,,,,,,,,,,,,,
+22,48,1,Tuesday,6:45 AM,12:00 AM,6:55 AM,12:00 PM,5:10 PM,9:30 AM,1:00 PM,3:00 PM,3:45 PM,9:00 PM,,6:00 PM,120,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+23,48,2,Wednesday,7:25 AM,10:41 AM,7:40 AM,12:00 PM,5:20 PM,10:48 AM,3:54 PM,9:15 PM,,,,1:45 PM,25,Aerobic,Mild,6:00 PM,,Aerobic,Intense,,,,,,,,,,,,,
+24,48,3,Thursday,7:35 AM,10:41 AM,7:30 AM,12:00 PM,7:30 PM,2:48 PM,11:00 AM,,,,,10:30 AM,25,Aerobic,Mild,6:00 PM,45,Aerobic,Intense,,,,,,,,,,,,,
+25,48,4,Friday,6:45 AM,7:05 AM,6:50 AM,12:00 PM,7:00 PM,9:50 AM,4:01 PM,,,,,1:45 PM,25,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+26,48,5,Saturday,9:00 AM,7:20 PM,9:30 AM,1:30 PM,10:51 PM,2:04 PM,7:01 PM,,,,,6:00 PM,90,Aerobic,Mild,7:30 PM,180,Aerobic,Intense,,,,,,,,,,,,,
+27,48,6,Sunday,9:00 AM,9:40 AM,9:30 AM,2:40 PM,8:00 PM,4:08 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+28,48,7,Monday,6:50 AM,7:00 AM,6:54 AM,12:00 PM,6:30 PM,11:00 AM,3:37 PM,9:11 PM,,,,10:30 AM,25,Aerobic,,,,,,,,,,,,,,,,,,
+29,48,8,Tuesday,6:40 AM,8:45 AM,7:05 AM,12:00 PM,5:20 PM,10:30 AM,3:42 PM,9:10 PM,,,,7:00 AM,90,Aerobic,Intense,1:45 PM,,Aerobic,Moderate,,,,,,,,,,,,,
+30,48,9,Wednesday,7:50 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+31,28,0,Friday,6:30 AM,12:45 PM,6:40 AM,12:45 PM,6:20 PM,8:36 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+32,28,1,Saturday,7:15 AM,1:00 AM,7:35 AM,,5:15 PM,10:02 PM,,,,,,1:00 PM,24,Aerobic,Mild,,,,,,,,,,,,,,,,,
+33,28,2,Sunday,7:00 AM,10:00 PM,7:05 AM,,,7:39 AM,10:17 AM,,,,,,,,,,,,,,,,,,,,,,,,,
+34,28,3,Monday,6:30 AM,8:54 PM,6:43 AM,11:25 AM,,4:00 PM,4:20 PM,6:24 PM,8:02 PM,,,,,,,,,,,,,,,,,,,,,,,
+35,28,4,Tuesday,6:30 AM,9:43 PM,6:38 AM,11:25 AM,,4:20 PM,,,,,,3:25 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+36,28,5,Wednesday,6:25 AM,8:16 PM,6:35 AM,11:25 AM,,4:20 PM,8:00 PM,,,,,9:00 AM,45,Aerobic,Mild,3:30 PM,60,Aerobic,Moderate,,,,,,,,,,,,,
+37,28,6,Thursday,6:22 AM,8:58 PM,6:30 AM,11:25 AM,8:08 PM,4:20 PM,5:58 PM,,,,,3:30 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+38,28,7,Friday,6:22 AM,9:02 PM,6:35 AM,11:25 AM,6:10 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+39,28,8,Saturday,5:20 AM,9:17 PM,5:29 AM,11:54 AM,,8:51 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+40,28,9,Sunday,7:54 AM,8:59 PM,10:00 AM,,8:12 PM,9:46 AM,5:07 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+41,2,0,Wednesday,7:00 AM,,,12:00 PM,7:13 PM,4:14 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+42,2,1,Thursday,6:45 AM,1:47 AM,6:55 AM,11:53 AM,6:31 PM,2:55 PM,10:21 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+43,2,2,Friday,8:11 AM,,9:36 AM,2:47 PM,7:00 PM,10:49 PM,,9:35 PM,,,,,,,,,,,,,,,,,,,,,,,,
+44,2,3,Saturday,9:09 AM,9:12 AM,9:24 AM,11:34 AM,6:16 PM,3:09 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+45,2,4,Sunday,8:33 AM,8:37 AM,10:09 AM,,6:07 PM,10:06 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+46,2,5,Monday,7:07 AM,7:40 AM,8:10 AM,1:53 PM,9:30 PM,2:36 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+47,2,6,Tuesday,7:12 AM,7:14 AM,7:30 AM,11:43 AM,7:25 PM,9:42 AM,,,,,,,,,,,,,,,,,,,,,,,,,,
+48,2,7,Wednesday,7:09 AM,7:14 AM,8:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+49,2,8,Thursday,8:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+50,2,9,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+51,25,0,Monday,,,,11:53 AM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+52,25,1,Tuesday,7:00 AM,4:57 PM,,12:38 PM,7:18 PM,7:33 PM,,,,,,10:30 AM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+53,25,2,Wednesday,6:40 AM,5:08 PM,,2:38 PM,7:30 PM,4:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+54,25,3,Thursday,6:13 AM,,,12:38 PM,7:12 PM,,,,,,,10:30 AM,,,,,,,,,,,,,,,,,,,,
+55,25,4,Friday,6:51 AM,,7:11 AM,11:10 AM,7:40 PM,3:09 PM,8:10 PM,,,,,10:30 AM,30,,,,,,,,,,,,,,,,,,,
+56,25,5,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+57,25,6,Sunday,8:06 AM,6:25 PM,8:09 AM,12:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+58,25,7,Monday,7:13 AM,6:20 PM,7:27 AM,12:40 PM,6:45 PM,,,,,,,10:30 AM,,Aerobic,,,,,,,,,,,,,,,,,,
+59,25,8,Tuesday,7:00 AM,4:57 PM,,12:38 PM,7:30 PM,4:29 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+60,25,9,Wednesday,8:57 AM,,9:25 AM,12:46 PM,7:16 PM,8:05 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+61,16,0,Monday,,5:15 PM,,,4:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+62,16,1,Tuesday,6:00 AM,7:00 AM,7:15 AM,11:35 AM,6:15 PM,,4:00 PM,,,,,12:05 PM,25,Aerobic,Mild,5:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,
+63,16,2,Wednesday,7:00 AM,8:50 PM,7:15 AM,11:35 AM,5:15 PM,,,,,,,12:05 PM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,
+64,16,3,Thursday,6:45 AM,8:50 PM,7:00 AM,11:35 AM,6:00 PM,,,,,,,12:05 PM,25,Aerobic,,,,,,,,,,,,,,,,,,
+65,16,4,Friday,6:45 AM,7:40 PM,7:15 AM,11:35 AM,5:30 PM,,,,,,,12:05 PM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,
+66,16,5,Saturday,6:45 AM,8:40 PM,10:00 AM,11:00 AM,8:30 PM,,,4:00 PM,,,,9:00 AM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+67,16,6,Sunday,7:30 AM,7:00 PM,8:00 AM,12:00 PM,5:00 PM,,,7:00 PM,,,,5:00 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,
+68,16,7,Monday,7:00 AM,9:05 PM,7:30 AM,11:35 AM,7:30 PM,,,,,,,12:05 PM,25,Aerobic,Mild,5:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,
+69,16,8,Tuesday,7:00 AM,7:10 PM,7:15 AM,11:25 AM,6:00 PM,,,,,,,12:00 PM,25,Aerobic,Mild,5:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,
+70,16,9,Wednesday,7:00 AM,,7:20 AM,11:25 AM,,,,,,,,12:05 PM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,
+71,35,0,Monday,,5:15 PM,,,4:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+72,35,1,Tuesday,7:00 AM,7:15 AM,7:00 AM,11:00 AM,5:00 PM,,2:30 PM,4:00 PM,,,,11:25 AM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,
+73,35,2,Wednesday,7:00 AM,8:50 PM,7:15 AM,11:00 AM,5:15 PM,,2:00 PM,,,,,11:25 AM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,
+74,35,3,Thursday,7:00 AM,8:45 PM,7:30 AM,11:00 AM,6:00 PM,,,,,,,11:25 AM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,
+75,35,4,Friday,7:10 AM,6:40 PM,7:30 AM,11:00 AM,5:45 PM,,2:30 PM,4:00 PM,,,,1:25 PM,25,Aerobic,,,,,,,,,,,,,,,,,,
+76,35,5,Saturday,7:00 AM,,10:00 AM,1:00 PM,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+77,35,6,Sunday,7:00 AM,7:00 AM,7:30 AM,12:00 PM,5:00 PM,,,,,,,5:00 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,
+78,35,7,Monday,7:00 AM,9:05 PM,7:20 AM,11:00 AM,6:00 PM,,,4:00 PM,,,,11:25 AM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,
+79,35,8,Tuesday,7:00 AM,7:10 AM,7:20 AM,11:00 AM,5:30 PM,,,4:00 PM,,,,11:25 AM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,
+80,35,9,Wednesday,7:00 AM,,7:20 AM,11:00 AM,,,,,,,,11:25 AM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,
+81,26,0,Thursday,7:15 AM,6:10 PM,,,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+82,26,1,Friday,6:00 AM,6:30 AM,7:30 AM,10:55 AM,6:00 PM,4:00 PM,,,,,,11:40 AM,20,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+83,26,2,Saturday,6:30 AM,7:30 AM,7:30 AM,1:00 PM,5:00 PM,,,,,,,3:00 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,
+84,26,3,Sunday,8:00 AM,11:00 AM,10:30 AM,1:30 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+85,26,4,Monday,7:00 AM,7:40 AM,7:50 AM,10:55 AM,6:00 PM,4:00 PM,,,,,,10:30 AM,20,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+86,26,5,Tuesday,7:15 AM,,7:45 AM,12:00 PM,6:00 PM,4:00 PM,,,,,,12:00 PM,25,Aerobic,,,,,,,,,,,,,,,,,,
+87,26,6,Wednesday,7:15 AM,7:00 PM,7:30 AM,11:50 AM,6:30 PM,4:00 PM,,,,,,2:30 PM,25,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+88,26,7,Thursday,7:00 AM,7:00 PM,7:40 AM,11:50 AM,7:00 PM,4:00 PM,,,,,,1:40 PM,25,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+89,26,8,Friday,7:15 AM,8:00 PM,8:00 AM,11:50 AM,6:30 PM,7:45 PM,,,,,,1:30 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+90,26,9,Saturday,7:00 AM,7:00 PM,10:00 AM,2:00 PM,6:15 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+91,23,0,Thursday,7:15 AM,6:15 PM,,,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+92,23,1,Friday,6:00 AM,6:45 AM,7:20 AM,,6:15 PM,,,9:15 PM,,,,9:00 PM,10,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+93,23,2,Saturday,7:15 AM,6:11 AM,8:05 AM,11:50 AM,5:25 PM,12:30 PM,1:30 PM,3:15 PM,4:30 PM,,,8:30 AM,15,Aerobic,Moderate,6:30 PM,15,Aerobic,Moderate,,,,,,,,,,,,,
+94,23,3,Sunday,6:15 AM,6:15 AM,7:30 AM,2:00 PM,5:25 PM,10:05 AM,2:30 PM,,,,,8:30 AM,15,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+95,23,4,Monday,6:45 AM,7:50 AM,7:30 AM,11:20 AM,6:00 PM,4:00 PM,,,,,,2:00 PM,20,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+96,23,5,Tuesday,7:15 AM,6:30 PM,7:45 AM,11:15 AM,6:00 PM,4:00 PM,,,,,,2:00 PM,20,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+97,23,6,Wednesday,7:15 AM,7:00 PM,7:30 AM,11:15 AM,6:30 PM,,,,,,,2:00 PM,20,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+98,23,7,Thursday,7:00 AM,6:45 PM,7:40 AM,11:15 AM,7:00 PM,,,,,,,2:00 PM,20,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+99,23,8,Friday,7:15 AM,7:34 PM,8:00 AM,11:15 AM,6:30 PM,,,,,,,2:00 PM,20,Aerobic,,,,,,,,,,,,,,,,,,
+100,23,9,Saturday,8:15 AM,11:00 PM,10:00 AM,2:00 PM,6:15 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+101,42,0,Friday,7:00 AM,,7:30 AM,11:30 AM,6:00 PM,,,3:30 PM,,,,5:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+102,42,1,Saturday,6:30 AM,7:10 AM,8:30 AM,1:30 PM,5:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+103,42,2,Sunday,7:00 AM,,8:30 AM,1:30 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+104,42,3,Monday,7:05 AM,7:35 AM,7:40 AM,11:30 AM,6:30 PM,4:00 PM,,,,,,12:00 PM,30,Aerobic,Mild,3:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,
+105,42,4,Tuesday,7:00 AM,7:17 AM,7:30 AM,11:30 AM,6:30 PM,4:00 PM,,,,,,12:00 PM,30,Aerobic,Mild,3:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,
+106,42,5,Wednesday,7:15 AM,7:25 AM,7:30 AM,11:30 AM,6:30 PM,4:00 PM,,,,,,12:00 PM,30,Aerobic,Mild,3:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,
+107,42,6,Thursday,7:11 AM,7:30 AM,7:30 AM,1:30 PM,5:30 PM,4:00 PM,,,,,,12:00 PM,30,Aerobic,Mild,3:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,
+108,42,7,Friday,6:30 AM,7:30 AM,7:12 AM,11:30 AM,5:30 PM,2:30 PM,,,,,,12:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+109,42,8,Saturday,7:00 AM,8:32 AM,8:30 AM,1:00 PM,6:30 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+110,42,9,Sunday,7:00 AM,7:42 AM,8:00 AM,1:00 PM,5:15 PM,7:00 PM,,,,,,2:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+111,4,0,Thursday,9:00 AM,6:00 PM,,,7:00 PM,,,,,4:00 PM,,5:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+112,4,1,Friday,8:45 AM,9:00 AM,9:00 AM,1:00 PM,6:45 PM,,,,,,,5:00 PM,66,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+113,4,2,Saturday,9:00 AM,8:45 PM,9:15 AM,11:00 AM,4:30 PM,,3:15 PM,8:00 PM,,,,,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+114,4,3,Sunday,7:45 AM,,8:00 AM,11:00 AM,3:00 PM,,,8:00 PM,,,9:15 PM,8:30 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+115,4,4,Monday,8:15 AM,8:15 PM,9:30 AM,12:00 PM,5:00 PM,,3:00 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,
+116,4,5,Tuesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+117,4,6,Wednesday,11:00 AM,10:20 PM,11:15 AM,,5:15 PM,2:00 PM,,7:15 PM,,,7:35 PM,6:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+118,4,7,Thursday,9:40 AM,,10:00 AM,,5:20 PM,1:00 PM,,8:00 PM,,,,4:50 PM,25,,,,,,,,,,,,,,,,,,,
+119,4,8,Friday,7:15 AM,,7:20 AM,11:45 AM,6:45 PM,8:50 AM,1:40 PM,,,,,7:05 PM,30,Aerobic,,,,,,,,,,,,,,,,,,
+120,4,9,Saturday,9:20 AM,10:35 PM,9:30 AM,12:30 PM,7:45 PM,11:30 AM,3:40 PM,,,5:40 PM,,2:30 PM,60,Aerobic,Intense,4:20 PM,60,Aerobic,Intense,,,,,,,,,,,,,
+121,1,0,Thursday,,,,,6:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+122,1,1,Friday,9:00 AM,9:30 AM,9:40 AM,12:30 PM,6:00 PM,11:15 AM,2:45 PM,8:45 PM,10:03 PM,,,1:00 PM,25,Aerobic,Moderate,9:45 PM,,Aerobic,Mild,,,,,,,,,,,,,
+123,1,2,Saturday,9:10 AM,2:40 PM,9:30 AM,1:30 PM,4:30 PM,10:30 AM,10:45 PM,6:00 PM,,,,,30,Aerobic,Intense,,,,,,,,,,,,,,,,,
+124,1,3,Sunday,7:45 AM,9:15 PM,8:00 AM,11:00 AM,2:45 PM,4:00 PM,,,,,,2:30 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+125,1,4,Monday,8:15 AM,8:50 PM,9:45 AM,1:00 PM,3:00 PM,4:00 PM,5:00 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,
+126,1,5,Tuesday,7:30 AM,9:15 PM,9:45 AM,12:00 PM,3:30 PM,6:00 PM,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+127,1,6,Wednesday,9:40 AM,9:50 PM,11:30 AM,1:59 PM,6:00 PM,9:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+128,1,7,Thursday,9:40 AM,8:40 PM,10:00 AM,12:30 PM,5:45 PM,,,,,,,,30,Aerobic,Mild,6:15 PM,40,Aerobic,Moderate,,,,,,,,,,,,,
+129,1,8,Friday,9:00 AM,7:50 PM,9:30 AM,1:30 PM,6:45 PM,11:15 AM,9:00 PM,,,,,7:00 PM,30,Both,Moderate,,,,,,,,,,,,,,,,,
+130,1,9,Saturday,9:45 AM,11:45 PM,10:00 AM,,7:45 PM,4:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+131,15,0,Thursday,,8:20 PM,,,6:05 PM,,,,,,,,,,,7:00 PM,45,Aerobic,Moderate,,,,,,,,,,,,,
+132,15,1,Friday,7:10 AM,7:20 AM,,12:00 PM,,10:20 AM,2:41 PM,5:25 PM,,,,9:35 AM,30,Aerobic,,12:00 PM,30,Aerobic,,,,,,,,,,,,,,
+133,15,2,Saturday,7:15 AM,,8:45 AM,11:30 AM,7:00 PM,2:30 PM,5:45 PM,7:30 PM,10:35 PM,,,7:00 PM,120,Aerobic,Mild,,,,,,,,,,,,,,,,,
+134,15,3,Sunday,7:30 AM,5:30 PM,8:00 AM,12:45 PM,6:00 PM,4:00 PM,5:26 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+135,15,4,Monday,7:35 AM,,7:42 AM,12:10 PM,,,,,,,,12:35 PM,30,Aerobic,Mild,3:49 PM,30,Aerobic,Intense,,,,,,,,,,,,,
+136,15,5,Tuesday,7:20 AM,,7:52 AM,12:00 PM,6:30 PM,4:00 PM,,,,,,12:30 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,
+137,15,6,Wednesday,,9:41 PM,,12:00 PM,6:00 PM,3:30 PM,,,,,,12:35 PM,60,Aerobic,,,,,,,,,,,,,,,,,,
+138,15,7,Thursday,6:49 AM,,7:42 AM,12:00 PM,5:15 PM,3:47 PM,,,,,,12:35 PM,60,Aerobic,,,,,,,,,,,,,,,,,,
+139,15,8,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+140,15,9,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+141,43,0,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+142,43,1,Friday,6:50 AM,8:35 AM,7:10 AM,11:55 AM,7:30 PM,4:15 PM,,,,,,12:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+143,43,2,Saturday,9:15 AM,9:45 AM,9:20 AM,12:30 PM,7:30 PM,4:10 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+144,43,3,Sunday,9:15 AM,9:45 AM,9:30 AM,12:15 PM,7:30 PM,4:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+145,43,4,Monday,7:30 AM,5:15 AM,7:45 AM,11:55 AM,6:15 PM,4:05 PM,8:45 PM,,,,,12:30 PM,30,Aerobic,Mild,6:45 PM,85,Aerobic,Moderate,,,,,,,,,,,,,
+146,43,5,Tuesday,7:00 AM,8:15 AM,7:10 AM,11:55 AM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+147,43,6,Wednesday,7:00 AM,8:20 AM,7:10 AM,11:55 AM,6:20 PM,4:30 PM,,,,,,7:45 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+148,43,7,Thursday,7:00 AM,8:30 AM,7:20 AM,11:55 AM,,,,,,,,12:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+149,43,8,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+150,43,9,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+151,12,0,Wednesday,,11:30 AM,,12:15 PM,6:30 PM,,,,,,,1:30 PM,20,Resistance,Mild,,,,,,,,,,,,,,,,,
+152,12,1,Thursday,7:30 AM,11:30 AM,9:45 AM,11:45 AM,6:45 PM,3:00 PM,,,,,,4:30 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+153,12,2,Friday,7:00 AM,11:30 AM,7:30 AM,11:45 AM,4:45 PM,,,,,,,6:15 PM,20,Aerobic,Intense,,,,,,,,,,,,,,,,,
+154,12,3,Saturday,7:00 AM,,8:00 AM,12:00 PM,5:30 PM,9:00 AM,,,,,,2:30 PM,45,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+155,12,4,Sunday,6:45 AM,6:00 PM,7:45 AM,11:30 AM,5:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+156,12,5,Monday,7:00 AM,,7:30 AM,11:00 AM,5:45 PM,2:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+157,12,6,Tuesday,7:00 AM,,7:30 AM,12:00 PM,6:15 PM,2:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+158,12,7,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+159,12,8,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+160,12,9,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+161,13,0,Friday,,6:38 PM,,,6:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+162,13,1,Saturday,6:08 AM,6:18 AM,7:30 AM,10:55 AM,6:55 PM,1:15 PM,3:30 PM,4:20 PM,,,,8:26 AM,7,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+163,13,2,Sunday,6:56 AM,6:52 PM,7:50 AM,12:21 PM,4:28 PM,8:40 AM,,,,,,,,,,,,,,,,,,,,,,,,,,
+164,13,3,Monday,6:00 AM,7:49 PM,7:10 AM,,7:21 PM,,3:00 PM,4:52 PM,4:54 PM,,,,,,,,,,,,,,,,,,,,,,,
+165,13,4,Tuesday,7:00 AM,7:29 PM,8:40 AM,11:55 PM,,2:57 PM,5:33 PM,5:35 PM,5:38 PM,,,,,,,,,,,,,,,,,,,,,,,
+166,13,5,Wednesday,6:30 AM,7:00 AM,,,6:26 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+167,13,6,Thursday,6:30 AM,7:03 AM,,,,,,,,,,6:12 PM,2,Aerobic,Mild,,,Aerobic,Mild,,,,,,,,,,,,,
+168,13,7,Friday,6:30 AM,7:02 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+169,13,8,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+170,13,9,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+171,20,0,Wednesday,,4:00 PM,,2:30 PM,7:45 PM,8:00 PM,,,,,,5:00 PM,90,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+172,20,1,Thursday,7:00 AM,7:00 AM,7:15 AM,12:50 PM,8:00 PM,5:00 PM,9:00 PM,,,,,1:30 PM,30,Aerobic,Moderate,7:00 PM,60,Both,Intense,,,,,,,,,,,,,
+173,20,2,Friday,6:40 AM,7:00 AM,7:15 AM,12:50 PM,5:00 PM,8:20 PM,,,,,,3:30 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+174,20,3,Saturday,7:00 AM,7:05 AM,9:30 AM,12:30 PM,6:30 PM,10:00 AM,2:30 PM,,9:00 PM,,,3:30 PM,120,Aerobic,Mild,,,,,,,,,,,,,,,,,
+175,20,4,Sunday,9:00 AM,9:00 AM,11:00 AM,3:15 PM,7:30 PM,11:45 AM,2:45 PM,,,,,7:00 PM,45,Aerobic,,,,,,,,,,,,,,,,,,
+176,20,5,Monday,6:45 AM,7:00 AM,7:10 AM,12:50 PM,6:45 PM,12:00 PM,8:00 PM,,,,,5:00 PM,90,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+177,20,6,Tuesday,6:50 AM,7:00 AM,7:10 AM,12:50 PM,8:00 PM,12:00 PM,7:30 PM,,,,,5:00 PM,120,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+178,20,7,Wednesday,6:50 AM,7:05 AM,12:50 PM,6:45 PM,8:30 PM,12:00 PM,,,,,,4:00 PM,120,Aerobic,Intense,,,,,,,,,,,,,,,,,
+179,20,8,Thursday,6:50 AM,7:05 AM,7:10 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+180,20,9,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+181,36,0,Wednesday,8:00 AM,3:34 PM,9:30 AM,12:15 PM,7:10 PM,3:15 PM,,,,,,8:40 PM,70,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+182,36,1,Thursday,6:10 AM,6:25 AM,6:30 AM,11:20 AM,6:54 PM,9:30 AM,3:30 PM,,,,,1:30 PM,50,Resistance,Moderate,,,,,,,,,,,,,,,,,
+183,36,2,Friday,6:15 AM,7:10 PM,6:30 AM,11:45 AM,6:30 PM,9:10 AM,3:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+184,36,3,Saturday,6:50 AM,7:24 AM,7:30 AM,1:20 PM,7:40 PM,10:15 AM,5:40 PM,,,,,3:30 PM,50,Aerobic,Mild,,,,,,,,,,,,,,,,,
+185,36,4,Sunday,7:45 AM,7:55 AM,8:15 AM,12:10 PM,6:30 PM,12:50 PM,4:30 PM,10:15 PM,,,,,,,,,,,,,,,,,,,,,,,,
+186,36,5,Monday,9:00 AM,9:10 AM,9:30 AM,1:30 PM,7:10PM,4:45 PM,9:50 PM,,,,,10:10 AM,40,Resistance,Moderate,,,,,,,,,,,,,,,,,
+187,36,6,Tuesday,8:25 AM,9:16 AM,9:45 AM,12:10 PM,7:00 PM,4:50 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+188,36,7,Wednesday,9:40 AM,11:55 AM,9:50 AM,3:30 PM,7:30 PM,5:00 PM,,,,,,10:10 AM,30,Resistance,Mild,,,,,,,,,,,,,,,,,
+189,36,8,Thursday,6:30 AM,9:18 AM,7:30 AM,1:10 PM,6:30 PM,4:50 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+190,36,9,Friday,8:10 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+191,37,0,Wednesday,,8:00 PM,,,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+192,37,1,Thursday,8:00 AM,9:30 AM,9:45 AM,2:17 PM,5:40 PM,9:34 PM,,,,,,12:15 PM,45,Aerobic,Mild,,,,,,,,,,,,,,,,,
+193,37,2,Friday,8:00 AM,8:40 AM,8:45 AM,1:46 PM,,,,,,,,2:30 PM,45,Aerobic,Mild,,,,,,,,,,,,,,,,,
+194,37,3,Saturday,7:30 AM,9:33 PM,8:30 AM,1:45 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+195,37,4,Sunday,8:52 AM,8:00 PM,10:00 AM,12:40 PM,7:10 PM,,,,,,,2:00 PM,,Aerobic,Mild,,,,,,,,,,,,,,,,,
+196,37,5,Monday,6:54 AM,8:00 PM,7:00 AM,11:00 AM,7:00 PM,9:45 AM,4:00 PM,,,,,10:40 AM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,
+197,37,6,Tuesday,6:50 AM,8:00 PM,7:05 AM,11:00 AM,6:30 PM,9:45 AM,4:15 PM,8:00 PM,,,,10:40 AM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,
+198,37,7,Wednesday,6:50 AM,8:05 AM,7:05 AM,11:00 AM,4:00 PM,9:45 AM,,,,,,1:50 PM,75,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+199,37,8,Thursday,6:40 AM,8:40 PM,7:12 AM,11:00 AM,4:10 PM,9:45 AM,,,,,,,,,,,,,,,,,,,,,,,,,,
+200,37,9,Friday,6:41 AM,8:13 PM,7:00 AM,11:00 AM,5:50 PM,9:45 AM,3:10 PM,,,,,10:50 AM,20,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+201,17,0,Wednesday,,,,,8:00 PM,7:50 PM,,,,,,6:20 PM,10,Aerobic,Mild,,,,,,,,,,,,,,,,,
+202,17,1,Thursday,7:30 AM,7:33 PM,7:45 AM,1:45 PM,5:45 PM,9:45 PM,12:15 PM,,,,,12:30 PM,180,Aerobic,Mild,,,,,,,,,,,,,,,,,
+203,17,2,Friday,8:15 AM,7:33 PM,8:30 AM,12:47 PM,7:30 PM,,5:00 PM,,,,,2:30 PM,10,Aerobic,Mild,,,,,,,,,,,,,,,,,
+204,17,3,Saturday,9:20 AM,7:30 PM,9:31 AM,1:25 PM,7:00 PM,11:58 AM,4:15 PM,,,,,2:15 PM,120,Aerobic,Mild,,,,,,,,,,,,,,,,,
+205,17,4,Sunday,8:33 AM,8:30 PM,10:00 AM,12:00 PM,7:00 PM,6:30 PM,3:30 PM,,,,,1:45 PM,120,Resistance,Mild,,,,,,,,,,,,,,,,,
+206,17,5,Monday,7:10 AM,7:33 PM,7:20 AM,12:50 PM,6:30 PM,9:35 AM,6:10 PM,9:45 PM,,,,1:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+207,17,6,Tuesday,7:00 AM,7:50 PM,7:30 AM,12:50 PM,6:40 PM,9:35 AM,8:00 PM,,,,,1:00 PM,40,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+208,17,7,Wednesday,7:30 AM,8:08 PM,7:40 AM,12:50 PM,5:30 PM,9:35 AM,4:00 PM,7:30 PM,,,,1:20 PM,40,Aerobic,Mild,,,,,,,,,,,,,,,,,
+209,17,8,Thursday,7:00 AM,7:33 PM,7:15 AM,12:50 PM,5:40 PM,5:50 PM,9:35 AM,5:20 PM,,,,1:20 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+210,17,9,Friday,7:00 AM,7:30 PM,7:15 AM,12:50 PM,6:45 PM,9:35 AM,6:50 PM,,,,,1:20 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+211,46,0,Wednesday,,,,,8:00 PM,7:45 PM,,,,,,6:20 PM,10,Aerobic,Mild,,,,,,,,,,,,,,,,,
+212,46,1,Thursday,7:30 AM,7:33 PM,8:30 AM,1:45 PM,5:45 PM,12:15 PM,7:00 PM,9:50 PM,,,,12:30 PM,180,Aerobic,Mild,,,,,,,,,,,,,,,,,
+213,46,2,Friday,8:30 AM,7:33 PM,10:00 AM,12:44 PM,8:15 PM,5:00 PM,10:00 PM,,,,,2:30 PM,10,Aerobic,Mild,,,,,,,,,,,,,,,,,
+214,46,3,Saturday,10:15 AM,,11:18 AM,1:20 PM,7:00 PM,12:00 PM,4:15 PM,,,,,2:15 PM,,Aerobic,Mild,,,,,,,,,,,,,,,,,
+215,46,4,Sunday,8:00 AM,8:30 PM,10:00 AM,12:00 PM,7:00 PM,3:30 PM,8:30 PM,,,,,1:45 PM,120,Resistance,Mild,,,,,,,,,,,,,,,,,
+216,46,5,Monday,7:10 AM,7:30 PM,7:20 AM,10:45 AM,6:30 PM,5:10 PM,7:11 PM,9:44 PM,,,,2:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+217,46,6,Tuesday,7:30 AM,,8:00 AM,10:45 AM,6:30 PM,5:00 PM,8:00 PM,,8:15 PM,,,2:00 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+218,46,7,Wednesday,7:30 AM,8:02 PM,7:40 AM,10:40 AM,5:30 PM,2:30 PM,7:00 PM,,,,,2:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+219,46,8,Thursday,7:00 AM,7:30 PM,7:15 AM,10:45 AM,5:40 PM,3:50 PM,,,,,,2:00 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+220,46,9,Friday,7:00 AM,8:11 PM,7:15 AM,10:45 AM,8:45 PM,4:00 PM,3:00 PM,,,,,2:00 PM,30,Aerobic,,,,,,,,,,,,,,,,,,
+221,38,0,Thursday,,6:00 PM,,,5:45 PM,,,3:13 PM,8:07 PM,,,6:30 PM,90,Aerobic,Mild,,,,,,,,,,,,,,,,,
+222,38,1,Friday,8:30 AM,6:02 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+223,38,2,Saturday,5:00 AM,6:38 AM,6:48 AM,,9:30 PM,,,,,,,5:10 AM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,
+224,38,3,Sunday,6:00 AM,8:00 PM,7:06 AM,11:00 AM,6:35 PM,11:36 AM,8:02 PM,,,,,8:00 AM,120,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+225,38,4,Monday,6:30 AM,8:10 PM,9:50 AM,1:00 PM,7:30 PM,1:05 PM,2:20 PM,9:27 PM,,,,,,,,,,,,,,,,,,,,,,,,
+226,38,5,Tuesday,6:00 AM,8:18 PM,,11:00 AM,6:55 PM,2:17 PM,2:53 PM,4:10 PM,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,
+227,38,6,Wednesday,6:30 AM,9:11 PM,7:30 AM,,5:21 PM,4:30 PM,10:18 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+228,38,7,Thursday,6:00 AM,8:33 PM,7:05 AM,12:50 PM,8:30 PM,11:40 AM,,,,,,5:00 PM,125,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+229,38,8,Friday,6:10 AM,8:55 PM,7:30 AM,12:05 PM,8:30 PM,9:06 PM,,,,,,6:30 PM,36,Aerobic,Mild,,,,,,,,,,,,,,,,,
+230,38,9,Saturday,6:30 AM,9:07 PM,8:00 AM,12:40 PM,6:40 PM,4:10 PM,5:16 PM,5:34 PM,,,,,,,,,,,,,,,,,,,,,,,,
+231,24,0,Monday,,,,,5:20 PM,,,6:43 PM,,,,,,,,,,,,,,,,,,,,,,,,
+232,24,1,Tuesday,5:26 AM,6:33 AM,6:55 AM,11:50 AM,4:45 PM,,,,,,,12:20 PM,20,Aerobic,Mild,6:00 PM,90,Aerobic,Moderate,,,,,,,,,,,,,
+233,24,2,Wednesday,6:45 AM,8:40 PM,7:00 AM,11:50 AM,5:15 PM,4:25 PM,6:55 PM,,,,,12:20 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,
+234,24,3,Thursday,6:00 AM,8:27 PM,7:11 AM,11:50 AM,5:15 PM,3:18 PM,8:15 PM,,,,,10:00 AM,50,Aerobic,Mild,6:00 PM,90,Aerobic,Intense,,,,,,,,,,,,,
+235,24,4,Friday,6:40 AM,7:34 PM,7:25 AM,11:50 AM,6:00 PM,3:20 PM,,,,,,12:20 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,
+236,24,5,Saturday,6:20 AM,8:39 PM,6:45 AM,11:40 AM,6:40 PM,10:00 AM,3:45 PM,7:30 PM,,,,8:00 AM,120,Aerobic,Intense,2:30 PM,50,Aerobic,Intense,,,,,,,,,,,,,
+237,24,6,Sunday,10:00 AM,8:39 PM,10:15 AM,2:20 PM,6:00 PM,1:45 PM,4:30 PM,,,,,12:50 PM,50,Aerobic,Intense,,,,,,,,,,,,,,,,,
+238,24,7,Monday,6:36 AM,7:30 PM,7:15 AM,11:50 AM,,3:20 PM,4:35 PM,,,,,12:20 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,
+239,24,8,Tuesday,6:30 AM,9:35 PM,7:00 AM,11:50 AM,5:15 PM,,,,,,,6:00 PM,120,Aerobic,Intense,,,,,,,,,,,,,,,,,
+240,24,9,Wednesday,8:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+241,7,9,Wednesday,,,,,6:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+242,7,10,Thursday,8:40 AM,3:35 AM,10:20 AM,,5:35 PM,9:15 AM,12:00 PM,2:45 PM,4:05 PM,7:15 PM,,,,,,,,,,,,,,,,,,,,,,
+243,7,11,Friday,7:45 AM,3:30 PM,9:15 AM,1:20 PM,5:50 PM,1:00 PM,9:55 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+244,7,12,Saturday,7:25 AM,3:41 PM,10:10 AM,1:15 PM,6:10 PM,2:15 PM,3:35 PM,5:45 PM,9:45 PM,,,2:40 PM,10,Aerobic,Mild,,,,,,,,,,,,,,,,,
+245,7,13,Sunday,8:36 AM,8:41 PM,9:45 AM,11:40 AM,6:10 PM,5:45 PM,,,,,,1:15 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,
+246,7,14,Monday,6:05 AM,,,11:25 AM,6:10 PM,2:40 PM,3:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+247,7,15,Tuesday,6:20 AM,,,11:30 AM,6:10 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+248,7,16,Wednesday,6:20 AM,7:30 AM,,11:25 AM,5:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+249,7,17,Thursday,6:25 AM,7:34 AM,,11:27 AM,5:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+250,7,18,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+251,44,0,Thursday,,,,,7:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+252,44,1,Friday,7:40 AM,7:55 PM,8:20 AM,12:20 PM,5:31 PM,,1:30 PM,,,2:45 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,
+253,44,2,Saturday,6:15 AM,7:50 AM,6:25 AM,11:50 AM,5:41 PM,2:25 PM,,8:00 PM,,,,12:05 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+254,44,3,Sunday,7:00 AM,7:46 PM,8:10 AM,12:50 PM,6:25 PM,,,,,,,2:15 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+255,44,4,Monday,6:15 AM,8:00 PM,6:25 AM,11:50 AM,6:15 PM,9:05 AM,10:05 AM,,,,,8:25 AM,30,Aerobic,Intense,,,,,,,,,,,,,,,,,
+256,44,5,Tuesday,6:15 AM,8:26 PM,6:27 AM,11:50 AM,5:22 PM,11:00 AM,4:00 PM,,,,,6:00 PM,60,Aerobic,Moderate,7:30 PM,10,Aerobic,Intense,,,,,,,,,,,,,
+257,44,6,Wednesday,6:15 AM,5:05 PM,6:25 AM,12:15 PM,5:00 PM,2:30 PM,,,,,,6:00 PM,10,Aerobic,Mild,,,,,,,,,,,,,,,,,
+258,44,7,Thursday,6:15 AM,,6:25 AM,11:50 AM,,9:05 AM,10:45 AM,2:12 PM,,,,8:25 AM,35,Aerobic,Moderate,12:20 PM,20,Aerobic,Moderate,,,,,,,,,,,,,
+259,44,8,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+260,44,9,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+261,11,0,Thursday,,,,,7:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+262,11,1,Friday,6:15 AM,7:50 AM,6:25 AM,11:15 AM,5:43 PM,,10:25 AM,8:00 PM,,2:30 PM,,3:15 PM,10,Aerobic,Mild,,,,,,,,,,,,,,,,,
+263,11,2,Saturday,7:45 AM,7:53 PM,8:20 AM,12:20 PM,5:30 PM,3:00 PM,,,,,,11:00 AM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+264,11,3,Sunday,8:00 AM,7:47 PM,8:28 AM,2:50 PM,6:25 PM,2:45 PM,,,,,,2:15 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+265,11,4,Monday,6:15 AM,,6:27 AM,11:15 AM,6:30 PM,6:25 AM,,,,,,5:30 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+266,11,5,Tuesday,6:15 AM,8:23 PM,6:25 AM,11:45 AM,5:25 PM,,,,,,,9:45 AM,35,Aerobic,Moderate,7:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,
+267,11,6,Wednesday,6:15 AM,5:06 PM,6:25 AM,11:15 AM,5:30 PM,2:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+268,11,7,Thursday,6:15 AM,,6:26 AM,11:15 AM,,,,,2:20 AM,10:20 AM,1:50 PM,,,,,,,,,,,,,,,,,,,,,
+269,11,8,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+270,11,9,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+271,40,0,Tuesday,6:51 AM,7:45 PM,6:55 AM,11:50 AM,5:00 PM,,,,,,,11:30 AM,15,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+272,40,1,Wednesday,6:45 AM,7:25 AM,6:55 AM,11:50 AM,7:15 PM,,,,,,,4:00 PM,26,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+273,40,2,Thursday,6:45 AM,7:15 PM,7:00 AM,11:50 AM,6:30 PM,,3:00 PM,,,,,12:15 PM,15,Aerobic,,,,,,,,,,,,,,,,,,
+274,40,3,Friday,6:50 AM,6:00 PM,7:00 AM,11:50 AM,7:00 PM,,,,,,,12:15 PM,15,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+275,40,4,Saturday,8:00 AM,7:45 PM,9:15 AM,1:15 PM,7:45 PM,2:45 PM,3:00 PM,6:45 PM,,,,2:00 PM,20,Aerobic,Intense,11:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,
+276,40,5,Sunday,8:30 AM,7:37 PM,10:00 AM,12:45 PM,,,,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,
+277,40,6,Monday,6:51 AM,8:45 PM,7:00 AM,11:50 AM,6:00 PM,,,,,,,4:30 PM,20,Aerobic,Intense,,,,,,,,,,,,,,,,,
+278,40,7,Tuesday,7:00 AM,,,,7:10 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+279,40,8,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+280,40,9,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+281,31,0,Monday,,,,11:40 AM,5:53 PM,11:00 AM,3:21 PM,6:47 PM,,,,,,,,,,,,,,,,,,,,,,,,
+282,31,1,Tuesday,6:00 AM,6:30 AM,7:00 AM,12:15 PM,6:00 PM,,3:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+283,31,2,Wednesday,6:06 AM,6:16 AM,6:50 AM,5:10 PM,,3:30 PM,,,,,,12:20 PM,20,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+284,31,3,Thursday,6:15 AM,6:27 AM,7:00 AM,11:45 AM,5:50 PM,10:25 AM,3:30 PM,,,,,12:20 PM,20,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+285,31,4,Friday,6:25 AM,7:00 AM,7:00 AM,11:45 AM,5:25 PM,10:15 AM,2:00 PM,,,,,12:15 PM,30,Aerobic,,,,,,,,,,,,,,,,,,
+286,31,5,Saturday,6:00 AM,6:30 AM,8:15 AM,11:30 AM,7:30 PM,,3:40 PM,8:30 PM,,5:30 PM,,,,,,,,,,,,,,,,,,,,,,
+287,31,6,Sunday,8:00 AM,8:10 AM,9:20 AM,1:15 PM,6:00 PM,11:00 AM,3:18 PM,7:15 PM,1:00 PM,,,,,,,,,,,,,,,,,,,,,,,
+288,31,7,Monday,7:00 AM,9:20 AM,9:25 AM,2:30 PM,7:30 PM,11:50 AM,3:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+289,31,8,Tuesday,6:50 AM,9:15 AM,9:20 AM,12:00 PM,5:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+290,31,9,Wednesday,7:45 AM,8:15 AM,8:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+291,41,0,Thursday,,,,3:16 PM,6:15 PM,4:51 PM,5:42 PM,8:55 PM,,,,10:20 AM,240,Aerobic,Moderate,5:00 PM,300,Aerobic,Moderate,,,,,,,,,,,,,
+292,41,1,Friday,2:37 AM,1:46 PM,9:41 AM,1:00 PM,7:31 PM,11:13 AM,11:50 AM,10:44 PM,,,,10:46 PM,,Aerobic,,,,,,,,,,,,,,,,,,
+293,41,2,Saturday,8:17 AM,2:54 PM,11:11 AM,3:25 PM,,8:54 AM,2:17 PM,1:07 PM,6:53 PM,,,,,,,,,,,,,,,,,,,,,,,
+294,41,3,Sunday,9:25 AM,8:51 PM,10:00 AM,3:02 PM,10:21 PM,8:25 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+295,41,4,Monday,9:59 AM,12:57 AM,11:02 AM,,6:28 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+296,41,5,Tuesday,9:27 AM,4:20 PM,10:20 AM,12:55 PM,8:00 PM,5:09 PM,6:14 PM,11:43 PM,,,,,,,,,,,,,,,,,,,,,,,,
+297,41,6,Wednesday,11:03 AM,6:13 PM,11:29 AM,4:30 PM,8:00 PM,12:05 PM, 10:20 p,,,,,,,,,,,,,,,,,,,,,,,,,
+298,41,7,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+299,41,8,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+300,41,9,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+301,45,0,Wednesday,,10:53 PM,,2:00 PM,8:37 PM,,12:34 PM,6:17 PM,,,,,,,,,,,,,,,,,,,,,,,,
+302,45,1,Thursday,5:25 AM,7:21 AM,8:05 AM,2:05 PM,5:15 PM,10:55 AM,3:35 PM,8:35 PM,5:30 AM,,,6:00 AM,60,Aerobic,Intense,,,,,,,,,,,,,,,,,
+303,45,2,Friday,5:30 AM,11:00 PM,7:30 AM,11:20 AM,5:20 PM,5:40 AM,10:27 AM,4:35 PM,,,,6:00 AM,60,Resistance,Intense,,,,,,,,,,,,,,,,,
+304,45,3,Saturday,8:40 AM,11:30 PM,9:10 AM,2:30 PM,6:15 PM,1:00 PM,4:45 PM,7:36 PM,,,,,,,,,,,,,,,,,,,,,,,,
+305,45,4,Sunday,9:36 AM,10:43 PM,11:22 AM,1:40 PM,6:04 PM,4:57 PM,,,,,,4:00 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+306,45,5,Monday,5:20 AM,10:45 PM,6:45 AM,11:35 AM,,5:35 AM,10:30 AM,2:00 PM,3:45 PM,,,5:50 AM,40,,Moderate,,,,,,,,,,,,,,,,,
+307,45,6,Tuesday,5:30 AM,11:26 PM,8:10 AM,11:10 AM,,,5:45 AM,2:50 PM,3:45 PM,,,6:00 AM,60,Both,Intense,,,,,,,,,,,,,,,,,
+308,45,7,Wednesday,5:30 AM,11:35 PM,9:00 AM,1:31 PM,6:30 PM,5:50 AM,4:58 PM,,,,,6:00 AM,60,Resistance,Intense,,,,,,,,,,,,,,,,,
+309,45,8,Thursday,5:30 AM,10:42 PM,8:20 AM,11:30 AM,7:45 PM,5:40 AM,3:00 PM,,,,,6:00 AM,60,Aerobic,Intense,,,,,,,,,,,,,,,,,
+310,45,9,Friday,5:05 AM,10:42 PM,8:00 AM,1:45 PM,6:30 PM,5:20 AM,6:00 PM,,,,,5:40 AM,45,Aerobic,Moderate,11:00 PM,60,Aerobic,Intense,,,,,,,,,,,,,
+311,34,0,Saturday,6:30 AM,12:40 PM,7:12 AM,1:40 PM,6:00 PM,3:30 PM,,,,,,9:45 AM,9,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+312,34,1,Sunday,8:00 AM,8:30 AM,9:00 AM,1:25 PM,7:15 PM,11:50 AM,3:20 PM,5:15 PM,,,,10:00 AM,30,Aerobic,Moderate,7:30 PM,45,Aerobic,Moderate,,,,,,,,,,,,,
+313,34,2,Monday,6:15 AM,6:30 AM,6:40 AM,11:30 AM,7:00 PM,5:15 PM,,,,,,1:15 PM,100,,Mild,3:25 PM,120,Aerobic,Moderate,,,,,,,,,,,,,
+314,34,3,Tuesday,6:15 AM,6:30 AM,6:45 AM,11:30 AM,7:15 PM,,,,,,,2:40 PM,30,,Moderate,,,,,,,,,,,,,,,,,
+315,34,4,Wednesday,6:00 AM,6:30 AM,6:45 AM,11:30 AM,6:45 PM,,,,,,,2:30 PM,120,Aerobic,Moderate,7:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,
+316,34,5,Thursday,8:00 AM,9:00 AM,,11:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+317,34,6,Friday,6:10 AM,6:35 AM,6:45 AM,11:30 AM,7:00 PM,5:00 PM,,,,,,2:30 PM,120,Aerobic,,,,,,,,,,,,,,,,,,
+318,34,7,Saturday,5:20 AM,5:30 AM,5:45 AM,11:00 AM,7:10 PM,5:30 PM,,,,,,9:00 AM,20,Aerobic,Intense,,,,,,,,,,,,,,,,,
+319,34,8,Sunday,7:40 AM,7:40 AM,9:00 AM,12:00 PM,6:30 PM,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+320,34,9,Monday,6:15 AM,6:20 AM,6:45 AM,11:30 AM,6:15 PM,4:00 PM,5:00 PM,,,,,2:30 PM,80,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+321,47,0,Saturday,6:30 AM,10:15 AM,6:30 AM,12:20 PM,6:00 PM,7:05 AM,,,,,,12:30 PM,30,Aerobic,Mild,2:30 PM,60,Aerobic,Mild,,,,,,,,,,,,,
+322,47,1,Sunday,6:30 AM,8:10 AM,7:13 AM,12:17 PM,,4:20 PM,,,,,,1:30 PM,110,,Moderate,7:30 PM,30,,Mild,,,,,,,,,,,,,
+323,47,2,Monday,6:15 AM,6:50 AM,6:53 AM,12:50 PM,7:15 PM,10:20 AM,3:45 PM,,,,,5:45 PM,20,Aerobic,Mild,,,Aerobic,Moderate,,,,,,,,,,,,,
+324,47,3,Tuesday,6:15 AM,6:37 AM,6:53 AM,12:50 PM,7:10 PM,10:15 AM,3:30 PM,4:45 PM,,,,7:00 AM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,
+325,47,4,Wednesday,6:15 AM,6:45 AM,6:40 AM,12:50 PM,3:35 PM,,,,,,,3:45 PM,75,,Moderate,,,,,,,,,,,,,,,,,
+326,47,5,Thursday,7:30 AM,,8:00 AM,2:00 PM,7:10 PM,11:50 AM,5:00 PM,,,,,3:45 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,
+327,47,6,Friday,6:20 AM,6:30 AM,6:40 AM,12:50 PM,6:00 PM,10:10 AM,3:30 PM,,,,,7:00 AM,10,Aerobic,Mild,3:15 PM,10,Aerobic,Mild,,,,,,,,,,,,,
+328,47,7,Saturday,7:00 AM,7:40 AM,8:00 AM,1:00 PM,7:45 PM,3:30 PM,,,,,,8:00 AM,30,Aerobic,Mild,5:50 PM,120,Aerobic,Mild,,,,,,,,,,,,,
+329,47,8,Sunday,7:00 AM,8:20 AM,8:30 AM,12:50 PM,7:00 PM,10:15 AM,4:45 PM,,,,,1:45 PM,75,Aerobic,Moderate,4:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,
+330,47,9,Monday,6:20 AM,6:45 AM,7:30 AM,12:15 PM,6:10 PM,10:15 AM,4:10 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+331,5,0,Saturday,6:00 AM,10:21 AM,6:30 AM,12:15 PM,7:00 PM,3:00 PM,4:30 PM,,,,,1:00 PM,30,Aerobic,Mild,3:30 PM,33,Aerobic,Moderate,7:00 PM,,Wine,,,,,,,,,,
+332,5,1,Sunday,7:30 AM,,8:15 AM,1:00 PM,7:15 PM,4:00 PM,,,,,,10:00 AM,90,Aerobic,Moderate,2:00 PM,30,Aerobic,Moderate,,,,,,,,,,,,,
+333,5,2,Monday,5:00 AM,6:45 AM,8:15 AM,12:30 PM,7:15 PM,5:00 PM,,,,,,5:30 AM,60,Aerobic,Intense,,,,,,,,,,,,,,,,,
+334,5,3,Tuesday,5:10 AM,6:45 AM,,,,5:25 AM,,,,,,5:30 AM,65,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+335,5,4,Wednesday,6:00 AM,6:40 AM,6:45 AM,12:30 PM,7:00 PM,4:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+336,5,5,Thursday,5:00 AM,6:45 AM,8:00 AM,12:45 PM,6:15 PM,5:30 AM,,,,,,5:30 AM,45,Aerobic,Moderate,,,,,6:00 PM,,Wine,,,,,,,,,,
+337,5,6,Friday,5:30 AM,6:59 AM,6:30 AM,12:30 PM,7:00 PM,3:00 PM,,,,,,7:00 AM,55,,,,,,,,,,,,,,,,,,,
+338,5,7,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+339,5,8,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+340,5,9,Monday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+341,8,0,Saturday,7:10 AM,1:37 PM,7:45 AM,,7:00 PM,2:00 PM,,,,,,4:00 PM,120,Aerobic,Mild,,,,,,,,,,,,,,,,,
+342,8,1,Sunday,7:30 AM,8:59 AM,7:45 AM,11:30 AM,6:25 PM,3:00 PM,,,,,,1:00 PM,90,Aerobic,Mild,4:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,
+343,8,2,Monday,6:50 AM,7:20 AM,7:30 AM,7:30 AM,11:00 AM,7:00 AM,3:00 PM,4:15 PM,,,,6:00 PM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,
+344,8,3,Tuesday,6:50 AM,7:29 AM,7:15 AM,11:00 AM,7:20 PM,3:00 PM,4:00 PM,,,,,1:00 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+345,8,4,Wednesday,6:55 AM,7:48 AM,7:00 AM,11:00 AM,7:25 PM,3:00 PM,4:00 PM,,,,,6:30 PM,10,Aerobic,Mild,,,,,,,,,,,,,,,,,
+346,8,5,Thursday,6:30 AM,8:31 AM,8:30 AM,11:30 AM,7:45 PM,3:00 PM,4:00 PM,1:45 PM,,,,12:30 PM,90,Aerobic,Mild,6:00 PM,90,Aerobic,Intense,,,,,,,,,,,,,
+347,8,6,Friday,7:00 AM,7:20 AM,7:40 AM,11:00 AM,8:15 PM,3:00 PM,,7:45 PM,,,,5:30 PM,120,Aerobic,Mild,,,,,,,,,,,,,,,,,
+348,8,7,Saturday,7:00 AM,7:56 AM,7:30 AM,12:20 PM,7:00 PM,3:30 PM,,,,,,9:00 AM,90,Aerobic,Intense,6:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,
+349,8,8,Sunday,7:30 AM,7:50 AM,7:30 AM,3:00 PM,6:30 PM,11:30 AM,4:30 PM,,,,,12:30 PM,120,Aerobic,Mild,4:00 PM,120,Aerobic,Moderate,,,,,,,,,,,,,
+350,8,9,Monday,7:10 AM,7:20 AM,7:30 AM,11:00 AM,6:20 PM,3:00 PM,4:30 PM,,,,,1:00 PM,60,Aerobic,,,,,,,,,,,,,,,,,,
+351,21,0,Saturday,6:00 AM,11:19 AM,7:45 AM,,7:00 PM,10:45 AM,1:45 PM,,,,,3:00 PM,120,Aerobic,Intense,,,,,,,,,,,,,,,,,
+352,21,1,Sunday,8:00 AM,8:17 AM,9:00 AM,,6:15 PM,11:30 AM,3:30 PM,5:00 PM,,,,1:00 PM,120,Aerobic,Intense,4:00 PM,40,Aerobic,Moderate,,,,,,,,,,,,,
+353,21,2,Monday,7:00 AM,7:19 AM,7:30 AM,12:45 PM,7:00 PM,10:30 AM,3:40 PM,,,,,1:10 PM,40,Aerobic,Moderate,4:00 PM,90,Aerobic,Intense,,,,,,,,,,,,,
+354,21,3,Tuesday,6:55 AM,7:25 AM,7:30 AM,12:45 PM,7:00 PM,3:30 PM,5:30 PM,,,,,5:00 PM,120,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+355,21,4,Wednesday,6:55 AM,7:33 AM,7:30 AM,12:45 PM,7:30 PM,3:30 PM,,,,,,5:30 PM,90,Aerobic,Intense,,,,,,,,,,,,,,,,,
+356,21,5,Thursday,7:50 AM,8:08 AM,9:00 AM,11:30 AM,7:45 PM,12:30 PM,3:30 PM,5:30 PM,,,,5:00 PM,60,Aerobic,Moderate,6:00 PM,90,Aerobic,Intense,,,,,,,,,,,,,
+357,21,6,Friday,7:00 AM,7:30 AM,7:40 AM,12:45 PM,8:15 PM,3:30 PM,4:30 PM,,,,,3:30 PM,40,Aerobic,Moderate,8:00 PM,30,Aerobic,Moderate,,,,,,,,,,,,,
+358,21,7,Saturday,7:45 AM,8:01 AM,8:00 AM,12:15 PM,,,,,,,,9:00 AM,90,Aerobic,Intense,,,,,,,,,,,,,,,,,
+359,21,8,Sunday,8:00 AM,8:10 AM,8:30 AM,2:00 PM,6:30 PM,10:45 AM,4:00 PM,,,,,11:30 AM,120,Aerobic,Intense,2:00 PM,120,Aerobic,Moderate,,,,,,,,,,,,,
+360,21,9,Monday,7:10 AM,7:30 AM,7:40 AM,12:45 PM,,3:45 PM,,,,,,4:00 PM,90,Aerobic,Intense,,,,,,,,,,,,,,,,,
+361,3,0,Thursday,,5:30 PM,,,6:30 PM,8:07 PM,,,,,,4:30 PM,20,Aerobic,Moderate,7:15 PM,30,Aerobic,,,,,,,,,,,,,,
+362,3,1,Friday,6:25 AM,6:59 AM,7:45 AM,10:45 AM,6:37 PM,2:00 PM,3:45 PM,7:20 PM,,,,11:30 AM,30,Aerobic,Moderate,5:00 PM,60,Aerobic,Intense,,,,,,,,,,,,,
+363,3,2,Saturday,7:30 AM,7:30 PM,8:15 AM,1:00 PM,5:45 PM,10:30 AM,6:45 PM,,,,,10:00 AM,60,Aerobic,Intense,2:00 PM,240,Aerobic,Moderate,,,,,,,,,,,,,
+364,3,3,Sunday,7:51 AM,7:20 PM,8:00 AM,1:20 PM,6:00 PM,10:30 AM,7:30 PM,,,,,4:00 PM,30,Aerobic,,5:00 PM,30,Aerobic,Moderate,,,,,,,,,,,,,
+365,3,4,Monday,6:52 AM,7:33 PM,7:10 AM,10:45 AM,6:10 PM,2:00 PM,4:00 PM,,,,,1:30 PM,30,Aerobic,Moderate,7:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,
+366,3,5,Tuesday,6:40 AM,7:18 PM,7:30 AM,10:45 AM,6:30 PM,4:05 PM,8:00 PM,,,,,11:30 AM,30,Aerobic,Moderate,3:25 PM,60,Aerobic,Moderate,,,,,,,,,,,,,
+367,3,6,Wednesday,6:45 AM,7:30 PM,7:00 AM,10:45 AM,6:45 PM,2:00 PM,4:00 PM,,,,,1:00 PM,30,Aerobic,Moderate,4:20 PM,60,Aerobic,Moderate,,,,,,,,,,,,,
+368,3,7,Thursday,6:00 AM,8:11 PM,6:30 AM,10:45 AM,5:35 PM,2:00 PM,4:05 PM,6:35 PM,,,,11:30 AM,30,Aerobic,,4:15 PM,40,Aerobic,Moderate,,,,,,,,,,,,,
+369,3,8,Friday,7:00 AM,8:48 PM,7:20 AM,10:45 AM,6:40 PM,4:05 PM,8:10 PM,,,,,2:00 PM,30,,Moderate,5:00 PM,60,Aerobic,Intense,,,,,,,,,,,,,
+370,3,9,Saturday,6:30 AM,8:30 PM,7:00 AM,1:00 PM,6:30 PM,12:00 PM,3:00 PM,8:15 PM,,,,11:00 AM,60,Aerobic,Moderate,4:15 PM,75,Aerobic,Moderate,,,,,,,,,,,,,
+371,19,0,Thursday,,7:30 PM,,12:00 PM,7:16 PM,3:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+372,19,1,Friday,5:15 AM,7:55 PM,7:00 AM,2:15 PM,7:06 PM,4:35 PM,,,,,,5:15 AM,30,Resistance,Mild,5:10 PM,1,Aerobic,Moderate,7:06 PM,,Wine,,,,,,,,,,
+373,19,2,Saturday,7:00 AM,8:00 PM,8:17 AM,12:45 PM,7:15 PM,1:30 PM,3:30 PM,6:30 PM,8:15 PM,,,10:30 AM,40,Aerobic,Mild,,,,,7:00 PM,,Wine,,,,,,,,,,
+374,19,3,Sunday,7:15 AM,9:17 PM,7:45 AM,12:27 PM,4:45 PM,4:30 PM,7:55 PM,,,,,3:00 PM,40,Aerobic,Moderate,,,,,,,Wine,,,,,,,,,,
+375,19,4,Monday,6:00 AM,9:24 PM,7:15 AM,12:30 PM,7:00 PM,2:30 PM,3:47 PM,6:30 PM,,,,5:10 PM,21,Aerobic,Mild,,,,,,,,,,,,,,,,,
+376,19,5,Tuesday,6:15 AM,11:47 PM,7:05 AM,12:30 PM,7:15 PM,3:33 PM,4:30 PM,,,,,5:10 PM,25,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+377,19,6,Wednesday,6:20 AM,10:10 PM,7:10 AM,12:10 PM,7:10 PM,,,,,,,5:17 PM,25,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+378,19,7,Thursday,6:35 AM,10:35 PM,7:25 AM,1:50 PM,7:10 PM,10:30 PM,4:42 PM,9:12 PM,,,,5:10 PM,21,Aerobic,,,,,,,,,,,,,,,,,,
+379,19,8,Friday,6:17 AM,9:49 PM,7:10 AM,12:30 PM,7:35 PM,6:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+380,19,9,Saturday,7:00 AM,12:21 PM,8:00 AM,1:00 PM,8:00 PM,6:45 PM,,,,,,11:07 AM,50,Aerobic,Mild,,,,,,,,,,,,,,,,,
+381,22,0,Monday,8:00 AM,12:50 PM,8:33 AM,5:43 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+382,22,1,Tuesday,6:30 AM,,6:50 AM,12:02 PM,6:30 PM,3:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+383,22,2,Wednesday,7:45 AM,10:30 AM,,1:20 PM,6:17 PM,8:50 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+384,22,3,Thursday,8:38 AM,10:00 AM,9:00 AM,12:05 PM,,2:25 PM,,,,,,3:05 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,
+385,22,4,Friday,6:30 AM,,6:50 AM,12:00 PM,6:55 PM,6:30 PM,,,,,,3:30 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+386,22,5,Saturday,6:33 AM,6:45 AM,6:50 AM,12:00 PM,,3:20 PM,8:23 PM,,,,,2:13 PM,37,Aerobic,,,,,,,,,,,,,,,,,,
+387,22,6,Sunday,6:30 AM,6:39 PM,6:50 AM,12:00 PM,,3:20 PM,5:55 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+388,22,7,Monday,6:30 AM,6:43 AM,6:50 AM,12:00 PM,,,,,,,,3:30 PM,60,Aerobic,,,,,,,,,,,,,,,,,,
+389,22,8,Tuesday,6:30 AM,6:43 AM,6:50 AM,12:00 PM,6:15 PM,,,,,,,4:00 PM,120,Aerobic,Moderate,7:00 PM,120,Aerobic,,,,,,,,,,,,,,
+390,22,9,Wednesday,6:30 AM,6:43 AM,6:50 AM,,6:00 PM,8:20 AM,,,,,,,,,,,,,,,,,,,,,,,,,,
+391,39,4,Friday,8:15 AM,12:56 PM,9:10 AM,12:15 PM,6:45 PM,1:00 PM,,,,,,3:15 PM,135,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+392,39,5,Saturday,8:15 AM,6:28 AM,8:23 AM,10:10 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+393,39,6,Sunday,9:00 AM,8:00 PM,9:10 AM,2:30 PM,6:30 PM,7:17 PM,8:30 PM,9:04 PM,,,,11:30 AM,90,Aerobic,Mild,,,,,,,,,,,,,,,,,
+394,39,7,Monday,8:20 AM,6:32 AM,,12:20 PM,,1:00 PM,3:24 PM,,,,,10:47 AM,45,Aerobic,Mild,4:15 PM,35,Aerobic,Intense,,,,,,,,,,,,,
+395,39,8,Tuesday,6:20 AM,6:30 AM,6:30 AM,10:20 AM,,,,,,,,10:47 AM,45,Aerobic,Mild,2:30 PM,60,Aerobic,Moderate,,,,,,,,,,,,,
+396,39,9,Wednesday,6:20 AM,6:35 AM,6:36 AM,10:20 AM,9:45 PM,5:30 PM,,,,,,11:00 AM,45,Aerobic,Mild,3:15 PM,135,Aerobic,Intense,,,,,,,,,,,,,
+397,39,10,Thursday,6:20 AM,6:32 AM,6:35 AM,10:20 AM,8:30 PM,3:00 PM,5:00 PM,,,,,11:00 AM,45,Aerobic,Mild,2:15 PM,60,Aerobic,Moderate,,,,,,,,,,,,,
+398,39,11,Friday,6:20 AM,6:33 AM,6:35 AM,10:20 AM,,,,,,,,2:15 PM,35,Aerobic,Moderate,11:00 PM,45,Aerobic,Mild,,,,,,,,,,,,,
+399,39,12,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+400,39,13,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+401,10,8,Tuesday,5:50 AM,5:45 PM,6:20 AM,10:40 AM,5:00 PM,9:40 AM,,,,,,3:15 PM,45,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+402,10,9,Wednesday,6:00 AM,,6:30 AM,10:45 AM,8:01 PM,9:00 AM,,,,,,8:15 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+403,10,10,Thursday,6:00 AM,,6:30 AM,10:30 AM,6:00 PM,9:00 AM,2:30 PM,,,,,1:40 PM,,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+404,10,11,Friday,8:00 AM,,8:30 AM,10:45 AM,,9:40 AM,2:15 PM,9:30 PM,,,,3:15 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+405,10,12,Saturday,9:00 AM,,10:00 AM,3:00 PM,11:00 PM,10:00 PM,,,,,,2:00 PM,80,Aerobic,Mild,,,,,,,,,,,,,,,,,
+406,10,13,Sunday,9:30 AM,,10:00 AM,12:00 PM,6:00 PM,1:00 PM,,,,,,3:30 PM,90,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+407,10,14,Monday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+408,10,15,Tuesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+409,10,16,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+410,10,17,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+411,6,0,Saturday,8:30 AM,1:15 PM,9:00 AM,1:24 PM,7:00 PM,3:35 PM,,,,,,2:30 PM,60,Aerobic,Mild,4:00 PM,40,Aerobic,Moderate,,,,,,,,,,,,,
+412,6,1,Sunday,8:28 AM,11:03 AM,8:50 AM,12:30 PM,6:40 PM,10:24 AM,8:30 PM,,,,,1:00 PM,100,Aerobic,Mild,,,,,,,,,,,,,,,,,
+413,6,2,Monday,6:25 AM,7:03 AM,6:32 AM,11:20 AM,5:30 PM,8:00 PM,,,,,,4:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+414,6,3,Tuesday,6:30 AM,7:19 AM,6:30 AM,11:30 AM,6:15 PM,,,,,,,12:00 PM,45,Aerobic,Mild,,,,,,,,,,,,,,,,,
+415,6,4,Wednesday,6:00 AM,7:20 AM,6:40 AM,11:20 AM,7:00 PM,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+416,6,5,Thursday,6:50 AM,7:11 AM,6:55 AM,11:00 AM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+417,6,6,Friday,6:20 AM,7:00 AM,6:50 AM,11:30 AM,7:00 PM,,,,,,,7:00 PM,120,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+418,6,7,Saturday,7:50 AM,,8:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+419,6,8,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+420,6,9,Monday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+421,27,0,Saturday,8:30 AM,1:20 PM,9:00 AM,1:25 PM,6:50 PM,4:40 PM,6:02 PM,10:20 PM,,,,3:50 PM,35,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+422,27,1,Sunday,10:00 AM,10:50 AM,10:20 AM,12:30 PM,7:20 PM,,10:11 PM,9:00 PM,,,,5:30 PM,90,Aerobic,Intense,,,,,,,,,,,,,,,,,
+423,27,2,Monday,6:35 AM,7:00 AM,6:45 AM,10:25 AM,5:50 PM,3:40 PM,8:46 PM,9:50 PM,,,,12:15 PM,40,Aerobic,,,,,,,,,,,,,,,,,,
+424,27,3,Tuesday,6:27 AM,6:59 AM,6:35 AM,11:25 AM,6:30 PM,3:45 PM,9:50 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+425,27,4,Wednesday,6:37 AM,7:16 AM,6:45 AM,11:30 AM,7:00 PM,4:00 PM,5:50 PM,9:40 PM,,,,12:40 PM,40,Aerobic,Mild,,,,,,,,,,,,,,,,,
+426,27,5,Thursday,6:50 AM,2:13 AM,6:58 AM,11:20 AM,6:25 PM,5:10 PM,8:00 PM,,,,,3:55 PM,50,Aerobic,Mild,,,,,,,,,,,,,,,,,
+427,27,6,Friday,6:44 AM,7:18 AM,6:50 AM,11:30 AM,7:00 PM,8:50 PM,3:40 PM,,,,,3:15 PM,120,Aerobic,Mild,7:30 PM,120,Aerobic,Moderate,,,,,,,,,,,,,
+428,27,7,Saturday,7:08 AM,,7:45 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+429,27,8,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+430,27,9,Monday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+431,29,4,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+432,29,5,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+433,29,6,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+434,29,7,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+435,29,8,Sunday,6:10 AM,7:00 AM,9:20 AM,2:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+436,29,9,Monday,7:00 AM,7:20 AM,8:16 AM,12:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+437,29,10,Tuesday,6:00 AM,7:00 AM,7:10 AM,11:30 AM,,,,,,,,11:10 AM,15,,,,,,,,,,,,,,,,,,,
+438,29,11,Wednesday,6:00 AM,,7:00 AM,1:30 PM,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+439,29,12,Thursday,7:00 AM,,9:30 AM,2:00 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+440,29,13,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+441,33,1,Tuesday,7:00 AM,7:12 AM,7:20 AM,12:00 PM,6:40 PM,10:30 AM,3:00 PM,4:30 PM,,,,,,,,,,,,,,,,,,,,,,,,
+442,33,2,Wednesday,7:00 AM,7:00 AM,7:15 AM,12:00 PM,,10:20 AM,3:30 PM,,,,,9:45 AM,35,Aerobic,Mild,8:00 PM,50,Aerobic,Mild,,,,,,,,,,,,,
+443,33,3,Thursday,7:00 AM,7:10 AM,7:20 AM,12:00 PM,,,,,,,,8:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+444,33,4,Friday,7:00 AM,7:05 AM,7:10 AM,12:00 PM,7:30 PM,9:45 AM,3:20 PM,4:30 PM,,,,9:45 AM,35,Aerobic,Mild,3:40 PM,30,Aerobic,Moderate,,,,,,,,,,,,,
+445,33,5,Saturday,8:10 AM,9:10 AM,9:30 AM,1:00 PM,7:45 PM,3:00 PM,10:00 AM,,,,,,,,,4:45 PM,120,Aerobic,Moderate,,,,,,,,,,,,,
+446,33,6,Sunday,8:30 AM,11:35 AM,10:00 AM,,7:00 PM,3:00 PM,9:00 AM,12:00 PM,,,,4:30 PM,90,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+447,33,7,Monday,7:00 AM,7:30 AM,7:20 AM,12:00 PM,6:50 PM,9:50 AM,3:00 PM,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,
+448,33,8,Tuesday,6:45 AM,7:00 AM,7:00 AM,12:00 PM,7:45 PM,3:00 PM,9:50 PM,4:30 PM,,,,6:00 PM,50,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+449,33,9,Wednesday,7:00 AM,7:15 AM,7:20 AM,11:45 AM,7:30 PM,9:45 AM,3:00 PM,,,,,9:45 AM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+450,33,10,Thursday,8:00 AM,8:45 AM,9:00 AM,,6:00 PM,3:00 PM,12:00 PM,,,,,12:00 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+1,143,0,Thursday,6:20 AM,4:34 PM,,3:07 PM,8:25 PM,,,,,,,,,,,,,,,9:30 PM,2,Beer,Vodka,,,,,,,,,11:40 PM
+2,143,1,Friday,5:40 AM,5:51 AM,,11:58 AM,7:10 PM,7:50 AM,9:39 AM,3:44 PM,,,,4:40 PM,100,Aerobic,Intense,,,,,,,,,,,,,,,,,10:15 PM
+3,143,2,Saturday,8:37 AM,8:50 AM,,2:30 PM,4:55 PM,9:30 AM,11:45 AM,2:10 PM,9:45 PM,,,10:14 AM,46,Aerobic,Moderate,,,,,1:54 PM,5,Beer,Beer,Beer,Vodka,Vodka,,,,,,11:00 PM
+4,143,3,Sunday,7:30 AM,8:15 AM,8:45 AM,12:40 PM,7:55 PM,1:23 PM,3:13 PM,,,,,,,,,,,,,12:12 PM,4,Beer,Beer,Tequila,Tequila,,,,,,,10:15 PM
+5,143,4,Monday,4:55 AM,5:06 AM,7:56 AM,12:18 PM,7:42 PM,10:33 AM,1:55 PM,5:26 PM,,,,6:11 AM,50,Aerobic,Intense,,,,,6:45 PM,2,Gin,Wine,,,,,,,,,10:10 PM
+6,143,5,Tuesday,4:55 AM,5:10 AM,7:50 AM,12:45 PM,8:23 PM,10:17 AM,11:27 AM,2:45 PM,5:06 PM,9:02 PM,,6:11 AM,52,Aerobic,Intense,,,,,8:18 PM,2,Tequila,Tequila,,,,,,,,,10:15 PM
+7,143,6,Wednesday,4:55 AM,5:13 AM,7:36 AM,12:13 PM,7:53 PM,9:47 AM,12:50 PM,4:42 PM,8:40 PM,,,6:06 AM,48,Aerobic,Moderate,,,,,7:33 PM,3,Tequila,Tequila,Beer,,,,,,,,
+8,143,7,Thursday,6:55 AM,7:20 AM,7:55 AM,12:43 PM,7:12 PM,2:23 PM,,,,,,,,,,,,,,7:00 PM,3,Tequila,Tequila,Wine,,,,,,,,
+9,143,8,Friday,5:00 AM,5:15 AM,7:48 AM,12:06 PM,9:33 PM,8:35 AM,11:18 AM,11:55 PM,,,,6:16 AM,44,Aerobic,Moderate,,,,,4:38 PM,6,Beer,Tequila,Soju,Soju,Beer,Beer,,,,,3:50 AM
+10,143,9,Saturday,10:00 AM,10:27 AM,10:34 AM,1:25 PM,7:10 PM,7:45 PM,,,,,,,,,,,,,,1:15 PM,7,Beer,Beer,Beer,Vodka,Beer,Beer,Beer,,,,11:30 PM
+11,128,0,Friday,6:30 AM,11:40 AM,7:30 AM,12:15 PM,20:40 PM,,,,,,,,,,,,,,,12:15 PM,3,Beer,Liquor,Beer,,,,,,,,10:00 PM
+12,128,1,Saturday,7:30 AM,10:17 PM,8:15 AM,12:12 PM,8:30 PM,,,,,,,,,,,,,,,5:30 PM,2,Liquor,Liquor,,,,,,,,,11:00 PM
+13,128,2,Sunday,9:24 AM,8:50 PM,9:45 AM,12:00 PM,8:15 PM,,,,,,,,,,,,,,,12:00 PM,2,Beer,Beer,,,,,,,,,9:15 PM
+14,128,3,Monday,3:00 AM,8:39 PM,3:45 AM,11:00 AM,7:09 PM,9:00 AM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+15,128,4,Tuesday,3:00 AM,,3:45 AM,12:00 PM,8:00 PM,,,,,,,7:30 AM,240,Aerobic,Moderate,12:30 PM,90,Aerobic,Moderate,6:45 PM,1,Wine,,,,,,,,,,9:15 PM
+16,128,5,Wednesday,3:00 AM,7:00 PM,3:45 AM,11:15 AM,7:45 PM,6:15 PM,,,,,,7:40 AM,100,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:00 PM
+17,128,6,Thursday,3:00 AM,7:00 PM,3:45 AM,11:00 AM,8:30 PM,8:45 AM,7:20 PM,,,,,,,,,,,,,5:00 PM,1,Beer,,,,,,,,,,9:30 PM
+18,128,7,Friday,7:30 AM,8:30 PM,10:07 AM,2:30 PM,9:30 PM,7:20 PM,,,,,,,,,,,,,,12:50 PM,3,Beer,Beer,Beer,,,,,,,,10:30 PM
+19,128,8,Saturday,8:15 AM,9:00 PM,10:30 AM,2:30 PM,5:00 PM,,,,,,,,,,,,,,,3:20 PM,3,Wine,Liquor,Liqour,,,,,,,,10:00 PM
+20,128,9,Sunday,8:00 AM,9:10 PM,9:30 AM,12:30 PM,8:30 PM,6:40 PM,,,,,,,,,,,,,,3:00 PM,1,Wine,,,,,,,,,,
+21,177,0,Monday,,11:15 AM,,1:45 PM,8:00 PM,10:30 AM,2:45 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,11:15 PM
+22,177,1,Tuesday,6:00 AM,9:15 AM,7:00 AM,1:05 PM,9:00 PM,11:20 AM,2:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:15 AM
+23,177,2,Wednesday,6:15 AM,10:30 PM,7:30 AM,12:20 PM,6:45 PM,10:30 AM,9:25 PM,,,,,,,,,,,,,7:00 PM,1,Wine,,,,,,,,,,11:00 PM
+24,177,3,Thursday,6:00 AM,11:05 PM,7:00 AM,1:15 PM,8:00 PM,9:15 AM,,,,,,,,Aerobic,,,,,,,,,,,,,,,,,,12:00 AM
+25,177,4,Friday,5:15 AM,10:45 PM,7:00 AM,1:30 PM,7:30 PM,9:30 AM,,,,,,5:20 AM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+26,177,5,Saturday,7:00 AM,10:50 PM,7:45 AM,2:30 PM,7:00 PM,9:30 AM,11:30 AM,,,,,12:30 PM,40,Resistance,Moderate,,,,,6:30 PM,1,Cocktail,,,,,,,,,,11:00 PM
+27,177,6,Sunday,6:15 AM,10:20 PM,9:40 AM,,7:15 PM,7:00 AM,10:30 AM,2:30 PM,9:30 PM,,,7:00 AM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,11:45 PM
+28,177,7,Monday,6:15 AM,10:00 PM,7:00 AM,1:45 PM,8:00 PM,9:00 AM,9:30 PM,,,,,7:15 PM,30,,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+29,177,8,Tuesday,6:00 AM,12:00 AM,7:00 AM,1:20 PM,8:40 PM,11:00 AM,9:30 PM,,,,,,,Resistance,,,,,,,,,,,,,,,,,,12:45 AM
+30,177,9,Wednesday,6:15 AM,,9:00 AM,1:30 PM,7:30 PM,6:30 AM,11:00 AM,3:45 PM,,,,8:30 AM,25,Both,Moderate,,,,,,,,,,,,,,,,,
+31,144,0,Wednesday,,7:25 PM,,,6:30 PM,,,9:15 PM,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+32,144,1,Thursday,6:00 AM,6:30 AM,6:30 AM,12:30 PM,6:30 PM,10:30 AM,3:30 PM,,,,,8:30 AM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,2:00 AM
+33,144,2,Friday,6:00 AM,6:30 AM,7:30 AM,12:30 PM,7:00 PM,10:30 AM,3:45 PM,,,,,,,,Mild,,,,,,,,,,,,,,,,,10:30 PM
+34,144,3,Saturday,6:00 AM,6:20 PM,8:30 AM,2:00 PM,8:00 PM,11:00 AM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+35,144,4,Sunday,6:45 AM,7:00 AM,7:30 AM,12:30 PM,6:30 PM,,,,,,,7:30 AM,,,,,,,,,,,,,,,,,,,,
+36,144,5,Monday,5:45 AM,6:10 AM,7:30 AM,12:30 PM,,10:30 AM,2:30 PM,4:30 PM,,,,,,,,,,,,,,,,,,,,,,,,
+37,144,6,Tuesday,6:15 AM,6:34 AM,7:15 AM,11:30 AM,6:00 PM,,,,,7:30 PM,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+38,144,7,Wednesday,5:56 AM,6:06 PM,8:30 AM,2:30 PM,6:45 PM,,4:00 PM,,,8:45 PM,,,,,,,,,,,,,,,,,,,,,,
+39,144,8,Thursday,6:50 AM,7:00 AM,7:30 AM,1:00 PM,7:30 PM,,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+40,144,9,Friday,6:10 AM,6:10 AM,9:00 AM,,,7:00 AM,,,,,,8:00 AM,75,Aerobic,Mild,,,,,,,,,,,,,,,,,
+41,182,0,Friday,3:45 AM,5:45 AM,4:00 AM,,,12:00 PM,3:30 PM,,,,,10:30 AM,60,Both,Intense,,,,,,,,,,,,,,,,,9:00 PM
+42,182,1,Saturday,5:45 AM,6:00 AM,6:02 AM,,6:30 PM,10:15 AM,3:10 PM,,,,,8:15 AM,60,Both,Moderate,,,,,6:00 PM,3,Tequila,Tequila,Tequila,,,,,,,,11:30 PM
+43,182,2,Sunday,6:00 AM,6:00 AM,6:05 AM,12:30 PM,7:00 PM,3:00 PM,,,,,,,,,,,,,,12:00 PM,2,Champagne,Champagne,,,,,,,,,8:30 PM
+44,182,3,Monday,6:25 AM,6:30 AM,7:30 AM,,7:45 PM,10:00 AM,3:30 PM,6:20 PM,,,,1:30 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:00 PM
+45,182,4,Tuesday,3:45 AM,7:55 AM,4:15 AM,12:15 PM,7:00 PM,8:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,8:45 PM
+46,182,5,Wednesday,6:45 AM,8:15 AM,7:30 AM,12:00 PM,,4:00 PM,,,,,,9:30 AM,60,Resistance,Mild,,,,,,,,,,,,,,,,,12:45 AM
+47,182,6,Thursday,4:45 AM,8:45 AM,5:15 AM,12:00 PM,5:00 PM,8:45 AM,6:00 PM,,,,,10:00 AM,60,Aerobic,Intense,,,,,4:00 PM,1,Bourbon,,,,,,,,,,8:00 PM
+48,182,7,Friday,4:45 AM,,5:15 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+49,182,8,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+50,182,9,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+51,50,0,Monday,,11:45 AM,,1:35 PM,5:55 PM,9:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+52,50,1,Tuesday,6:33 AM,6:55 AM,7:20 AM,12:02 PM,5:30 PM,3:30 PM,7:45 PM,,,,,10:00 AM,60,Aerobic,Moderate,6:00 PM,60,Aerobic,Mild,,,,,,,,,,,,,10:15 PM
+53,50,2,Wednesday,6:25 AM,6:53 AM,7:05 AM,12:10 PM,5:30 PM,9:08 AM,10:51 AM,8:10 PM,,,,6:00 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,10:00 PM
+54,50,3,Thursday,6:40 AM,7:05 AM,12:20 PM,5:45 PM,,,,,,,,3:15 PM,150,Aerobic,Mild,,,,,,,,,,,,,,,,,10:05 PM
+55,50,4,Friday,6:25 AM,8:54 AM,7:15 AM,11:50 AM,7:15 PM,8:55 AM,4:51 PM,6:30 PM,10:15 PM,,,4:30 PM,30,Aerobic,,,,,,,,,,,,,,,,,,11:00 PM
+56,50,5,Saturday,6:15 AM,7:50 AM,7:50 AM,11:45 AM,7:35 PM,2:45 PM,3:39 PM,5:45 PM,,,,1:00 PM,180,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:20 PM
+57,50,6,Sunday,6:10 AM,10:15 AM,7:30 AM,,6:15 AM,2:15 PM,4:54 PM,8:50 PM,,,,,,,,,,,,6:20 PM,1,Wine,,,,,,,,,,9:45 PM
+58,50,7,Monday,7:00 AM,7:28 AM,7:30 AM,12:05 PM,6:40 PM,1:19 PM,5:10 PM,,,,,9:15 AM,45,Aerobic,Mild,,,,,,,,,,,,,,,,,10:00 PM
+59,50,8,Tuesday,6:45 AM,7:11 AM,7:15 AM,12:10 PM,6:20 PM,8:15 PM,,,,,,6:00 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,
+60,50,9,Wednesday,6:35 AM,7:03 AM,8:05 AM,12:05 PM,5:20 PM,9:45 AM,10:55 AM,3:05 PM,5:00 PM,,,6:00 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,9:30 PM
+61,147,0,Tuesday,6:00 AM,8:00 AM,8:00 AM,1:00 PM,8:00 PM,9:00 AM,,,,,,5:30 PM,60,Aerobic,Moderate,,,,,7:00 PM,1,Wine,,,,,,,,,,10:00 PM
+62,147,1,Wednesday,6:00 AM,6:13 AM,7:00 AM,12:30 PM,6:45 PM,8:40 AM,11:45 AM,10:45 PM,,,,9:50 PM,45,Aerobic,Moderate,,,,,,,,,,,,,,,,,12:00 AM
+63,147,2,Thursday,7:30 AM,6:25 AM,7:30 AM,,7:45 PM,9:30 AM,12:00 PM,,,9:30 PM,,10:00 PM,45,Aerobic,,,,,,,,,,,,,,,,,,11:30 PM
+64,147,3,Friday,6:00 AM,6:19 AM,8:00 AM,12:00 PM,7:00 PM,,2:00 PM,8:30 PM,,5:00 PM,,9:00 PM,60,Aerobic,,,,,,,,,,,,,,,,,,11:30 PM
+65,147,4,Saturday,5:00 AM,6:20 AM,6:45 AM,12:30 PM,7:15 PM,,5:00 PM,,,,,5:00 PM,60,Aerobic,Moderate,,,,,7:30 PM,1,Beer,,,,,,,,,,12:00 AM
+66,147,5,Sunday,7:00 AM,7:15 AM,8:00 AM,12:00 PM,8:00 PM,9:45 AM,4:00 PM,10:00 PM,,,,8:30 AM,60,,,,,,,10:00 PM,1,Wine,,,,,,,,,,11:30 PM
+67,147,6,Monday,6:30 AM,7:00 AM,7:30 AM,,5:30 PM,10:00 AM,,10:15 PM,1:00 PM,,,11:00 AM,75,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:30 PM
+68,147,7,Tuesday,6:00 AM,6:25 AM,7:30 AM,1:30 PM,7:45 PM,,6:30 PM,,,,,5:30 PM,60,Resistance,Mild,,,,,,,,,,,,,,,,,11:30 PM
+69,147,8,Wednesday,6:00 AM,6:30 AM,7:00 AM,,7:00 PM,10:00 AM,,,3:00 PM,,,4:00 PM,60,,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+70,147,9,Thursday,6:00 AM,6:19 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+71,200,0,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+72,200,1,Friday,8:30 AM,11:30 AM,9:00 AM,12:30 PM,7:30 PM,4:00 PM,,,,,,,,,,,,,,7:00 PM,2,Sake,Sake,,,,,,,,,10:30 PM
+73,200,2,Saturday,5:00 AM,8:45 AM,5:45 AM,12:30 PM,8:00 PM,9:00 AM,4:45 PM,,,,,,,,,,,,,7:00 PM,2,Wine,Wine,,,,,,,,,11:00 PM
+74,200,3,Sunday,7:00 AM,9:05 AM,7:45 AM,11:30 AM,7:30 PM,8:30 AM,2:30 PM,,,,,6:00 PM,30,Aerobic,Intense,,,,,7:00 PM,2,Wine,Wine,,,,,,,,,10:00 PM
+75,200,4,Monday,9:00 AM,10:19 AM,9:30 AM,12:30 PM,7:30 PM,5:00 PM,,,,,,,,,,,,,,7:00 PM,2,Wine,Wine,,,,,,,,,12:30 AM
+76,200,5,Tuesday,8:30 AM,9:13 AM,9:30 AM,12:30 PM,7:00 PM,2:30 PM,,,,,,5:30 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+77,200,6,Wednesday,7:30 AM,8:45 AM,8:30 AM,1:45 PM,8:30 PM,4:15 AM,6:00 PM,9:30 PM,,,,,,,,,,,,8:45 PM,1,Beer,,,,,,,,,,10:30 PM
+78,200,7,Thursday,8:55 AM,9:15 AM,9:15 AM,1:30 PM,7:30 PM,,,,,,,,,,,,,,,7:00 PM,2,Wine,Wine,,,,,,,,,10:00 PM
+79,200,8,Friday,7:30 AM,9:00 AM,8:45 AM,1:30 PM,8:30 PM,7:00 PM,,,,,,4:00 PM,60,Aerobic,Mild,,,,,7:30 PM,3,Wine,Wine,Wine,,,,,,,,9:30 PM
+80,200,9,Saturday,7:15 AM,8:15 AM,8:30 AM,12:30 PM,8:30 PM,7:30 PM,,,,,,1:00 PM,45,Aerobic,Mild,,,,,8:00 PM,3,Wine,Wine,Wine,,,,,,,,10:30 PM
+81,173,1,Friday,7:00 AM,8:30 AM,,11:00 AM,7:30 PM,,,,,,,,,Resistance,,,,,,11:30 PM,1,Beer,,,,,,,,,,12:30 AM
+82,173,2,Saturday,11:00 AM,5:00 PM,,1:00 PM,7:45 PM,,,,,,,3:00 PM,30,Resistance,Moderate,,,,,10:00 PM,3,Whiskey,Whiskey,Whiskey,,,,,,,,1:00 AM
+83,173,3,Sunday,9:50 AM,9:00 AM,,12:15 PM,9:00 PM,,,,,,,2:00 PM,50,Resistance,Moderate,,,,,,,,,,,,,,,,,11:55 PM
+84,173,4,Monday,9:00 AM,9:00 PM,,12:00 PM,7:00 PM,,,,,,,10:00 PM,30,Resistance,Moderate,,,,,,,,,,,,,,,,,12:00 AM
+85,173,5,Tuesday,9:00 AM,9:00 PM,,,9:00 PM,,,,,,,,,,,,,,,9:00 PM,5,Whiskey,Whiskey,Whiskey,Whiskey,Whiskey,,,,,,3:00 AM
+86,173,6,Wednesday,9:00 AM,9:00 PM,,12:00 PM,7:30 PM,,,,,,,3:00 PM,,Resistance,,,,,,,1,Beer,,,,,,,,,,1:00 AM
+87,173,7,Thursday,10:00 AM,9:00 PM,,11:30 AM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,1:00 AM
+88,173,8,Friday,9:00 AM,9:00 PM,,12:00 PM,6:00 PM,,,,,,,,,,,,,,,8:30 PM,4,Whiskey,Whiskey,Whiskey,Whiskey,,,,,,,1:00 AM
+89,173,9,Saturday,11:30 AM,5:00 PM,,11:30 AM,8:15 PM,,,,,,,,,,,,,,,11:00 PM,2,Whiskey,Whiskey,,,,,,,,,2:00 AM
+90,173,10,Sunday,9:45 AM,,,1:00 PM,6:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,1:00 AM
+91,85,0,Wednesday,5:30 AM,2:00 PM,6:00 AM,1:30 PM,7:00 PM,8:00 AM,10:00 AM,4:00 PM,,,,4:30 PM,60,Both,Moderate,,,,,7:00 PM,2,Wine,Wine,,,,,,,,,9:00 PM
+92,85,1,Thursday,5:10 AM,5:10 AM,6:00 AM,12:15 PM,8:00 PM,7:30 AM,9:30 AM,3:00 PM,,,,5:00 PM,30,Aerobic,Moderate,5:30 PM,60,Aerobic,Mild,7:30 PM,1,Wine,,,,,,,,,,9:45 PM
+93,85,2,Friday,5:10 AM,5:10 AM,5:30 AM,11:30 AM,8:00 PM,7:30 AM,6:15 PM,10:30 PM,,,,4:30 PM,75,Resistance,Moderate,,,,,7:30 PM,1,Tequila,,,,,,,,,,11:15 PM
+94,85,3,Saturday,5:45 AM,5:45 AM,5:45 AM,12:30 PM,7:45 PM,8:30 AM,9:30 AM,3:00 PM,5:45 PM,,,11:45 AM,30,Aerobic,Moderate,2:30 PM,30,Aerobic,Moderate,5:45 PM,1,Tequila,,,,,,,,,,9:00 PM
+95,85,4,Sunday,5:45 AM,5:45 AM,6:00 AM,12:45 PM,8:15 PM,7:30 AM,10:30 AM,4:30 PM,6:30 PM,,,7:30 AM,30,Aerobic,Mild,9:45 AM,45,Aerobic,Moderate,6:00 PM,1,Champagne,,,,,,,,,,9:15 PM
+96,85,5,Monday,5:15 AM,5:15 AM,5:30 AM,1:00 PM,7:30 PM,7:30 AM,11:15 AM,,,,,4:30 PM,60,Resistance,Moderate,,,,,7:30 PM,2,Wine,,,,,,,,,,9:15 PM
+97,85,6,Tuesday,5:15 AM,5:20 AM,5:30 AM,11:45 AM,,8:30 AM,10:30 AM,,,,,4:00 PM,9,,,,,,,,,,,,,,,,,,,
+98,85,7,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+99,85,8,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+100,85,9,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+101,91,0,Friday,,,,2:00 PM,8:00 PM,,,,,,,10:00 PM,40,Aerobic,Mild,,,,,10:00 PM,2,Beer,Beer,,,,,,,,,1:30 AM
+102,91,1,Saturday,8:15 AM,8:27 AM,8:40 AM,2:10 PM,9:20 PM,4:53 PM,1:10 AM,,,,,,,,,,,,,10:09 PM,3,Tequila,Tequila,Tequila,,,,,,,,2:30 AM
+103,91,2,Sunday,10:09 AM,10:20 AM,10:40 AM,12:45 PM,7:05 PM,,,,,,,8:05 PM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,11:00 PM
+104,91,3,Monday,7:50 AM,8:07 AM,8:10 AM,12:18 PM,6:20 PM,8:10 PM,,,,,,3:49 PM,25,Aerobic,Moderate,4:20 PM,15,Resistance,Moderate,,,,,,,,,,,,,11:45 PM
+105,91,4,Tuesday,7:58 AM,8:10 AM,8:20 AM,12:55 PM,8:00 PM,12:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:09 PM
+106,91,5,Wednesday,7:58 AM,8:08 AM,8:15 AM,1:15 PM,8:45 PM,11:10 AM,11:45 PM,,,,,,,,,,,,,7:45 PM,2,Beer,Beer,,,,,,,,,12:30 AM
+107,91,6,Thursday,9:00 AM,9:24 AM,9:25 AM,12:33 PM,6:48 PM,,,,,,,7:14 PM,48,Aerobic,Mild,,,,,,,,,,,,,,,,,12:15 AM
+108,91,7,Friday,8:48 AM,8:46 AM,8:56 AM,1:12 PM,7:32 PM,,,,,,,,,,,,,,,9:30 PM,4,Tequila,Tequila,Tequila,Tequila,,,,,,,1:30 AM
+109,91,8,Saturday,8:12 AM,8:15 AM,9:30 AM,1:52 PM,7:05 PM,1:30 AM,,,,,,3:50 PM,42,Aerobic,Moderate,,,,,8:45 PM,5,Tequila,Tequila,Tequila,Tequila,Tequila,,,,,,1:15 AM
+110,91,9,Sunday,9:30 AM,9:40 AM,9:50 AM,,7:30 PM,12:30 AM,3:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+111,150,10,Saturday,10:00 AM,10:30 AM,11:30 AM,4:00 PM,10:00 PM,2:00 AM,,,,,,,,,,,,,,12:00 AM,4,Tequila,Tequila,Tequila,Tequila,,,,,,,3:00 AM
+112,150,11,Sunday,11:30 AM,12:00 PM,12:00 PM,4:00 PM,11:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,2:30 AM
+113,150,12,Monday,11:00 AM,11:15 AM,12:30 PM,2:00 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,1:00 AM
+114,150,13,Tuesday,9:00 AM,10:00 AM,11:00 AM,3:00 PM,8:00 PM,6:00 PM,,,,,,2:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,10:30 PM
+115,150,14,Wednesday,10:00 AM,10:30 AM,10:45 AM,3:00 PM,6:30 PM,10:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,2:30 AM
+116,150,15,Thursday,10:00 AM,10:20 AM,10:30 AM,1:30 PM,7:00 PM,,,,,,,,,,,,,,,9:00 PM,2,Scotch,Scotch,,,,,,,,,12:00 AM
+117,150,16,Friday,11:00 AM,11:10 AM,11:15 AM,1:00 PM,6:35 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,3:30 AM
+118,150,17,Saturday,10:30 AM,11:00 AM,12:30 PM,4:30 PM,10:00 PM,,,,,,,,,,,,,,,11:00 PM,1,Wine,,,,,,,,,,1:45 AM
+119,150,18,Sunday,12:30 PM,,12:45 PM,2:30 PM,7:30 PM,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+120,150,19,Monday,10:30 AM,,10:45 AM,1:30 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+121,66,0,Thursday,7:00 AM,6:30 PM,,,6:30 PM,,,,,,,,,,,9:00 AM,15,Resistance,Mild,,,,,,,,,,,,,10:45 PM
+122,66,1,Friday,6:30 AM,6:30 AM,9:30 AM,2:00 PM,7:00 PM,,,8:00 PM,,,,11:00 AM,5,,Mild,6:00 PM,60,,Mild,,,,,,,,,,,,,10:00 PM
+123,66,2,Saturday,5:45 AM,6:30 AM,9:00 AM,1:15 PM,7:15 PM,,,8:00 PM,,,,5:00 PM,1,,Mild,6:00 PM,40,,Mild,,,,,,,,,,,,,11:00 PM
+124,66,3,Sunday,7:00 AM,7:15 AM,10:45 AM,1:45 PM,7:30 PM,,,8:30 PM,,,,9:30 AM,30,,Mild,3:00 PM,60,,Mild,,,,,,,,,,,,,11:00 PM
+125,66,4,Monday,7:00 AM,7:25 AM,9:30 AM,1:15 PM,6:45 PM,,,8:00 PM,,,,10:30 AM,10,,Mild,4:00 PM,60,,Mild,,,,,,,,,,,,,11:00 PM
+126,66,5,Tuesday,7:00 AM,7:11 AM,9:15 AM,1:15 PM,7:15 PM,,,9:00 PM,,,,3:00 PM,60,,Mild,5:00 PM,5,,Mild,,,,,,,,,,,,,10:00 PM
+127,66,6,Wednesday,7:00 AM,7:10 AM,9:15 AM,1:00 PM,6:30 PM,,,8:30 PM,,,,10:45 AM,,,Mild,4:00 PM,60,Aerobic,Mild,,,,,,,,,,,,,10:45 PM
+128,66,7,Thursday,6:30 AM,8:00 AM,9:15 AM,1:30 PM,6:45 PM,,3:00 PM,,,,,11:15 AM,,,Mild,4:30 PM,60,,,,,,,,,,,,,,,10:45 PM
+129,66,8,Friday,6:45 AM,7:00 AM,9:00 AM,,6:00 PM,,,8:00 PM,,,,10:30 AM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,10:15 PM
+130,66,9,Saturday,6:00 AM,6:30 AM,9:00 AM,,7:00 PM,,,,,,,,,,,4:00 PM,60,,Mild,,,,,,,,,,,,,
+131,179,1,Saturday,7:50 AM,8:45 AM,8:30 AM,12:30 PM,6:30 PM,3:00 PM,8:00 PM,,,,,1:00 PM,15,Aerobic,Mild,7:00 PM,10,Aerobic,,,,,,,,,,,,,,12:00 AM
+132,179,2,Sunday,7:00 AM,9:20 AM,9:17 AM,12:30 PM,6:00 PM,3:00 PM,,,,,10:00 PM,12:15 PM,15,Aerobic,,3:00 PM,15,Aerobic,,,,,,,,,,,,,,12:00 AM
+133,179,3,Monday,7:40 AM,8:25 AM,8:05 AM,,6:00 PM,11:30 AM,,3:00 PM,,,,10:00 AM,,Aerobic,,9:30 PM,30,Aerobic,,,,,,,,,,,,,,11:30 PM
+134,179,4,Tuesday,7:00 AM,,8:00 AM,12:30 PM,7:00 PM,1:30 PM,,3:00 PM,,,,11:00 AM,15,Aerobic,Mild,4:00 PM,15,,Mild,,,,,,,,,,,,,11:15 PM
+135,179,5,Wednesday,8:30 AM,9:45 PM,9:30 PM,,,1:30 PM,,,,,,11:01 AM,15,Aerobic,Mild,2:30 PM,15,Aerobic,Mild,,,,,,,,,,,,,11:30 PM
+136,179,6,Thursday,8:30 AM,9:30 AM,10:00 AM,,8:00 PM,1:00 PM,,,3:00 PM,,,11:00 AM,15,Aerobic,Mild,5:00 PM,15,Aerobic,Mild,,,,,,,,,,,,,10:30 PM
+137,179,7,Friday,8:15 AM,8:50 AM,9:15 AM,,,1:00 PM,,,,3:00 PM,,11:30 AM,15,Aerobic,Mild,4:15 PM,15,Aerobic,Mild,,,,,,,,,,,,,11:30 PM
+138,179,8,Saturday,9:00 AM,10:40 AM,9:30 AM,,6:00 PM,3:00 PM,,,,6:00 PM,,9:45 AM,45,Aerobic,Moderate,6:00 PM,15,Aerobic,Mild,,,,,,,,,,,,,12:00 AM
+139,179,9,Sunday,8:30 AM,9:33 AM,9:30 AM,12:00 PM,6:00 PM,,,4:00 PM,,,,9:30 AM,15,Aerobic,Mild,5:30 PM,15,Aerobic,Mild,,,,,,,,,,,,,12:30 AM
+140,179,10,Monday,8:30 AM,11:00 AM,9:00 AM,3:30 PM,,,,,,,,11:00 AM,,Aerobic,Mild,6:00 PM,14,Aerobic,Mild,,,,,,,,,,,,,
+141,127,0,Tuesday,,,,,7:15 PM,1:45 PM,,,,,,4:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,10:30 PM
+142,127,1,Wednesday,7:00 AM,7:45 AM,10:30 AM,2:00 PM,6:30 PM,4:00 PM,4:45 PM,,,,,3:30 PM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,
+143,127,2,Thursday,7:00 AM,8:40 AM,9:00 AM,11:30 AM,7:00 PM,4:30 PM,6:00 PM,,,,,9:30 AM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,11:00 PM
+144,127,3,Friday,,9:20 AM,9:30 AM,,7:00 PM,4:00 PM,,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+145,127,4,Saturday,6:30 AM,8:10 AM,8:45 AM,2:00 PM,6:30 PM,12:30 PM,9:30 PM,,,,,,,,,,,,,7:15 PM,1,Margarita,,,,,,,,,,12:30 AM
+146,127,5,Sunday,10:10 AM,10:15 AM,11:30 AM,3:30 PM,7:30 PM,5:30 PM,,,,,,3:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,10:30 PM
+147,127,6,Monday,8:30 AM,9:00 PM,9:45 AM,12:00 PM,6:00 PM,10:45 AM,3:00 PM,9:30 PM,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+148,127,7,Tuesday,8:00 AM,9:00 AM,9:30 AM,,6:30 PM,11:00 AM,1:00 PM,2:15 PM,4:30 PM,9:30 PM,,3:00 PM,45,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+149,127,8,Wednesday,6:30 AM,,10:00 AM,2:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+150,127,9,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+151,163,0,Thursday,5:30 AM,12:35 PM,11:00 AM,2:20 PM,7:40 PM,,,,,,,18:45 PM,40,Aerobic,Mild,,,,,,,,,,,,,,,,,9:45 PM
+152,163,1,Friday,5:45 AM,9:08 AM,9:15 AM,1:15 PM,7:00 PM,,,,,,,5:40 PM,50,Aerobic,Moderate,,,,,7:00 PM,1,Beer,,,,,,,,,,11:30 PM
+153,163,2,Saturday,8:00 AM,8:00 PM,8:40 AM,12:15 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+154,163,3,Sunday,8:00 AM,3:25 PM,9:00 AM,1:00 PM,5:00 PM,,,,,,,11:15 AM,75,Aerobic,Moderate,,,,,4:00 PM,1,Beer,,,,,,,,,,10:45 PM
+155,163,4,Monday,5:30 AM,8:55 PM,7:45 AM,12:45 PM,8:15 PM,2:30 PM,,,,,,6:45 PM,60,Aerobic,Intense,,,,,,,,,,,,,,,,,10:00 PM
+156,163,5,Tuesday,5:30 AM,6:30 PM,,1:00 PM,7:30 PM,6:00 PM,,,,,,,,,,,,,,7:30 PM,1,Wine,,,,,,,,,,7:30 PM
+157,163,6,Wednesday,6:30 AM,6:25 PM,8:00 AM,2:00 PM,7:15 PM,3:30 PM,,,,,,6:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,9:30 PM
+158,163,7,Thursday,5:45 AM,6:10 PM,8:00 AM,1:45 PM,8:15 PM,,,,,,,6:30 PM,60,Resistance,Moderate,,,,,,,,,,,,,,,,,9:45 PM
+159,163,8,Friday,6:00 AM,1:30 PM,9:00 AM,12:15 PM,6:30 PM,3:00 PM,,,,,,,,,,,,,,6:30 PM,2,Wine,Wine,,,,,,,,,11:30 PM
+160,163,9,Saturday,8:00 AM,1:30 PM,8:30 AM,12:45 PM,6:30 PM,,,,,,,9:30 AM,60,Aerobic,Intense,11:30 AM,40,Aerobic,Mild,6:30 PM,1,Vodka,,,,,,,,,,11:30 PM
+161,120,0,Thursday,,2:00 PM,,12:00 PM,6:00 PM,2:30 PM,8:30 PM,,,,,7:00 PM,30,Aerobic,Mild,8:00 PM,30,,Mild,,,,,,,,,,,,,11:30 PM
+162,120,1,Friday,6:30 AM,11:30 AM,9:00 AM,12:00 PM,6:00 PM,9:00 PM,,,,,,6:30 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+163,120,2,Saturday,8:00 AM,11:35 AM,9:30 AM,12:30 PM,6:00 PM,8:30 PM,,,,,,2:00 PM,,Aerobic,,,,,,8:00 PM,2,Wine,Wine,,,,,,,,,
+164,120,3,Sunday,6:30 AM,11:35 AM,9:00 AM,2:00 PM,8:00 PM,3:00 PM,,,,,,3:00 PM,,Aerobic,Moderate,,,,,8:00 PM,1,Beer,,,,,,,,,,11:30 PM
+165,120,4,Monday,6:00 AM,11:51 AM,9:30 AM,12:00 PM,6:30 PM,,,,,,,7:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,11:30 PM
+166,120,5,Tuesday,6:30 AM,12:27 PM,7:45 AM,12:30 PM,,2:00 PM,,,,,,7:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,11:30 PM
+167,120,6,Wednesday,6:30 AM,11:42 AM,8:00 AM,12:00 PM,6:00 PM,10:30 AM,4:00 PM,,,,,3:00 PM,20,Aerobic,Moderate,7:00 PM,30,Aerobic,Moderate,,,,,,,,,,,,,11:30 PM
+168,120,7,Thursday,6:30 AM,12:07 PM,9:00 AM,12:10 PM,6:00 PM,3:00 PM,,,,,,7:00 PM,30,,Moderate,,,,,,,,,,,,,,,,,11:30 PM
+169,120,8,Friday,6:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+170,103,0,Tuesday,5:40 AM,11:25 AM,9:00 AM,12:00 PM,6:00 PM,,,8:30 PM,,,,4:00 PM,20,Aerobic,Mild,4:30 PM,15,Aerobic,Mild,6:00 PM,2,Wine,Wine,,,,,,,,,9:00 PM
+171,103,1,Wednesday,4:00 AM,4:24 AM,7:53 AM,11:30 AM,6:30 PM,10:30 AM,,,,,,,,,,,,,,5:25 PM,1,Wine,,,,,,,,,,9:30 PM
+172,103,2,Thursday,5:15 AM,6:26 PM,8:15 AM,11:26 AM,5:27 PM,9:55 AM,,7:30 PM,,,,,,,,,,,,5:30 PM,2,Wine,Wine,,,,,,,,,9:00 PM
+173,103,3,Friday,5:30 AM,6:30 PM,7:30 AM,10:45 AM,7:15 PM,,12:15 PM,2:07 PM,,,,,,,,6:30 PM,20,Aerobic,Mild,,,,,,,,,,,,,11:00 PM
+174,103,4,Saturday,8:00 AM,4:12 PM,,11:34 AM,,,3:33 PM,,,,,,,,,,,,,22:30,,,,,,,,,,,,11:00 PM
+175,103,5,Sunday,8:15 AM,6:40 PM,9:44 AM,12:15 PM,,3:30 PM,,,,,,,,,,,,,,12:15 PM,,Beer,,,,,,,,,,9:00 PM
+176,103,6,Monday,6:30 AM,5:42 PM,9:06 AM,12:09 PM,6:00 PM,,,,,,,12:55 PM,10,Aerobic,Mild,,,,,,,,,,,,,,,,,9:00 PM
+177,103,7,Tuesday,5:30 AM,6:50 PM,7:30 AM,1:15 PM,7:00 PM,9:40 AM,,,,,,,,,,,,,,,,,,,,,,,,,,8:30 PM
+178,103,8,Wednesday,7:00 AM,6:55 PM,,,6:40 PM,,,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+179,103,9,Thursday,7:00 AM,6:54 PM,,11:30 AM,6:17 PM,,12:25 PM,7:00 PM,,,7:30 PM,,,,,,,,,,,,,,,,,,,,,9:30 PM
+180,142,0,Tuesday,7:00 AM,12:00 PM,8:00 AM,2:00 PM,9:00 PM,11:00 AM,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,3:00 AM
+181,142,1,Wednesday,9:00 AM,12:00 PM,11:30 AM,2:00 PM,4:30 PM,9:30 AM,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,1:00 AM
+182,142,2,Thursday,7:00 AM,12:00 PM,8:45 AM,12:30 PM,,11:00 AM,4:00 PM,9:30 PM,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+183,142,3,Friday,7:30 AM,12:00 PM,9:00 AM,1:30 PM,9:30 PM,7:00 PM,10:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+184,142,4,Saturday,7:30 AM,1:40 PM,11:00 AM,11:30 AM,8:00 PM,2:00 PM,7:00 PM,,,,,,,,,,,,,6:45 PM,3,Vodka,Vodka,Vodka,,,,,,,,3:00 AM
+185,142,5,Sunday,7:30 AM,,1:30 PM,,10:00 PM,3:00 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+186,142,6,Monday,6:45 AM,,8:30 AM,12:30 PM,8:30 PM,,,,,,,,,,,,,,,5:00 PM,2,Wine,Wine,,,,,,,,,11:30 PM
+187,142,7,Tuesday,6:45 AM,2:30 PM,7:30 AM,12:30 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,2:30 AM
+188,142,8,Wednesday,10:00 AM,3:30 PM,10:15 AM,3:00 PM,10:30 PM,7:30 PM,,,12:00 AM,,,,,,,,,,,,,,,,,,,,,,,1:00 AM
+189,142,9,Thursday,7:30 AM,5:30 PM,8:30 AM,12:30 PM,7:30 PM,5:30 PM,,10:00 PM,,,,,,,,,,,,7:00 PM,1,Wine,,,,,,,,,,12:00 AM
+190,99,0,Tuesday,5:00 AM,3:21 AM,,11:20 AM,6:25 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+191,99,1,Wednesday,4:00 AM,4:33 AM,5:30 AM,11:45 AM,7:10 PM,9:30 AM,2:00 PM,,,,,,,,,,,,,5:20 PM,1,Beer,,,,,,,,,,9:00 PM
+192,99,2,Thursday,4:15 AM,8:13 PM,5:45 AM,12:45 PM,6:35 PM,,,7:30 PM,,,,,,,,,,,,6:35 PM,1,Beer,,,,,,,,,,8:30 PM
+193,99,3,Friday,4:00 AM,8:20 PM,9:45 AM,1:00 PM,5:15 PM,5:15 AM,,,,,,,,,,,,,,5:30 PM,1,Beer,,,,,,,,,,8:30 PM
+194,99,4,Saturday,6:35 AM,8:45 PM,7:40 AM,11:30 AM,5:00 PM,9:00 AM,1:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+195,99,5,Sunday,7:30 AM,9:09 PM,8:00 AM,1:00 PM,,,4:30 PM,8:30 PM,,,,,,,,,,,,9:15 PM,,,,,,,,,,,,9:15 PM
+196,99,6,Monday,4:00 AM,4:35 AM,,11:30 AM,7:15 PM,5:15 AM,3:00 PM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,9:15 PM
+197,99,7,Tuesday,5:30 AM,9:18 PM,6:30 AM,11:30 AM,7:30 PM,9:00 AM,4:00 PM,,,,,,,,,,,,,6:30 PM,1,Beer,,,,,,,,,,9:30 PM
+198,99,8,Wednesday,5:30 AM,10:00 PM,7:00 AM,11:30 AM,6:00 PM,10:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+199,99,9,Thursday,4:30 AM,8:30 PM,6:45 AM,2:00 PM,,,11:00 AM,7:00 PM,,,,,,,,,,,,6:00 PM,1,Beer,,,,,,,,,,8:30 PM
+200,169,4,Monday,6:30 AM,1:45 PM,7:00 AM,2:00 PM,7:00 PM,12:00 PM,3:20 PM,5:15 PM,8:30 PM,,,2:00 PM,20,Aerobic,Mild,4:30 PM,15,Aerobic,Mild,,,,,,,,,,,,,11:00 PM
+201,169,5,Tuesday,6:15 AM,8:21 AM,6:45 AM,12:05 PM,5:30 PM,7:45 AM,10:30 PM,,,,,11:30 AM,30,Aerobic,Mild,6:15 PM,45,Aerobic,Moderate,,,,,,,,,,,,,11:15 PM
+202,169,6,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+203,169,7,Thursday,6:55 AM,2:34 PM,,12:00 PM,4:30 PM,7:30 AM,2:30 PM,8:45 PM,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+204,169,8,Friday,7:20 AM,9:50 AM,8:00 AM,12:00 PM,6:30 PM,11:00 AM,2:30 PM,,,,,10:30 PM,,Aerobic,Moderate,,,,,10:00 PM,4,Vodka,Vodka,Vodka,Vodka,,,,,,,3:30 AM
+205,169,9,Saturday,7:00 AM,4:01 PM,9:00 AM,3:30 PM,7:00 PM,10:30 AM,2:30 PM,,,,,9:30 AM,45,Aerobic,Mild,,,,,,,,,,,,,,,,,11:00 PM
+206,169,10,Sunday,11:00 AM,5:08 PM,11:30 AM,3:00 PM,,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+207,169,11,Monday,6:30 AM,5:08 PM,6:45 AM,1:00 PM,5:30 PM,9:30 AM,3:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+208,169,12,Tuesday,5:45 AM,9:23 AM,6:00 AM,12:00 PM,5:30 PM,9:00 AM,2:30 PM,,,,,6:55 AM,20,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:30 PM
+209,169,13,Wednesday,7:00 AM,9:34 AM,7:15 AM,12:30 PM,6:30 PM,7:45 AM,9:00 AM,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+210,111,9,Wednesday,,,,,6:04 AM,6:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:20 PM
+211,111,10,Thursday,5:40 AM,,6:28 AM,11:15 AM,,3:15 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:40 PM
+212,111,11,Friday,7:40 AM,,9:39 AM,,11:00 PM,2:20 PM,4:30 PM,5:00 PM,8:33 PM,,,,,,,,,,,,,,,,,,,,,,,12:45 AM
+213,111,12,Saturday,10:22 AM,,,12:05 PM,7:38 PM,1:34 PM,5:37 PM,6:13 PM,,,,,,,,,,,,,,,,,,,,,,,,
+214,111,13,Sunday,4:55 AM,,6:45 AM,11:17 AM,6:37 PM,2:55 PM,7:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+215,111,14,Monday,5:40 AM,,6:35 AM,11:35 AM,6:35 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:45 PM
+216,111,15,Tuesday,5:40 AM,,6:30 AM,11:30 AM,6:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:35 PM
+217,111,16,Wednesday,5:45 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+218,111,17,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+219,111,18,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+220,52,8,Thursday,5:40 AM,6:35 AM,6:50 AM,10:40 AM,6:30 PM,3:15 PM,,,,,,3:45 PM,150,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+221,52,9,Friday,,,,,7:00 PM,5:30 PM,8:30 PM,,,,,6:00 PM,10,Aerobic,Mild,,,,,,,,,,,,,,,,,
+222,52,10,Saturday,5:35 AM,7:10 PM,6:55 AM,10:50 AM,7:30 PM,3:00 PM,5:10 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+223,52,11,Sunday,9:30 AM,,10:00 AM,,,4:40 PM,,,,,,5:25 PM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,
+224,52,12,Monday,6:45 AM,8:50 PM,8:30 AM,12:00 PM,5:30 PM,10:00 AM,9:00 PM,,,,,9:10 AM,45,Aerobic,Intense,,,,,,,,,,,,,,,,,10:30 PM
+225,52,13,Tuesday,5:50 AM,,6:50 AM,10:50 AM,,,,,,,,12:50 PM,25,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+226,52,14,Wednesday,5:45 AM,9:30 AM,7:00 AM,10:50 AM,7:30 PM,3:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+227,52,15,Thursday,5:50 AM,,7:00 AM,10:45 AM,6:30 PM,,,,,,,12:50 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,10:00 PM
+228,52,16,Friday,5:45 AM,,7:00 AM,10:55 AM,7:00 PM,,,,,,,12:55 PM,25,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+229,52,17,Saturday,5:40 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+230,98,0,Wednesday,,,,,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+231,98,1,Thursday,7:30 AM,7:40 AM,11:00 AM,2:00 PM,7:30 PM,5:30 PM,,,,,,2:30 PM,10,Aerobic,Mild,3:30 PM,20,Aerobic,Moderate,,,,,,,,,,,,,12:00 AM
+232,98,2,Friday,7:00 AM,10:00 PM,8:00 AM,4:30 PM,8:45 PM,7:30 PM,,,,,,3:45 PM,10,Aerobic,Mild,4:45 PM,20,Aerobic,Moderate,,,,,,,,,,,,,12:00 AM
+233,98,3,Saturday,10:00 AM,11:59 PM,11:00 AM,,7:30 PM,5:00 PM,11:45 PM,,,,,1:45 PM,240,Aerobic,Moderate,,,,,,,,,,,,,,,,,1:00 AM
+234,98,4,Sunday,10:30 AM,12:20 AM,10:40 AM,2:40 PM,,8:55 PM,6:20 PM,12:45 AM,,,,,,,,,,,,,,,,,,,,,,,,1:30 AM
+235,98,5,Monday,9:30 AM,12:20 AM,10:00 AM,2:00 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+236,98,6,Tuesday,6:30 AM,11:30 AM,7:15 AM,1:30 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,1:45 AM
+237,98,7,Wednesday,10:00 AM,7:50 PM,10:30 AM,2:00 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,1:45 AM
+238,98,8,Thursday,6:30 AM,,7:00 AM,2:00 PM,7:30 PM,12:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,2:15 AM
+239,98,9,Friday,10:30 AM,2:01 PM,11:30 AM,,,,,,,,,4:00 PM,150,Aerobic,Intense,,,,,,,,,,,,,,,,,
+240,76,0,Thursday,5:50 AM,,,11:00 AM,7:06 PM,4:57 PM,9:44 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+241,76,1,Friday,6:25 AM,3:27 PM,7:38 AM,10:36 AM,6:21 PM,3:31 PM,8:03 PM,,,,,12:52 PM,40,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:35 PM
+242,76,2,Saturday,11:15 AM,3:15 PM,,12:09 PM,5:23 PM,4:32 PM,8:25 PM,,,,,12:52 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,1:30 AM
+243,76,3,Sunday,10:15 AM,,,11:50 AM,5:46 PM,3:57 PM,6:47 PM,,,,,4:22 PM,10,Aerobic,Mild,,,,,,,,,,,,,,,,,10:15 PM
+244,76,4,Monday,6:10 AM,4:10 PM,,10:32 AM,5:10 PM,3:13 PM,7:51 PM,8:53 PM,,,,12:33 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,10:30 PM
+245,76,5,Tuesday,6:00 AM,6:10 PM,,3:25 PM,5:21 PM,8:10 PM,,,,,,12:52 PM,27,Aerobic,Mild,,,,,,,,,,,,,,,,,10:00 PM
+246,76,6,Wednesday,6:10 AM,,,10:34 AM,6:45 PM,3:32 PM,,,,,,1:45 PM,70,,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+247,76,7,Thursday,6:28 AM,6:50 PM,,10:28 AM,3:33 PM,,7:14 PM,8:46 PM,,,,,,,,,,,,,,,,,,,,,,,,10:05 PM
+248,76,8,Friday,6:10 AM,9:10 PM,,3:10 PM,6:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:47 PM
+249,76,9,Saturday,11:01 AM,10:23 PM,,11:25 AM,11:25 PM,5:25 PM,8:52 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:35 PM
+250,131,0,Tuesday,5:45 AM,1:19 PM,6:00 AM,2:30 PM,8:10 PM,,,,,,,6:15 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,
+251,131,1,Wednesday,6:20 AM,12:10 PM,7:00 AM,2:00 PM,6:15 PM,9:15 AM,11:30 AM,4:45 PM,,,,5:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,10:45 PM
+252,131,2,Thursday,7:15 AM,,8:15 AM,11:30 AM,5:30 PM,9:00 AM,10:15 PM,,,,,4:30 PM,40,Aerobic,Mild,,,,,8:30 PM,1,Beer,,,,,,,,,,11:00 PM
+253,131,3,Friday,7:30 AM,11:27 AM,8:30 AM,4:00 PM,,12:30 PM,9:50 AM,,,,,5:40 PM,25,Resistance,Mild,,,,,,,,,,,,,,,,,
+254,131,4,Saturday,7:30 AM,1:00 PM,9:00 AM,3:00 PM,7:00 PM,,,,,,,,,,,,,,,6:30 PM,1,Wine,,,,,,,,,,
+255,131,5,Sunday,8:20 AM,10:43 AM,9:20 AM,,6:15 PM,4:59 PM,10:00 PM,,,,,3:50 PM,25,Resistance,Mild,,,,,,,,,,,,,,,,,10:35 PM
+256,131,6,Monday,6:45 AM,12:30 PM,,4:30 PM,7:00 PM,11:30 AM,10:15 PM,,,,,6:00 PM,25,Resistance,Mild,,,,,,,,,,,,,,,,,
+257,131,7,Tuesday,6:45 AM,2:38 PM,8:30 AM,1:00 PM,7:00 PM,2:10 PM,,,,,,5:45 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:30 PM
+258,131,8,Wednesday,5:50 AM,,8:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+259,131,9,Thursday,7:00 AM,3:42 PM,7:10 AM,3:15 PM,7:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+260,167,0,Wednesday,8:45 AM,,,1:00 PM,7:15 PM,9:00 PM,11:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+261,167,1,Thursday,8:00 AM,10:30 AM,,,4:45 PM,9:30 PM,,,,,,6:00 PM,120,Aerobic,Intense,,,,,9:00 PM,10,Beer,Beer,Beer,Beer,Beer,Beer,Beer,Beer,Beer,Beer,3:30 AM
+262,167,2,Friday,10:30 AM,10:45 AM,,,5:20 PM,10:00 PM,1:45 AM,,,,,,,,,,,,,4:30 PM,10,Vodka,Vodka,Vodka,Vodka,Vodka,Vodka,Vodka,Vodka,Vodka,Vodka,2:00 AM
+263,167,3,Saturday,9:30 AM,11:45 AM,10:30 AM,,5:00 PM,9:00 PM,9:30 PM,11:30 PM,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+264,167,4,Sunday,10:40 AM,11:00 AM,,12:00 PM,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+265,167,5,Monday,8:50 AM,10:23 AM,,10:45 AM,5:00 PM,10:00 PM,1:00 AM,,,,,6:00 PM,50,Aerobic,Intense,,,,,,,,,,,,,,,,,1:30 AM
+266,167,6,Tuesday,10:30 AM,3:00 PM,,11:45 AM,6:15 PM,1:45 PM,11:15 PM,11:45 PM,12:20 AM,,,,,,,,,,,,,,,,,,,,,,,1:30 AM
+267,167,7,Wednesday,8:00 AM,10:50 AM,,10:30 AM,6:45 PM,2:30 PM,5:45 PM,12:00 AM,1:00 AM,,,,,,,,,,,,,,,,,,,,,,,1:45 AM
+268,167,8,Thursday,11:30 AM,11:15 PM,,,6:00 PM,10:00 PM,11:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+269,167,9,Friday,8:30 AM,9:00 AM,10:30 AM,,6:00 PM,10:00 PM,2:00 AM,,,,,,,,,,,,,6:30 PM,10,Vodka,Vodka,Vodka,Vodka,Vodka,Vodka,Vodka,,,,2:30 AM
+270,104,2,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+271,104,3,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+272,104,4,Sunday,9:00 AM,,,1:30 PM,7:00 PM,1:00 AM,,,,,,,,,,,,,,10:00 PM,6,Liquor,Beer,Liqour,Beer,liquor,Beer,,,,,2:00 AM
+273,104,5,Monday,8:00 AM,10:00 PM,,4:00 PM,,2:00 AM,,,,,,,,,,,,,,3:30 PM,10,Liquor,Liquor,Liquor,Liquor,Liquor,Liquor,Liquor,,,,3:00 AM
+274,104,6,Tuesday,10:00 AM,12:00 PM,,1:00 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+275,104,7,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+276,104,8,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+277,104,9,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+278,104,10,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+279,104,11,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+280,86,0,Friday,,5:57 PM,,,5:00 PM,,,,,,,6:30 PM,20,Both,Mild,,,,,,,,,,,,,,,,,10:00 PM
+281,86,1,Saturday,7:20 AM,7:30 AM,8:25 AM,3:25 PM,8:00 PM,8:00 AM,3:00 PM,,,,,5:00 PM,30,Both,Moderate,,,,,,,,,,,,,,,,,12:00 AM
+282,86,2,Sunday,8:30 AM,8:00 PM,12:45 PM,3:15 PM,6:00 PM,10:00 AM,11:00 AM,7:45 PM,8:40 PM,,,12:00 PM,30,Aerobic,Intense,8:00 PM,10,Both,Mild,,,,,,,,,,,,,9:00 PM
+283,86,3,Monday,6:15 AM,8:26 PM,6:30 AM,12:00 PM,5:00 PM,8:30 PM,,,,,,10:00 AM,,Aerobic,Mild,7:40 PM,10,Both,Moderate,,,,,,,,,,,,,9:00 PM
+284,86,4,Tuesday,6:15 AM,8:46 PM,6:40 AM,12:00 PM,5:30 PM,4:15 PM,8:30 PM,8:30 PM,,,,3:00 PM,25,Aerobic,Intense,,,,,,,,,,,,,,,,,9:00 PM
+285,86,5,Wednesday,6:15 AM,8:54 PM,6:40 AM,12:15 PM,4:45 PM,3:45 PM,8:15 PM,,,,,6:00 PM,,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:30 PM
+286,86,6,Thursday,6:15 AM,,6:40 AM,12:00 PM,6:40 PM,4:50 PM,,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+287,86,7,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+288,86,8,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+289,86,9,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+290,64,0,Tuesday,4:30 AM,10:00 PM,6:00 AM,2:30 PM,8:30 PM,5:30 PM,,,,,,,,,,,,,,,2,Vodka,Vodka,,,,,,,,,10:00 PM
+291,64,1,Wednesday,5:30 AM,10:00 AM,6:30 AM,1:00 PM,6:30 PM,,,,,,,,,,,,,,,,1,Beer,,,,,,,,,,9:30 PM
+292,64,2,Thursday,4:30 AM,10:15 AM,6:00 AM,1:00 PM,6:30 PM,9:45 AM,2:30 PM,,,,,,,,,,,,,,1,Wine,,,,,,,,,,10:30 PM
+293,64,3,Friday,5:30 AM,10:00 AM,6:15 AM,12:15 PM,6:15 PM,,,,,,,,,,,,,,,,1,Beer,,,,,,,,,,10:00 PM
+294,64,4,Saturday,5:00 AM,10:45 AM,6:00 AM,1:00 PM,6:00 PM,11:00 AM,4:15 PM,,,,,,,,,,,,,,1,Wine,,,,,,,,,,9:30 PM
+295,64,5,Sunday,5:00 AM,11:00 AM,6:00 AM,1:45 PM,6:15 PM,5:15 PM,,,,,,,,,,,,,,,2,Beer,Beer,,,,,,,,,9:30 PM
+296,64,6,Monday,5:15 AM,10:00 AM,6:15 AM,2:00 PM,6:45 PM,1:15 PM,5:00 PM,,,,,,,,,,,,,,1,Beer,,,,,,,,,,10:30 PM
+297,64,7,Tuesday,5:15 AM,10:00 AM,6:15 AM,12:00 PM,8:30 PM,3:45 PM,5:30 PM,,,,,,,,,,,,,,1,Beer,,,,,,,,,,10:00 PM
+298,64,8,Wednesday,7:30 AM,10:00 PM,8:30 AM,12:30 PM,6:45 PM,6:00 PM,,,,,,,,,,,,,,,1,Beer,,,,,,,,,,10:30 PM
+299,64,9,Thursday,5:00 AM,10:00 AM,5:45 AM,1:15 PM,6:30 PM,10:15 AM,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+300,87,0,Tuesday,8:00 AM,3:43 PM,,,6:24 PM,,3:15 PM,,,,5:01 PM,3:49 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+301,87,1,Wednesday,8:00 AM,8:10 AM,9:42 AM,12:45 PM,,2:00 PM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+302,87,2,Thursday,7:30 AM,9:11 PM,8:30 AM,1:30 PM,5:30 PM,3:30 PM,4:30 PM,9:15 PM,,,,11:30 AM,60,Both,Moderate,6:45 PM,60,,Moderate,,,,,,,,,,,,,10:30 PM
+303,87,3,Friday,7:30 AM,10:21 PM,9:45 AM,,7:30 PM,5:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:35 PM
+304,87,4,Saturday,7:45 AM,10:27 PM,10:00 AM,,4:30 PM,2:30 PM,,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+305,87,5,Sunday,8:11 AM,10:45 PM,8:15 AM,1:17 PM,5:30 PM,12:45 PM,3:26 PM,9:41 PM,10:30 PM,,,2:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:28 PM
+306,87,6,Monday,8:16 AM,10:38 PM,8:17 AM,1:49 PM,6:30 PM,5:30 PM,,,,,,,30,Aerobic,Mild,,,,,,,,,,,,,,,,,10:45 PM
+307,87,7,Tuesday,4:45 AM,10:31 PM,8:20 AM,12:00 PM,6:00 PM,8:16 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:34 PM
+308,87,8,Wednesday,8:25 AM,10:15 PM,8:45 AM,1:00 PM,6:10 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:20 PM
+309,87,9,Thursday,7:57 AM,10:21 PM,8:14 AM,1:30 PM,4:15 PM,8:54 PM,,,,,,7:00 PM,45,,Mild,,,,,,,,,,,,,,,,,10:23 PM
+310,100,0,Friday,7:00 AM,1:20 PM,8:00 AM,11:30 AM,8:10 PM,1:30 PM,2:05 PM,10:14 PM,,,,12:30 PM,58,Aerobic,Mild,6:14 PM,105,Aerobic,Mild,,,,,,,,,,,,,12:27 AM
+311,100,1,Saturday,9:00 AM,10:00 AM,9:40 AM,,6:22 PM,3:00 PM,9:40 PM,,,,,12:24 PM,27,Aerobic,Mild,7:08 PM,60,Aerobic,Mild,,,,,,,,,,,,,4:43 AM
+312,100,2,Sunday,8:56 AM,9:30 AM,9:20 AM,2:10 PM,4:00 PM,7:05 PM,,,,,,7:15 PM,105,Aerobic,Mild,,,,,,,,,,,,,,,,,4:06 AM
+313,100,3,Monday,9:45 AM,10:00 AM,10:00 AM,1:30 PM,6:30 PM,11:57 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:45 AM
+314,100,4,Tuesday,7:20 AM,10:00 AM,8:20 AM,12:15 PM,8:30 PM,1:30 PM,2:48 PM,4:05 PM,,,,,,,,,,,,,,,,,,,,,,,,1:46 AM
+315,100,5,Wednesday,7:39 AM,10:06 AM,8:30 AM,11:20 AM,6:45 PM,1:30 PM,4:24 PM,11:28 PM,,,,7:12 PM,101,Aerobic,Mild,,,,,,,,,,,,,,,,,12:28 AM
+316,100,6,Thursday,8:12 AM,,9:20 AM,11:50 AM,5:20 PM,9:20 PM,10:10 PM,11:00 PM,,,,7:16 PM,83,Aerobic,Mild,,,,,,,,,,,,,,,,,12:13 AM
+317,100,7,Friday,10:00 AM,10:15 AM,10:30 AM,2:48 PM,,3:45 PM,,,,,,10:35 PM,48,Aerobic,Mild,,,,,,,,,,,,,,,,,3:21 AM
+318,100,8,Saturday,10:12 AM,10:15 AM,,,8:15 PM,11:20 PM,,,,,,8:46 PM,82,Aerobic,Mild,,,,,,,,,,,,,,,,,1:43 AM
+319,100,9,Sunday,9:51 AM,10:36 AM,,3:45 PM,7:05 PM,8:30 PM,,,,,,4:57 PM,87,Aerobic,Mild,,,,,,,,,,,,,,,,,11:41 PM
+320,79,0,Friday,5:30 AM,9:00 PM,,12:30 PM,7:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+321,79,1,Saturday,6:30 AM,9:00 AM,8:15 AM,,8:00 PM,12:15 PM,3:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+322,79,2,Sunday,8:00 AM,9:00 AM,9:30 AM,,7:30 PM,4:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+323,79,3,Monday,9:00 AM,9:35 AM,10:00 AM,,6:00 PM,12:00 PM,2:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+324,79,4,Tuesday,5:30 AM,8:53 AM,8:00 AM,12:00 PM,7:30 PM,10:00 AM,3:00 PM,,,,,12:45 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,10:45 PM
+325,79,5,Wednesday,5:30 AM,9:05 AM,9:15 AM,12:30 PM,8:00 PM,2:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+326,79,6,Thursday,5:30 AM,9:17 AM,9:00 AM,1:30 PM,7:30 PM,10:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+327,79,7,Friday,5:30 AM,4:26 AM,8:15 AM,,7:00 PM,2:00 PM,,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+328,79,8,Saturday,8:00 AM,9:30 AM,10:30 AM,,7:00 PM,1:30 PM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+329,79,9,Sunday,8:45 AM,9:30 AM,,11:30 AM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+330,81,0,Friday,6:53 AM,3:36 PM,9:07 AM,1:08 PM,7:21 PM,,5:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:45 PM
+331,81,1,Saturday,8:55 AM,10:11 PM,9:51 AM,2:55 PM,6:55 PM,,,,,,,9:04 PM,41,Aerobic,Mild,,,,,6:17 PM,1,Wine,,,,,,,,,,12:33 AM
+332,81,2,Sunday,9:02 AM,10:20 PM,9:07 AM,3:32 PM,10:21 PM,7:42 PM,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:38 AM
+333,81,3,Monday,8:27 AM,10:25 PM,8:32 AM,1:14 PM,7:16 PM,11:10 AM,4:31 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:58 PM
+334,81,4,Tuesday,6:40 AM,10:28 PM,8:02 AM,12:12 PM,7:30 PM,11:24 AM,2:37 PM,,,,,9:35 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,10:45 PM
+335,81,5,Wednesday,6:22 AM,11:11 PM,8:30 AM,12:24 PM,8:34 PM,9:18 AM,1:08 PM,6:04 PM,,,,,,,,,,,,,,,,,,,,,,,,11:12 PM
+336,81,6,Thursday,6:40 AM,11:17 PM,8:54 AM,12:07 PM,7:15 PM,2:33 PM,6:12 PM,,,,,8:07 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:57 PM
+337,81,7,Friday,6:30 AM,11:31 PM,9:52 AM,12:13 PM,6:52 PM,10:59 AM,1:00 PM,2:30 PM,5:23 PM,,,,,,,,,,,,,,,,,,,,,,,12:53 AM
+338,81,8,Saturday,9:05 AM,11:41 PM,10:03 AM,4:25 PM,7:43 PM,5:06 PM,,,,,,12:59 PM,90,Both,Moderate,,,,,,,,,,,,,,,,,12:53 AM
+339,81,9,Sunday,6:30 AM,11:45 PM,8:51 AM,11:42 AM,8:07 PM,,,,,,,9:52 PM,38,Aerobic,Mild,,,,,11:48 PM,1,Whiskey,,,,,,,,,,
+340,67,0,Friday,6:30 AM,3:55 PM,7:30 AM,12:15 PM,7:52 PM,,4:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:02 PM
+341,67,1,Saturday,6:30 AM,9:59 AM,7:35 AM,1:30 PM,8:25 PM,,,,,,10:00 PM,,,,,,,,,,,,,,,,,,,,,10:50 PM
+342,67,2,Sunday,8:30 AM,8:50 AM,9:55 AM,12:00 PM,4:15 PM,,,8:30 PM,,,,,,,,,,,,4:00 PM,1,Cider,,,,,,,,,,10:35 PM
+343,67,3,Monday,9:12 AM,9:49 AM,9:50 AM,2:03 PM,8:55 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,2:17 AM
+344,67,4,Tuesday,6:30 AM,11:15 PM,7:10 AM,11:54 AM,,,,7:50 PM,,,,,,,,,,,,7:50 PM,1,Beer,,,,,,,,,,12:14 AM
+345,67,5,Wednesday,6:50 AM,11:34 PM,8:10 AM,11:45 AM,7:48 PM,9:50 AM,2:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+346,67,6,Thursday,6:35 AM,11:38 PM,7:45 AM,11:34 AM,8:55 PM,,2:12 PM,,,3:25 PM,,,,,,,,,,,,,,,,,,,,,,12:05 AM
+347,67,7,Friday,6:35 AM,,7:35 AM,12:19 PM,9:45 PM,,3:00 PM,,,5:15 PM,,,,,,,,,,7:55 PM,1,Beer,,,,,,,,,,11:45 PM
+348,67,8,Saturday,7:00 AM,7:19 AM,8:45 AM,12:15 PM,6:40 PM,,,,,,,,,,,,,,,11:05 AM,1,Beer,,,,,,,,,,10:00 PM
+349,67,9,Sunday,6:40 AM,8:48 AM,8:15 AM,1:35 PM,8:05 PM,,,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+350,152,0,Friday,,,,,5:30 PM,,,6:40 PM,,,11:15 PM,,,,,,,,,11:15 PM,1,Beer,,,,,,,,,,12:10 AM
+351,152,1,Saturday,7:15 AM,7:55 AM,7:55 AM,12:20 PM,6:00 PM,10:15 AM,,,,,,9:00 AM,80,Aerobic,Mild,10:20 AM,90,Aerobic,Intense,8:00 PM,1,Beer,,,,,,,,,,11:20 PM
+352,152,2,Sunday,8:10 AM,11:07 PM,8:45 AM,2:00 PM,7:30 PM,10:30 PM,,,,,,6:40 PM,25,Aerobic,,,,,,7:30 PM,1,beer,,,,,,,,,,11:20 PM
+353,152,3,Monday,7:15 AM,11:10 PM,7:45 AM,2:30 PM,,10:45 AM,10:15 PM,,,,,,,,,,,,,10:15 PM,1,Beer,,,,,,,,,,11:20 PM
+354,152,4,Tuesday,6:45 AM,,7:15 AM,12:00 PM,6:00 PM,,,,,,,6:00 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,11:30 PM
+355,152,5,Wednesday,6:30 AM,7:05 AM,7:15 AM,12:15 PM,8:00 PM,5:30 PM,,,,,,6:00 PM,120,Aerobic,Mild,,,,,10:30 PM,1,Beer,,,,,,,,,,11:30 PM
+356,152,6,Thursday,6:20 AM,6:55 AM,7:15 AM,12:45 PM,7:30 PM,,12:15 PM,,,,,,,,,,,,,10:15 PM,1,Beer,,,,,,,,,,11:30 PM
+357,152,7,Friday,6:00 AM,5:00 PM,6:45 AM,11:30 AM,6:15 PM,11:15 PM,,,,,,7:00 PM,30,Resistance,Mild,,,,,9:00 PM,2,Beer,Beer,,,,,,,,,12:00 AM
+358,152,8,Saturday,7:30 AM,3:30 PM,8:00 AM,1:10 PM,6:45 PM,,,,,,,9:00 AM,90,Aerobic,Moderate,10:45 AM,120,Aerobic,Intense,7:00 PM,1,Beer,,,,,,,,,,12:10 AM
+359,152,9,Sunday,8:10 AM,,8:30 AM,11:00 AM,6:00 PM,,,,,,,,,,,,,,,10:00 PM,1,Beer,,,,,,,,,,11:00 PM
+360,140,0,Tuesday,,9:00 PM,,,7:45 PM,,,,,,,,,,,,,,,8:30 PM,1,Wine,,,,,,,,,,9:30 PM
+361,140,1,Wednesday,6:30 AM,8:45 AM,7:15 AM,12:15 PM,6:30 PM,,,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+362,140,2,Thursday,6:30 AM,9:00 PM,8:30 AM,12:30 PM,7:30 PM,,,,,,,12:30 PM,30,Aerobic,,,,,,8:30 PM,2,Wine,Wine,,,,,,,,,10:00 PM
+363,140,3,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+364,140,4,Saturday,8:00 AM,,8:30 AM,12:30 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+365,140,5,Sunday,7:00 AM,9:00 PM,9:30 AM,1:00 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+366,140,6,Monday,7:00 AM,9:00 PM,8:30 AM,12:30 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+367,140,7,Tuesday,7:00 AM,9:00 PM,8:30 AM,12:30 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+368,140,8,Wednesday,6:30 AM,9:00 PM,8:30 AM,12:30 PM,6:00 PM,,,,,,,,,,,,,,,6:00 PM,2,Wine,Wine,,,,,,,,,10:00 PM
+369,140,9,Thursday,5:30 AM,9:00 PM,7:30 AM,12:30 PM,6:00 PM,,,,,,,,,,,,,,,6:30 PM,1,Wine,,,,,,,,,,
+370,162,1,Friday,6:00 AM,12:27 PM,,11:30 AM,6:47 PM,10:30 AM,6:00 PM,8:00 PM,8:52 PM,,,,,,,,,,,6:44 PM,1,Wine,,,,,,,,,,10:00 PM
+371,162,2,Saturday,5:50 AM,12:36 AM,6:45 AM,12:00 PM,6:40 PM,9:40 AM,11:20 AM,3:40 PM,9:50 PM,,,,,,,,,,,7:00 PM,2,Beer,Beer,,,,,,,,,11:00 PM
+372,162,3,Sunday,5:15 AM,5:39 AM,6:50 AM,,7:00 PM,9:30 AM,10:30 AM,8:45 PM,,,,,,,,,,,,7:15 PM,1,Vodka,,,,,,,,,,9:00 PM
+373,162,4,Monday,5:58 AM,6:38 AM,6:40 AM,,6:50 PM,11:00 AM,2:30 PM,11:00 PM,,,,3:30 PM,90,Aerobic,Mild,,,,,7:00 PM,1,Sake,,,,,,,,,,10:40 PM
+374,162,5,Tuesday,6:45 AM,11:16 AM,9:33 AM,12:15 PM,6:30 PM,11:45 AM,8:00 AM,9:09 PM,,,,11:55 AM,30,Aerobic,Mild,,,,,6:50 PM,1,Wine,,,,,,,,,,9:30 PM
+375,162,6,Wednesday,6:00 AM,11:30 AM,7:49 AM,12:15 PM,6:15 PM,3:00 PM,9:00 PM,,,,,6:30 AM,60,Aerobic,Moderate,,,,,6:00 PM,1,Wine,,,,,,,,,,9:34 PM
+376,162,7,Thursday,6:15 AM,8:11 AM,7:55 AM,12:00 PM,6:30 PM,9:30 AM,3:00 PM,4:00 PM,7:54 PM,,,7:20 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,8:53 PM
+377,162,8,Friday,6:03 AM,9:49 AM,8:30 AM,,6:05 PM,9:50 AM,12:30 PM,4:00 PM,7:30 PM,,,6:30 AM,10,Resistance,Mild,,,,,5:45 PM,2,Gin,Gin,,,,,,,,,8:38 PM
+378,162,9,Saturday,5:34 AM,10:25 AM,6:54 AM,11:30 AM,,9:52 AM,4:30 PM,8:00 PM,10:30 PM,,,6:30 PM,60,,Moderate,,,,,,,,,,,,,,,,,11:20 PM
+379,162,10,Sunday,5:30 AM,10:03 AM,7:00 AM,11:13 AM,4:00 PM,9:00 AM,10:00 AM,3:30 PM,6:00 PM,,,,,,,,,,,4:00 PM,1,Beer,,,,,,,,,,9:12 PM
+380,153,0,Thursday,,,,,5:15 PM,,,10:00 PM,,,,8:00 PM,15,Resistance,,,,,,,,,,,,,,,,,,
+381,153,1,Friday,6:45 AM,6:58 AM,7:30 AM,,5:30 PM,,4:00 PM,7:30 PM,,,,7:00 AM,15,Resistance,Moderate,,,,,4:30 PM,1,Wine,,,,,,,,,,
+382,153,2,Saturday,7:45 AM,,8:00 AM,1:00 PM,5:00 PM,,,,,,,6:00 PM,10,Aerobic,Mild,,,,,4:30 PM,1,Wine,,,,,,,,,,10:30 PM
+383,153,3,Sunday,8:45 AM,9:00 AM,11:00 AM,1:45 PM,5:15 PM,,,,,,,,,,,,,,,5:15 PM,2,Vodka,Vodka,,,,,,,,,11:00 PM
+384,153,4,Monday,6:20 AM,7:08 AM,9:30 AM,11:10 AM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+385,153,5,Tuesday,6:00 AM,7:40 AM,7:20 AM,1:40 PM,5:30 PM,,,,,,,7:00 AM,15,Resistance,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+386,153,6,Wednesday,6:45 AM,8:20 AM,7:15 AM,12:15 PM,5:00 PM,10:10 AM,7:00 PM,8:30 PM,,,,9:55 AM,15,Resistance,Moderate,,,,,,,,,,,,,,,,,11:30 PM
+387,153,7,Thursday,6:00 AM,7:15 AM,8:00 AM,12:30 PM,4:45 PM,6:30 PM,9:30 PM,,,,,6:15 AM,15,Resistance,Moderate,,,,,6:00 PM,1,Wine,,,,,,,,,,10:45 PM
+388,153,8,Friday,7:45 AM,8:53 AM,9:00 AM,1:30 PM,5:30 PM,,,,,,,,,,,,,,,1:00 PM,3,Tequila,Rum,Rum,,,,,,,,
+389,153,9,Saturday,7:00 AM,8:00 AM,9:00 AM,,4:40 PM,1:00 PM,,,,,,2:45 PM,20,Aerobic,Moderate,,,,,5:40 PM,2,Wine,Wine,,,,,,,,,12:00 AM
+390,198,0,Friday,8:20 AM,2:30 PM,,2:30 PM,6:00 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+391,198,1,Saturday,8:27 AM,12:00 PM,9:00 AM,12:30 PM,8:00 PM,11:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:55 PM
+392,198,2,Sunday,8:30 AM,12:00 PM,,,8:45 PM,,,,,,,,,,,,,,,8:45 PM,2,Wine,Wine,,,,,,,,,12:00 AM
+393,198,3,Monday,7:30 AM,12:10 PM,,12:20 PM,5:50 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:10 AM
+394,198,4,Tuesday,8:00 AM,11:50 AM,,12:20 PM,7:10 PM,8:10 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+395,198,5,Wednesday,8:22 AM,1:00 PM,,12:15 PM,10:15 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:25 PM
+396,198,6,Thursday,8:00 AM,12:00 PM,8:10 AM,12:15 PM,5:40 PM,3:40 PM,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:20 AM
+397,198,7,Friday,7:51 AM,12:00 PM,8:10 AM,12:20 PM,7:00 PM,5:00 PM,,,,,,,,,,,,,,4:30 PM,3,Wine,Wine,Wine,,,,,,,,12:50 AM
+398,198,8,Saturday,8:50 AM,12:10 PM,10:00 AM,,6:10 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:45 AM
+399,198,9,Sunday,7:40 AM,,,12:45 PM,6:30 PM,8:00 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:45 AM
+400,117,0,Friday,,6:00 PM,,,21:20 pm,,,,,,,5:30 PM,90,Resistance,Moderate,,,,,8:15 PM,2,Beer,Whiskey,,,,,,,,,1:30 AM
+401,117,1,Saturday,10:30 AM,1:46 PM,11:15 AM,,7:00 PM,,,,,,,5:00 PM,60,Resistance,Moderate,,,,,,,,,,,,,,,,,1:45 AM
+402,117,2,Sunday,9:00 AM,,11:00 AM,,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+403,117,3,Monday,8:00 AM,3:22 PM,10:30 AM,12:30 PM,8:00 PM,,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:45 PM
+404,117,4,Tuesday,5:00 AM,4:20 PM,8:30 AM,12:30 PM,6:30 PM,10:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,8:45 PM
+405,117,5,Wednesday,8:00 AM,10:44 AM,10:30 AM,1:30 PM,10:00 PM,,5:00 PM,,,,,9:20 AM,70,Resistance,Moderate,,,,,,,,,,,,,,,,,12:00 AM
+406,117,6,Thursday,8:00 AM,2:20 PM,10:00 AM,2:00 PM,7:00 PM,,,,,,,9:00 AM,60,Resistance,Moderate,,,,,,,,,,,,,,,,,
+407,117,7,Friday,10:20 AM,7:23 PM,11:15 AM,1:30 PM,7:00 PM,,,,,,,2:00 PM,,Resistance,Moderate,,,,,,,,,,,,,,,,,9:00 PM
+408,117,8,Saturday,6:30 AM,5:14 PM,7:00 AM,1:00 PM,6:00 PM,10:00 AM,,,,,,10:00 AM,,Resistance,Moderate,,,,,,,,,,,,,,,,,11:30 PM
+409,117,9,Sunday,8:00 AM,2:00 PM,9:00 AM,1:30 PM,9:20 PM,,,,,,,5:30 PM,90,Resistance,Moderate,,,,,8:45 PM,1,Beer,,,,,,,,,,1:30 AM
+410,109,1,Wednesday,6:30 AM,,,11:00 AM,6:00 PM,,,,,,,,,,,,,,,6:00 PM,1,Wine,,,,,,,,,,10:30 PM
+411,109,2,Thursday,7:00 AM,7:30 AM,,12:00 PM,6:30 PM,10:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+412,109,3,Friday,6:45 AM,7:30 AM,,11:00 AM,6:00 PM,,,,,,,,,,,,,,,4:30 PM,1,Beer,,,,,,,,,,11:00 PM
+413,109,4,Saturday,6:45 AM,7:30 AM,,12:00 PM,5:30 PM,,,,,,,,,,,,,,,5:30 PM,2,Cocktail,Beer,,,,,,,,,10:30 PM
+414,109,5,Sunday,8:30 AM,9:00 AM,,12:00 PM,,,3:30 PM,8:30 PM,,,,,,,,,,,,3:00 PM,4,Cocktail,Cocktail,Cocktail,Cocktail,,,,,,,10:45 PM
+415,109,6,Monday,9:00 AM,9:15 AM,9:15 AM,2:30 PM,,,,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+416,109,7,Tuesday,7:15 AM,10:00 AM,,11:00 AM,6:20 PM,,5:30 PM,,,,,,,,,,,,,5:30 PM,2,Cocktail,Cocktail,,,,,,,,,10:00 PM
+417,109,8,Wednesday,6:45 AM,12:30 PM,7:30 AM,12:00 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+418,109,9,Thursday,7:00 AM,1:00 PM,7:30 AM,,7:00 PM,,12:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+419,109,10,Friday,7:30 AM,,,11:15 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+420,189,0,Tuesday,5:30 AM,6:26 PM,,,7:30 PM,,,,,,,6:45 AM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:45 PM
+421,189,1,Wednesday,5:30 AM,8:06 AM,7:45 AM,12:00 PM,7:15 PM,,,5:00 PM,,,,6:30 AM,45,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:40 PM
+422,189,2,Thursday,5:30 AM,8:10 AM,7:50 AM,12:30 PM,7:15 PM,,,,,,,6:30 AM,45,Both,Moderate,,,,,,,,,,,,,,,,,9:15 PM
+423,189,3,Friday,5:30 AM,7:55 AM,8:00 AM,12:00 PM,,10:30 AM,,,,,,6:45 AM,45,Both,Moderate,,,,,,,,,,,,,,,,,9:30 PM
+424,189,4,Saturday,8:00 AM,8:10 AM,10:00 AM,2:00 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+425,189,5,Sunday,8:00 AM,8:10 AM,9:00 AM,,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+426,189,6,Monday,5:30 AM,8:30 AM,8:00 AM,12:30 PM,7:00 PM,11:00 AM,,6:30 PM,,,,6:45 AM,45,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:00 PM
+427,189,7,Tuesday,5:45 AM,8:30 AM,8:00 AM,12:00 PM,8:00 PM,,2:30 PM,6:30 PM,,,,7:00 AM,45,Both,Moderate,,,,,,,,,,,,,,,,,9:15 PM
+428,189,8,Wednesday,5:30 AM,,7:45 AM,12:00 PM,7:00 PM,11:00 AM,,5:30 PM,,,,6:30 AM,45,Aerobic,,,,,,,,,,,,,,,,,,9:15 PM
+429,189,9,Thursday,5:30 AM,8:10 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+430,95,0,Tuesday,6:00 AM,6:10 PM,,,7:30 AM,4:55 PM,6:09 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+431,95,1,Wednesday,6:16 AM,6:23 AM,6:57 AM,1:10 PM,5:00 PM,11:50 AM,2:42 PM,8:40 PM,,,,7:15 AM,10,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+432,95,2,Thursday,5:05 AM,8:30 PM,5:15 AM,12:10 PM,,9:15 AM,11:40 AM,3:00 PM,4:15 PM,7:00 PM,9:00 PM,,,,,,,,,8:00 PM,7,Beer,Beer,Beer,Beer,Beer,Beer,Beer,,,,11:30 PM
+433,95,3,Friday,5:45 AM,8:13 PM,7:15 AM,2:15 PM,5:15 PM,9:40 AM,12:45 PM,9:08 PM,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+434,95,4,Saturday,6:30 AM,8:15 PM,8:00 AM,,8:45 PM,9:15 AM,11:00 PM,1:40 PM,2:41 PM,4:15 PM,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+435,95,5,Sunday,7:40 AM,8:25 PM,9:03 AM,12:40 PM,5:03 PM,1:40 PM,2:15 PM,5:03 PM,9:15 PM,,,,,,,,,,,,,,,,,,,,,,,12:40 AM
+436,95,6,Monday,6:00 AM,8:50 PM,6:35 AM,12:45 PM,5:07 PM,1:04 PM,7:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:55 PM
+437,95,7,Tuesday,6:15 AM,8:53 PM,6:45 AM,12:07 PM,6:45 PM,8:15 AM,9:15 AM,2:50 PM,3:19 PM,6:05 PM,8:43 PM,,,,,,,,,,,,,,,,,,,,,10:15 PM
+438,95,8,Wednesday,6:20 AM,9:30 PM,6:43 AM,1:00 PM,,9:05 AM,11:00 AM,5:50 PM,4:10 PM,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+439,95,9,Thursday,5:59 AM,9:32 PM,6:52 AM,1:50 PM,6:45 PM,,9:55 AM,7:35 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,10:50 PM
+440,102,0,Wednesday,7:00 AM,11:00 AM,7:30 AM,,5:45 PM,12:30 PM,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:50 PM
+441,102,1,Thursday,6:00 AM,9:48 AM,7:15 AM,10:30 AM,7:30 PM,4:30 PM,9:15 PM,,,,,9:00 AM,20,Both,Moderate,,,,,,,,,,,,,,,,,
+442,102,2,Friday,5:55 AM,9:48 AM,6:10 AM,2:00 PM,6:15 PM,10:00 AM,5:00 PM,8:00 PM,,,,11:30 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:45 PM
+443,102,3,Saturday,7:00 AM,11:48 AM,7:30 AM,11:45 AM,4:00 PM,7:00 AM,11:45 AM,10:30 PM,11:00 AM,,,9:30 AM,130,Aerobic,Mild,,,,,,,,,,,,,,,,,11:15 PM
+444,102,4,Sunday,3:15 AM,9:50 AM,3:30 AM,1:00 PM,5:00 PM,1:00 PM,,8:00 PM,,,,2:30 PM,,Aerobic,Mild,,,,,,,,,,,,,,,,,10:00 PM
+445,102,5,Monday,8:50 AM,9:30 AM,10:40 AM,12:30 PM,7:30 PM,9:00 AM,12:30 PM,,,,,10:00 AM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,10:00 PM
+446,102,6,Tuesday,6:58 AM,,8:30 AM,11:30 AM,5:30 PM,7:30 AM,2:18 PM,9:50 PM,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+447,102,7,Wednesday,8:00 AM,,10:00 AM,12:00 PM,5:00 PM,9:30 AM,10:00 AM,12:00 PM,,,,10:00 AM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,10:00 PM
+448,102,8,Thursday,6:30 AM,10:30 AM,7:00 AM,,5:00 PM,7:00 AM,2:30 PM,9:30 PM,,,,,180,Aerobic,,,,,,,,,,,,,,,,,,10:00 PM
+449,102,9,Friday,3:45 AM,,4:20 AM,,,9:30 AM,1:00 PM,,11:00 AM,,,10:00 AM,60,Aerobic,,,,,,,,,,,,,,,,,,
+450,63,0,Thursday,7:30 AM,12:05 PM,8:30 AM,12:00 PM,,3:00 PM,5:30 PM,8:00 PM,,,,6:45 PM,60,Both,Moderate,8:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,10:00 PM
+451,63,1,Friday,7:00 AM,11:30 AM,8:00 AM,11:15 AM,8:00 PM,10:00 AM,12:15 PM,5:00 PM,10:10 PM,,,9:00 AM,60,Both,Intense,12:00 PM,30,Resistance,Moderate,,,,,,,,,,,,,12:00 AM
+452,63,2,Saturday,8:00 AM,11:39 AM,9:30 AM,12:30 PM,5:00 PM,10:15 AM,3:00 PM,8:30 PM,,,,1:30 PM,87,Aerobic,Moderate,4:00 PM,60,Aerobic,Mild,,,,,,,,,,,,,11:00 PM
+453,63,3,Sunday,8:00 AM,11:40 AM,9:00 AM,2:00 PM,5:15 PM,11:50 AM,7:50 PM,,,,,10:20 AM,70,Aerobic,Moderate,1:00 PM,50,,Moderate,,,,,,,,,,,,,10:00 PM
+454,63,4,Monday,6:00 AM,11:40 AM,6:45 AM,12:30 PM,6:30 PM,10:15 AM,2:30 PM,4:30 PM,7:40 PM,,,1:45 PM,30,Aerobic,Mild,5:30 PM,60,Both,Moderate,,,,,,,,,,,,,10:00 PM
+455,63,5,Tuesday,4:34 AM,11:48 AM,5:30 AM,11:15 AM,6:30 PM,8:05 AM,2:00 PM,4:30 PM,9:00 PM,,,7:15 PM,60,Aerobic,,,,,,,,,,,,,,,,,,10:30 PM
+456,63,6,Wednesday,7:00 AM,11:55 AM,8:10 AM,,7:00 PM,10:00 AM,9:00 AM,3:30 PM,4:50 PM,,,9:15 AM,45,Aerobic,Moderate,12:00 PM,30,Aerobic,Moderate,,,,,,,,,,,,,10:15 PM
+457,63,7,Thursday,6:25 AM,12:03 PM,7:35 AM,12:15 PM,7:00 PM,9:10 AM,2:30 PM,3:00 PM,10:00 PM,,,10:30 PM,45,Aerobic,Mild,,,,,,,,,,,,,,,,,12:00 AM
+458,63,8,Friday,8:00 AM,12:05 PM,8:30 AM,11:30 AM,6:30 PM,10:30 AM,9:30 PM,5:30 PM,,,,9:30 AM,40,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:04 PM
+459,63,9,Saturday,7:30 AM,12:05 PM,8:30 AM,12:00 PM,,3:00 PM,5:30 PM,8:00 PM,,,,6:45 PM,60,Both,Moderate,8:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,10:00 PM
+460,136,0,Tuesday,7:00 AM,,,1:05 PM,,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+461,136,1,Wednesday,7:00 AM,7:00 PM,8:00 AM,12:17 PM,6:38 PM,9:14 AM,1:30 PM,3:49 PM,,,,,,Both,Moderate,,,,,,,,,,,,,,,,,9:44 PM
+462,136,2,Thursday,,,7:30 AM,12:14 PM,6:00 PM,9:30 AM,8:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+463,136,3,Friday,6:30 AM,,7:00 AM,12:15 PM,6:30 PM,10:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+464,136,4,Saturday,7:00 AM,,8:00 AM,1:35 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+465,136,5,Sunday,,,7:30 AM,11:45 AM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:15 PM
+466,136,6,Monday,7:00 AM,7:38 PM,8:00 AM,11:45 AM,6:30 PM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,9:45 PM
+467,136,7,Tuesday,8:00 AM,7:42 PM,8:30 AM,12:00 PM,5:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+468,136,8,Wednesday,8:00 AM,7:40 PM,9:30 AM,12:10 PM,6:30 PM,2:00 PM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+469,136,9,Thursday,7:30 AM,7:00 PM,8:00 AM,1:20 PM,6:30 PM,3:00 PM,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+470,158,0,Monday,6:30 AM,3:00 PM,8:00 AM,11:00 AM,7:00 PM,1:00 PM,4:30 PM,,,,,1:00 PM,20,Aerobic,Mild,,20,Aerobic,Moderate,8:00 PM,1,Wine,,,,,,,,,,10:00 PM
+471,158,1,Tuesday,6:30 AM,7:00 AM,8:00 AM,11:00 AM,3:45 PM,2:00 PM,6:00 PM,8:00 PM,,,,3:10 PM,30,Aerobic,Mild,7:30 PM,60,,Moderate,,,,,,,,,,,,,10:30 PM
+472,158,2,Wednesday,6:45 AM,7:15 AM,7:45 AM,11:00 AM,6:00 PM,10:30 AM,3:00 PM,8:00 PM,9:15 PM,,,9:00 AM,90,,Mild,3:00 PM,30,,Mild,,,,,,,,,,,,,10:00 PM
+473,158,3,Thursday,6:00 AM,6:30 AM,6:30 AM,1:30 PM,8:00 PM,1:00 PM,5:30 PM,,,,,3:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+474,158,4,Friday,6:30 AM,7:15 AM,7:30 AM,11:00 AM,6:00 PM,12:00 PM,,,,,,9:00 AM,60,Aerobic,Moderate,,,,,6:30 PM,1,Wine,,,,,,,,,,9:30 PM
+475,158,5,Saturday,7:00 AM,7:20 AM,7:00 AM,1:00 PM,7:00 PM,10:00 AM,,,10:15 PM,,,,,,,,,,,10:15 PM,1,Wine,,,,,,,,,,11:45 PM
+476,158,6,Sunday,7:15 AM,7:30 AM,7:30 AM,10:30 AM,8:30 PM,2:00 PM,7:00 AM,,,,,8:15 AM,,Aerobic,,4:00 PM,30,Aerobic,,,,,,,,,,,,,,9:30 PM
+477,158,7,Monday,6:15 AM,7:15 AM,7:15 AM,12:30 PM,6:30 PM,7:30 AM,10:15 PM,,,,,8:00 AM,60,Aerobic,,,,,,10:30 PM,1,Wine,,,,,,,,,,11:30 PM
+478,158,8,Tuesday,7:15 AM,7:30 AM,8:00 AM,12:30 PM,6:30 PM,,,,,,,7:00 PM,15,Aerobic,Mild,,,,,10:30 PM,1,Wine,,,,,,,,,,11:30 PM
+479,158,9,Wednesday,6:30 AM,7:00 AM,7:30 AM,12:00 PM,,10:30 AM,,,,,,9:00 AM,90,,,,,,,,,,,,,,,,,,,
+480,84,0,Monday,8:15 AM,,,,5:35 PM,3:30 PM,5:10 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:01 PM
+481,84,1,Tuesday,6:30 AM,9:00 AM,7:45 AM,11:15 AM,4:37 PM,12:15 PM,,,,,,9:01 AM,50,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+482,84,2,Wednesday,6:17 AM,7:00 AM,7:33 AM,1:01 PM,5:52 PM,10:33 AM,4:13 PM,,,,,9:00 AM,90,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:09 PM
+483,84,3,Thursday,6:31 AM,7:01 AM,7:52 AM,12:38 PM,5:57 PM,3:25 PM,,,,,,9:30 AM,60,Aerobic,Intense,,,,,,,,,,,,,,,,,11:20 PM
+484,84,4,Friday,6:28 AM,7:01 AM,7:50 AM,12:23 PM,5:40 PM,3:13 PM,,,,,,11:22 AM,40,Aerobic,Moderate,,,,,,,,,,,,,,,,,7:31 PM
+485,84,5,Saturday,6:28 AM,7:00 AM,9:39 AM,12:01 PM,6:15 PM,3:50 PM,,,,,,9:30 AM,60,Aerobic,Intense,,,,,,,,,,,,,,,,,10:45 PM
+486,84,6,Sunday,6:31 AM,7:01 AM,7:51 AM,2:39 PM,6:15 PM,,,,,,,11:15 AM,45,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:00 PM
+487,84,7,Monday,6:27 AM,7:00 AM,7:50 AM,1:55 PM,6:50 PM,3:00 PM,,,,,,9:15 AM,90,Aerobic,,,,,,,,,,,,,,,,,,10:45 PM
+488,84,8,Tuesday,6:15 AM,7:00 AM,8:02 AM,11:52 AM,5:50 PM,4:22 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:20 PM
+489,84,9,Wednesday,5:06 AM,7:01 AM,7:09 AM,12:35 PM,,,,,,,,9:00 AM,90,Aerobic,,,,,,,,,,,,,,,,,,
+490,155,0,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+491,155,1,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+492,155,2,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+493,155,3,Monday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+494,155,4,Tuesday,7:00 AM,7:00 AM,9:00 AM,12:00 PM,6:30 PM,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+495,155,5,Wednesday,6:45 AM,,8:30 AM,11:30 AM,6:15 PM,2:30 PM,,,,,,,30,,Moderate,,,,,,,,,,,,,,,,,10:45 PM
+496,155,6,Thursday,7:30 AM,,9:30 AM,,3:30 PM,12:00 PM,,,,,,,45,,Moderate,,,,,,,,,,,,,,,,,10:45 PM
+497,155,7,Friday,6:50 AM,,9:00 AM,12:00 PM,6:30 PM,8:00 PM,,,,,,,30,,Mild,,,,,,,,,,,,,,,,,10:45 PM
+498,155,8,Saturday,6:45 AM,,8:30 AM,11:30 AM,6:15 PM,2:30 PM,,,,,,,30,,Moderate,,,,,,,,,,,,,,,,,10:45 PM
+499,155,9,Sunday,8:30 AM,,,11:00 AM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+500,105,0,Monday,,,,,6:00 PM,,,4:15 PM,,,,,,,,,,,,,,,,,,,,,,,,8:30 PM
+501,105,1,Tuesday,4:30 AM,9:45 AM,9:30 AM,1:30 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+502,105,2,Wednesday,4:30 AM,9:05 AM,9:15 AM,3:00 PM,6:45 PM,,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,8:30 PM
+503,105,3,Thursday,7:30 AM,8:30 AM,8:00 AM,1:00 PM,3:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+504,105,4,Friday,5:30 AM,9:20 AM,9:30 AM,3:15 PM,6:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+505,105,5,Saturday,6:00 AM,9:10 AM,10:00 AM,3:00 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+506,105,6,Sunday,7:10 AM,7:30 AM,,1:30 PM,6:00 PM,,3:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+507,105,7,Monday,4:30 AM,8:45 AM,9:00 AM,2:00 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:15 PM
+508,105,8,Tuesday,4:30 AM,9:34 AM,9:40 AM,,4:45 PM,,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+509,105,9,Wednesday,4:30 AM,9:33 AM,9:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+510,139,0,Friday,6:00 AM,8:00 AM,8:30 AM,12:00 PM,6:30 PM,10:30 PM,2:00 PM,,3:16 PM,6:00 PM,8:00 PM,6:30 PM,50,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:00 PM
+511,139,1,Saturday,6:30 AM,7:00 AM,8:00 AM,1:30 PM,8:30 PM,11:30 AM,,,,,,7:00 AM,47,Aerobic,Moderate,,,,,7:00 PM,1,Margarita,,,,,,,,,,9:30 PM
+512,139,2,Sunday,7:05 AM,,9:30 AM,12:30 PM,8:45 PM,3:00 PM,,9:30 PM,,,,8:00 AM,60,,Moderate,,,,,,,,,,,,,,,,,10:00 PM
+513,139,3,Monday,7:50 AM,8:10 AM,9:100 a,1:30 PM,8:00 PM,5:00 PM,,7:00 PM,,,,8:15 AM,50,Aerobic,Moderate,,,,,7:00 PM,1,Beer,,,,,,,,,,10:00 PM
+514,139,4,Tuesday,5:30 AM,6:30 AM,9:00 AM,1:00 PM,6:45 PM,4:00 PM,,,,,,7:00 PM,50,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+515,139,5,Wednesday,5:10 AM,6:00 AM,8:30 AM,12:30 PM,6:10 PM,,,8:00 PM,,,,6:30 PM,50,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:50 PM
+516,139,6,Thursday,5:30 AM,5:36 AM,8:00 AM,12:00 PM,5:45 PM,2:00 PM,,,,,,6:00 PM,47,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:30 PM
+517,139,7,Friday,6:10 AM,6:20 AM,8:15 AM,12:00 PM,7:30 PM,,3:00 PM,,,,,7:45 PM,30,,,,,,,,,,,,,,,,,,,9:50 PM
+518,139,8,Saturday,7:10 AM,7:15 AM,8:30 AM,2:30 PM,8:20 PM,4:04 PM,,,,,,7:40 AM,,,,5:00 PM,20,Aerobic,Mild,,,,,,,,,,,,,9:40 PM
+519,139,9,Sunday,6:00 AM,8:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,9:40 PM
+520,184,0,Friday,6:50 AM,1:30 PM,,1:00 PM,7:00 PM,,2:30 PM,12:00 AM,,,,,,,,,,,,6:00 PM,5,Beer,Beer,Beer,Wine,Wine,,,,,,12:30 AM
+521,184,1,Saturday,10:00 AM,5:30 AM,,1:30 PM,6:30 PM,,4:00 PM,9:30 PM,,,,11:30 AM,45,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+522,184,2,Sunday,9:00 AM,8:00 PM,,1:00 PM,9:30 PM,,2:30 PM,,,,,10:00 AM,80,Aerobic,Moderate,,,,,10:00 PM,7,Beer,Beer,Beer,Wine,Wine,Wine,Wine,,,,2:30 AM
+523,184,3,Monday,10:00 AM,5:30 AM,,1:30 PM,6:30 PM,,4:00 PM,9:30 PM,,,,11:30 AM,45,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+524,184,4,Tuesday,7:00 AM,5:50 PM,8:45 AM,12:00 PM,9:00 PM,10:30 AM,,,,,,6:05 PM,25,,,,,,,9:00 PM,2,Wine,Wine,,,,,,,,,10:45 PM
+525,184,5,Wednesday,6:45 AM,5:00 PM,8:00 AM,12:15 PM,8:30 PM,9:30 PM,,,,,,8:00 PM,50,Aerobic,,,,,,8:00 PM,2,Wine,Wine,,,,,,,,,10:00 PM
+526,184,6,Thursday,6:40 AM,4:40 PM,8:00 AM,12:45 PM,7:30 PM,10:20 PM,,,,,,,,,,,,,,7:30 PM,1,Beer,,,,,,,,,,10:40 PM
+527,184,7,Friday,6:40 AM,6:00 PM,8:30 AM,12:30 PM,7:15 PM,1:00 PM,11:45 PM,,,,,8:00 PM,25,Aerobic,Moderate,,,,,,,,,,,,,,,,,12:00 AM
+528,184,8,Saturday,9:00 AM,3:40 PM,1:00 PM,,4:00 PM,1:00 AM,,,,,,11:00 AM,90,Aerobic,Moderate,,,,,7:30 PM,5,Beer,Beer,Beer,Champagne,Champagne,,,,,,1:30 AM
+529,184,9,Sunday,9:00 AM,6:00 PM,10:50 AM,,5:00 PM,2:30 PM,,,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+530,161,0,Friday,7:00 AM,,8:00 AM,12:00 PM,5:00 PM,3:00 PM,7:00 PM,8:00 PM,,,,,,,,,,,,6:30 PM,1,Wine,,,,,,,,,,9:00 PM
+531,161,1,Saturday,6:45 AM,6:55 AM,7:10 AM,1:00 PM,6:00 PM,3:00 PM,,,,,,,,,,,,,,11:00 AM,1,Mimosa,,,,,,,,,,9:30 PM
+532,161,2,Sunday,6:30 AM,7:00 AM,9:00 AM,1:00 PM,7:00 PM,11:00 AM,3:00 PM,,,,,10:00 AM,45,Aerobic,Moderate,,,,,,,,,,,,,,,,,12:15 AM
+533,161,3,Monday,7:00 AM,9:45 PM,7:30 AM,2:30 PM,6:30 PM,3:00 PM,5:00 PM,8:00 PM,,,,,40,Aerobic,Mild,,,,,,,,,,,,,,,,,
+534,161,4,Tuesday,6:00 AM,9:45 PM,6:30 AM,11:15 AM,12:30 PM,10:30 AM,9:30 PM,,,,,8:20 PM,35,Both,Moderate,,,,,,,,,,,,,,,,,10:15 PM
+535,161,5,Wednesday,6:00 AM,,6:20 AM,11:00 AM,6:00 PM,1:00 PM,11:00 AM,9:30 PM,,,,6:30 PM,40,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:05 PM
+536,161,6,Thursday,6:00 AM,6:15 AM,6:03 AM,12:00 PM,6:00 PM,9:00 AM,5:00 PM,3:00 PM,,,,7:30 PM,60,Both,Moderate,,,,,,,,,,,,,,,,,9:45 PM
+537,161,7,Friday,7:15 AM,7:30 AM,7:45 AM,12:00 PM,5:00 PM,11:00 AM,2:00 PM,8:00 PM,,,,8:00 PM,40,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+538,161,8,Saturday,6:10 AM,6:30 AM,6:30 AM,11:00 AM,6:00 PM,9:30 AM,11:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+539,161,9,Sunday,6:15 AM,9:45 PM,6:30 AM,12:45 PM,6:30 PM,12:00 PM,,,,,,,,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+540,69,0,Friday,,3:51 PM,,2:30 PM,6:45 PM,4:30 PM,,,,,,,,,,,,,,5:30 PM,4,Wine,Wine,Wine,Wine,,,,,,,10:00 PM
+541,69,1,Saturday,7:30 AM,4:00 AM,10:00 AM,11:00 AM,7:00 PM,,4:15 PM,,,,,8:45 AM,30,Aerobic,Moderate,,,,,3:51 PM,6,Beer,Beer,Beer,Wine,Wine,Wine,,,,,11:00 PM
+542,69,2,Sunday,8:30 AM,,9:30 AM,,7:00 PM,10:15 AM,8:15 PM,,,,,1:30 PM,90,Aerobic,Moderate,,,,,6:45 PM,1,Beer,,,,,,,,,,9:00 PM
+543,69,3,Monday,8:15 AM,6:12 PM,10:00 AM,7:00 PM,,,5:25 PM,,,,,,,,,,,,,1:25 PM,2,Beer,Vodka,,,,,,,,,
+544,69,4,Tuesday,6:00 AM,6:40 PM,9:15 AM,12:30 PM,7:15 PM,11:00 AM,6:00 PM,8:45 PM,,,,,,Aerobic,Intense,,,,,,,,,,,,,,,,,10:15 PM
+545,69,5,Wednesday,6:15 AM,6:10 PM,8:45 AM,12:15 PM,5:45 PM,5:11 PM,,,,,,,,,Mild,,,,,8:30 PM,2,,,,,,,,,,,
+546,69,6,Thursday,6:10 AM,10:30 PM,8:40 AM,12:40 PM,6:45 PM,8:40 PM,,,,,,10:45 AM,60,Both,Intense,,,,,,,,,,,,,,,,,10:30 PM
+547,69,7,Friday,6:15 AM,10:31 PM,,2:15 PM,9:00 PM,,,,,,,,,,,,,,,6:00 PM,4,Vodka,Vodka,Wine,Wine,,,,,,,
+548,69,8,Saturday,7:50 AM,9:30 PM,9:15 AM,11:45 AM,7:00 PM,11:00 AM,1:45 PM,,,,,,,,,,,,,4:00 PM,4,Wine,Wine,Wine,Wine,,,,,,,
+549,69,9,Sunday,8:10 AM,9:35 PM,,12:30 PM,8:30 PM,4:40 PM,,,,,,,30,,Moderate,,,,,8:30 PM,1,Wine,,,,,,,,,,11:00 PM
+550,186,0,Friday,,4:15 PM,,2:30 PM,9:00 PM,,4:40 PM,11:10 PM,,,,,,,,,,,,8:25 PM,2,Wine,Wine,,,,,,,,,10:00 PM
+551,186,1,Saturday,6:45 AM,6:58 AM,7:00 AM,1:15 PM,,,5:15 PM,11:10 PM,,,,10:00 AM,60,,Moderate,4:30 PM,45,Aerobic,Mild,8:30 PM,2,Wine,Wine,,,,,,,,,10:00 PM
+552,186,2,Sunday,7:30 AM,7:06 PM,7:48 AM,1:10 PM,8:16 PM,4:45 PM,7:10 PM,11:10 PM,,,,10:00 AM,120,Both,Intense,,,,,8:20 PM,2,Wine,Wine,,,,,,,,,10:00 PM
+553,186,3,Monday,7:00 AM,7:16 PM,7:15 AM,1:15 PM,8:45 PM,,4:45 PM,11:00 PM,,,,10:30 PM,40,Both,Intense,,,,,8:30 PM,2,Wine,Wine,,,,,,,,,10:00 PM
+554,186,4,Tuesday,6:20 AM,7:30 PM,7:00 AM,1:50 PM,,12:50 PM,,11:30 AM,6:00 PM,,,10:45 AM,75,Both,Intense,6:00 PM,15,Aerobic,Mild,7:30 PM,3,Wine,Wine,Wine,,,,,,,,9:40 PM
+555,186,5,Wednesday,6:20 AM,8:09 PM,7:05 AM,1:10 PM,8:30 PM,5:20 PM,10:30 PM,11:45 PM,,,,9:30 AM,,Both,Intense,3:10 PM,15,Aerobic,Mild,8:00 PM,2,Wine,Wine,,,,,,,,,9:30 PM
+556,186,6,Thursday,6:00 AM,9:00 PM,7:10 AM,1:00 PM,,5:00 PM,11:40 PM,1:35 AM,,,,9:50 AM,90,Aerobic,Intense,,,,,8:30 PM,2,Wine,Wine,,,,,,,,,9:45 PM
+557,186,7,Friday,6:30 AM,9:30 PM,7:10 AM,1:15 PM,9:00 PM,5:20 PM,,,,,,9:45 AM,120,Both,Intense,6:05 PM,15,Aerobic,Mild,8:30 PM,1,Wine,Wine,,,,,,,,,9:30 PM
+558,186,8,Saturday,7:00 AM,9:40 PM,7:30 AM,1:45 PM,,3:40 PM,,3:40 PM,,,,11:15 AM,15,Aerobic,,3:10 PM,25,Aerobic,,8:10 PM,2,Wine,Wine,,,,,,,,,10:00 PM
+559,186,9,Sunday,7:20 AM,8:30 PM,7:50 AM,11:30 AM,8:50 PM,,,11:00 PM,,,,10:15 AM,90,Both,Intense,7:20 PM,15,Aerobic,Mild,8:15 PM,2,Wine,Wine,,,,,,,,,9:40 PM
+560,77,0,Tuesday,6:30 AM,7:30 AM,11:10 AM,2:45 PM,7:45 PM,8:45 PM,,,,,,2:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,11:00 PM
+561,77,1,Wednesday,7:45 AM,10:45 AM,11:25 AM,1:35 PM,7:40 PM,4:20 PM,9:30 PM,,,,,7:45 AM,25,Aerobic,Mild,12:40 PM,30,Aerobic,Mild,,,,,,,,,,,,,11:00 PM
+562,77,2,Thursday,7:30 AM,5:30 PM,10:30 AM,2:40 PM,7:20 PM,3:55 PM,,,,,,7:30 AM,40,Aerobic,Mild,,,,,,,,,,,,,,,,,10:45 PM
+563,77,3,Friday,7:15 AM,8:22 PM,12:49 PM,,6:46 PM,3:40 PM,4:14 PM,,,,,12:00 PM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,11:00 PM
+564,77,4,Saturday,9:20 AM,1:45 PM,11:45 AM,,6:00 PM,2:50 PM,8:25 PM,10:00 PM,,,,9:50 AM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,11:00 PM
+565,77,5,Sunday,8:45 AM,2:30 PM,1:00 PM,4:30 PM,,8:30 PM,9:40 AM,5:30 PM,,,,1:40 PM,30,Aerobic,Mild,,,,,4:30 PM,1,,,,,,,,,,,11:00 PM
+566,77,6,Monday,8:10 AM,7:00 PM,10:42 AM,,8:15 PM,3:45 PM,6:00 PM,10:20 PM,,,,1:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,11:00 PM
+567,77,7,Tuesday,7:45 AM,9:27 PM,11:30 AM,1:00 PM,8:00 PM,3:00 PM,11:00 PM,,,,,12:30 PM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,12:00 AM
+568,77,8,Wednesday,7:30 AM,3:15 PM,11:10 AM,3:00 PM,,8:45 PM,10:00 PM,,,,,7:45 AM,25,Aerobic,Mild,1:45 PM,30,Aerobic,Mild,8:45 PM,1,Wine,,,,,,,,,,11:00 PM
+569,77,9,Thursday,8:15 AM,4:45 PM,,12:20 PM,,1:00 AM,3:00 PM,3:45 PM,,,,1:45 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,
+570,193,0,Tuesday,6:30 AM,2:00 PM,11:00 AM,4:00 PM,,1:40 PM,9:00 PM,,,,,11:45 AM,15,Aerobic,Moderate,,15,Aerobic,Moderate,2:00 PM,4,Beer,Beer,Beer,Beer,,,,,,,10:15 PM
+571,193,1,Wednesday,8:00 AM,7:29 PM,9:00 AM,12:15 PM,7:15 PM,10:00 AM,6:00 PM,9:05 PM,,,,,,,,,,,,6:15 PM,1,Beer,,,,,,,,,,10:15 PM
+572,193,2,Thursday,7:30 AM,8:20 AM,8:40 AM,1:30 PM,9:40 PM,10:40 AM,,,,,,2:30 PM,15,Aerobic,Moderate,3:00 PM,25,Aerobic,Moderate,9:45 PM,3,Beer,Beer,Beer,,,,,,,,11:30 PM
+573,193,3,Friday,7:45 AM,12:13 PM,11:30 AM,,6:00 PM,12:10 PM,1:30 PM,3:30 PM,11:00 PM,,,11:45 AM,20,Aerobic,,,,,,5:00 PM,5,Beer,Beer,Beer,Beer,Beer,,,,,,11:45 PM
+574,193,4,Saturday,7:17 AM,4:35 PM,9:15 AM,12:45 PM,9:15 PM,10:45 AM,4:05 PM,5:50 PM,10:30 PM,11:10 PM,,6:00 PM,15,Aerobic,,,,,,4:00 PM,7,Beer,Beer,Beer,Beer,Beer,Beer,Beer,,,,11:30 PM
+575,193,5,Sunday,9:15 AM,6:40 PM,10:55 AM,3:00 PM,7:15 PM,2:15 PM,5:00 PM,,,,,3:40 PM,35,Aerobic,Moderate,6:00 PM,15,Aerobic,Moderate,1:45 PM,8,Champagne,Champagne,Champagne,Champagne,Champagne,Champagne,Champagne,Champagne,,,10:00 PM
+576,193,6,Monday,9:00 AM,7:48 PM,11:00 AM,,8:30 PM,1:55 PM,3:50 PM,5:35 PM,7:40 PM,,,12:25 PM,55,Aerobic,Moderate,,,,,5:35 PM,2,Wine,Wine,,,,,,,,,11:30 PM
+577,193,7,Tuesday,8:45 AM,,11:00 AM,3:00 PM,8:30 PM,12:00 PM,11:20 PM,,,,,6:00 PM,15,Aerobic,Mild,,,,,6:40 PM,2,Beer,Beer,,,,,,,,,12:00 AM
+578,193,8,Wednesday,8:00 AM,9:30 PM,10:45 AM,1:30 PM,7:15 PM,2:30 PM,4:45 PM,10:50 PM,,,,,,,,,,,,6:30 PM,2,Beer,Beer,,,,,,,,,11:15 PM
+579,193,9,Thursday,9:00 AM,11:00 PM,10:30 AM,3:35 PM,9:00 PM,1:45 PM,7:00 PM,11:10 PM,,,,2:05 PM,70,Aerobic,Moderate,,,,,8:15 PM,3,Beer,Beer,Beer,,,,,,,,11:45 PM
+580,92,0,Tuesday,,,,,,,,,,,,,35,Resistance,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+581,92,1,Wednesday,4:45 AM,4:57 AM,6:15 AM,,9:20 PM,,,,,,,8:00 PM,30,Resistance,Mild,,,,,,,,,,,,,,,,,11:50 PM
+582,92,2,Thursday,5:00 AM,8:07 AM,6:00 AM,11:30 AM,6:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:50 PM
+583,92,3,Friday,5:00 AM,7:40 AM,8:00 AM,11:40 AM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+584,92,4,Saturday,7:30 AM,8:05 AM,9:00 AM,,6:30 PM,,,9:00 PM,,,,12:00 PM,30,Resistance,Mild,,,,,,,,,,,,,,,,,12:30 AM
+585,92,5,Sunday,7:00 AM,7:24 AM,10:30 AM,,7:30 PM,12:00 PM,,10:30 PM,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+586,92,6,Monday,6:15 AM,6:35 AM,7:15 AM,,,12:30 PM,,,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+587,92,7,Tuesday,4:45 AM,8:04 AM,6:30 AM,12:00 PM,6:00 PM,9:00 AM,1:10 PM,9:30 PM,,,,7:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,10:30 PM
+588,92,8,Wednesday,6:20 AM,6:44 AM,7:30 AM,12:30 PM,7:30 PM,10:30 AM,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+589,92,9,Thursday,5:00 AM,5:02 AM,7:30 AM,11:40 AM,6:00 PM,,,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+590,188,0,Wednesday,6:30 AM,,7:00 AM,11:00 AM,8:00 PM,2:00 PM,,,,,,2:15 PM,30,Resistance,Mild,,,,,8:00 PM,1,Wine,,,,,,,,,,11:30 PM
+591,188,1,Thursday,7:15 AM,7:20 AM,7:25 AM,1:00 PM,9:00 PM,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+592,188,2,Friday,7:15 AM,,7:30 AM,1:00 PM,8:00 PM,3:30 PM,,,,,,,,,,,,,,7:30 PM,7,Vodka,Vodka,Vodka,Wine,Wine,Wine,Wine,,,,
+593,188,3,Saturday,8:30 AM,8:35 AM,9:20 AM,1:30 PM,7:30 PM,,,,,,,,,,,,,,,7:00 PM,7,Wine,Wine,Wine,Vodka,Vodka,Vodka,Vodka,,,,
+594,188,4,Sunday,10:30 AM,,10:45 AM,12:30 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+595,188,5,Monday,7:00 AM,7:10 PM,7:20 AM,2:00 PM,6:30 PM,10:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,
+596,188,6,Tuesday,7:15 AM,3:30 PM,7:20 AM,11:20 AM,5:30 PM,,8:00 PM,10:30 PM,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+597,188,7,Wednesday,7:15 AM,5:00 PM,7:20 AM,11:30 AM,6:30 PM,3:00 PM,5:30 PM,,,,,4:00 PM,60,Both,Intense,,,,,8:00 PM,1,Malt Beverage,,,,,,,,,,12:30 AM
+598,188,8,Thursday,7:15 AM,6:45 AM,7:20 AM,11:30 AM,5:00 PM,,,,,,,7:30 PM,60,Aerobic,,,,,,,,,,,,,,,,,,11:30 PM
+599,188,9,Friday,7:15 AM,3:30 PM,7:20 AM,11:20 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+600,148,0,Thursday,7:30 AM,12:00 PM,8:30 AM,11:30 AM,9:30 PM,2:00 PM,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:40 PM
+601,148,1,Friday,7:30 AM,11:47 AM,9:50 AM,12:15 PM,7:00 PM,,,,,,,,,,,,,,,5:30 PM,1,Beer,,,,,,,,,,10:00 PM
+602,148,2,Saturday,8:00 AM,10:23 AM,8:45 AM,12:00 PM,6:30 PM,2:45 PM,,,,,,10:30 AM,60,Aerobic,Moderate,1:30 PM,,Aerobic,Moderate,6:15 AM,1,Beer,,,,,,,,,,
+603,148,3,Sunday,8:00 AM,11:20 AM,11:45 AM,7:00 PM,,3:30 PM,5:00 PM,,,,,,,,,10:00 PM,,Aerobic,Intense,,,,,,,,,,,,,10:00 PM
+604,148,4,Monday,8:00 AM,11:40 AM,9:30 AM,1:45 PM,7:45 PM,5:25 PM,8:30 PM,,,,,12:15 PM,60,,Mild,,,,,7:00 PM,1,Beer,,,,,,,,,,10:00 PM
+605,148,5,Tuesday,7:30 AM,10:25 AM,8:30 AM,11:15 AM,6:30 PM,1:15 PM,3:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+606,148,6,Wednesday,6:45 AM,,9:15 AM,,7:45 PM,11:45 AM,2:00 PM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+607,148,7,Thursday,7:15 AM,10:26 AM,9:30 AM,9:30 AM,12:00 PM,5:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+608,148,8,Friday,6:45 AM,10:50 AM,10:00 AM,12:00 PM,7:45 PM,5:15 PM,,,,,,,,,,,,,,5:30 PM,1,Wine,,,,,,,,,,11:00 PM
+609,148,9,Saturday,6:30 AM,10:55 AM,8:10 AM,,7:00 PM,10:20 AM,1:45 PM,,,,,9:00 AM,60,Aerobic,Moderate,,,,,5:30 PM,2,Wine,Wine,,,,,,,,,10:00 PM
+610,115,0,Monday,5:30 AM,10:45 AM,8:55 AM,11:30 AM,6:28 PM,,1:41 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+611,115,1,Tuesday,6:17 AM,6:24 AM,7:32 AM,11:30 AM,8:30 PM,9:11 AM,11:15 AM,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+612,115,2,Wednesday,5:55 AM,7:07 AM,7:30 AM,12:30 PM,7:00 PM,10:15 AM,10:21 AM,5:30 PM,,,,,,,,,,,,,,,,,,,,,,,,
+613,115,3,Thursday,,,,,,10:21 AM,1:00 PM,2:40 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,
+614,115,4,Friday,8:45 AM,9:00 AM,,,,1:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+615,115,5,Saturday,,,,,,5:00 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+616,115,6,Sunday,6:07 AM,7:29 AM,7:45 AM,2:00 PM,6:50 PM,10:15 AM,5:00 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,1:45 AM
+617,115,7,Monday,7:00 AM,7:33 AM,7:38 AM,11:40 AM,6:20 PM,10:39 AM,,,,,,,,,,7:20 PM,40,Aerobic,Mild,,,,,,,,,,,,,10:30 PM
+618,115,8,Tuesday,6:00 AM,7:34 AM,7:28 AM,2:20 PM,8:33 PM,10:30 AM,11:30 AM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,12:15 AM
+619,115,9,Wednesday,6:15 AM,9:00 AM,9:45 AM,1:00 PM,7:07 PM,7:00 AM,11:40 AM,,10:53 PM,,,,,,,,,,,,,,,,,,,,,,,11:45 PM
+620,172,0,Monday,,,,1:00 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+621,172,1,Tuesday,6:45 AM,,7:15 AM,11:30 AM,7:30 PM,,6:00 PM,9:24 PM,,,,,,,,,,,,,,,,,,,,,,,,
+622,172,2,Wednesday,,,,,,,,10:00 AM,,,,,,,,,,,,,,,,,,,,,,,,
+623,172,3,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+624,172,4,Friday,,,,12:15 PM,11:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+625,172,5,Saturday,,,,,10:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+626,172,6,Sunday,,,,,,,5:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+627,172,7,Monday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+628,172,8,Tuesday,,,,11:30 AM,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+629,172,9,Wednesday,,,,11:30 AM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+630,121,0,Thursday,,3:30 PM,,,,,4:00 PM,,,,,,20,,Moderate,,,,,,,,,,,,,,,,,
+631,121,1,Friday,,,,,,12:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+632,121,2,Saturday,8:00 AM,10:30 PM,9:15 AM,2:00 PM,8:00 PM,12:00 PM,,,,,,1:00 PM,60,Aerobic,,,,,,,,,,,,,,,,,,12:00 AM
+633,121,3,Sunday,6:45 AM,11:30 PM,9:30 AM,2:00 PM,9:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:35 AM
+634,121,4,Monday,5:30 AM,6:05 PM,8:45 AM,1:00 PM,6:30 PM,10:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+635,121,5,Tuesday,5:15 AM,6:30 PM,9:00 AM,1:00 PM,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+636,121,6,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+637,121,7,Thursday,,9:50 PM,,,,,,,,,,,30,,,,,,,,,,,,,,,,,,,
+638,121,8,Friday,8:30 AM,6:55 PM,9:45 AM,1:45 PM,6:20 PM,,,,,,,3:45 PM,60,Aerobic,,,,,,,,,,,,,,,,,,9:45 PM
+639,121,9,Saturday,7:30 AM,11:00 PM,8:15 AM,1:30 PM,8:00 PM,3:21 PM,,,,,,10:00 PM,35,Aerobic,,,,,,8:00 PM,4,Vodka,Vodka,Vodka,Vodka,,,,,,,12:00 AM
+640,125,0,Friday,6:00 AM,,8:00 AM,12:45 PM,6:30 PM,9:00 PM,,,,,,1:00 PM,45,Aerobic,Mild,,,,,,,,,,,,,,,,,11:00 PM
+641,125,1,Saturday,6:30 AM,6:30 AM,6:30 AM,11:30 AM,6:00 PM,1:10 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+642,125,2,Sunday,7:10 AM,5:38 PM,7:20 AM,1:00 PM,5:38 PM,10:30 AM,3:10 PM,8:20 PM,,,,,,,,,,,,,,,,,,,,,,,,11:20 PM
+643,125,3,Monday,7:18 AM,,7:20 AM,11:20 AM,,10:00 AM,1:30 PM,,,,,9:00 AM,40,Aerobic,Mild,,,,,,,,,,,,,,,,,11:00 PM
+644,125,4,Tuesday,7:32 AM,4:37 PM,7:35 AM,11:45 AM,5:48 PM,9:35 AM,8:15 PM,,,,,10:00 AM,50,Aerobic,,1:00 PM,180,Aerobic,Mild,,,,,,,,,,,,,11:10 PM
+645,125,5,Wednesday,7:10 AM,7:15 AM,7:15 AM,12:15 PM,5:40 PM,2:45 PM,8:30 PM,,,,,11:10 AM,45,Aerobic,,,,,,,,,,,,,,,,,,11:07 PM
+646,125,6,Thursday,6:30 AM,7:36 AM,7:15 AM,12:25 PM,5:00 PM,9:18 AM,1:34 PM,8:30 PM,,,,1:35 PM,30,,,,,,,,,,,,,,,,,,,12:20 AM
+647,125,7,Friday,6:20 AM,6:30 AM,6:30 AM,11:30 AM,5:50 PM,7:40 PM,,,,,,4:30 PM,45,Aerobic,,,,,,,,,,,,,,,,,,11:10 PM
+648,125,8,Saturday,7:10 AM,7:15 AM,7:15 AM,2:15 PM,,11:05 AM,12:30 PM,8:50 PM,,,,,,,,,,,,,,,,,,,,,,,,12:05 AM
+649,125,9,Sunday,7:00 AM,7:10 AM,7:15 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+650,70,0,Friday,6:00 AM,2:47 PM,7:00 AM,,,,12:00 PM,,,,,10:30 AM,,Aerobic,,,,,,,,,,,,,,,,,,11:30 PM
+651,70,1,Saturday,5:10 AM,7:53 AM,5:30 PM,,,,6:00 PM,,,,10:00 AM,,,,,,,,,,,,,,,,,,,,,11:00 PM
+652,70,2,Sunday,4:00 AM,6:58 PM,,10:00 AM,,,,6:00 PM,,,8:00 PM,,,,,,,,,,,,,,,,,,,,,11:30 PM
+653,70,3,Monday,4:30 AM,4:30 AM,,,3:00 PM,,,,,,,11:00 AM,,,,,,,,,,,,,,,,,,,,10:30 PM
+654,70,4,Tuesday,5:00 AM,7:18 PM,10:00 AM,,,,,1:00 PM,,,,11:00 AM,,,,,,,,,,,,,,,,,,,,11:30 PM
+655,70,5,Wednesday,3:30 AM,12:45 PM,,7:00 AM,,,10:00 PM,,,,,11:00 AM,,,,,,Aerobic,,,,,,,,,,,,,,10:00 PM
+656,70,6,Thursday,4:30 AM,11:17 AM,6:00 AM,,,,,1:00 PM,,,,11:00 AM,,,,,,,,,,,,,,,,,,,,11:15 PM
+657,70,7,Friday,5:00 AM,11:19 AM,,1:30 PM,,,6:00 PM,,,,,11:00 AM,,Aerobic,,,,Aerobic,,,,,,,,,,,,,,12:00 AM
+658,70,8,Saturday,5:00 AM,,,,6:00 PM,,10:30 AM,,,,,11:00 AM,,Aerobic,,,,,,,,,,,,,,,,,,11:30 PM
+659,70,9,Sunday,2:30 AM,11:13 PM,,1:30 PM,,,,6:30 AM,,,,11:00 AM,,Aerobic,,,,,,,,,,,,,,,,,,12:00 AM
+660,126,0,Tuesday,,8:30 PM,,1:16 PM,8:00 PM,6:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+661,126,1,Wednesday,6:35 AM,6:45 AM,7:30 AM,11:10 AM,5:00 PM,3:50 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+662,126,2,Thursday,6:40 AM,7:25 AM,7:15 AM,11:20 AM,7:30 PM,1:30 PM,9:15 AM,,,,,5:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:30 PM
+663,126,3,Friday,6:45 AM,7:15 AM,7:30 AM,11:10 AM,9:30 PM,9:15 AM,11:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,2:30 AM
+664,126,4,Saturday,12:05 PM,1:15 AM,12:30 PM,2:45 PM,5:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,2:15 AM
+665,126,5,Sunday,11:05 AM,11:30 AM,12:45 PM,2:45 PM,6:45 PM,9:30 PM,11:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+666,126,6,Monday,7:30 AM,8:34 PM,8:25 AM,11:30 AM,6:30 PM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:45 AM
+667,126,7,Tuesday,6:24 AM,9:46 PM,7:30 AM,,6:30 PM,9:15 AM,3:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+668,126,8,Wednesday,7:00 AM,6:40 PM,7:50 AM,11:10 AM,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+669,126,9,Thursday,7:04 AM,5:45 PM,7:50 AM,11:05 AM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+670,135,0,Tuesday,9:00 AM,1:49 PM,9:45 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+671,135,1,Wednesday,6:00 AM,7:00 PM,6:30 AM,12:00 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+672,135,2,Thursday,6:00 AM,6:56 PM,,,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+673,135,3,Friday,6:00 AM,7:07 AM,6:30 AM,12:00 PM,10:00 PM,,,,,,,3:00 PM,60,Resistance,Moderate,,,,,,,,,,,,,,,,,12:00 AM
+674,135,4,Saturday,10:30 AM,10:45 AM,10:41 AM,12:00 PM,12:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,2:00 AM
+675,135,5,Sunday,10:00 AM,5:30 PM,10:30 AM,12:00 PM,11:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,1:00 AM
+676,135,6,Monday,6:00 AM,10:06 AM,6:30 AM,12:00 PM,7:00 PM,,,,,,,3:00 PM,60,Resistance,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+677,135,7,Tuesday,6:00 AM,5:15 PM,6:30 AM,12:00 PM,7:00 PM,,,,,,,3:45 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,11:00 PM
+678,135,8,Wednesday,6:00 AM,,6:30 AM,12:00 PM,7:00 PM,,,,,,,3:00 PM,60,Resistance,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+679,135,9,Thursday,6:00 AM,7:18 AM,6:30 AM,12:00 PM,7:00 PM,,,,,,,3:45 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,11:00 PM
+680,59,0,Tuesday,12:00 PM,2:00 PM,,1:30 PM,7:30 PM,5:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+681,59,1,Wednesday,6:50 AM,,8:00 AM,11:30 AM,7:30 PM,3:05 PM,6:00 PM,,,,,6:30 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+682,59,2,Thursday,6:50 AM,,8:20 AM,11:30 AM,4:20 PM,3:10 PM,6:30 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,
+683,59,3,Friday,6:50 AM,,,11:30 AM,8:30 PM,3:30 PM,6:45 PM,9:45 PM,,,,,,,,,,,,,,,,,,,,,,,,
+684,59,4,Saturday,10:00 AM,,11:30 AM,2:30 PM,4:30 PM,1:15 PM,5:50 PM,6:45 PM,,,,12:00 PM,120,Aerobic,Intense,,,,,,,,,,,,,,,,,
+685,59,5,Sunday,9:30 AM,,12:30 PM,2:30 PM,8:30 PM,4:15 PM,6:00 PM,10:30 PM,,,,7:00 PM,30,Resistance,Mild,,,,,,,,,,,,,,,,,10:30 PM
+686,59,6,Monday,7:00 AM,,8:15 AM,11:45 AM,7:45 PM,3:45 PM,6:45 PM,10:20 PM,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+687,59,7,Tuesday,6:50 AM,,,11:30 AM,6:30 PM,10:00 AM,1:30 PM,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+688,59,8,Wednesday,6:50 AM,,,11:30 AM,8:30 PM,10:00 AM,2:30 PM,4:00 PM,6:30 PM,,,7:30 PM,120,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+689,59,9,Thursday,6:50 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+690,190,0,Monday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+691,190,1,Tuesday,,,,,5:59 AM,,,,,,,6:00 PM,,,,,,,,,,,,,,,,,,,,
+692,190,2,Wednesday,9:00 AM,1:07 PM,,,5:00 PM,,,,,,,6:00 PM,,,Mild,,,,,,,,,,,,,,,,,
+693,190,3,Thursday,,,,,,,,,,,,6:00 PM,,,,,,,,,,,,,,,,,,,,
+694,190,4,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+695,190,5,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+696,190,6,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+697,190,7,Monday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+698,190,8,Tuesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+699,190,9,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+700,118,0,Wednesday,,,,1:35 PM,6:30 PM,,4:00 PM,11:45 PM,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+701,118,1,Thursday,6:00 AM,6:00 AM,8:45 AM,1:00 PM,6:00 PM,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+702,118,2,Friday,6:30 AM,6:45 AM,10:00 AM,2:30 PM,7:30 PM,4:00 AM,1:00 PM,3:00 PM,,,,8:30 AM,60,Resistance,Intense,,,,,,,,,,,,,,,,,10:00 PM
+703,118,3,Saturday,7:30 AM,7:45 AM,,1:00 PM,6:30 PM,3:00 AM,1:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+704,118,4,Sunday,7:00 AM,,9:00 AM,12:00 PM,,1:00 AM,,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+705,118,5,Monday,7:30 AM,10:30 AM,9:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,9:45 PM
+706,118,6,Tuesday,7:30 AM,11:00 AM,10:15 AM,2:00 PM,6:00 PM,1:00 AM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+707,118,7,Wednesday,7:00 AM,11:45 AM,9:30 AM,,,11:45 AM,,,,,,11:45 AM,45,Resistance,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+708,118,8,Thursday,7:15 AM,1:45 PM,8:45 AM,12:15 PM,7:00 PM,1:00 AM,,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+709,118,9,Friday,7:30 AM,8:50 PM,11:30 AM,3:00 PM,7:00 PM,1:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+710,133,0,Thursday,,11:24 PM,2:30 AM,2:45 PM,8:00 PM,10:00 PM,,,,,,,,,,,,,,4:00 PM,1,Wine,,,,,,,,,,11:00 PM
+711,133,1,Friday,7:30 AM,7:37 AM,9:30 AM,3:55 PM,,,8:00 PM,,,,,1:00 PM,70,Aerobic,Moderate,,,,,3:15 PM,1,Wine,,,,,,,,,,11:00 PM
+712,133,2,Saturday,6:30 AM,8:46 AM,10:15 AM,2:00 PM,,8:00 PM,,,,,,,,,,,,,,3:18 PM,1,Wine,,,,,,,,,,11:30 PM
+713,133,3,Sunday,5:45 AM,10:46 AM,10:46 AM,,6:00 PM,12:30 PM,,,,,,,,,,,,,,2:18 PM,1,Wine,,,,,,,,,,11:30 PM
+714,133,4,Monday,6:00 AM,7:15 AM,,1:40 PM,5:00 PM,3:00 PM,,,,,,,,,,,,,,3:19 PM,1,Wine,,,,,,,,,,11:05 PM
+715,133,5,Tuesday,6:30 AM,8:43 AM,8:45 AM,2:00 PM,7:30 PM,9:00 PM,,,,,,,,,,,,,,4:00 PM,2,Wine,,,,,,,,,,11:30 PM
+716,133,6,Wednesday,6:00 AM,8:25 AM,8:30 AM,12:00 PM,,2:54 PM,,,,,,,,,,,,,,1:00 PM,1,Wine,,,,,,,,,,11:00 PM
+717,133,7,Thursday,6:30 AM,7:41 AM,7:45 AM,12:30 PM,7:30 PM,,,,,,,,,,,,,,,1:04 PM,2,Wine,Wine,,,,,,,,,11:30 PM
+718,133,8,Friday,6:00 AM,12:31 PM,7:30 AM,2:30 PM,6:00 PM,4:10 PM,,,,,,,,,,,,,,4:00 PM,15,Wine,,,,,,,,,,11:05 PM
+719,133,9,Saturday,6:30 AM,8:51 AM,9:00 AM,,6:00 PM,7:30 PM,,,,,,,,,,,,,,6:00 PM,1,Wine,,,,,,,,,,10:30 PM
+720,73,1,Wednesday,6:15 AM,6:53 AM,10:19 AM,12:32 PM,6:55 PM,3:04 PM,,,,,,8:15 AM,72,Both,Moderate,11:28 AM,65,Aerobic,Mild,,,,,,,,,,,,,9:30 PM
+721,73,2,Thursday,6:30 AM,7:11 AM,8:40 AM,12:00 PM,8:35 PM,3:53 PM,4:36 PM,,,,,,,,,,,,,8:00 PM,2,Beer,Beer,,,,,,,,,10:30 PM
+722,73,3,Friday,6:30 AM,7:05 AM,10:05 AM,12:37 PM,7:25 PM,4:30 PM,5:35 PM,,,,,2:58 PM,75,Both,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+723,73,4,Saturday,8:16 AM,8:34 AM,10:00 AM,1:20 PM,6:30 PM,2:30 PM,3:35 PM,,,,,12:00 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,10:40 PM
+724,73,5,Sunday,7:30 AM,7:51 AM,9:30 AM,1:40 PM,8:00 PM,12:15 PM,,,,,,2:50 PM,15,Aerobic,Mild,,,,,,,,,,,,,,,,,9:50 PM
+725,73,6,Monday,5:48 AM,6:05 AM,7:20 AM,12:00 PM,6:45 PM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+726,73,7,Tuesday,6:51 AM,7:07 AM,8:45 AM,2:20 PM,7:07 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+727,73,8,Wednesday,5:53 AM,5:56 AM,8:20 AM,12:20 PM,5:27 PM,10:50 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+728,73,9,Thursday,6:53 AM,7:11 AM,8:20 AM,12:00 PM,,11:15 PM,4:35 PM,8:54 PM,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+729,73,10,Friday,6:15 AM,7:04 AM,8:15 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+730,56,1,Wednesday,6:15 AM,7:14 AM,8:52 AM,11:42 AM,6:48 PM,3:00 PM,,,,,,9:30 AM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,9:30 PM
+731,56,2,Thursday,6:15 AM,7:11 AM,8:14 AM,11:28 AM,8:35 PM,9:43 AM,5:20 PM,,,,,8:30 AM,30,Aerobic,Mild,7:00 PM,40,Aerobic,Mild,,,,,,,,,,,,,10:35 PM
+732,56,3,Friday,6:15 AM,7:10 AM,7:50 AM,12:05 PM,7:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+733,56,4,Saturday,8:16 AM,8:42 AM,9:50 AM,1:20 PM,6:30 PM,3:35 PM,,,,,,12:00 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,10:40 PM
+734,56,5,Sunday,7:40 AM,8:00 AM,9:05 AM,1:40 PM,8:10 PM,,,,,,,1:50 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,10:15 PM
+735,56,6,Monday,5:30 AM,6:02 AM,7:00 AM,12:05 PM,6:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:40 PM
+736,56,7,Tuesday,6:15 AM,7:08 AM,8:21 AM,12:10 PM,7:00 PM,,,,,,,9:15 AM,45,Aerobic,Mild,,,,,,,,,,,,,,,,,9:15 PM
+737,56,8,Wednesday,5:15 AM,5:57 AM,7:15 AM,12:40 PM,7:00 PM,,,,,,,2:00 PM,60,Aerobic,Mild,,,,,,,,,,,,,,,,,9:40 PM
+738,56,9,Thursday,6:20 AM,7:11 AM,8:00 AM,1:15 PM,,,,,,,,6:50 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+739,56,10,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+740,191,0,Wednesday,,11:13 AM,,1:35 PM,8:30 PM,5:00 PM,,,,,,9:00 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+741,191,1,Thursday,5:45 AM,6:13 AM,7:25 AM,12:12 PM,8:15 PM,2:30 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+742,191,2,Friday,6:00 AM,6:50 AM,,12:30 PM,8:30 PM,,,,,,,1:30 PM,,Aerobic,Mild,,,,,9:00 PM,1,Wine,,,,,,,,,,11:00 PM
+743,191,3,Saturday,8:30 AM,8:32 AM,11:15 AM,3:30 PM,,12:30 PM,,9:40 PM,,,,8:00 PM,,,Mild,,,,,,,,,,,,,,,,,10:45 PM
+744,191,4,Sunday,6:40 AM,8:40 AM,,1:30 PM,,11:45 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:45 PM
+745,191,5,Monday,6:30 AM,9:15 AM,9:15 AM,,5:09 PM,20:00 p,,,,,,12:15 PM,,Aerobic,Moderate,,,,,9:30 PM,1,Wine,,,,,,,,,,10:00 PM
+746,191,6,Tuesday,7:10 AM,9:30 AM,7:15 AM,12:45 PM,,3:30 PM,7:47 PM,,,,,,,,,,,,,10:10 PM,1,Wine,,,,,,,,,,11:00 PM
+747,191,7,Wednesday,7:10 AM,10:02 AM,7:20 AM,2:15 PM,11:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+748,191,8,Thursday,6:10 AM,10:26 AM,7:00 AM,12:15 PM,9:15 PM,,,,,,,,,,,,,,,10:00 PM,1,Wine,,,,,,,,,,11:15 PM
+749,191,9,Friday,7:10 AM,,7:50 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+750,174,0,Wednesday,6:00 AM,12:15 PM,,12:30 PM,5:45 PM,10:30 AM,3:15 PM,,,,,,,,,,,,,6:00 PM,2,Wine,Wine,,,,,,,,,11:00 PM
+751,174,1,Thursday,5:30 AM,5:20 PM,6:40 AM,11:30 AM,6:15 PM,,3:45 PM,8:15 PM,,,,10:15 AM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,10:35 PM
+752,174,2,Friday,6:00 AM,5:30 PM,7:10 AM,12:05 PM,,3:15 PM,,,,,,9:30 AM,60,Resistance,Intense,5:10 PM,20,Aerobic,Mild,,,,,,,,,,,,,11:00 PM
+753,174,3,Saturday,7:00 AM,5:45 PM,8:00 AM,12:00 PM,6:00 PM,10:30 AM,3:45 PM,,,,,,,,,,,,,3:45 PM,3,Beer,Beer,Beer,,,,,,,,11:15 PM
+754,174,4,Sunday,7:30 AM,,8:15 AM,12:45 PM,6:00 PM,10:45 AM,,8:20 PM,,,,,,,,,,,,,,,,,,,,,,,,10:40 PM
+755,174,5,Monday,6:10 AM,7:18 PM,6:50 AM,11:35 AM,5:45 PM,,,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,12:10 AM
+756,174,6,Tuesday,6:00 AM,6:30 PM,6:50 AM,11:30 AM,6:30 PM,,12:40 PM,,,,,10:00 AM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,9:10 PM
+757,174,7,Wednesday,6:00 AM,7:40 PM,6:45 AM,12:45 PM,6:30 PM,10:30 AM,3:00 PM,8:00 PM,,4:40 PM,,,,,,,,,,6:45 PM,1,Beer,,,,,,,,,,10:30 PM
+758,174,8,Thursday,6:15 AM,9:30 PM,6:45 AM,11:30 AM,6:15 PM,,12:40 PM,,,,,10:15 AM,25,Aerobic,Mild,,,,,,,,,,,,,,,,,10:40 PM
+759,174,9,Friday,6:10 AM,,6:50 AM,1:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+760,157,1,Wednesday,7:15 AM,7:40 AM,7:20 AM,12:30 PM,6:15 PM,11:40 AM,,7:10 PM,,10:45 PM,8:50 PM,,20,Aerobic,Mild,,,,,,,,,,,,,,,,,1:00 AM
+761,157,2,Thursday,8:00 AM,10:12 PM,8:05 AM,12:35 PM,7:15 PM,11:40 AM,5:30 PM,10:30 PM,,,,4:00 PM,150,Aerobic,Moderate,,,,,,,,,,,,,,,,,1:00 AM
+762,157,3,Friday,6:45 AM,11:10 PM,6:55 AM,12:15 PM,5:25 PM,,,6:55 PM,,,10:15 PM,9:00 AM,30,Aerobic,Mild,2:30 PM,210,Aerobic,Moderate,,,,,,,,,,,,,3:30 AM
+763,157,4,Saturday,12:10 PM,11:30 PM,,12:20 PM,9:15 PM,,5:25 PM,,,,,3:45 PM,190,Aerobic,Moderate,,,,,,,,,,,,,,,,,2:15 AM
+764,157,5,Sunday,9:30 AM,11:43 PM,9:35 AM,3:20 PM,6:30 PM,1:30 PM,4:15 PM,8:20 PM,,11:45 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,2:40 AM
+765,157,6,Monday,6:50 AM,11:50 PM,7:20 AM,12:50 PM,5:35 PM,,,6:15 PM,12:15 AM,10:30 PM,7:40 PM,3:50 PM,190,Aerobic,Moderate,,,,,,,,,,,,,,,,,2:07 AM
+766,157,7,Tuesday,7:45 AM,12:00 AM,7:50 AM,12:15 PM,6:35 PM,11:45 AM,5:40 PM,7:35 PM,,,10:30 PM,3:50 PM,,Aerobic,Moderate,,,,,,,,,,,,,,,,,1:30 AM
+767,157,8,Wednesday,6:50 AM,10:30 PM,6:55 AM,1:30 PM,7:15 PM,12:00 PM,2:45 PM,8:00 PM,,,11:30 PM,,,,,,,,,,,,,,,,,,,,,1:40 AM
+768,157,9,Thursday,7:50 AM,,7:55 AM,12:30 PM,6:40 PM,,2:15 PM,7:30 PM,,5:35 PM,,3:50 PM,150,Aerobic,Moderate,,,,,,,,,,,,,,,,,1:35 AM
+769,157,10,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+770,61,1,Wednesday,7:15 AM,7:45 AM,8:00 AM,12:20 PM,6:15 PM,1:00 PM,7:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:28 AM
+771,61,2,Thursday,8:45 AM,9:45 AM,9:00 AM,12:15 PM,6:20 PM,6:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:45 PM
+772,61,3,Friday,7:30 AM,10:30 PM,7:35 AM,12:15 PM,6:20 PM,2:15 PM,7:35 PM,,,,,,,,,,,,,,,,,,,,,,,,,1:15 AM
+773,61,4,Saturday,12:30 PM,6:47 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,11:45 PM
+774,61,5,Sunday,7:00 AM,,9:05 AM,3:00 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:40 AM
+775,61,6,Monday,7:00 AM,11:40 PM,7:20 AM,12:45 PM,7:45 PM,11:30 AM,5:55 PM,9:30 PM,,,,,,,,,,,,,,,,,,,,,,,,12:10 AM
+776,61,7,Tuesday,7:35 AM,10:40 PM,7:40 AM,12:00 PM,5:30 PM,2:25 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:40 AM
+777,61,8,Wednesday,8:05 AM,10:31 PM,8:15 AM,1:20 PM,7:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+778,61,9,Thursday,8:00 AM,10:56 PM,8:15 AM,12:50 PM,6:30 PM,3:00 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:11 PM
+779,61,10,Friday,8:00 AM,,8:15 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+780,82,1,Wednesday,7:30 AM,7:45 AM,7:54 AM,12:30 PM,7:15 PM,10:00 AM,,10:30 PM,,,,,,,,,,,,,,,,,,,,,,,,1:00 AM
+781,82,2,Thursday,7:00 AM,,10:00 AM,,9:00 PM,,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+782,82,3,Friday,7:45 AM,,9:30 AM,4:00 PM,9:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,5:00 AM
+783,82,4,Saturday,,,,1:15 PM,9:15 PM,,,,,4:30 PM,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+784,82,5,Sunday,8:30 AM,,,2:47 PM,6:30 PM,,,8:30 PM,,,9:30 PM,,,,,,,,,,,,,,,,,,,,,1:00 AM
+785,82,6,Monday,8:30 AM,,,1:00 PM,7:45 PM,,,10:46 PM,,,,,,,,,,,,,,,,,,,,,,,,
+786,82,7,Tuesday,8:30 AM,,,12:15 PM,5:30 PM,,,8:45 PM,,,10:30 PM,,,,,,,,,,,,,,,,,,,,,2:00 AM
+787,82,8,Wednesday,9:00 AM,,,1:20 PM,7:15 PM,,5:45 PM,10:40 PM,,,11:30 PM,,,,,,,,,,,,,,,,,,,,,2:00 AM
+788,82,9,Thursday,9:30 AM,,9:40 AM,12:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+789,82,10,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+790,51,0,Thursday,6:10 AM,,6:30 AM,12:45 PM,7:50 PM,3:26 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+791,51,1,Friday,7:05 AM,7:20 AM,,12:40 PM,6:10 PM,7:30 AM,9:30 AM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,1:00 AM
+792,51,2,Saturday,7:30 AM,11:30 PM,7:40 AM,11:45 AM,6:30 PM,11:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,2:30 AM
+793,51,3,Sunday,8:15 AM,12:00 AM,8:40 AM,11:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,4:00 AM
+794,51,4,Monday,9:10 AM,12:30 AM,9:15 AM,12:00 PM,7:45 PM,9:25 AM,5:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,1:00 AM
+795,51,5,Tuesday,6:15 AM,1:15 AM,6:20 AM,12:00 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,1:30 AM
+796,51,6,Wednesday,6:15 AM,1:18 AM,6:20 AM,12:30 PM,9:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,1:20 AM
+797,51,7,Thursday,6:15 AM,11:30 PM,6:20 AM,2:30 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:45 PM
+798,51,8,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+799,51,9,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+800,101,0,Monday,6:30 AM,10:37 PM,7:00 AM,12:15 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+801,101,1,Tuesday,7:15 AM,10:51 AM,,3:00 PM,,,,,,,,8:40 PM,80,Resistance,Mild,,,,,,,,,,,,,,,,,11:30 PM
+802,101,2,Wednesday,8:30 AM,10:47 AM,,2:45 PM,8:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,4:45 AM
+803,101,3,Thursday,9:30 AM,10:30 AM,,12:00 PM,7:00 PM,,,,,,,12:00 PM,120,Aerobic,,,,,,,,,,,,,,,,,,11:00 PM
+804,101,4,Friday,8:00 AM,9:30 AM,,12:00 PM,7:00 PM,,,,,,,12:00 PM,240,Aerobic,Mild,,,,,,,,,,,,,,,,,11:00 PM
+805,101,5,Saturday,9:00 AM,9:15 AM,,12:00 PM,5:15 PM,,,,,,,10:30 AM,60,,Mild,,,,,,,,,,,,,,,,,11:00 PM
+806,101,6,Sunday,4:00 AM,4:00 PM,9:00 AM,4:00 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:45 PM
+807,101,7,Monday,9:00 AM,9:15 AM,,12:00 PM,6:00 PM,,,,,,,8:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,
+808,101,8,Tuesday,7:25 AM,8:00 PM,7:30 AM,3:00 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+809,101,9,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+810,93,1,Wednesday,7:20 AM,5:47 AM,8:40 AM,11:20 AM,6:00 PM,5:50 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:45 PM
+811,93,2,Thursday,7:45 AM,6:00 PM,9:00 AM,12:30 PM,7:15 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+812,93,3,Friday,6:30 AM,6:40 PM,8:30 AM,12:00 PM,7:30 PM,4:40 PM,,,,,,8:30 PM,120,Aerobic,Mild,,,,,,,,,,,,,,,,,11:30 PM
+813,93,4,Saturday,8:20 AM,6:17 PM,8:30 AM,11:45 AM,8:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+814,93,5,Sunday,8:00 AM,6:35 PM,8:30 AM,12:30 PM,9:00 PM,1:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+815,93,6,Monday,6:30 AM,6:37 PM,9:20 AM,1:25 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+816,93,7,Tuesday,8:00 AM,7:07 PM,8:45 AM,11:45 AM,8:00 PM,5:20 PM,,,,,,8:00 PM,60,Resistance,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+817,93,8,Wednesday,7:45 AM,8:04 PM,8:35 AM,12:15 PM,6:05 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+818,93,9,Thursday,8:00 AM,8:07 PM,9:00 AM,1:00 PM,8:15 PM,5:20 PM,,,,,,6:30 PM,60,Resistance,Mild,,,,,,,,,,,,,,,,,1:10 AM
+819,93,10,Friday,8:30 AM,,9:20 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+820,180,0,Wednesday,9:20 AM,1:00 PM,,11:20 AM,4:00 PM,6:15 PM,,,,,,12:00 PM,210,Aerobic,Mild,,,,,,,,,,,,,,,,,12:10 AM
+821,180,1,Thursday,9:30 AM,12:30 PM,,1:00 PM,7:10 PM,11:20 AM,12:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:10 PM
+822,180,2,Friday,8:40 AM,9:20 PM,9:30 AM,1:15 PM,8:20 PM,9:10 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+823,180,3,Saturday,9:10 AM,12:40 PM,,11:50 AM,5:40 PM,4:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:15 PM
+824,180,4,Sunday,,1:30 PM,,1:00 PM,6:15 PM,,7:15 PM,,,,,5:45 PM,45,Aerobic,Moderate,7:30 PM,90,Aerobic,Intense,,,,,,,,,,,,,11:20 PM
+825,180,5,Monday,9:30 AM,3:00 PM,10:00 AM,1:10 PM,6:30 PM,12:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:40 AM
+826,180,6,Tuesday,9:30 AM,3:01 PM,,12:40 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:15 PM
+827,180,7,Wednesday,9:00 AM,3:15 PM,10:30 AM,1:15 PM,6:15 PM,,,8:05 PM,,,,,,,,,,,,,,,,,,,,,,,,
+828,180,8,Thursday,9:15 AM,3:00 PM,,1:30 PM,6:30 PM,11:15 PM,,,,,,12:45 PM,10,Aerobic,Mild,2:00 PM,90,Aerobic,Mild,,,,,,,,,,,,,11:30 PM
+829,180,9,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+830,181,0,Friday,,,,2:15 PM,7:20 PM,9:50 AM,5:08 PM,11:10 PM,,,,9:50 AM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:30 PM
+831,181,1,Saturday,9:30 AM,10:36 PM,10:00 AM,1:47 PM,7:12 PM,11:16 AM,9:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:40 PM
+832,181,2,Sunday,7:10 AM,10:36 AM,10:46 AM,12:53 PM,7:30 PM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:05 PM
+833,181,3,Monday,8:30 AM,12:00 PM,8:40 AM,12:52 PM,7:02 PM,3:55 PM,8:41 PM,2:16 AM,,,,,,,,,,,,,,,,,,,,,,,,10:02 PM
+834,181,4,Tuesday,7:35 AM,9:58 AM,7:45 AM,12:40 PM,7:20 PM,11:28 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+835,181,5,Wednesday,7:10 AM,10:05 AM,8:40 AM,12:46 PM,6:50 PM,3:44 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:20 PM
+836,181,6,Thursday,6:55 AM,9:35 AM,8:48 AM,11:45 AM,7:28 PM,3:46 PM,1:05 AM,,,,,,,,,,,,,,,,,,,,,,,,,11:07 PM
+837,181,7,Friday,10:30 AM,10:47 AM,10:53 AM,2:08 PM,6:56 PM,10:55 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:02 AM
+838,181,8,Saturday,8:00 AM,10:01 AM,10:06 AM,12:27 PM,7:28 PM,12:53 AM,,,,,,,,,,,,,,,,,,,,,,,,,,11:05 PM
+839,181,9,Sunday,9:20 AM,9:57 AM,10:15 AM,,5:12 PM,7:32 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:40 PM
+840,97,1,Tuesday,6:00 AM,7:00 AM,7:15 AM,,5:30 PM,,,,,,,,200,Aerobic,Mild,,,,,,,,,,,,,,,,,10:00 PM
+841,97,2,Wednesday,7:30 AM,7:00 PM,7:45 AM,11:30 AM,6:15 PM,,,,,,,,160,Aerobic,Mild,,,,,,,,,,,,,,,,,10:45 PM
+842,97,3,Thursday,7:00 AM,7:00 PM,7:15 AM,11:30 AM,5:30 PM,,,,,,,,175,Aerobic,Mild,,,,,,,,,,,,,,,,,11:30 PM
+843,97,4,Friday,8:00 AM,,8:20 AM,,4:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:45 AM
+844,97,5,Saturday,,,,,,,,,,,,1:00 PM,180,Aerobic,Intense,,,,,,,,,,,,,,,,,11:15 PM
+845,97,6,Sunday,8:00 AM,7:00 PM,,12:30 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+846,97,7,Monday,7:00 AM,7:00 PM,7:15 AM,11:30 AM,6:00 PM,,,,,,,,300,Aerobic,Mild,,,,,,,,,,,,,,,,,10:45 PM
+847,97,8,Tuesday,7:00 AM,6:00 PM,7:15 AM,,5:45 PM,,,,,,,,400,Aerobic,Mild,,,,,,,,,,,,,,,,,11:45 PM
+848,97,9,Wednesday,7:00 AM,,7:10 AM,11:30 AM,5:45 PM,,,,,,,,300,Aerobic,Mild,,,,,,,,,,,,,,,,,1:30 AM
+849,97,10,Thursday,7:45 AM,,,11:30 AM,,,,,,,,,130,Aerobic,Mild,,,,,,,,,,,,,,,,,
+850,96,0,Tuesday,7:00 AM,11:00 PM,10:00 AM,3:30 PM,6:16 PM,1:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:40 PM
+851,96,1,Wednesday,6:50 AM,11:03 AM,9:50 AM,2:04 PM,9:45 PM,6:39 PM,,,,,,11:15 PM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,12:00 AM
+852,96,2,Thursday,8:45 AM,11:15 AM,10:40 AM,1:00 PM,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:45 PM
+853,96,3,Friday,5:45 AM,1:20 PM,7:45 AM,1:40 PM,8:30 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,1:30 AM
+854,96,4,Saturday,10:20 AM,11:23 AM,,12:00 PM,7:00 PM,3:43 PM,9:10 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+855,96,5,Sunday,6:00 AM,11:30 AM,11:05 AM,1:15 PM,6:00 PM,6:50 AM,,,,,,,,,,,,,,,,,,,,,,,,,,12:15 AM
+856,96,6,Monday,6:50 AM,11:13 AM,10:12 AM,12:15 PM,6:00 PM,7:20 AM,,,,,,10:05 PM,55,,,,,,,,,,,,,,,,,,,12:15 AM
+857,96,7,Tuesday,10:05 AM,11:07 AM,10:15 AM,3:27 PM,7:50 PM,,,,,,,8:30 PM,60,,,,,,,,,,,,,,,,,,,12:00 AM
+858,96,8,Wednesday,6:40 AM,12:26 PM,7:11 AM,11:29 AM,7:55 PM,2:13 PM,,,,,,10:00 AM,40,,,,,,,,,,,,,,,,,,,10:15 PM
+859,96,9,Thursday,7:00 AM,,7:16 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+860,129,1,Friday,6:15 AM,7:00 AM,6:50 AM,12:00 PM,6:55 PM,,,,,,,4:30 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,10:00 PM
+861,129,2,Saturday,8:30 AM,9:13 PM,10:00 AM,1:00 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+862,129,3,Sunday,8:15 AM,7:00 PM,10:05 AM,2:00 PM,4:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:45 PM
+863,129,4,Monday,6:20 AM,7:04 PM,6:55 AM,12:00 PM,5:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:45 PM
+864,129,5,Tuesday,6:20 AM,9:00 PM,6:47 AM,12:00 PM,5:50 PM,,,9:10 PM,,,,,,,,,,,,,,,,,,,,,,,,9:45 PM
+865,129,6,Wednesday,6:20 AM,8:40 PM,6:55 AM,12:00 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:45 PM
+866,129,7,Thursday,6:20 AM,8:45 PM,6:55 AM,12:00 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:45 PM
+867,129,8,Friday,6:20 AM,,6:55 AM,12:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+868,129,9,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+869,129,10,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+870,122,0,Monday,5:30 AM,7:13 PM,,11:30 AM,6:30 PM,,,,,,,,,,,,,,,6:30 PM,1,Beer,,,,,,,,,,
+871,122,1,Tuesday,6:40 AM,6:40 AM,,12:30 PM,6:17 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+872,122,2,Wednesday,6:10 AM,8:00 AM,7:00 AM,12:40 PM,6:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+873,122,3,Thursday,6:10 AM,8:30 AM,7:10 AM,11:30 AM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+874,122,4,Friday,6:10 AM,8:30 AM,7:10 AM,11:30 AM,7:50 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+875,122,5,Saturday,12:22 PM,12:42 PM,,12:22 PM,,6:28 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+876,122,6,Sunday,10:30 AM,12:30 PM,11:30 AM,4:50 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+877,122,7,Monday,6:50 AM,12:30 PM,7:05 AM,12:15 PM,8:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+878,122,8,Tuesday,6:10 AM,3:20 PM,7:10 AM,12:00 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+879,122,9,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+880,196,0,Monday,,,,,9:20 PM,6:35 PM,8:23 PM,,,,,8:30 PM,45,Aerobic,Mild,,,,,,,,,,,,,,,,,12:06 AM
+881,196,1,Tuesday,8:46 AM,9:12 PM,9:32 AM,12:45 PM,8:21 PM,4:40 PM,,,,,,7:40 PM,18,Aerobic,Mild,,,,,8:25 PM,1,Wine,,,,,,,,,,11:30 PM
+882,196,2,Wednesday,8:30 AM,,9:10 AM,12:45 PM,7:40 PM,6:15 PM,,,,,,,,,,,,,,7:40 PM,1,Wine,,,,,,,,,,11:30 PM
+883,196,3,Thursday,8:40 AM,9:17 PM,8:51 AM,1:30 PM,9:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:26 PM
+884,196,4,Friday,7:30 AM,9:15 PM,8:00 AM,12:30 PM,9:30 PM,11:30 AM,,,,,,,,,,,,,,10:00 PM,7,Vodka,Vodka,Whiskey,Whiskey,Vodka,Vodka,Whiskey,,,,4:00 AM
+885,196,5,Saturday,10:30 AM,11:30 PM,11:30 AM,2:30 PM,9:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+886,196,6,Sunday,10:30 AM,10:30 PM,12:30 PM,2:50 PM,8:40 PM,4:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+887,196,7,Monday,7:11 AM,10:30 PM,7:40 AM,1:30 PM,9:20 PM,,,,,,,7:45 PM,60,Resistance,Mild,,,,,,,,,,,,,,,,,11:30 PM
+888,196,8,Tuesday,7:09 AM,10:23 PM,7:36 AM,,8:15 PM,3:00 PM,,,,,,,,,,,,,,8:25 PM,1,Champagne,,,,,,,,,,11:36 PM
+889,196,9,Wednesday,7:20 AM,,7:40 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+890,185,13,Monday,6:15 AM,6:00 PM,,,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+891,185,14,Tuesday,6:30 AM,10:54 AM,8:00 AM,1:30 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+892,185,15,Wednesday,7:00 AM,7:38 AM,8:00 AM,1:45 PM,7:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+893,185,16,Thursday,6:19 AM,6:59 AM,9:00 AM,1:35 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+894,185,17,Friday,8:00 AM,9:08 AM,10:00 AM,3:00 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,1:00 AM
+895,185,18,Saturday,9:00 AM,9:47 AM,10:00 AM,2:30 PM,6:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,1:30 AM
+896,185,19,Sunday,6:10 AM,6:55 AM,9:45 AM,12:30 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+897,185,20,Monday,6:15 AM,6:54 AM,8:50 AM,12:54 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+898,185,21,Tuesday,6:00 AM,4:54 PM,9:00 AM,1:30 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,2:00 AM
+899,185,22,Wednesday,6:00 AM,7:01 AM,8:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+900,175,0,Wednesday,,6:00 PM,,,8:30 PM,,,,,,,11:30 AM,90,Both,Intense,,,,,,,,,,,,,,,,,11:45 PM
+901,175,1,Thursday,7:45 AM,,,1:00 PM,8:30 PM,,,,,,,7:00 PM,45,Resistance,Moderate,,,,,,,,,,,,,,,,,11:45 PM
+902,175,2,Friday,8:30 AM,10:10 AM,,3:10 PM,7:30 PM,8:45 PM,,,,,,11:30 AM,90,Both,Moderate,,,,,,,,,,,,,,,,,12:30 AM
+903,175,3,Saturday,9:00 AM,10:15 AM,9:45 AM,,,12:35 PM,9:45 PM,,,,,11:12 AM,70,Both,Mild,,,,,,,,,,,,,,,,,1:30 AM
+904,175,4,Sunday,8:17 AM,11:32 AM,8:30 AM,1:30 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+905,175,5,Monday,8:15 AM,12:20 PM,8:30 AM,12:25 PM,,,,,,,,5:00 PM,90,Both,Intense,,,,,,,,,,,,,,,,,12:30 AM
+906,175,6,Tuesday,7:15 AM,4:24 PM,8:20 AM,12:30 PM,2:00 PM,,,,,,,9:30 AM,75,Both,Intense,,,,,,,,,,,,,,,,,12:30 AM
+907,175,7,Wednesday,,7:30 PM,8:30 AM,12:45 PM,7:00 PM,,,,,,,9:30 AM,90,Both,Intense,,,,,,,,,,,,,,,,,12:30 AM
+908,175,8,Thursday,8:30 AM,,9:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+909,175,9,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+910,159,0,Wednesday,6:00 AM,4:00 PM,7:45 AM,12:07 PM,8:30 PM,,,,,,,5:30 PM,60,Resistance,Moderate,6:30 PM,100,Aerobic,Moderate,8:30 PM,1,Vodka,,,,,,,,,,11:30 PM
+911,159,1,Thursday,6:30 AM,5:00 PM,7:30 AM,1:30 PM,8:30 PM,6:00 PM,,,,,,,,,,6:30 PM,100,Resistance,Moderate,,,,,,,,,,,,,12:01 AM
+912,159,2,Friday,6:45 AM,6:55 AM,7:30 AM,12:30 PM,8:30 PM,10:35 AM,10:00 PM,,,,,5:30 PM,80,Resistance,Moderate,,,,,,,,,,,,,,,,,1:00 AM
+913,159,3,Saturday,9:15 AM,9:30 PM,9:30 AM,3:00 PM,8:30 PM,12:30 PM,9:30 PM,10:40 PM,,,,11:30 AM,,Aerobic,Moderate,,,,,8:30 PM,5,Wine,Wine,Wine,Beer,Beer,,,,,,12:00 AM
+914,159,4,Sunday,9:00 AM,9:00 PM,10:00 AM,2:00 PM,5:00 PM,1:00 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+915,159,5,Monday,9:15 AM,9:15 PM,9:30 AM,12:00 PM,8:30 PM,10:00 AM,3:00 PM,5:30 PM,,,,3:45 PM,,Resistance,Intense,,,,,,,,,,,,,,,,,
+916,159,6,Tuesday,4:15 AM,9:00 PM,5:30 AM,1:00 PM,8:30 PM,10:00 AM,5:00 PM,,,,,6:30 AM,,Aerobic,Moderate,1:00 PM,,Aerobic,Moderate,,,,,,,,,,,,,11:00 PM
+917,159,7,Wednesday,7:00 AM,10:25 PM,10:30 AM,2:00 PM,7:00 PM,,,,,,,5:00 PM,,Resistance,Moderate,,,,,,,,,,,,,,,,,12:30 AM
+918,159,8,Thursday,8:15 AM,,9:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+919,159,9,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+920,72,0,Wednesday,8:30 AM,5:30 PM,,12:00 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+921,72,1,Thursday,8:30 AM,8:45 AM,,12:00 PM,7:00 PM,10:50 AM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+922,72,2,Friday,8:00 AM,8:30 AM,,12:00 PM,,,6:00 PM,,,,,,,,,,,,,10:00 PM,3,Liquor,Liquor,Liquor,,,,,,,,4:00 AM
+923,72,3,Saturday,8:00 AM,8:30 AM,,,7:00 PM,,,,,,,,,,,,,,,9:00 PM,3,Liquor,Liquor,Liquor,,,,,,,,12:00 AM
+924,72,4,Sunday,10:00 AM,11:00 AM,,2:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,4:00 AM
+925,72,5,Monday,8:00 AM,8:30 AM,,12:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+926,72,6,Tuesday,8:00 AM,8:30 AM,,12:00 PM,,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,2:00 AM
+927,72,7,Wednesday,8:00 AM,8:30 AM,,12:00 PM,,,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,1:00 AM
+928,72,8,Thursday,8:00 AM,10:00 AM,,12:00 PM,,,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,2:00 AM
+929,72,9,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+930,57,0,Thursday,6:00 AM,,8:00 AM,1:40 PM,6:26 PM,11:00 AM,,,,,,12:26 PM,,,,,,,,,,,,,,,,,,,,10:00 PM
+931,57,1,Friday,6:00 AM,12:37 PM,8:00 AM,2:00 PM,8:20 PM,11:08 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+932,57,2,Saturday,7:40 AM,8:19 PM,8:40 AM,5:25 PM,,12:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+933,57,3,Sunday,7:00 AM,,10:00 AM,,7:20 PM,1:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+934,57,4,Monday,6:10 AM,,8:10 AM,,5:45 PM,10:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+935,57,5,Tuesday,5:47 AM,12:27 PM,8:00 AM,12:00 PM,6:10 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:40 PM
+936,57,6,Wednesday,5:40 AM,12:05 PM,8:50 AM,12:30 PM,7:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+937,57,7,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+938,57,8,Friday,5:30 AM,12:10 AM,8:20 AM,,,12:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+939,57,9,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+940,62,0,Thursday,6:40 AM,2:15 PM,8:30 AM,3:00 PM,10:05 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+941,62,1,Friday,5:25 AM,6:31 PM,9:00 AM,12:10 PM,6:33 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+942,62,2,Saturday,10:30 AM,8:53 PM,11:04 AM,3:00 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+943,62,3,Sunday,10:30 AM,6:28 PM,11:15 AM,1:30 PM,7:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:40 AM
+944,62,4,Monday,11:40 AM,7:46 PM,12:05 PM,2:00 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:05 AM
+945,62,5,Tuesday,5:25 AM,8:17 PM,6:15 AM,10:35 AM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+946,62,6,Wednesday,5:35 AM,7:18 PM,7:20 AM,12:10 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+947,62,7,Thursday,5:25 AM,7:27 PM,8:30 AM,12:10 PM,6:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+948,62,8,Friday,5:25 AM,9:15 PM,6:30 AM,12:10 PM,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+949,62,9,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+950,124,0,Thursday,,5:24 AM,,,5:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+951,124,1,Friday,5:45 AM,3:37 PM,,12:00 PM,9:30 PM,6:10 AM,3:20 PM,7:11 PM,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+952,124,2,Saturday,6:45 AM,9:34 PM,8:20 AM,5:06 PM,10:20 PM,9:10 PM,,,,,,4:15 PM,30,Aerobic,Moderate,,,,,,,,,,,,,,,,,12:30 AM
+953,124,3,Sunday,7:00 AM,8:15 PM,8:55 AM,3:15 PM,8:20 PM,5:00 PM,,,,,,9:20 AM,30,Resistance,Moderate,,,,,,,,,,,,,,,,,12:40 AM
+954,124,4,Monday,7:30 AM,7:32 PM,8:12 AM,2:16 PM,7:35 PM,6:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:35 PM
+955,124,5,Tuesday,5:45 AM,5:39 PM,11:40 AM,2:30 PM,,6:00 AM,1:15 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+956,124,6,Wednesday,5:45 AM,5:41 PM,11:50 AM,,7:10 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+957,124,7,Thursday,5:45 AM,6:34 PM,11:33 AM,12:00 PM,7:20 PM,6:11 AM,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+958,124,8,Friday,5:40 AM,7:11 AM,11:45 AM,12:30 PM,8:00 PM,6:05 AM,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+959,124,9,Saturday,7:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+960,60,0,Wednesday,6:00 AM,12:30 AM,7:10 AM,,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+961,60,1,Thursday,6:30 AM,8:00 AM,9:30 AM,1:00 PM,7:00 PM,12:40 AM,,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+962,60,2,Friday,6:30 AM,8:00 AM,9:00 AM,12:00 PM,5:00 PM,,,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+963,60,3,Saturday,7:00 AM,8:00 AM,9:00 AM,,6:30 PM,,11:00 AM,,,,,,,,,,,,,6:30 PM,4,Wine,Wine,Wine,Wine,,,,,,,11:00 PM
+964,60,4,Sunday,7:00 AM,8:30 AM,9:00 AM,12:00 PM,6:00 PM,,3:00 PM,10:00 PM,,,,,,,,,,,,3:00 PM,2,Whiskey,Whiskey,,,,,,,,,11:00 PM
+965,60,5,Monday,6:30 AM,7:00 AM,8:30 AM,12:30 PM,5:30 PM,,,9:30 PM,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+966,60,6,Tuesday,6:30 AM,7:00 AM,8:00 AM,1:00 PM,6:00 PM,11:00 AM,,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+967,60,7,Wednesday,8:30 AM,8:30 AM,9:00 AM,12:00 PM,6:00 PM,,,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+968,60,8,Thursday,6:30 AM,7:00 AM,7:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+969,60,9,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+970,201,0,Friday,2:04 PM,8:00 AM,,1:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+971,201,1,Saturday,5:48 AM,7:30 AM,8:00 AM,2:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+972,201,2,Sunday,5:39 AM,7:30 AM,8:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+973,201,3,Monday,5:30 AM,7:30 AM,8:00 AM,2:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+974,201,4,Tuesday,4:02 AM,8:00 AM,9:00 AM,1:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+975,201,5,Wednesday,5:00 AM,8:00 AM,9:00 AM,2:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+976,201,6,Thursday,5:56 AM,8:30 AM,9:00 AM,2:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+977,201,7,Friday,5:00 AM,7:30 AM,8:00 AM,1:35 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+978,201,8,Saturday,5:54 AM,8:30 AM,9:00 AM,3:00 PM,,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+979,201,9,Sunday,3:13 AM,8:30 AM,9:00 AM,2:55 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+980,201,10,Monday,4:10 AM,8:30 AM,9:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+981,201,11,Tuesday,2:22 PM,7:30 AM,8:00 AM,1:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+982,201,12,Wednesday,5:20 AM,8:30 AM,9:00 AM,4:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+983,201,13,Thursday,3:30 AM,8:00 AM,8:30 AM,2:00 PM,,,,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+984,201,14,Friday,3:00 AM,7:30 AM,8:00 AM,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+985,132,0,Wednesday,,,,,4:15 PM,7:47 PM,8:07 PM,8:15 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,9:15 PM
+986,132,1,Thursday,6:29 AM,6:00 PM,6:46 AM,12:07 PM,7:48 PM,5:58 PM,6:15 PM,6:24 PM,8:39 PM,,,,,,,,,,,,,,,,,,,,,,,11:42 PM
+987,132,2,Friday,7:45 AM,7:00 AM,8:37 PM,,7:25 PM,12:23 PM,4:30 PM,,,,,8:17 PM,11,Aerobic,Mild,11:00 PM,,,,,,,,,,,,,,,,11:00 PM
+988,132,3,Saturday,8:54 AM,9:00 AM,9:23 AM,,8:00 PM,12:12p,3:51 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+989,132,4,Sunday,7:50 AM,8:00 AM,7:54 AM,,4:50 PM,5:54 PM,6:15 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+990,132,5,Monday,6:29 AM,6:00 AM,6:34 AM,12:30 PM,7:49 PM,6:06 PM,,,,,,4:01 PM,,Aerobic,,,,,,,,,,,,,,,,,,9:10 PM
+991,132,6,Tuesday,6:34 AM,6:00 AM,6:41 AM,12:12 PM,,7:20 PM,9:01 PM,,,,,,,,,,,,,,,,,,,,,,,,,8:30 PM
+992,132,7,Wednesday,6:30 AM,,6:41 AM,12:39 PM,,2:49 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+993,132,8,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+994,132,9,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+995,137,0,Tuesday,,12:30 PM,,12:30 PM,6:00 PM,,2:20 PM,8:45 PM,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+996,137,1,Wednesday,6:30 AM,3:30 PM,7:00 AM,11:30 AM,6:30 PM,,,,,,,10:00 AM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:00 PM
+997,137,2,Thursday,6:30 AM,3:16 PM,7:00 AM,11:45 AM,5:00 PM,10:00 AM,3:00 PM,,,,,10:00 AM,120,Aerobic,Moderate,,,,,7:30 PM,2,Beer,Beer,,,,,,,,,10:30 PM
+998,137,3,Friday,6:00 AM,3:30 PM,8:00 AM,12:30 PM,6:00 PM,10:00 AM,2:00 PM,,,,,10:00 AM,60,Aerobic,Moderate,,,,,8:00 PM,2,Beer,Beer,,,,,,,,,11:00 PM
+999,137,4,Saturday,8:00 AM,4:00 PM,10:00 AM,12:30 PM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+1000,137,5,Sunday,6:00 AM,4:00 PM,8:00 AM,12:30 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+1001,137,6,Monday,6:00 AM,,8:00 AM,12:30 PM,6:30 PM,10:00 AM,2:00 PM,8:00 PM,,,,10:30 AM,70,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+1002,137,7,Tuesday,6:00 AM,,8:00 AM,12:30 PM,6:00 PM,10:00 AM,2:00 PM,8:00 PM,,,,10:30 AM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:00 PM
+1003,137,8,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1004,137,9,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1005,166,0,Tuesday,,5:05 PM,,,7:30 PM,,,,,5:10 PM,,4:00 PM,40,Aerobic,Mild,7:30 PM,30,Aerobic,Mild,,,,,,,,,,,,,10:20 PM
+1006,166,1,Wednesday,5:00 AM,5:05 AM,7:30 AM,12:15 PM,8:30 PM,9:00 AM,3:55 PM,,,,,5:15 AM,75,Aerobic,Intense,1:15 PM,40,Aerobic,Mild,8:45 PM,1,Beer,,,,,,,,,,10:30 PM
+1007,166,2,Thursday,5:20 AM,7:15 AM,7:30 AM,1:30 PM,7:30 PM,11:00 AM,,,,,,5:40 AM,50,Aerobic,Moderate,,,,,7:30 PM,2,Beer,Beer,,,,,,,,,10:30 PM
+1008,166,3,Friday,6:15 AM,7:20 AM,7:45 AM,12:40 PM,,,4:20 PM,,,,,6:30 AM,25,Aerobic,Mild,6:45 PM,30,Aerobic,Mild,,,,,,,,,,,,,11:00 PM
+1009,166,4,Saturday,7:30 AM,7:45 AM,9:00 AM,12:30 PM,7:30 PM,,,,,,,8:00 AM,30,Aerobic,Moderate,7:00 PM,30,Aerobic,Mild,7:30 PM,2,Beer,Beer,,,,,,,,,11:00 PM
+1010,166,5,Sunday,7:50 AM,8:30 AM,8:45 AM,,6:00 PM,,3:00 PM,,,,,8:00 AM,30,Aerobic,Mild,8:00 PM,20,Aerobic,Mild,,,,,,,,,,,,,10:00 PM
+1011,166,6,Monday,5:10 AM,7:15 AM,7:30 AM,1:30 PM,6:00 PM,,9:00 AM,8:20 PM,,4:20 PM,,5:40 AM,50,Aerobic,Moderate,7:40 PM,25,Aerobic,Mild,6:00 PM,1,Beer,,,,,,,,,,10:30 PM
+1012,166,7,Tuesday,5:40 AM,7:10 AM,7:30 AM,11:40 AM,6:30 PM,,4:00 PM,,,,,6:00 AM,35,Aerobic,Mild,5:40 PM,30,Aerobic,Mild,7:15 PM,2,Beer,Beer,,,,,,,,,10:00 PM
+1013,166,8,Wednesday,5:40 AM,7:10 AM,7:30 AM,12:30 PM,,,3:00 PM,,,,,6:00 AM,30,Aerobic,Mild,,,,,,,,,,,,,,,,,10:15 PM
+1014,166,9,Thursday,5:15 AM,7:20 AM,7:30 AM,1:30 PM,7:00 PM,10:01 AM,4:45 PM,,,,,5:40 AM,50,Aerobic,Moderate,5:10 PM,20,Aerobic,Moderate,,,,,,,,,,,,,9:45 PM
+1015,65,0,Thursday,,,,1:20 PM,8:50 PM,3:45 PM,5:20 PM,6:05 PM,9:05 PM,,,,,,,,,,,6:40 PM,1,Wine,,,,,,,,,,10:15 PM
+1016,65,1,Friday,6:15 AM,3:10 AM,7:30 AM,11:50 AM,7:50 PM,5:15 PM,,,,,,12:15 PM,20,Aerobic,Mild,,,,,7:50 PM,1,Wine,,,,,,,,,,10:00 PM
+1017,65,2,Saturday,6:40 AM,5:50 PM,7:50 AM,4:11 PM,7:00 PM,,9:15 PM,,,,,8:40 AM,60,Aerobic,Moderate,,,,,8:15 PM,1,Beer,,,,,,,,,,11:50 PM
+1018,65,3,Sunday,7:30 AM,5:50 PM,10:15 AM,12:50 PM,8:00 PM,8:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:35 PM
+1019,65,4,Monday,6:30 AM,5:51 PM,7:20 AM,12:15 PM,8:10 PM,1:30 PM,2:30 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,9:55 PM
+1020,65,5,Tuesday,6:45 AM,5:50 PM,8:36 AM,1:10 PM,7:00 PM,7:05 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+1021,65,6,Wednesday,6:30 AM,5:54 PM,7:00 AM,1:15 PM,7:45 PM,6:45 AM,11:40 AM,5:20 PM,,,,6:45 AM,25,Aerobic,Mild,12:15 PM,30,Aerobic,Mild,7:00 PM,1,Wine,,,,,,,,,,10:45 PM
+1022,65,7,Thursday,6:15 AM,5:54 PM,9:50 AM,12:15 PM,7:35 PM,6:40 AM,5:20 PM,,,,,,,,,,,,,8:35 PM,1,Wine,,,,,,,,,,10:30 PM
+1023,65,8,Friday,6:00 AM,5:51 PM,8:50 AM,12:40 PM,8:45 PM,7:00 AM,1:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+1024,65,9,Saturday,6:45 AM,5:50 PM,9:30 AM,3:30 PM,9:30 PM,7:45 AM,,,,,,9:00 AM,90,Aerobic,Mild,,,,,9:30 PM,1,Beer,,,,,,,,,,1:05 AM
+1025,134,0,Tuesday,6:00 AM,,8:50 AM,12:50 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+1026,134,1,Wednesday,7:15 AM,7:15 AM,,12:00 PM,,11:30 AM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+1027,134,2,Thursday,7:00 AM,7:15 AM,8:05 AM,12:15 PM,6:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+1028,134,3,Friday,7:00 AM,7:40 AM,,11:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,11:45 PM
+1029,134,4,Saturday,7:15 AM,7:27 AM,,11:35 AM,,,,,,,,1:15 PM,60,Aerobic,,,,,,3:54 PM,2,Beer,Cocktail,,,,,,,,,8:00 PM
+1030,134,5,Sunday,8:00 AM,8:15 AM,,1:50 PM,,7:00 AM,10:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:15 PM
+1031,134,6,Monday,7:00 AM,7:24 AM,,11:30 AM,,2:18 PM,4:15 PM,10:15 PM,,,,,,,,,,,,,,,,,,,,,,,,11:15 PM
+1032,134,7,Tuesday,6:00 AM,,8:45 AM,1:30 PM,,4:16 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+1033,134,8,Wednesday,7:00 AM,8:51 AM,,12:00 PM,,,9:58 AM,2:26 PM,,,,,,,,,,,,,,,,,,,,,,,,
+1034,134,9,Thursday,7:00 AM,9:03 AM,,11:45 AM,7:00 PM,3:52 AM,2:20 PM,4:35 PM,,,,,,,,,,,,,,,,,,,,,,,,11:45 PM
+1035,110,0,Tuesday,,,,,7:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,8:45 PM
+1036,110,1,Wednesday,6:30 AM,6:30 AM,9:15 AM,12:30 PM,8:30 PM,,,,,,,10:50 AM,20,Aerobic,Mild,7:00 PM,30,Aerobic,Mild,,,,,,,,,,,,,12:00 AM
+1037,110,2,Thursday,7:30 AM,8:10 AM,,12:00 PM,7:50 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,8:50 PM
+1038,110,3,Friday,8:30 AM,10:20 AM,3:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,8:35 PM
+1039,110,4,Saturday,7:30 AM,7:45 AM,10:00 AM,,5:00 PM,,,,,,,,,,,,,,,5:00 PM,2,Beer,Rum,,,,,,,,,3:00 AM
+1040,110,5,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1041,110,6,Monday,7:30 AM,10:30 AM,8:30 AM,3:45 PM,,,,8:30 PM,,,,,,,,,,,,7:00 PM,1,Wine,,,,,,,,,,
+1042,110,7,Tuesday,8:00 AM,11:00 AM,10:00 AM,12:00 PM,6:00 PM,2:30 PM,,,,,,,,,,,,,,7:00 PM,1,Beer,,,,,,,,,,10:15 PM
+1043,110,8,Wednesday,5:00 AM,,7:30 AM,12:00 PM,,3:30 PM,,,,,,5:30 PM,35,Aerobic,Mild,,,,,,,,,,,,,,,,,7:45 PM
+1044,110,9,Thursday,7:45 AM,12:00 PM,10:15 AM,12:15 PM,,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,8:00 PM
+1045,58,1,Thursday,,5:35 PM,,,7:50 PM,5:30 PM,10:55 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:10 AM
+1046,58,2,Friday,10:10 AM,10:30 AM,10:50 AM,2:40 PM,7:20 PM,,,,,,,11:15 AM,10,Aerobic,Mild,,,,,,,,,,,,,,,,,11:30 PM
+1047,58,3,Saturday,8:45 AM,9:35 AM,10:05 AM,,5:50 PM,12:00 PM,2:30 PM,3:15 PM,8:40 PM,,,10:30 AM,25,Aerobic,Moderate,2:40 PM,20,Aerobic,Moderate,,,,,,,,,,,,,11:45 PM
+1048,58,4,Sunday,8:40 AM,,8:45 AM,2:00 PM,6:30 PM,11:45 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+1049,58,5,Monday,7:25 AM,7:40 AM,8:35 AM,1:20 PM,5:45 PM,11:50 PM,,,7:45 PM,,,,,,,,,,,,,,,,,,,,,,,11:45 PM
+1050,58,6,Tuesday,9:00 AM,9:07 AM,10:00 AM,12:35 PM,9:25 PM,9:15 AM,4:50 PM,7:40 PM,,,,9:20 AM,25,Both,Moderate,12:00 PM,10,Aerobic,Mild,,,,,,,,,,,,,11:15 PM
+1051,58,7,Wednesday,8:40 AM,8:54 AM,9:05 AM,3:10 PM,6:15 PM,11:40 AM,7:15 PM,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+1052,58,8,Thursday,7:30 AM,8:25 AM,8:30 AM,12:30 PM,7:00 PM,3:35 PM,10:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:15 AM
+1053,58,9,Friday,9:30 AM,10:00 AM,10:15 AM,3:10 PM,6:30 PM,2:30 PM,4:45 PM,,,,,3:50 PM,20,Aerobic,,,,,,,,,,,,,,,,,,
+1054,58,10,Saturday,8:30 AM,8:38 AM,9:00 AM,3:30 PM,,10:40 AM,2:00 PM,5:05 PM,8:50 PM,,,12:15 PM,20,Aerobic,Mild,,,,,,,,,,,,,,,,,11:30 PM
+1055,113,0,Monday,7:30 AM,12:00 PM,10:30 AM,1:30 PM,7:00 PM,2:50 PM,4:30 PM,,,,,11:00 AM,50,Both,Moderate,2:00 PM,45,Aerobic,Mild,,,,,,,,,,,,,10:00 PM
+1056,113,1,Tuesday,5:20 AM,5:20 AM,8:00 AM,12:30 PM,7:00 PM,6:30 AM,3:00 PM,4:00 PM,,,,4:30 PM,50,Aerobic,Moderate,,,,,7:15 PM,1,Wine,,,,,,,,,,10:00 PM
+1057,113,2,Wednesday,5:20 AM,6:00 AM,6:55 AM,12:00 PM,6:45 PM,8:00 AM,3:20 PM,,5:00 PM,8:15 PM,,4:20 PM,40,Aerobic,Moderate,9:15 PM,60,Aerobic,Moderate,,,,,,,,,,,,,12:00 AM
+1058,113,3,Thursday,5:20 AM,5:30 AM,7:00 AM,1:00 PM,6:50 PM,11:15 AM,8:00 PM,,,,,,,,,,,,,4:50 PM,1,Wine,,,,,,,,,,10:00 PM
+1059,113,4,Friday,5:20 AM,7:10 AM,6:50 AM,12:30 PM,8:00 PM,2:30 PM,7:00 PM,,,,,4:15 PM,45,Aerobic,Moderate,,,,,7:00 PM,2,Wine,Wine,,,,,,,,,10:30 PM
+1060,113,5,Saturday,6:30 AM,8:03 AM,8:05 AM,12:15 PM,7:00 PM,1:00 PM,2:30 PM,5:15 PM,,,,3:45 PM,60,Both,Moderate,,,,,7:15 PM,3,Wine,Wine,Wine,,,,,,,,11:30 PM
+1061,113,6,Sunday,7:30 AM,,8:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1062,113,7,Monday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1063,113,8,Tuesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1064,113,9,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1065,68,0,Wednesday,6:00 AM,7:30 AM,8:10 AM,1:50 PM,6:10 PM,10:31 AM,8:20 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+1066,68,1,Thursday,6:30 AM,5:11 PM,7:10 AM,1:50 PM,6:00 PM,6:38 AM,7:30 PM,,,,,6:40 AM,,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:30 PM
+1067,68,2,Friday,6:10 AM,5:45 PM,7:45 AM,12:50 PM,8:00 PM,6:30 AM,5:30 PM,,,,,6:30 AM,40,Both,Intense,,,,,8:00 PM,5,Whiskey,Whiskey,Whiskey,Whiskey,Whiskey,,,,,,2:30 AM
+1068,68,3,Saturday,7:00 AM,,8:10 AM,,,,,,,,,,,,,,,,,6:30 PM,4,Vodka,Vodka,Vodka,Vodka,,,,,,,2:30 AM
+1069,68,4,Sunday,7:00 AM,8:10 PM,11:25 AM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1070,68,5,Monday,5:45 AM,8:10 PM,7:00 AM,12:15 PM,6:30 PM,5:58 AM,4:00 PM,,,,,6:10 AM,30,Both,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+1071,68,6,Tuesday,5:45 AM,6:05 PM,7:15 AM,11:20 AM,,,,,,,,6:10 AM,30,Both,Moderate,,,,,,,,,,,,,,,,,
+1072,68,7,Wednesday,5:45 AM,8:25 PM,6:20 AM,1:50 PM,5:25 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,
+1073,68,8,Thursday,5:45 AM,9:47 PM,7:10 AM,1:00 PM,8:45 PM,6:00 AM,9:15 PM,,,,,6:10 AM,30,Both,Moderate,,,,,,,,,,,,,,,,,
+1074,68,9,Friday,5:45 AM,,7:00 AM,12:30 PM,6:00 PM,6:00 AM,,,,,,6:10 AM,30,Both,Moderate,,,,,,,,,,,,,,,,,
+1075,145,0,Wednesday,,4:30 PM,,,5:30 PM,,,,10:00 PM,,,7:45 PM,45,Both,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+1076,145,1,Thursday,8:30 AM,8:30 AM,9:15 AM,12:15 PM,8:00 PM,,,,,,,10:00 AM,60,Aerobic,,,,,,,,,,,,,,,,,,10:00 PM
+1077,145,2,Friday,5:00 AM,12:30 PM,6:00 AM,12:15 PM,7:45 PM,5:30 PM,8:00 AM,,,,,,,,,,,,,7:30 PM,3,Vodka,Vodka,Vodka,,,,,,,,1:30 AM
+1078,145,3,Saturday,8:30 AM,9:00 AM,9:20 AM,11:45 AM,8:00 PM,3:00 PM,,,,,,9:30 PM,45,Both,Moderate,,,,,2:15 PM,2,Wine,Wine,,,,,,,,,12:30 AM
+1079,145,4,Sunday,9:30 AM,9:50 AM,10:30 AM,3:00 PM,8:00 PM,1:00 PM,,,,,,7:10 PM,45,Both,Moderate,,,,,,,,,,,,,,,,,10:00 PM
+1080,145,5,Monday,7:10 AM,7:10 AM,7:50 AM,2:15 PM,7:37 PM,11:45 AM,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+1081,145,6,Tuesday,8:25 AM,8:28 AM,9:26 AM,10:45 AM,8:25 PM,10:03 AM,6:30 PM,1:15 PM,,,,9:35 AM,35,Aerobic,Mild,,,,,,,,,,,,,,,,,
+1082,145,7,Wednesday,5:05 AM,5:09 AM,5:50 AM,3:36 PM,5:00 PM,9:20 PM,1:30 PM,11:14 PM,,,,9:10 PM,45,Both,Moderate,,,,,,,,,,,,,,,,,12:00 AM
+1083,145,8,Thursday,8:05 AM,8:09 AM,9:46 AM,3:30 PM,9:24 PM,,,,,,,8:15 PM,30,Aerobic,,,,,,,,,,,,,,,,,,11:00 PM
+1084,145,9,Friday,8:30 AM,8:45 AM,8:58 AM,11:38 AM,7:30 PM,,,,,,,9:45 AM,45,Both,Moderate,,,,,,,,,,,,,,,,,12:00 AM
+1085,197,0,Thursday,,,,12:05 PM,7:35 PM,11:00 AM,2:40 PM,10:45 PM,,,,4:00 PM,80,Aerobic,Moderate,,,,,8:30 PM,2,Wine,Wine,,,,,,,,,12:01 AM
+1086,197,1,Friday,8:05 AM,1:45 PM,8:35 AM,,6:00 PM,11:45 AM,,9:45 PM,4:00 PM,,,2:20 PM,85,Aerobic,Intense,,,,,6:00 PM,3,Wine,Wine,Wine,,,,,,,,12:15 AM
+1087,197,2,Saturday,8:00 AM,8:53 AM,9:00 AM,,6:50 PM,11:45 AM,3:34 PM,,2:26 PM,,,4:00 PM,80,Aerobic,Intense,,,,,7:00 PM,2,Wine,Wine,,,,,,,,,12:15 AM
+1088,197,3,Sunday,8:15 AM,10:56 AM,9:30 AM,2:30 PM,7:35 PM,,,9:45 PM,,,,5:00 PM,60,Aerobic,,,,,,8:00 PM,1,Wine,,,,,,,,,,12:30 AM
+1089,197,4,Monday,7:45 AM,9:39 AM,8:50 AM,,6:10 PM,11:00 AM,,,5:00 PM,,,3:10 PM,90,Aerobic,Intense,,,,,7:00 PM,1,Wine,,,,,,,,,,12:00 AM
+1090,197,5,Tuesday,8:15 AM,8:37 AM,8:40 AM,12:20 PM,7:10 PM,4:30 PM,,9:30 PM,,,,1:05 PM,90,Aerobic,Intense,,,,,7:15 PM,1,Wine,,,,,,,,,,12:00 AM
+1091,197,6,Wednesday,7:45 AM,10:04 AM,8:30 AM,2:00 PM,6:15 PM,,,10:35 PM,,,,2:50 PM,85,Aerobic,Intense,,,,,,,,,,,,,,,,,1:15 AM
+1092,197,7,Thursday,8:15 AM,9:46 AM,9:20 AM,2:00 PM,7:00 PM,,,10:45 PM,,,,,,,,,,,,7:00 PM,1,Wine,,,,,,,,,,12:20 AM
+1093,197,8,Friday,8:30 AM,11:30 AM,9:21 AM,12:05 PM,6:45 PM,,,10:15 PM,,,,3:45 PM,100,Aerobic,Intense,,,,,8:00 PM,2,Wine,Wine,,,,,,,,,12:15 AM
+1094,197,9,Saturday,7:55 AM,8:49 AM,9:10 AM,12:45 PM,6:15 PM,,1:45 PM,10:45 PM,,3:00 PM,11:45 PM,,,,,,,,,6:15 AM,1,Wine,,,,,,,,,,1:15 AM
+1095,165,0,Monday,5:45 AM,11:34 AM,10:30 AM,2:00 PM,6:00 PM,12:40 PM,8:40 PM,,,,,11:50 AM,40,Aerobic,Moderate,3:50 PM,41,Aerobic,Moderate,,,,,,,,,,,,,11:50 PM
+1096,165,1,Tuesday,6:45 AM,11:50 AM,8:00 AM,12:00 PM,6:30 PM,3:00 PM,4:00 PM,,,,,9:30 AM,45,Aerobic,,2:20 PM,20,Aerobic,Moderate,,,,,,,,,,,,,10:00 PM
+1097,165,2,Wednesday,6:55 AM,7:05 AM,8:20 AM,12:00 PM,4:30 PM,10:54 AM,8:50 PM,,,,,9:10 AM,46,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+1098,165,3,Thursday,7:45 AM,7:53 AM,9:05 AM,12:20 PM,6:30 PM,11:17 AM,2:55 PM,,,,,10:10 AM,42,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:50 PM
+1099,165,4,Friday,5:30 AM,8:00 AM,7:05 AM,11:45 AM,6:10 PM,10:08 AM,2:27 PM,7:45 PM,,,,8:32 AM,42,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+1100,165,5,Saturday,5:10 AM,8:04 AM,8:10 AM,1:25 PM,5:35 PM,4:07 PM,7:51 PM,,,,,8:48 AM,48,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:13 PM
+1101,165,6,Sunday,6:26 AM,8:09 AM,8:13 AM,12:46 PM,7:29 PM,4:19 PM,,,,,,8:49 AM,42,Aerobic,Moderate,,,,,12:30 PM,2,Wine,Wine,,,,,,,,,12:41 AM
+1102,165,7,Monday,7:06 AM,8:13 AM,8:24 AM,12:05 PM,6:17 PM,2:40 PM,,,,,,9:41 AM,48,Aerobic,Moderate,3:50 PM,30,Aerobic,Moderate,5:00 PM,1,Wine,,,,,,,,,,11:34 PM
+1103,165,8,Tuesday,6:00 AM,8:18 AM,8:27 AM,12:17 PM,6:10 PM,1:40 PM,4:02 PM,,,,,9:11 AM,40,Aerobic,Moderate,10:15 AM,45,Resistance,Moderate,6:10 PM,1,Wine,,,,,,,,,,11:00 PM
+1104,165,9,Wednesday,6:12 AM,8:18 AM,8:36 AM,12:02 PM,5:12 PM,1:37 PM,6:30 PM,,,,,9:36 AM,42,Aerobic,Moderate,,,,,,,,,,,,,,,,,8:10 PM
+1105,74,0,Monday,,,11:00 AM,12:30 PM,7:30 PM,2:45 PM,10:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+1106,74,1,Tuesday,8:00 AM,1:15 PM,9:00 AM,1:15 PM,7:00 PM,,,,,,,,,,,,,,,5:15 PM,3,Beer,Beer,Beer,,,,,,,,
+1107,74,2,Wednesday,9:00 AM,10:35 AM,10:47 AM,12:32 PM,,,,,,,,5:45 PM,45,Aerobic,Moderate,,,,,8:00 PM,1,Whiskey,,,,,,,,,,
+1108,74,3,Thursday,6:45 AM,7:23 AM,,4:00 PM,,8:00 PM,,8:40 PM,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+1109,74,4,Friday,7:00 AM,9:53 AM,9:55 AM,1:30 PM,4:45 PM,,,7:15 PM,,,,,,,,,,,,4:30 PM,2,Beer,Beer,,,,,,,,,11:30 PM
+1110,74,5,Saturday,8:30 AM,10:30 AM,10:45 AM,,7:20 PM,1:30 PM,3:30 PM,,,,,,,,,,,,,7:20 PM,1,Wine,,,,,,,,,,12:15 AM
+1111,74,6,Sunday,7:10 AM,9:10 AM,9:15 AM,1:15 PM,6:45 PM,9:08 PM,,,,,,,,,,,,,,7:00 PM,1,Wine,,,,,,,,,,
+1112,74,7,Monday,7:10 AM,11:02 AM,8:04 AM,12:40 PM,8:10 PM,,,,,,,,,,,,,,,8:15 PM,1,Wine,,,,,,,,,,11:59 PM
+1113,74,8,Tuesday,7:45 AM,10:38 AM,,12:15 PM,7:20 PM,8:40 AM,,,,,,,,,,,,,,,,,,,,,,,,,,11:15 PM
+1114,74,9,Wednesday,7:30 AM,9:00 AM,9:00 AM,1:45 PM,6:05 PM,10:11 PM,,,,,,,,,,,,,,7:16 PM,1,Whiskey,,,,,,,,,,11:59 PM
+1115,138,0,Monday,7:15 AM,,,12:28 PM,7:04 PM,3:04 PM,8:33 PM,,,,,,,,,,,,,,,,,,,,,,,,,
+1116,138,1,Tuesday,7:10 AM,11:14 AM,9:30 AM,1:45 PM,7:00 PM,3:30 PM,4:00 PM,8:30 PM,,,,9:20 PM,40,Both,Moderate,,,,,,,,,,,,,,,,,10:50 PM
+1117,138,2,Wednesday,8:15 AM,12:06 PM,8:40 AM,12:23 PM,6:30 PM,10:40 AM,1:15 PM,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,11:35 PM
+1118,138,3,Thursday,8:15 AM,10:18 AM,10:26 AM,12:45 PM,7:00 PM,3:06 PM,4:00 PM,8:45 PM,,,,,,,,,,,,,,,,,,,,,,,,11:35 PM
+1119,138,4,Friday,8:35 AM,11:45 AM,9:30 AM,12:00 PM,11:30 PM,11:46 AM,3:18 PM,5:30 PM,10:20 PM,,,,,,,,,,,,,,,,,,,,,,,1:30 AM
+1120,138,5,Saturday,8:15 AM,1:11 PM,8:30 AM,1:39 PM,6:00 PM,12:30 PM,7:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+1121,138,6,Sunday,8:15 AM,,9:00 AM,12:45 PM,5:30 PM,11:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+1122,138,7,Monday,4:50 AM,5:10 AM,9:30 AM,3:30 PM,,5:20 AM,3:45 PM,7:00 PM,9:45 PM,,,5:45 AM,45,Aerobic,Intense,,,,,,,,,,,,,,,,,11:00 PM
+1123,138,8,Tuesday,8:15 AM,9:00 AM,8:55 AM,12:25 PM,,9:54 AM,10:45 AM,3:27 PM,8:30 PM,,,2:00 PM,31,Resistance,Moderate,,,,,,,,,,,,,,,,,
+1124,138,9,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1125,168,0,Monday,5:30 AM,11:00 AM,8:00 AM,11:00 AM,7:45 PM,,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+1126,168,1,Tuesday,7:00 AM,8:45 AM,8:45 AM,11:30 AM,5:00 PM,,2:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:45 PM
+1127,168,2,Wednesday,5:00 AM,7:30 AM,8:00 AM,12:45 PM,6:00 PM,,,12:00 PM,,,,,,,,,,,,,,,,,,,,,,,,11:15 PM
+1128,168,3,Thursday,5:30 AM,7:30 AM,8:00 AM,,5:00 PM,11:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+1129,168,4,Friday,7:00 AM,7:15 AM,7:30 AM,12:45 PM,6:00 PM,,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:15 PM
+1130,168,5,Saturday,8:00 AM,,9:00 AM,12:45 PM,6:00 PM,,2:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,9:45 PM
+1131,168,6,Sunday,5:30 AM,7:00 AM,6:30 AM,11:20 AM,7:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+1132,168,7,Monday,5:30 AM,7:15 AM,7:00 AM,12:30 PM,5:30 PM,,2:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+1133,168,8,Tuesday,5:30 AM,7:00 AM,7:00 AM,12:15 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+1134,168,9,Wednesday,5:30 AM,7:15 AM,7:00 AM,1:00 PM,7:05 PM,,10:00 AM,9:45 PM,,,,,,,,,,,,,,,,,,,,,,,,9:45 PM
+1135,55,0,Thursday,,9:30 PM,,,7:15 PM,2:30 PM,,9:00 PM,,,,2:20 PM,120,Aerobic,Intense,6:45 PM,30,Aerobic,Mild,,,,,,,,,,,,,
+1136,55,1,Friday,7:20 AM,8:00 AM,7:30 AM,12:15 PM,7:30 PM,9:30 AM,2:30 PM,3:00 PM,9:00 PM,,,3:30 PM,120,Aerobic,Intense,,,,,,,,,,,,,,,,,11:00 PM
+1137,55,2,Saturday,10:20 AM,11:00 AM,,11:30 AM,7:30 PM,6:45 PM,10:15 PM,,,,,4:00 PM,120,Aerobic,Intense,,,,,,,,,,,,,,,,,4:00 AM
+1138,55,3,Sunday,11:50 AM,12:00 PM,12:00 PM,,6:30 PM,4:00 PM,5:30 PM,9:30 PM,,,,1:30 PM,120,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:00 PM
+1139,55,4,Monday,7:20 AM,7:55 AM,7:30 AM,12:15 PM,6:45 PM,9:30 AM,2:30 PM,8:30 PM,,,,3:30 PM,120,Aerobic,Intense,,,,,,,,,,,,,,,,,10:15 PM
+1140,55,5,Tuesday,7:20 AM,7:45 AM,7:30 AM,12:15 PM,6:45 PM,9:45 AM,10:30 AM,3:00 PM,11:00 PM,,,3:15 PM,120,Aerobic,Intense,,,,,,,,,,,,,,,,,11:15 PM
+1141,55,6,Wednesday,8:30 AM,9:15 AM,8:45 AM,12:15 PM,4:00 PM,11:00 AM,9:30 PM,,,,,6:00 PM,180,Aerobic,Intense,,,,,,,,,,,,,,,,,10:45 PM
+1142,55,7,Thursday,7:20 AM,7:50 AM,7:40 AM,12:15 PM,6:00 PM,9:45 AM,3:45 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+1143,55,8,Friday,7:20 AM,7:50 AM,7:30 AM,12:15 PM,5:30 PM,10:15 AM,9:30 PM,,,,,8:00 PM,30,Aerobic,Intense,,,,,,,,,,,,,,,,,10:30 PM
+1144,55,9,Saturday,7:50 AM,7:55 AM,8:00 AM,11:45 AM,,,,,,,,8:30 AM,160,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+1145,195,0,Wednesday,,3:15 PM,7:09 AM,12:55 PM,6:10 PM,3:23 PM,8:00 PM,,,,,,180,Aerobic,,,,,,,,,,,,,,,,,,
+1146,195,1,Thursday,7:10 AM,3:10 AM,7:30 AM,11:55 AM,5:50 PM,10:35 AM,,,,,,,100,Aerobic,Intense,,,,,,,,,,,,,,,,,
+1147,195,2,Friday,7:15 AM,9:00 PM,7:30 AM,12:00 PM,6:00 PM,9:25 AM,,,,,,1:55 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:30 PM
+1148,195,3,Saturday,,7:37 AM,9:55 AM,2:30 PM,7:05 PM,11:00 AM,,,,,,12:00 PM,100,Aerobic,Intense,,,,,,,,,,,,,,,,,10:30 PM
+1149,195,4,Sunday,9:30 AM,,9:45 AM,12:07 PM,6:50 PM,10:15 AM,1:00 PM,3:05 PM,,,,2:00 PM,75,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+1150,195,5,Monday,7:00 AM,8:05 AM,,11:55 AM,6:05 PM,,11:20 AM,5:30 PM,,,,3:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,9:30 PM
+1151,195,6,Tuesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1152,195,7,Wednesday,7:00 AM,,7:13 AM,11:55 AM,6:00 PM,10:00 AM,11:10 AM,5:00 PM,,,,2:00 PM,90,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+1153,195,8,Thursday,,7:10 AM,7:23 AM,11:55 AM,6:00 PM,10:15 AM,11:25 AM,,,,,4:00 PM,120,Aerobic,Moderate,,,,,,,,,,,,,,,,,
+1154,195,9,Friday,7:05 AM,,7:30 AM,11:55 AM,7:05 PM,10:15 AM,11:30 AM,4:35 PM,,,,8:00 AM,20,Aerobic,Intense,,,,,,,,,,,,,,,,,
+1155,112,14,Monday,3:00 AM,4:00 PM,,,4:30 PM,6:30 PM,9:00 PM,,,,,5:00 AM,480,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:00 PM
+1156,112,15,Tuesday,3:00 AM,8:34 AM,8:34 AM,1:30 PM,7:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+1157,112,16,Wednesday,3:10 AM,4:10 AM,9:07 AM,1:30 PM,,3:50 AM,,,,,,,,,,,,,,,,,,,,,,,,,,9:30 PM
+1158,112,17,Thursday,2:40 AM,10:55 AM,10:54 AM,,5:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+1159,112,18,Friday,8:11 AM,7:17 PM,10:30 AM,1:30 PM,8:00 PM,5:30 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:00 PM
+1160,112,19,Saturday,3:10 AM,6:00 PM,8:00 AM,,4:32 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,7:00 PM
+1161,112,20,Sunday,3:00 AM,8:58 PM,9:06 AM,,6:30 PM,7:00 PM,4:00 AM,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+1162,112,21,Monday,3:00 AM,8:26 PM,9:30 AM,,6:30 PM,4:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+1163,112,22,Tuesday,2:30 AM,8:30 PM,9:00 AM,,8:21 PM,4:35 PM,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,9:00 PM
+1164,112,23,Wednesday,7:00 AM,2:06 PM,12:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1165,160,0,Tuesday,,6:00 PM,,,6:00 PM,8:39 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+1166,160,1,Wednesday,9:30 AM,9:35 AM,9:56 AM,12:58 PM,5:15 PM,2:53 PM,10:10 PM,,,,,10:47 AM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:30 PM
+1167,160,2,Thursday,10:00 AM,10:45 PM,10:30 AM,3:10 PM,5:05 PM,8:48 PM,,,,,,12:41 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+1168,160,3,Friday,7:11 AM,10:45 PM,8:12 AM,12:56 PM,6:15 PM,9:15 PM,,,,,,10:40 AM,45,Aerobic,Moderate,5:06 PM,50,Aerobic,Mild,,,,,,,,,,,,,11:00 PM
+1169,160,4,Saturday,11:00 AM,,11:45 AM,,6:02 PM,3:17 PM,8:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:32 PM
+1170,160,5,Sunday,11:30 AM,6:58 PM,12:00 PM,,5:55 PM,8:30 PM,,,,,,2:30 PM,,,,,,,,,,,,,,,,,,,,10:00 PM
+1171,160,6,Monday,6:21 AM,,8:20 AM,1:43 PM,5:27 PM,8:17 PM,,,,,,11:35 AM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:30 PM
+1172,160,7,Tuesday,9:00 AM,10:00 PM,9:17 AM,2:03 PM,5:24 PM,5:02 PM,6:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+1173,160,8,Wednesday,7:59 AM,10:03 PM,9:30 AM,1:07 PM,4:54 PM,7:24 PM,,,,,,11:00 AM,60,Aerobic,Intense,,,,,,,,,,,,,,,,,11:07 PM
+1174,160,9,Thursday,7:34 AM,,9:47 AM,2:14 PM,,7:30 PM,9:09 PM,,,,,12:00 PM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,10:38 PM
+1175,199,0,Friday,,12:20 PM,,12:30 PM,8:00 PM,,6:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+1176,199,1,Saturday,9:40 AM,10:30 AM,10:40 AM,4:00 PM,9:16 PM,1:00 PM,5:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:50 PM
+1177,199,2,Sunday,9:20 AM,9:52 AM,10:20 AM,2:00 PM,7:00 PM,12:00 PM,4:46 PM,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,11:50 PM
+1178,199,3,Monday,7:00 AM,8:37 AM,9:08 AM,12:20 PM,8:05 PM,,,,,,,7:30 AM,60,Aerobic,Moderate,,,,,,,,,,,,,,,,,12:30 AM
+1179,199,4,Tuesday,7:00 AM,7:07 AM,7:15 AM,12:20 PM,7:24 PM,2:00 PM,6:40 PM,,,,,7:30 AM,45,Resistance,Moderate,,,,,,,,,,,,,,,,,10:00 PM
+1180,199,5,Wednesday,7:05 AM,7:10 AM,9:00 AM,12:10 PM,8:00 PM,5:00 PM,,,,,,7:30 AM,60,Resistance,Moderate,,,,,,,,,,,,,,,,,11:40 PM
+1181,199,6,Thursday,7:05 AM,7:10 AM,7:15 AM,12:00 PM,8:30 PM,9:20 AM,6:00 PM,,,,,7:30 AM,60,Resistance,Moderate,,,,,,,,,,,,,,,,,11:00 PM
+1182,199,7,Friday,7:05 AM,7:10 AM,9:00 AM,,,,,,,,,7:30 AM,60,Resistance,Moderate,,,,,,,,,,,,,,,,,
+1183,199,8,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1184,199,9,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1185,107,1,Wednesday,10:00 AM,12:00 PM,10:30 AM,1:30 PM,5:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+1186,107,2,Thursday,1:30 PM,3:00 PM,,3:00 PM,9:00 PM,2:30 PM,4:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,2:00 AM
+1187,107,3,Friday,12:00 PM,2:00 PM,11:00 AM,2:00 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,1:00 AM
+1188,107,4,Saturday,9:00 AM,11:00 AM,,2:00 PM,6:00 PM,4:00 PM,,,,,,,,,,,,,,1:00 PM,7,Malt Beverage,Malt Beverage,Malt Beverage,Malt Beverage,Malt Beverage,Malt Beverage,Malt Beverage,,,,1:00 AM
+1189,107,5,Sunday,11:25 AM,11:30 AM,,1:15 PM,7:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,1:45 AM
+1190,107,6,Monday,10:00 AM,10:10 AM,,12:00 PM,8:00 PM,6:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,2:45 AM
+1191,107,7,Tuesday,9:45 AM,1:43 PM,,12:00 PM,8:00 PM,,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+1192,107,8,Wednesday,11:15 AM,3:37 PM,,12:00 PM,10:30 PM,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,1:15 AM
+1193,107,9,Thursday,6:00 AM,7:43 PM,,2:00 PM,10:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,,4:30 AM
+1194,107,10,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1195,106,1,Wednesday,6:25 AM,6:35 AM,7:42 AM,11:38 AM,6:17 PM,3:00 PM,5:17 PM,4:22 PM,,,,3:10 PM,80,Resistance,Intense,,,,,,,,,,,,,,,,,11:20 PM
+1196,106,2,Thursday,6:30 AM,7:11 PM,7:39 AM,10:37 AM,6:30 PM,2:52 PM,4:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:20 PM
+1197,106,3,Friday,6:30 AM,7:52 PM,7:42 AM,10:02 AM,6:00 PM,3:00 PM,11:47 PM,,,,,3:10 PM,40,Resistance,Intense,,,,,,,,,,,,,,,,,1:52 AM
+1198,106,4,Saturday,9:30 AM,8:09 PM,10:20 AM,3:00 PM,5:30 PM,,,,,,,2:30 PM,10,Aerobic,Moderate,,,,,,,,,,,,,,,,,2:15 AM
+1199,106,5,Sunday,9:30 AM,10:40 PM,11:40 AM,,6:30 PM,10:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:15 PM
+1200,106,6,Monday,6:30 AM,8:32 PM,7:30 AM,10:02 AM,5:30 PM,3:00 PM,,4:45 PM,,,,3:10 PM,80,Resistance,Intense,,,,,,,,,,,,,,,,,11:00 PM
+1201,106,7,Tuesday,6:30 AM,10:02 PM,7:45 AM,1:15 PM,6:30 PM,8:25 AM,3:40 PM,7:10 PM,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+1202,106,8,Wednesday,6:30 AM,3:23 PM,7:35 AM,10:30 AM,6:20 PM,3:00 PM,6:50 PM,,,,,3:10 PM,90,Resistance,Intense,,,,,,,,,,,,,,,,,11:00 PM
+1203,106,9,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1204,106,10,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1205,170,0,Friday,,,,11:00 AM,5:30 PM,9:30 PM,,,,,,,,,,11:25 PM,25,Aerobic,,,,,,,,,,,,,,12:30 AM
+1206,170,1,Saturday,8:30 AM,12:30 PM,9:15 AM,1:00 PM,7:00 PM,5:30 PM,,,,,,10:30 AM,75,Both,Moderate,,,,,,,,,,,,,,,,,1:30 AM
+1207,170,2,Sunday,8:30 AM,9:30 AM,9:15 AM,11:30 AM,,1:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+1208,170,3,Monday,8:00 AM,9:21 AM,9:20 AM,,,1:00 PM,4:00 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,12:00 AM
+1209,170,4,Tuesday,6:30 AM,7:00 AM,7:30 AM,10:45 AM,8:30 PM,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,12:30 AM
+1210,170,5,Wednesday,7:30 AM,10:00 AM,7:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1211,170,6,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1212,170,7,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1213,170,8,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1214,170,9,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1215,156,0,Friday,,,,,4:30 PM,,,7:15 PM,,,9:30 PM,,,,,,,,,,,,,,,,,,,,,10:00 PM
+1216,156,1,Saturday,7:30 AM,8:02 AM,9:05 AM,11:09 AM,7:45 PM,11:30 PM,5:56 PM,,4:30 PM,,,10:00 AM,22,Aerobic,,,,,,,,,,,,,,,,,,11:30 PM
+1217,156,2,Sunday,7:30 AM,,8:56 AM,12:11 PM,5:10 PM,2:07 PM,3:11 PM,7:33 PM,9:19 PM,,,11:20 AM,,Aerobic,,,,,,,,,,,,,,,,,,11:00 PM
+1218,156,3,Monday,7:30 AM,,8:30 AM,12:09 PM,5:45 PM,2:01 PM,7:41 PM,8:39 PM,,,,,,,,,,,,,,,,,,,,,,,,11:30 PM
+1219,156,4,Tuesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1220,156,5,Wednesday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1221,156,6,Thursday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1222,156,7,Friday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1223,156,8,Saturday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1224,156,9,Sunday,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1225,49,0,Monday,,3:15 PM,,,6:03 PM,3:00 PM,8:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:40 PM
+1226,49,1,Tuesday,7:30 AM,7:37 AM,7:45 AM,12:05 PM,6:50 PM,3:12 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+1227,49,2,Wednesday,7:45 AM,8:15 PM,8:15 AM,12:20 PM,7:00 PM,3:00 PM,8:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:20 PM
+1228,49,3,Thursday,7:50 AM,8:30 PM,8:15 AM,11:40 AM,6:50 PM,1:40 PM,3:35 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:25 PM
+1229,49,4,Friday,8:00 AM,8:43 PM,8:05 AM,12:15 PM,6:40 PM,3:30 PM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:20 PM
+1230,49,5,Saturday,8:50 AM,8:52 PM,8:55 AM,12:30 PM,7:15 PM,3:05 PM,4:30 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+1231,49,6,Sunday,8:40 AM,9:13 PM,9:00 AM,1:00 PM,5:45 PM,3:35 PM,8:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:40 PM
+1232,49,7,Monday,7:40 AM,9:41 PM,8:00 AM,12:30 PM,5:15 PM,3:10 PM,8:05 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:35 PM
+1233,49,8,Tuesday,7:50 AM,10:15 PM,8:00 AM,12:20 PM,7:15 PM,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+1234,49,9,Wednesday,5:20 AM,,6:30 AM,11:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1235,194,0,Monday,,3:22 PM,,,6:00 PM,3:00 PM,8:45 PM,,,,,,,,,,,,,,,,,,,,,,,,,11:00 PM
+1236,194,1,Tuesday,7:30 AM,7:44 AM,8:15 AM,12:10 PM,6:52 PM,3:23 PM,,,,,,,,,,,,,,,,,,,,,,,,,,11:05 PM
+1237,194,2,Wednesday,7:30 AM,8:18 PM,8:15 AM,12:15 PM,7:05 PM,3:07 AM,9:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+1238,194,3,Thursday,7:30 AM,8:32 PM,8:20 AM,11:45 AM,,1:40 PM,2:00 PM,3:40 PM,6:15 PM,6:40 PM,,,,,,,,,,,,,,,,,,,,,,10:45 PM
+1239,194,4,Friday,7:12 AM,8:45 PM,8:10 AM,12:30 PM,6:32 PM,8:00 PM,4:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+1240,194,5,Saturday,7:17 AM,9:07 PM,8:32 AM,12:35 PM,6:35 PM,4:00 PM,2:40 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+1241,194,6,Sunday,7:20 AM,9:18 PM,8:40 AM,12:45 PM,5:45 PM,3:25 PM,,,,,,,,,,,,,,,,,,,,,,,,,,10:30 PM
+1242,194,7,Monday,7:30 AM,9:38 PM,8:20 AM,12:30 PM,5:30 PM,3:05 PM,8:50 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:40 PM
+1243,194,8,Tuesday,7:45 AM,6:38 PM,8:05 AM,12:20 PM,,11:50 AM,3:00 PM,,,,,,,,,,,,,,,,,,,,,,,,,10:50 PM
+1244,194,9,Wednesday,5:30 AM,7:30 AM,7:00 AM,11:30 AM,,,,,,,,,,,,,,,,,,,,,,,,,,,,

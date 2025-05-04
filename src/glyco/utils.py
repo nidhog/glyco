@@ -31,6 +31,7 @@ class Devices(enum.Enum):
     Other devices are also supported but may need more manual changes.
     """
     abbott = "abbott"  # FreeStyle Libre
+    other  = "other"   # Other device not defined above
 
 
 class Units(enum.Enum):

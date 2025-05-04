@@ -14,6 +14,12 @@ default_replace_func = lambda x: hashlib.sha256(str(x).encode()).hexdigest()
 def mask_private_information(gdf: pd.DataFrame, remove_columns: List[str], replace_columns: List[str], glucose_col: str, tsp_col: str, tsp_fmt: str, set_start_date: Optional[str] = None, replace_func: Callable = default_replace_func, noise_std: float =0.2):
     """
     Masks private information in a DataFrame.
+    To make the glucose data unidentifiable this function can:
+    - change the timestamp column to a new start date.
+    - replace a column's values using a custom function (defaults to a hash function),
+    for example, notes columns can be replaced with a hash instead.
+    - adds noise to the glucose data.
+    - remove chosen columns.
 
     Args:
         gdf (pd.DataFrame): The input DataFrame containing private information.
@@ -33,9 +39,10 @@ def mask_private_information(gdf: pd.DataFrame, remove_columns: List[str], repla
     """
     # Replace specified columns with hashed values
     df = gdf.copy()
-    logger.info("The values of the columns '(%s)' will be replaced using a hash...", ', '.join(replace_columns))
-    replaced_values_orig = df[replace_columns].copy()
-    df[replace_columns] = df[replace_columns].applymap(replace_func)
+    if replace_columns:
+        logger.info("The values of the columns '(%s)' will be replaced using a hash...", ', '.join(replace_columns))
+        replaced_values_orig = df[replace_columns].copy()
+        df[replace_columns] = df[replace_columns].applymap(replace_func)
     # Convert 'tsp_col' to datetime if it's not already
     convert_from_str = not pd.api.types.is_datetime64_any_dtype(df[tsp_col])
     if convert_from_str:
@@ -66,4 +73,4 @@ def mask_private_information(gdf: pd.DataFrame, remove_columns: List[str], repla
             df = df.drop(columns=remove_columns, errors='raise')
         except KeyError:
             logger.warn(f"One of the columns {remove_columns} was not found, column deletion skipped!")
-    return df, added_noise, replaced_values_orig
+    return df, added_noise, replaced_values_orig if replace_columns else None

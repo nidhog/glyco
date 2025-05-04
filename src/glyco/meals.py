@@ -263,7 +263,7 @@ def get_event_sessions(events_df: pd.DataFrame, glucose_df: pd.DataFrame, event_
     )
     return edf
 
-# Commented in case some of the logic is needed
+# This function is no longer in use, for now it is left as a comment in case some of the logic is needed
 # def sessionize_events(events_df: pd.DataFrame, gdf: pd.DataFrame, event_timestamp: str = _original_timestamp, session_seconds: int = _default_event_session_seconds):    
 #     """DEPRECATED
 #     TODO REMOVE 
@@ -383,7 +383,8 @@ def plot_session_response(glucose_df: pd.DataFrame, sessions_df: pd.DataFrame, s
 
     plt.axvline(session.iloc[-1]['session_first'], color='red', label='First event', linestyle='--', alpha=0.1)
     if use_notes_as_title:
-        session_title = f"Session with the events: ({'; '.join([x for x in session[notes_col] if x and isinstance(x, str)])})"
+        sess_str = '; \n'.join([x for x in session[notes_col] if x and isinstance(x, str)])
+        session_title = f"Session with the events: ({sess_str})"
     if session_title:
         plt.title(session_title)
     if show_events:
@@ -400,7 +401,10 @@ def _plot_auc_above_threshold(values: Iterable, threshold: float):
     lim_df = values.map(lambda x: x if x>threshold else threshold)
     plt.gca()
     plt.axhline(threshold, color='red', label='limit', linestyle='--', alpha=0.3)
-    plt.fill_between(lim_df.index,  lim_df, [threshold for a in lim_df.index], color='green', alpha=0.1, label=f"Estimated glucose quantity consumed")
+    try:
+        plt.fill_between(lim_df.index,  lim_df, [threshold for a in lim_df.index], color='green', alpha=0.1, label=f"Estimated glucose quantity consumed")
+    except TypeError:
+        logging.error("Could not fill the response graph")
 
 
 """Event Pattern recognition
