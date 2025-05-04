@@ -43,9 +43,9 @@ def test_get_stats():
     # Assert that the result is a DataFrame
     assert isinstance(result, pd.DataFrame)
 
-    # Assert that the expected columns are present in the result DataFrame
+    # Assert that the expected columns are present in the result DataFrame's index
     expected_columns = ['count', 'mean', 'std', 'min', '25%', '50%', '75%', 'max']
-    assert all(col in result.columns for col in expected_columns)
+    assert all(dim in result.index for dim in expected_columns)
 
     # Test case 2: with group_by_col
     result_grouped = get_stats(df=df, stats_cols=['glucose'], group_by_col='category', percentiles=[0.25, 0.75])
