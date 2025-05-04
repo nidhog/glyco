@@ -40,10 +40,7 @@ Temporal data alignment for accurate time series analysis.
 Outlier detection and handling to enhance data quality
 
 ### 3. Algorithm Training
-
-**Parameters:**
-
-**Final Threshold and Explanation:**
+Not included at this stage.
 
 ### 4. Databases
 Glyco utilizes a diverse set of databases containing CGM data from healthy individuals. These databases are continuously updated to improve algorithm performance and accuracy.
@@ -51,14 +48,14 @@ Glyco utilizes a diverse set of databases containing CGM data from healthy indiv
 ### 5. Ground Truth
 Glyco relies on ground truth data to validate its results. Ground truth data consists of glucose measurements from individuals with known health status. This data is essential for training and evaluating the algorithm.
 
-### 6. FDA Validation Plan
-**Patient Population Description for FDA Validation Dataset:**
-The FDA validation dataset includes CGM data from a representative sample of healthy individuals. The dataset covers a range of ages, genders, and demographics to ensure the algorithm's applicability to a diverse population.
+### 6. Validation Plan
+**Patient Population Description for a Validation Dataset:**
+The validation dataset should include CGM data from a representative sample of healthy individuals. The dataset should cover a range of ages, genders, and demographics to ensure the algorithm's applicability to a diverse population.
 
 **Ground Truth Acquisition Methodology:**
 The ground truth for the validation dataset is obtained through clinical assessments, medical records, and laboratory measurements. Individuals in the dataset have undergone thorough health evaluations to confirm their healthy status.
 
 **Algorithm Performance Standard:**
-Glyco's performance will be evaluated against predefined criteria set by the FDA, including sensitivity, specificity, positive predictive value, and negative predictive value. The algorithm's performance must meet or exceed these standards to gain FDA approval for its intended use.
+Glyco's performance will be evaluated against predefined criteria set by the validation body, including sensitivity, specificity, positive predictive value, and negative predictive value. The algorithm's performance must meet or exceed these standards to gain approval for its intended use.
 
 Please note that this document provides an overview of Glyco's healthcare considerations and algorithm description. Detailed technical documentation and validation results are available upon request.
