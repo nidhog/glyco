@@ -320,10 +320,6 @@ def get_events_from_times(gdf: pd.DataFrame, event_times: Iterable):
     """Not implemented"""
     raise NotImplementedError(error_not_implemented_method)
 
-def get_event_metrics(gdf, edf, eid):
-    """Not implemented"""
-    raise NotImplementedError(error_not_implemented_method)
-
 def describe_event(gdf, edf, eid):
     """Not implemented"""
     raise NotImplementedError(error_not_implemented_method)
@@ -388,7 +384,10 @@ def plot_session_response(glucose_df: pd.DataFrame, sessions_df: pd.DataFrame, s
     if session_title:
         plt.title(session_title)
     if show_events:
-        [plt.axvline(session.iloc[i][events_tsp], color='black', linestyle='--', alpha=0.1) for i in range(len(session))]
+        [
+            plt.axvline(session.iloc[i][events_tsp], color='black', linestyle='--', alpha=0.1)
+            for i in range(len(session))
+        ]
     plt.xticks(rotation=45)
 
 def _plot_auc_above_threshold(values: Iterable, threshold: float):
@@ -493,3 +492,17 @@ def get_sessions_auc(esdf: pd.DataFrame, gdf: pd.DataFrame):
         )
 
     return edf
+
+def describe_meals(esdf: pd.DataFrame, gdf: pd.DataFrame):
+    """Not implemented yet
+    Uses text to explain the meals dataframe and what it contains
+    """
+    
+    pass
+
+def describe_sessions(esdf: pd.DataFrame, gdf: pd.DataFrame):
+    """Not implemented yet
+    Uses text to explain the meals dataframe and what it contains
+    """
+    
+    pass

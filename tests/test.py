@@ -1,5 +1,5 @@
 import unittest
-import ..src.glyco.glucose as gl
+import glyco
 
 TEST_FILE = 'data/tiny_sample.csv'
 TEST_FILE_LEN = 4

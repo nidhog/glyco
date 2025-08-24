@@ -8,7 +8,7 @@
   - [Read Meals and Notes from FreeStyle Libre Data](#read-meals-and-notes-from-freestyle-libre-data)
   - [Automatically detect meals (infered from glucose)](#automatically-detect-meals-infered-from-glucose)
 ## Getting started: Read glucose data and plot meals/activities
-In this [Get Started](https://github.com/nidhog/glyco/blob/main/examples/Get%20started.ipynb) example, you will:
+In this [Get Started](https://github.com/nidhog/glyco/blob/main/examples/Get%20started.ipynb) notebook example, you will:
 * **Read glucose data** from a CSV file. This could be from FreeStyle Libre, DexCom or any other device.
 * This will generate a glucose dataframe (independent on the device/unit [more details here](concepts/glucose.md)) that you will use to:
   * **Plot the glucose curve**.
@@ -17,7 +17,7 @@ In this [Get Started](https://github.com/nidhog/glyco/blob/main/examples/Get%20s
   * Show summary statistics and more.
 * You will also learn to **read meal (or activity) data** and show the response to a meal or any other type of event.
 
-[To get a hands on go to the notebook for this example here: Get started.ipynb](https://github.com/nidhog/glyco/blob/main/examples/Get%20started.ipynb)
+[To get a hands on go to the notebook for this example here: under 'examples/Get started.ipynb'](https://github.com/nidhog/glyco/blob/main/examples/Get%20started.ipynb)
 
 In addition to the above, you will see how to:
 * Read data from a glucose file with different formats, Different glucose units, Different column names, and more.

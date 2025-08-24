@@ -514,12 +514,15 @@ def prepare_glucose(
         timestamp_fmt=timestamp_fmt,
         weekday_map=weekday_map,
         timestamp_is_formatted=timestamp_is_formatted)
-
     if extra_shift_in_time:
         df = add_shifted_time(df, tlbl, dlbl, extra_shift_in_time)
-
     # convert to mmol/L
-    df[glucose_col] = pd.to_numeric(df[glucose_col].str.replace(',', '.'), errors="coerce")
+    col_dtype = df[glucose_col].dtype
+    if not pd.api.types.is_numeric_dtype(col_dtype):
+        if pd.api.types.is_string_dtype(col_dtype) or pd.api.types.is_object_dtype(col_dtype):
+            df[glucose_col] = pd.to_numeric(df[glucose_col].str.replace(',', '.'), errors='coerce')
+        else:
+            raise TypeError(f"Unsupported dtype '{col_dtype}' for column '{glucose_col}'. Please ensure it is a string or numeric.")
     df[glbl] = (
         df[glucose_col]
         if unit == Units.mmolL.value
@@ -855,7 +858,10 @@ def plot_sleep_trends(df: pd.DataFrame, glbl: str = GLUCOSE_COL, sleep_time_filt
     # make new plotting time
     gdf.loc[:, 'sleep_hours'] = gdf[sleep_time_filter_col]- gdf[sleep_time_filter_col].min()
     plot_percentiles(df=gdf,
-        stat_col=glbl, group_by_col='sleep_hours', percentiles=[0.01, 0.05], label='Hourly trend of Glucose during Sleep')
+                     stat_col=glbl,
+                     group_by_col='sleep_hours',
+                     percentiles=[0.01, 0.05],
+                     label='Hourly trend of Glucose during Sleep')
     plt.ylabel('Glucose during sleep')
     plt.xlabel('Hours of sleep (from 0-8)')
     end_plot()

@@ -16,6 +16,7 @@ def mask_private_information(gdf: pd.DataFrame, remove_columns: List[str], repla
     Masks private information in a DataFrame.
     To make the glucose data unidentifiable this function can:
     - change the timestamp column to a new start date.
+    - note that only the date changes but the time does not.
     - replace a column's values using a custom function (defaults to a hash function),
     for example, notes columns can be replaced with a hash instead.
     - adds noise to the glucose data.
@@ -24,6 +25,7 @@ def mask_private_information(gdf: pd.DataFrame, remove_columns: List[str], repla
     Args:
         gdf (pd.DataFrame): The input DataFrame containing private information.
         set_start_date (str): The date str at which to reset the start of the timestamp column (with or without time).
+            Note that only the date changes but the time does not.
         glucose_col (str): Name of the column containing glucose data to add noise to.
         tsp_col (str): Name of the column containing timestamps.
         tsp_fmt (str): Format of the timestamps in the timestamp column.
@@ -42,7 +44,7 @@ def mask_private_information(gdf: pd.DataFrame, remove_columns: List[str], repla
     if replace_columns:
         logger.info("The values of the columns '(%s)' will be replaced using a hash...", ', '.join(replace_columns))
         replaced_values_orig = df[replace_columns].copy()
-        df[replace_columns] = df[replace_columns].applymap(replace_func)
+        df[replace_columns] = df[replace_columns].apply(lambda col: col.map(replace_func))
     # Convert 'tsp_col' to datetime if it's not already
     convert_from_str = not pd.api.types.is_datetime64_any_dtype(df[tsp_col])
     if convert_from_str:
@@ -51,7 +53,7 @@ def mask_private_information(gdf: pd.DataFrame, remove_columns: List[str], repla
         df[tsp_col] = pd.to_datetime(df[tsp_col], format=tsp_fmt, errors='coerce')
     # Reset the timestamps such that they start at 'set_start_datetime_at'
     if set_start_date:
-        logger.info("The min time in the timstamp column '%s' will be shifted to: '%s'...", tsp_col, set_start_date)
+        logger.info("The min time in the timestamp column '%s' will be shifted to: '%s'...", tsp_col, set_start_date)
         day_diff = (pd.to_datetime(set_start_date, format=tsp_fmt) - df[tsp_col].min()).days + 1
         df[tsp_col] = df[tsp_col] + tdel(days=day_diff)
     else:

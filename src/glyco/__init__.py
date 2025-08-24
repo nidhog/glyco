@@ -15,7 +15,8 @@ from glyco.glucose import (
     plot_percentiles,
     plot_sleep_trends,
     plot_day_curve,
-    get_stats
+    get_stats,
+    describe_glucose
 )
 
 from glyco.meals import *
