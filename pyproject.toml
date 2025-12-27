@@ -45,3 +45,7 @@ Author = "https://ismail.bio"
 
 [project.scripts]
 glyco = "glyco.__main__:main"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
