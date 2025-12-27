@@ -1,0 +1,7 @@
+Device,Serial Number,Device Timestamp,Record Type,Historic Glucose mmol/L,Scan Glucose mmol/L,Non-numeric Rapid-Acting Insulin,Rapid-Acting Insulin (units),Non-numeric Food,Carbohydrates (grams),Carbohydrates (servings),Non-numeric Long-Acting Insulin,Long-Acting Insulin Value (units),Notes,Strip Glucose mmol/L,Ketone mmol/L,Meal Insulin (units),Correction Insulin (units),User Change Insulin (units)
+FreeStyle LibreLink,b59d4499-1a07-462b-b7da-a179f2093996,05-12-2019 16:25,0,6.3,,,,,,,,,,,,,,
+FreeStyle LibreLink,b59d4499-1a07-462b-b7da-a179f2093996,05-12-2019 16:41,0,6.4,,,,,,,,,,,,,,
+FreeStyle LibreLink,b59d4499-1a07-462b-b7da-a179f2093996,05-12-2019 16:56,0,6.5,,,,,,,,,,,,,,
+FreeStyle LibreLink,b59d4499-1a07-462b-b7da-a179f2093996,05-12-2019 17:11,0,6.7,,,,,,,,,,,,,,
+FreeStyle LibreLink,b59d4499-1a07-462b-b7da-a179f2093996,05-12-2019 17:26,0,6.9,,,,,,,,,,,,,,
+FreeStyle LibreLink,b59d4499-1a07-462b-b7da-a179f2093996,05-12-2019 17:41,0,7.1,,,,,,,,,,,,,,

@@ -1,0 +1,10 @@
+RecID,PtID,InvDevice,DevIssueType,DevIssueOnsetDtDaysFromEnroll,DevIssueLocation,DevIssueFrequency,DevIssueEffect,DevIssueReplacedDt,DevIssueAE,DevIssueAELikely,DevIssueUADE,DevIssueAELikelyHypo,DevIssueAELikelyHyper,DevIssueAELikelyOth
+3,9,Dexcom G6,Device malfunction,0,Clinic (outpatient),Single Event,Study device replaced,00:00.0,No,Not possible,NULL,NULL,NULL,NULL
+1,7,Dexcom G6,Device malfunction,0,Home,Continuous,Study device replaced,00:00.0,No,Not possible,NULL,NULL,NULL,NULL
+2,7,Dexcom G6,Device malfunction,0,Home,Continuous,Study device replaced,00:00.0,No,Not possible,NULL,NULL,NULL,NULL
+3,173,Dexcom G6,Device malfunction,0,Clinic (outpatient),Single Event,Study device replaced,00:00.0,No,Unlikely,NULL,NULL,NULL,NULL
+2,169,Dexcom G6,Other,4,Clinic (outpatient),Single Event,Study device replaced,00:00.0,No,Not possible,NULL,NULL,NULL,NULL
+6,87,Dexcom G6,Device malfunction,0,Clinic (outpatient),Single Event,No change,NULL,No,Unlikely,NULL,NULL,NULL,NULL
+5,63,Other,Device malfunction,0,Clinic (outpatient),Single Event,Study device replaced,00:00.0,No,Possibly,NULL,NULL,NULL,1
+1,80,Dexcom G6,Device malfunction,0,Clinic (outpatient),Single Event,Study device replaced,00:00.0,No,Not possible,NULL,NULL,NULL,NULL
+4,58,Dexcom G6,Device malfunction,1,Home,Continuous,Study device replaced,00:00.0,No,Not possible,NULL,NULL,NULL,NULL
