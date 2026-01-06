@@ -820,6 +820,9 @@ def plot_glucose( # pylint: disable=too-many-arguments,too-many-positional-argum
             Defaults to None.
         label (str, optional): label of the lineplot.
             Defaults to Glucose in mmol/.
+        autoplot (bool, optional): if True, this automatically shows the plot and makes it more readable.
+            This can be disabled for example to use this function along with other plots.
+            Defaults to True.
 
     Raises:
         KeyError: if the glucose column is not in the glucose dataframe
