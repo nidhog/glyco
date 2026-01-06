@@ -1,6 +1,7 @@
 """
 Deidentify and mask private or sensitive information
 """
+
 import logging
 import pandas as pd
 from datetime import timedelta as tdel
@@ -11,7 +12,18 @@ from typing import Callable, List, Optional
 logger = logging.getLogger(__name__)
 default_replace_func = lambda x: hashlib.sha256(str(x).encode()).hexdigest()
 
-def mask_private_information(gdf: pd.DataFrame, remove_columns: List[str], replace_columns: List[str], glucose_col: str, tsp_col: str, tsp_fmt: str, set_start_date: Optional[str] = None, replace_func: Callable = default_replace_func, noise_std: float =0.2):
+
+def mask_private_information(
+    gdf: pd.DataFrame,
+    remove_columns: List[str],
+    replace_columns: List[str],
+    glucose_col: str,
+    tsp_col: str,
+    tsp_fmt: str,
+    set_start_date: Optional[str] = None,
+    replace_func: Callable = default_replace_func,
+    noise_std: float = 0.2,
+):
     """
     Masks private information in a DataFrame.
     To make the glucose data unidentifiable this function can:
@@ -42,23 +54,34 @@ def mask_private_information(gdf: pd.DataFrame, remove_columns: List[str], repla
     # Replace specified columns with hashed values
     df = gdf.copy()
     if replace_columns:
-        logger.info("The values of the columns '(%s)' will be replaced using a hash...", ', '.join(replace_columns))
+        logger.info(
+            "The values of the columns '(%s)' will be replaced using a hash...",
+            ", ".join(replace_columns),
+        )
         replaced_values_orig = df[replace_columns].copy()
         df[replace_columns] = df[replace_columns].apply(lambda col: col.map(replace_func))
     # Convert 'tsp_col' to datetime if it's not already
     convert_from_str = not pd.api.types.is_datetime64_any_dtype(df[tsp_col])
     if convert_from_str:
         if not pd.api.types.is_string_dtype(df[tsp_col]):
-            raise ValueError("Timestamp column '%s' provided must be either datetime or str", tsp_col)
-        df[tsp_col] = pd.to_datetime(df[tsp_col], format=tsp_fmt, errors='coerce')
+            raise ValueError(
+                "Timestamp column '%s' provided must be either datetime or str", tsp_col
+            )
+        df[tsp_col] = pd.to_datetime(df[tsp_col], format=tsp_fmt, errors="coerce")
     # Reset the timestamps such that they start at 'set_start_datetime_at'
     if set_start_date:
-        logger.info("The min time in the timestamp column '%s' will be shifted to: '%s'...", tsp_col, set_start_date)
+        logger.info(
+            "The min time in the timestamp column '%s' will be shifted to: '%s'...",
+            tsp_col,
+            set_start_date,
+        )
         day_diff = (pd.to_datetime(set_start_date, format=tsp_fmt) - df[tsp_col].min()).days + 1
         df[tsp_col] = df[tsp_col] + tdel(days=day_diff)
     else:
-        logger.warning("The start date is not reset, "
-        "this may be identifyable information. To reset provide 'set_start_date'.")
+        logger.warning(
+            "The start date is not reset, "
+            "this may be identifyable information. To reset provide 'set_start_date'."
+        )
     # Convert 'tsp_col' back to str if it was
     if convert_from_str:
         # If the original type was str keep it str
@@ -68,11 +91,13 @@ def mask_private_information(gdf: pd.DataFrame, remove_columns: List[str], repla
     logger.info("Adding noise to the glucose data in the column '%s'...", glucose_col)
     added_noise = np.random.normal(0, noise_std, df.shape[0])
     df[glucose_col] += added_noise
-    
+
     if remove_columns:
-        logger.info("Removing the following privacy columns: %s...", ', '.join(remove_columns))
+        logger.info("Removing the following privacy columns: %s...", ", ".join(remove_columns))
         try:
-            df = df.drop(columns=remove_columns, errors='raise')
+            df = df.drop(columns=remove_columns, errors="raise")
         except KeyError:
-            logger.warn(f"One of the columns {remove_columns} was not found, column deletion skipped!")
+            logger.warn(
+                f"One of the columns {remove_columns} was not found, column deletion skipped!"
+            )
     return df, added_noise, replaced_values_orig if replace_columns else None
