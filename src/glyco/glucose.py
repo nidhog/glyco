@@ -1,23 +1,7 @@
-"""
-Glucose analysis and visualization.
-
-This module provides functions for:
-- Reading and validating continuous glucose monitoring (CGM) data
-- Preparing and cleaning glucose time-series data
-- Computing descriptive statistics and daily/hourly metrics
-- Plotting trends, percentiles, and summary statistics
-- Masking private CGM data
-
-It is designed to work with pandas DataFrames and supports
-privacy-preserving workflows, unit normalization, and
-robust statistical summaries for exploratory and analytical use.
-"""
-# pylint: disable=too-many-lines
 import hashlib
 import logging
-from dataclasses import asdict, dataclass, field
 from datetime import date as date_type, datetime as dt, timedelta as tdel
-from typing import Callable, List, Optional, Union, Any, Dict
+from typing import Callable, Dict, List, Optional, Union
 
 import pandas as pd
 from matplotlib import pyplot as plt
@@ -25,26 +9,19 @@ from rich.console import Console
 from rich.table import Table
 
 from glyco.privacy import mask_private_information
-from glyco.utils import (
-    Devices,
-    Units,
-    end_plot,
-    find_nearest,
-    is_weekend,
-    units_to_mmolL_factor,
-    WEEKDAY_MAP,
-    autoplot,
-)
+from glyco.utils import Devices, Units, end_plot, find_nearest, is_weekend, units_to_mmolL_factor, weekday_map
 
 logger = logging.getLogger(__name__)
 """Warning and Error Messages
 """
-ERR_NOT_IMPLEMENTED = "NOT IMPLEMENTED: Method not yet supported in this version."
+error_not_implemented_method = (
+    "NOT IMPLEMENTED: Method not yet supported in this version."
+)
 
 """Default Values
 """
-TIMESTAMP_COL = "tsp"
-GLUCOSE_COL = "glucose"
+TIMESTAMP_COL = 'tsp'
+GLUCOSE_COL = 'glucose'
 # Default values for column names as found in Freestyle Libre data
 DEFAULT_INPUT_TSP_COL = "Device Timestamp"
 DEFAULT_INPUT_GLUC_COL = "Historic Glucose mmol/L"
@@ -53,7 +30,7 @@ DEFAULT_INPUT_GLUC_COL = "Historic Glucose mmol/L"
 DEFAULT_INPUT_TSP_FMT = "%d-%m-%Y %H:%M"
 DEFAULT_OUT_DATE_FMT = "%d-%m-%Y (%A)"
 
-DEFAULT_GLUC_LIMIT = 5  # glucose threshold used for calculating Area Under the Curve
+DEFAULT_GLUC_LIMIT = 6 # glucose threshold used for calculating Area Under the Curve
 DEFAULT_CSV_DELIMITER = ","
 
 # Values for column names glyco generates in a dataframe
@@ -70,96 +47,75 @@ _HOUR_COL = "hour"
 _DAYOFWEEK_COL = "weekday_number"
 _WEEKDAY_COL = "weekday_name"
 _ISWEEKEND_COL = "is_weekend"
+# Used for smoothening the glucose curve
+_default_glucose_prep_kwargs = {
+    'interpolate': True,
+    'interp_met':'polynomial',
+    'interp_ord':1,
+    'rolling_avg':3,
+}
 
 # Meals
-_MEAL_NOTE_COL = "Notes"
-_MEAL_REF_COL = "Reference"
-_FREESTYLE_REC_TYPE_COL = (
-    "Record Type"
-)
-_FREESTYLE_SERIALNUM_COL = "Serial Number"
-# _FREESTYLE_NOTE_REC_TYPE = 6
-_FREESTYLE_GLUCOSE_REC_TYPE = 0
-# _OPTIONAL_COLS = [_MEAL_NOTE_COL, _MEAL_REF_COL]
-# MEAL_DEFAULT_COLS = [TIMESTAMP_COL, _MEAL_REF_COL, _MEAL_REF_COL]
-_DEFAULT_SHIFT_HOURS = 7
+_meal_note_col = "Notes"
+_meal_ref_col = "Reference"
+_freestyle_rec_type_col = "Record Type" # TODO separate freestyle specific to separate class in utils or devices
+_freestyle_serial_number_col = "Serial Number" 
+_freestyle_notes_rec_type = 6
+_freestyle_glucose_rec_type = 0
+_optional_cols = [_meal_note_col, _meal_ref_col]
+meal_default_cols = [TIMESTAMP_COL, _meal_ref_col, _meal_ref_col]
+_default_shift_hours = 7
 
+_default_private_info_kwargs = {
+    'set_start_date': '01-01-2023 00:00',
+    'remove_columns': [_freestyle_serial_number_col],
+    'replace_columns': [_meal_note_col],
+    'replace_func': lambda x: hashlib.sha256(str(x).encode()).hexdigest(),
+    'noise_std': 0.2
+}
 
-def _default_hash_func(x):
-    """Default hash function for masking private info."""
-    return hashlib.sha256(str(x).encode()).hexdigest()
-
-
-@dataclass(frozen=True)
-class GlucosePrepKwargs:
-    """Keyword Arguments used for preparing and cleaning glucose data."""
-    interpolate: bool = True
-    interp_met: str = "polynomial"
-    interp_ord: int = 1
-    rolling_avg: int = 3
-
-    def to_kwargs(self) -> dict[str, Any]:
-        """as kwargs dictionary."""
-        return asdict(self)
-
-
-@dataclass(frozen=True)
-class PrivateInfoKwargs:
-    """Keyword Arguments used for masking private information."""
-    set_start_date: str = "01-01-2023 00:00"
-    remove_columns: list[str] = field(default_factory=lambda: [_FREESTYLE_SERIALNUM_COL])
-    replace_columns: list[str] = field(default_factory=lambda: [_MEAL_NOTE_COL])
-    replace_func: Callable = _default_hash_func
-    noise_std: float = 0.2
-
-    def to_kwargs(self) -> dict[str, Any]:
-        """as kwargs dictionary."""
-        return asdict(self)
-
-
-
-GeneralDateType = Union[str, pd.Timestamp, date_type]
+general_date_type = Union[str, pd.Timestamp, date_type]
 
 """File reading
 """
-
-
-def read_csv( # pylint: disable=too-many-arguments,too-many-positional-arguments,too-many-locals
+def read_csv(
     file_path: str,
     timestamp_col: str = DEFAULT_INPUT_TSP_COL,
     timestamp_fmt: str = DEFAULT_INPUT_TSP_FMT,
     glucose_col: str = DEFAULT_INPUT_GLUC_COL,
     glucose_unit: str = Units.mmolL.value,
     unit_autodetect: bool = False,
-    calculate_glucose_properties: bool = True,
-    glucose_lim: int = DEFAULT_GLUC_LIMIT,  # predefined glucose limit used for AUC calculation
+    calculate_glucose_properties: bool=True,
+    glucose_lim: int=DEFAULT_GLUC_LIMIT,  # predefined glucose limit used for AUC calculation
     filter_glucose_rows=False,
     delimiter: str = DEFAULT_CSV_DELIMITER,
     skiprows: int = 0,
     generated_glucose_col: str = GLUCOSE_COL,
     generated_date_col: str = _DATE_COL,
-    generated_timestamp_col: str = TIMESTAMP_COL,
-    glucose_prep_kwargs: Optional[GlucosePrepKwargs] = None,
+    generated_timestamp_col: str =TIMESTAMP_COL,
+    glucose_prep_kwargs: Dict = _default_glucose_prep_kwargs,
     mask_private_info: Optional[bool] = False,
-    private_info_kwargs: Optional[PrivateInfoKwargs] = None,
+    private_info_kwargs: Optional[Dict] = _default_private_info_kwargs
 ) -> pd.DataFrame:
+    # TODO: reorder by importance to improve UX
+    # TODO: assert generated G column different from G column? Or warn if similar
     """Reads a CSV file with glucose data and generates a Glucose DataFrame.
     - The file needs to have at least: one column for glucose, one timestamp column.
 
     Args:
         file_path (str): the file path to the glucose CSV file (for example: 'data/sample_glucose.csv')
-        timestamp_col (str, optional): the name of the timestamp column in the CSV file.
+        timestamp_col (str, optional): the name of the timestamp column in the CSV file. 
             Defaults to the value of DEFAULT_INPUT_TSP_COL.
-        timestamp_fmt (str, optional): the format of the timestamps in the CSV file.
+        timestamp_fmt (str, optional): the format of the timestamps in the CSV file. 
             Must follow ISO 8601 format, for example: 'YYYY-MM-DDTHH:MM:SS' .
             This will be used to convert the timestamp column values to a 'datetime'.
             Defaults to DEFAULT_INPUT_TSP_FMT.
-        glucose_col (str, optional): the name of the glucose column in the CSV file.
+        glucose_col (str, optional): the name of the glucose column in the CSV file. 
             Defaults to DEFAULT_INPUT_GLUC_COL.
         glucose_unit (str, optional): the unit of the glucose values in the CSV file.
             These will be converted to the mmol/L unit. See the units documentation.
             Defaults to Units.mmolL.value.
-        unit_autodetect (bool, optional): if 'true' you do not need to define the glucose unit.
+        unit_autodetect (bool, optional): if 'true' you do not need to define the glucose unit. 
             If true, the unit will be automatically inferred from the values.
             Defaults to False.
         calculate_glucose_properties (bool, optional): if true the Generated Glucose Properties
@@ -167,41 +123,45 @@ def read_csv( # pylint: disable=too-many-arguments,too-many-positional-arguments
             See the Generated Glucose Properties section of the Glucose documentation.
             Defaults to True.
         glucose_lim (int, optional): a lower limit/threshold in the value of glucose that will be used
-            by some of the Generated Glucose Properties.
+            by some of the Generated Glucose Properties. 
             See the Generated Glucose Properties section of the Glucose documentation.
             Defaults to DEFAULT_GLUC_LIMIT.
-        delimiter (str, optional): the delimiter that separates column values in the CSV file.
+        delimiter (str, optional): the delimiter that separates column values in the CSV file. 
             For example "," or ";".
             Defaults to DEFAULT_CSV_DELIMITER.
-        skiprows (int, optional): number of rows to skip in the CSV file.
+        skiprows (int, optional): number of rows to skip in the CSV file. 
             Defaults to 0.
-        generated_glucose_col (str, optional): the name of the generated glucose
+        generated_glucose_col (str, optional): the name of the generated glucose 
             column in the resulting Glucose Dataframe.
             Defaults to GLUCOSE_COL.
         generated_date_col (str, optional): the name of the generated date column
-            in the resulting Glucose Dataframe.
+            in the resulting Glucose Dataframe. 
             Defaults to _DATE_COL.
-        generated_timestamp_col (str, optional): the name of the generated timestamp
-            column in the resulting Glucose Dataframe.
+        generated_timestamp_col (str, optional): the name of the generated timestamp 
+            column in the resulting Glucose Dataframe. 
             Defaults to TIMESTAMP_COL.
-        glucose_prep_kwargs (Optional[GlucosePrepConfig], optional): Configuration for glucose data preparation.
-            If None, default values are used.
-            See GlucosePrepConfig for details.
-            Defaults to None.
+        glucose_prep_kwargs (Dict, optional): arugments that can be used 
+            to smoothening the glucose curve.
+            See the Glucose Prep Arguments section of the Glucose documentation.
+            Defaults to _default_glucose_prep_kwargs.
         mask_private_info (bool, optional): choose to mask or not to mask private information.
             This uses the 'mask_private_information' function.
             See the Privacy documentation for more on how this works.
             Defaults to false.
-        private_info_kwargs (Optional[PrivateInfoConfig], optional): Configuration for masking private information.
-            If None, default values are used.
-            See PrivateInfoConfig for details.
-            Defaults to None.
+        private_info_kwargs (Optional[Dict], optional): arugments that can be used 
+            to mask private information. These are give to the 'mask_private_information' function.
+            See the Privacy documentation for more on how this works.
+            Defaults to _default_private_info_kwargs.
 
     Returns:
-        pd.DataFrame: The resulting Glucose Dataframe that contains the file data,
+        pd.DataFrame: The resulting Glucose Dataframe that contains the file data, 
             along with the Generated Glucose Properties
     """
-    df = pd.read_csv(filepath_or_buffer=file_path, delimiter=delimiter, skiprows=skiprows)
+    df = pd.read_csv(
+        filepath_or_buffer=file_path,
+        delimiter=delimiter,
+        skiprows=skiprows
+    )
 
     df = read_df(
         df=df,
@@ -222,7 +182,6 @@ def read_csv( # pylint: disable=too-many-arguments,too-many-positional-arguments
     )
     return df
 
-
 def validate_glucose_columns(df: pd.DataFrame, glucose_col: str, timestamp_col: str):
     """Validates the glucose and timestamp columns in the dataframe.
     Currently, only checks their existence.
@@ -236,59 +195,48 @@ def validate_glucose_columns(df: pd.DataFrame, glucose_col: str, timestamp_col: 
         ValueError: raised if the glucose column does not exist in the dataframe.
         ValueError: raised if the timestamp column does not exist in the dataframe.
     """
+    # TODO: verify it's a valid number
     if glucose_col not in df.columns:
-        raise ValueError(
-            f"The Glucose column '{glucose_col}' is not in the input columns."
-            "Please provide 'glucose_col' as input."
-        )
+        raise ValueError(f"The Glucose column '{glucose_col}' is not in the input columns."\
+            "Please provide 'glucose_col' as input.")
     if timestamp_col not in df.columns:
-        raise ValueError(
-            f"The Timestamp column '{timestamp_col}' is not in the input columns."
-            "Please provide 'timestamp_col' as input."
-        )
-    coerced = pd.to_numeric(df[glucose_col], errors="coerce")
-    if coerced.isna().all():
-        raise ValueError(
-            f"The Glucose column '{glucose_col}' does not seem to have numeric values."
-        )
-    if coerced.isna().any():
-        logger.warning("The Glucose column '%s' contains some non-numeric values.", glucose_col)
+        raise ValueError(f"The Timestamp column '{timestamp_col}' is not in the input columns."\
+            "Please provide 'timestamp_col' as input.")
+    
 
-
-def read_df( # pylint: disable=too-many-arguments,too-many-positional-arguments,too-many-locals
-    df: pd.DataFrame,
+def read_df(df: pd.DataFrame,
     timestamp_col: str = DEFAULT_INPUT_TSP_COL,
     timestamp_fmt: str = DEFAULT_INPUT_TSP_FMT,
     glucose_col: str = DEFAULT_INPUT_GLUC_COL,
     glucose_unit: str = Units.mmolL.value,
-    unit_autodetect: bool = False,
+    unit_autodetect : bool = False,
     calculate_glucose_properties: bool = True,
-    glucose_lim: int = DEFAULT_GLUC_LIMIT,
+    glucose_lim: int=DEFAULT_GLUC_LIMIT, 
     filter_glucose_rows=False,
     generated_glucose_col: str = GLUCOSE_COL,
     generated_date_col: str = _DATE_COL,
-    generated_timestamp_col: str = TIMESTAMP_COL,
-    glucose_prep_kwargs: Optional[GlucosePrepKwargs] = None,
+    generated_timestamp_col: str =TIMESTAMP_COL,
+    glucose_prep_kwargs: Dict = _default_glucose_prep_kwargs,
     mask_private_info: Optional[bool] = False,
-    private_info_kwargs: Optional[PrivateInfoKwargs] = None,
+    private_info_kwargs: Optional[Dict] = _default_private_info_kwargs
 ):
     """Reads a pandas Dataframe with glucose data and generates a Glucose Dataframe.
     - The Dataframe needs to have at least: one column for glucose, one timestamp column.
 
     Args:
         df (pd.DataFrame): the pandas Dataframe with glucose data.
-        timestamp_col (str, optional): the name of the timestamp column in the CSV file.
+        timestamp_col (str, optional): the name of the timestamp column in the CSV file. 
             Defaults to the value of DEFAULT_INPUT_TSP_COL.
-        timestamp_fmt (str, optional): the format of the timestamps in the CSV file.
+        timestamp_fmt (str, optional): the format of the timestamps in the CSV file. 
             Must follow ISO 8601 format, for example: 'YYYY-MM-DDTHH:MM:SS' .
             This will be used to convert the timestamp column values to a 'datetime'.
             Defaults to DEFAULT_INPUT_TSP_FMT.
-        glucose_col (str, optional): the name of the glucose column in the CSV file.
+        glucose_col (str, optional): the name of the glucose column in the CSV file. 
             Defaults to DEFAULT_INPUT_GLUC_COL.
         glucose_unit (str, optional): the unit of the glucose values in the CSV file.
             These will be converted to the mmol/L unit. See the units documentation.
             Defaults to Units.mmolL.value.
-        unit_autodetect (bool, optional): if 'true' you do not need to define the glucose unit.
+        unit_autodetect (bool, optional): if 'true' you do not need to define the glucose unit. 
             If true, the unit will be automatically inferred from the values.
             Defaults to False.
         calculate_glucose_properties (bool, optional): if true the Generated Glucose Properties
@@ -296,42 +244,37 @@ def read_df( # pylint: disable=too-many-arguments,too-many-positional-arguments,
             See the Generated Glucose Properties section of the Glucose documentation.
             Defaults to True.
         glucose_lim (int, optional): a lower limit/threshold in the value of glucose that will be used
-            by some of the Generated Glucose Properties.
+            by some of the Generated Glucose Properties. 
             See the Generated Glucose Properties section of the Glucose documentation.
             Defaults to DEFAULT_GLUC_LIMIT.
         filter_glucose_rows: (bool, optional): if set to true it will filter specific columns and column values.
             Defaults to False.
-        generated_glucose_col (str, optional): the name of the generated glucose
+        generated_glucose_col (str, optional): the name of the generated glucose 
             column in the resulting Glucose Dataframe.
             Defaults to GLUCOSE_COL.
         generated_date_col (str, optional): the name of the generated date column
-            in the resulting Glucose Dataframe.
+            in the resulting Glucose Dataframe. 
             Defaults to _DATE_COL.
-        generated_timestamp_col (str, optional): the name of the generated timestamp
-            column in the resulting Glucose Dataframe.
+        generated_timestamp_col (str, optional): the name of the generated timestamp 
+            column in the resulting Glucose Dataframe. 
             Defaults to TIMESTAMP_COL.
-        glucose_prep_kwargs (Optional[GlucosePrepConfig], optional): Configuration for glucose data preparation.
-            If None, default values are used.
-            See GlucosePrepConfig for details.
-            Defaults to None.
+        glucose_prep_kwargs (Dict, optional): arugments that can be used 
+            to smoothening the glucose curve.
+            See the Glucose Prep Arguments section of the Glucose documentation.
+            Defaults to _default_glucose_prep_kwargs.
         mask_private_info (bool, optional): choose to mask or not to mask private information.
             This uses the 'mask_private_information' function.
             See the Privacy documentation for more on how this works.
             Defaults to false.
-        private_info_kwargs (Optional[PrivateInfoConfig], optional): Configuration for masking private information.
-            If None, default values are used.
-            See PrivateInfoConfig for details.
-            Defaults to None.
+        private_info_kwargs (Optional[Dict], optional): arugments that can be used 
+            to mask private information. These are give to the 'mask_private_information' function.
+            See the Privacy documentation for more on how this works.
+            Defaults to _default_private_info_kwargs.
 
     Returns:
-        pd.DataFrame: The resulting Glucose Dataframe that contains the file data,
+        pd.DataFrame: The resulting Glucose Dataframe that contains the file data, 
             along with the Generated Glucose Properties.
     """
-    if glucose_prep_kwargs is None:
-        glucose_prep_kwargs = GlucosePrepKwargs()
-    if private_info_kwargs is None:
-        private_info_kwargs = PrivateInfoKwargs()
-
     validate_glucose_columns(df=df, glucose_col=glucose_col, timestamp_col=timestamp_col)
     # df = convert_tsp(ndf=df, tlbl=generated_timestamp_col, tsp_lbl=timestamp_col, timestamp_fmt=timestamp_fmt)
     if unit_autodetect:
@@ -340,44 +283,45 @@ def read_df( # pylint: disable=too-many-arguments,too-many-positional-arguments,
     # filter rows based on the values of a column (filter_val)
     if filter_glucose_rows:
         df = filter_glucose_by_column_val(
-            df, filter_col=_FREESTYLE_REC_TYPE_COL, filter_val=_FREESTYLE_GLUCOSE_REC_TYPE
+            df,
+            filter_col=_freestyle_rec_type_col,
+            filter_val=_freestyle_glucose_rec_type
         )
     # mask private information
     if mask_private_info:
-        df, _, _ = mask_private_information(
-            gdf=df,
-            glucose_col=glucose_col,
-            tsp_col=timestamp_col,
-            tsp_fmt=timestamp_fmt,
-            **private_info_kwargs.to_kwargs(),
-        )
+        df, _, _ = mask_private_information(gdf=df,
+        glucose_col=glucose_col,
+        tsp_col=timestamp_col,
+        tsp_fmt=timestamp_fmt,
+        **private_info_kwargs)
     # add calculated glucose properties
     if calculate_glucose_properties:
-        df = prepare_glucose(
-            glucose_df=df,
-            glucose_col=glucose_col,
-            tsp_lbl=timestamp_col,
-            timestamp_fmt=timestamp_fmt,
-            timestamp_is_formatted=False,
-            unit=glucose_unit,
-            glbl=generated_glucose_col,
-            tlbl=generated_timestamp_col,
-            dlbl=generated_date_col,
-            **glucose_prep_kwargs.to_kwargs(),
-        ).pipe(
-            get_properties,
-            glbl=generated_glucose_col,
-            tlbl=generated_timestamp_col,
-            glim=glucose_lim,
+        df =(
+            # 
+            prepare_glucose(
+                glucose_df=df,
+                glucose_col=glucose_col,
+                tsp_lbl=timestamp_col,
+                timestamp_fmt=timestamp_fmt,
+                timestamp_is_formatted=False,
+                unit=glucose_unit,
+                glbl=generated_glucose_col,
+                tlbl=generated_timestamp_col,
+                dlbl=generated_date_col,
+                **glucose_prep_kwargs
+            ).pipe(
+                get_properties, 
+                glbl=generated_glucose_col,
+                tlbl=generated_timestamp_col,
+                glim=glucose_lim
+            )    
         )
     return df
-
 
 # Verify the file
 # List of implemented devices and units
 implemented_devices = list(map(lambda x: x.value, Devices))
 implemented_units = list(map(lambda x: x.value, Units))
-
 
 def is_valid_entry(unit: str, device: str, fail_on_invalid: bool = True) -> bool:
     """Verifies the device and unit are implemented.
@@ -385,7 +329,7 @@ def is_valid_entry(unit: str, device: str, fail_on_invalid: bool = True) -> bool
     Args:
         device (str): name of the device used, e.g.: abbott
         unit (str): unit used, e.g.: mg/dL, mmol/L
-        fail_on_invalid (bool): defaults to True.
+        fail_on_invalid (bool): defaults to True. 
             If True raise an exception on an invalid entry.
 
 
@@ -393,13 +337,13 @@ def is_valid_entry(unit: str, device: str, fail_on_invalid: bool = True) -> bool
         NotImplementedError: if fail_on_invalid is set to True and entry is invalid.
 
     Returns:
-        bool: True if the entry is valid.
+        bool: True if the entry is valid. 
         If the entry is invalid, an exception is raised if fail_on_invalid is True
         Otherwise False is returned.
     """
     if device.lower() in implemented_devices and unit.lower() in implemented_units:
         return True
-    if fail_on_invalid:
+    elif fail_on_invalid:
         raise NotImplementedError(
             f"Device '{device}' or unit {unit} are not yet supported.\n\
         We currently only support:\n- Devices: {implemented_devices}.\n- Units: {implemented_units}."
@@ -415,46 +359,34 @@ def set_columns_by_device_unit():
     Raises:
         NotImplementedError: this method is not yet implemented
     """
-    raise NotImplementedError(ERR_NOT_IMPLEMENTED)
+    raise NotImplementedError(error_not_implemented_method)
 
 
 def filter_glucose_by_column_val(
-    df: pd.DataFrame,
-    filter_col: str = _FREESTYLE_REC_TYPE_COL,
-    filter_val=_FREESTYLE_GLUCOSE_REC_TYPE,
+    df: pd.DataFrame, filter_col: str=_freestyle_rec_type_col, filter_val=_freestyle_glucose_rec_type
 ):
     """Selects only columns with a specific value.
     - By default, filters glucose columns based on Freestyle Libre data.
 
     Args:
         df (pd.DataFrame): The glucose dataframe to filter.
-        filter_col (str, optional): Filter column.
-            Defaults to _freestyle_rec_type_col which is
+        filter_col (str, optional): Filter column. 
+            Defaults to _freestyle_rec_type_col which is 
             the 'Record Type' column in freestyle libre.
-        filter_val (_type_, optional): The value to select for the filter column.
+        filter_val (_type_, optional): The value to select for the filter column. 
             Defaults to _freestyle_glucose_rec_type which is
             the record type of glucose in the freestyle libre data.
 
     Returns:
         pd.DataFrame: dataframe where only specific columns are selected.
     """
-    logger.info("Selecting only columns with a %s with the value %s", filter_col, filter_val)
+    logger.info(f"Selecting only columns with a {filter_col} with the value {filter_val}")
     return df[df[filter_col] == filter_val]
 
 
-def add_time_values( # pylint: disable=too-many-arguments,too-many-positional-arguments
-    df,
-    tlbl: str = TIMESTAMP_COL,
-    tsp_lbl: str = DEFAULT_INPUT_TSP_COL,
-    timestamp_fmt: str = DEFAULT_INPUT_TSP_FMT,
-    dlbl: str = _DATE_COL,
-    weekday_map=None,
-    timestamp_is_formatted: bool = False,
-):
-    """Adds generated time-values to the dataframe based on the timestamp.
-    These include:
-        Date, Date string, Hour, Weekday number, Weekday name,
-        Is or is not a weekend day.
+def add_time_values(df, tlbl: str = TIMESTAMP_COL, tsp_lbl: str = DEFAULT_INPUT_TSP_COL, timestamp_fmt: str = DEFAULT_INPUT_TSP_FMT, dlbl: str = _DATE_COL, weekday_map=weekday_map, timestamp_is_formatted: bool = False):
+    """Adds generated time-values to the dataframe based on the timestamp. These include:
+    Date, Date string, Hour, Weekday number, Weekday name, Is or is not a weekend day.
 
     Args:
         df (_type_): the glucose dataframe.
@@ -484,14 +416,10 @@ def add_time_values( # pylint: disable=too-many-arguments,too-many-positional-ar
     else:
         ndf = convert_tsp(ndf=ndf, tlbl=tlbl, tsp_lbl=tsp_lbl, timestamp_fmt=timestamp_fmt)
     ndf[dlbl] = ndf[tlbl].dt.date
-    ndf[f"{dlbl}_str"] = ndf[dlbl].map(
-        lambda x: x.strftime(DEFAULT_OUT_DATE_FMT) if isinstance(x, (dt, pd.Timestamp, date_type)) else str(x)
-    )
+    ndf[f"{dlbl}_str"] = ndf[dlbl].map(lambda x: x.strftime(DEFAULT_OUT_DATE_FMT) if type(x)==pd.DatetimeIndex else str(x))
     ndf[_HOUR_COL] = ndf[tlbl].dt.hour
     ndf[_DAYOFWEEK_COL] = ndf[tlbl].dt.weekday
     ndf = ndf.assign()
-    if weekday_map is None:
-        weekday_map = WEEKDAY_MAP
     ndf[_WEEKDAY_COL] = ndf[_DAYOFWEEK_COL].map(weekday_map)
     ndf[_ISWEEKEND_COL] = ndf[_DAYOFWEEK_COL].map(is_weekend)
     return ndf
@@ -523,14 +451,12 @@ def convert_tsp(ndf: pd.DataFrame, tlbl: str, tsp_lbl: str, timestamp_fmt: str) 
         df[tlbl] = pd.to_datetime(df[tsp_lbl], format=timestamp_fmt)
         return df
     except ValueError as e:
-        raise ValueError(
-            f"Failed to convert timestamp '{tsp_lbl}' using the format '{timestamp_fmt}'. "
-            f"Error: '{e}'. "
-            "Verify that you are using the correct 'timestamp_fmt' as input"
-        ) from e
+        raise ValueError(f"Failed to convert timestamp '{tsp_lbl}' using the format '{timestamp_fmt}'. "
+                         f"Error: '{e}'. "
+                         f"Verify that you are using the correct 'timestamp_fmt' as input")
 
 
-def prepare_glucose( # pylint: disable=too-many-arguments,too-many-positional-arguments,too-many-locals
+def prepare_glucose(
     glucose_df: pd.DataFrame,
     glucose_col: str,
     tsp_lbl: str,
@@ -544,7 +470,7 @@ def prepare_glucose( # pylint: disable=too-many-arguments,too-many-positional-ar
     interp_met: str = "polynomial",
     interp_ord: int = 1,
     rolling_avg: int = 3,
-    extra_shift_in_time: int = _DEFAULT_SHIFT_HOURS,
+    extra_shift_in_time: int = _default_shift_hours,
 ):
     """Parses the glucose data.
     - Creates extra columns for hours, days, etc.
@@ -563,7 +489,7 @@ def prepare_glucose( # pylint: disable=too-many-arguments,too-many-positional-ar
             Defaults to Units.mmol.value.
         glbl (str, optional): the name of the glucose column to be created.
             Defaults to GLUCOSE_COL.
-        tlbl (str, optional): the name of the timestamp column to be created.
+        tlbl (str, optional): the name of the timestamp column to be created. 
             Defaults to TIMESTAMP_COL.
         dlbl (str, optional): the name of the date column to be created.
             Defaults to _DATE_COL.
@@ -586,40 +512,37 @@ def prepare_glucose( # pylint: disable=too-many-arguments,too-many-positional-ar
         dlbl=dlbl,
         tsp_lbl=tsp_lbl,
         timestamp_fmt=timestamp_fmt,
-        weekday_map=WEEKDAY_MAP,
-        timestamp_is_formatted=timestamp_is_formatted,
-    )
+        weekday_map=weekday_map,
+        timestamp_is_formatted=timestamp_is_formatted)
     if extra_shift_in_time:
         df = add_shifted_time(df, tlbl, dlbl, extra_shift_in_time)
     # convert to mmol/L
     col_dtype = df[glucose_col].dtype
     if not pd.api.types.is_numeric_dtype(col_dtype):
         if pd.api.types.is_string_dtype(col_dtype) or pd.api.types.is_object_dtype(col_dtype):
-            df[glucose_col] = pd.to_numeric(df[glucose_col].str.replace(",", "."), errors="coerce")
+            df[glucose_col] = pd.to_numeric(df[glucose_col].str.replace(',', '.'), errors='coerce')
         else:
-            raise TypeError(
-                f"Unsupported dtype '{col_dtype}' for column '{glucose_col}'. Please ensure it is a string or numeric."
-            )
+            raise TypeError(f"Unsupported dtype '{col_dtype}' for column '{glucose_col}'. Please ensure it is a string or numeric.")
     df[glbl] = (
         df[glucose_col]
         if unit == Units.mmolL.value
-        else convert_to_mmoll(df[glucose_col], from_unit=unit)
+        else convert_to_mmolL(df[glucose_col], from_unit=unit)
     )
 
     # index by time and keep time column
-    df["idx"] = df[tlbl]
-    df = df.set_index("idx").sort_index()
+    df['idx'] = df[tlbl]
+    df = df.set_index('idx').sort_index()
     # interpolate and smoothen glucose
     if interpolate:
         df[glbl] = df[glbl].rolling(window=rolling_avg).mean()
-        df[glbl] = df[glbl].ffill().bfill()
+        df[glbl] = df[glbl].fillna(method="ffill").fillna(method="bfill") 
         df[glbl] = df[glbl].interpolate(method=interp_met, order=interp_ord, limit_direction="both")
-        df = df[df[glbl].map(lambda g: 0 < g < 30)]
+        df = df[df[glbl].map(lambda g: g > 0 and g < 30)]
     return df
 
 
 def add_shifted_time(df: pd.DataFrame, tlbl: str, dlbl: str, shift_hours_back: int):
-    """Adds shifted time values.
+    """Adds shifted time values. 
     These are used by certain utility functions to make calculations faster,
     and to include nighttime glucose in certain calculations.
     See the shifted time values chapter in the glucose documentation for more.
@@ -636,20 +559,19 @@ def add_shifted_time(df: pd.DataFrame, tlbl: str, dlbl: str, shift_hours_back: i
 
     df[shift_tlbl] = df[tlbl].map(lambda x: x - tdel(hours=shift_hours_back))
     df[shift_dlbl] = df[shift_tlbl].dt.date
-    df[f"{shift_dlbl}_str"] = df[shift_dlbl].map(
-        lambda x: x.strftime(DEFAULT_OUT_DATE_FMT) if pd.notna(x) else ""
-    )
+    df[f"{shift_dlbl}_str"] = df[shift_dlbl].map(lambda x: x.strftime(DEFAULT_OUT_DATE_FMT) if pd.notna(x) else "")
     df[f"shifted_{_HOUR_COL}"] = df[shift_tlbl].dt.hour
     df[f"shifted_{_DAYOFWEEK_COL}"] = df[shift_tlbl].dt.weekday
-    df[f"shifted_{_WEEKDAY_COL}"] = df[f"shifted_{_DAYOFWEEK_COL}"].map(WEEKDAY_MAP)
+    df[f"shifted_{_WEEKDAY_COL}"] = df[f"shifted_{_DAYOFWEEK_COL}"].map(weekday_map)
     df[f"shifted_{_ISWEEKEND_COL}"] = df[f"shifted_{_DAYOFWEEK_COL}"].map(is_weekend)
     return df
 
 
-# Properties and Stats
-
-
-def set_derivative(df: pd.DataFrame, glucose_col: str, timestamp_col: str) -> pd.DataFrame:
+"""Properties and Stats
+"""
+def set_derivative(
+    df: pd.DataFrame, glucose_col: str, timestamp_col: str
+) -> pd.DataFrame:
     """Sets the glucose time derivative (dG/dt)
 
     Args:
@@ -663,7 +585,9 @@ def set_derivative(df: pd.DataFrame, glucose_col: str, timestamp_col: str) -> pd
             - _DT_COL: the time diff dt.
             - _DGDT_COL: the glucose time derivative dG/dt
     """
-    df[_DG_COL], df[_DT_COL], df[_DGDT_COL] = compute_derivative(df, glucose_col, timestamp_col)
+    df[_DG_COL], df[_DT_COL], df[_DGDT_COL] = compute_derivative(
+        df, glucose_col, timestamp_col
+    )
     return df
 
 
@@ -681,9 +605,9 @@ def compute_derivative(df: pd.DataFrame, glucose_col: str, timestamp_col: str):
             - The time diff dt.
             - The glucose time derivative dG/dt
     """
-    dg = df[glucose_col].diff()
-    dt_s = df[timestamp_col].diff().dt.total_seconds()
-    return dg, dt_s, dg / dt_s
+    dG = df[glucose_col].diff()
+    dt = df[timestamp_col].diff().dt.total_seconds()
+    return dG, dt, dG / dt
 
 
 def set_auc(
@@ -707,7 +631,9 @@ def set_auc(
     mean_g = df[glucose_col].mean()
     min_g = df[glucose_col].min()
     g_above_mean = df[glucose_col].map(lambda x: mean_g if x < mean_g else x)
-    g_above_lim = df[glucose_col].map(lambda x: glucose_auc_lim if x < glucose_auc_lim else x)
+    g_above_lim = df[glucose_col].map(
+        lambda x: glucose_auc_lim if x < glucose_auc_lim else x
+    )
     g_above_min = df[glucose_col].map(lambda x: min_g if x < min_g else x)
     df[_AUC_COL] = (g_above_mean - mean_g) * df[_DT_COL]
     df[_AUCLIM_COL] = (g_above_lim - glucose_auc_lim) * df[_DT_COL]
@@ -738,7 +664,7 @@ def get_properties(
     return df
 
 
-def convert_to_mmoll(g: float, from_unit: str) -> float:
+def convert_to_mmolL(g: float, from_unit: str) -> float:
     """Converts a glucose value to mmol/L
 
     Args:
@@ -754,7 +680,7 @@ def convert_to_mmoll(g: float, from_unit: str) -> float:
     """
     if from_unit in implemented_units:
         return g * units_to_mmolL_factor[from_unit]
-    raise NotImplementedError(ERR_NOT_IMPLEMENTED)
+    raise NotImplementedError(error_not_implemented_method)
 
 
 def autodetect_unit(glucose_values: pd.Series) -> str:
@@ -766,17 +692,23 @@ def autodetect_unit(glucose_values: pd.Series) -> str:
     if the input contains more than 100. Otherwise it selects
     a sample of the input size.
     Warning: this may result in unexpected behavior if the autodetected unit is wrong.
-
+    
     Args:
         glucose_values (pd.Series): glucose values to detect unit from
 
     Returns:
         str: the detected glucose unit.
     """
-    logger.warning("Using unit autodetection. This may result in unexpected behavior.")
+    logger.warning("Using unit autodetection." \
+        "This may result in unexpected behavior.")
     cast_glucose_sample = pd.to_numeric(
-        (glucose_values.sample(n=min(100, len(glucose_values)), replace=False)), errors="coerce"
-    )
+            (
+                glucose_values
+                .sample(
+                    n=min(100, len(glucose_values)),
+                    replace=False
+                )
+            ), errors='coerce')
     m = cast_glucose_sample.mean()
     if m > 33:
         return Units.mgdL.value
@@ -787,23 +719,18 @@ def autodetect_unit(glucose_values: pd.Series) -> str:
     return Units.mmolL.value
 
 
-# Plotting
-
-@autoplot
-def plot_glucose( # pylint: disable=too-many-arguments,too-many-positional-arguments
+"""Plotting
+"""
+def plot_glucose(
     df: pd.DataFrame,
     glbl: str = GLUCOSE_COL,
     tlbl: str = TIMESTAMP_COL,
-    from_time: Optional[GeneralDateType] = None,
-    to_time: Optional[GeneralDateType] = None,
+    from_time: Optional[general_date_type] = None,
+    to_time: Optional[general_date_type] = None,
     title: Optional[str] = None,
-    label: str = "Glucose in mmol/L",
-    **kwargs, # pylint: disable=unused-argument
+    label: str = 'Glucose in mmol/L'
 ):
     """Plots the glucose curve for a given dataframe, and optional time frame
-
-    This function uses `@autoplot`. To prevent it from automatically showing
-    the plot, call it with `autoplot=False`.
 
     Args:
         df (pd.DataFrame): The glucose dataframe.
@@ -830,61 +757,19 @@ def plot_glucose( # pylint: disable=too-many-arguments,too-many-positional-argum
         raise KeyError(f"Glucose Column {glbl} does not seem to be in the DataFrame.")
     for d in plot_df.date.unique():
         plt.axvline(d, color="brown", linestyle="--", alpha=0.5)
-    medval = plot_df[glbl].median().round(2)
-    minval = plot_df[glbl].min()
-    maxval = plot_df[glbl].max()
-    plt.axhline(
-        medval,
-        color="red",
-        linestyle="--",
-        alpha=0.5,
-        label=f"Glucose Median value: ({medval} mmol/L)",
-    )
-    plt.axhline(
-        minval,
-        color="orange",
-        linestyle="--",
-        alpha=0.5,
-        label=f"Glucose Minimum value: ({DEFAULT_GLUC_LIMIT - 1} mmol/L)",
-    )
-    plt.axhline(
-        maxval,
-        color="orange",
-        linestyle="--",
-        alpha=0.5,
-        label=f"Glucose Maximum value ({DEFAULT_GLUC_LIMIT + 1} mmol/L)",
-    )
+    plt.axhline(DEFAULT_GLUC_LIMIT)
+    plt.axhline(DEFAULT_GLUC_LIMIT - 1)
+    plt.axhline(DEFAULT_GLUC_LIMIT + 1)
+    plt.axhline(plot_df[glbl].median(), color='black')
     plt.plot(plot_df[tlbl], plot_df[glbl], label=label)
-
-    # Fill area above the glucose limit
-    plt.fill_between(
-        plot_df[tlbl],
-        plot_df[glbl],
-        medval,
-        where=(plot_df[glbl] > medval),
-        color="green",
-        alpha=0.2,
-        interpolate=True,
-        label="Glucose above limit",
-    )
-
     plt.xlabel("Time")
     plt.ylabel("Glucose")
-    if title:
-        plt.title(title)
-    else:
-        plt.title(f"Glucose variation from: '{plot_df.index[0].date()}'' to:'{plot_df.index[-1].date()}'")
+    plt.title(title) if title else plt.title(f"Glucose variation from: '{plot_df.index[0].date()}'' to:'{plot_df.index[-1].date()}'")
 
 
-@autoplot
-def plot_trend_by_hour(df: pd.DataFrame,
-                       glbl: str = GLUCOSE_COL,
-                       **kwargs): # pylint: disable=unused-argument
+def plot_trend_by_hour(df: pd.DataFrame, glbl: str = GLUCOSE_COL):
     """Plots the glucose hourly trend as an averaged curve for each hour
     with percentile distributions.
-
-    This function uses `@autoplot`. To prevent it from automatically showing
-    the plot, call it with `autoplot=False`.
 
     Args:
         df (pd.DataFrame): the glucose dataframe.
@@ -893,67 +778,32 @@ def plot_trend_by_hour(df: pd.DataFrame,
     plot_percentiles(df, stat_col=glbl, group_by_col=_HOUR_COL, percentiles=[0.01, 0.05])
 
 
-@autoplot
-def plot_trend_by_weekday(df: pd.DataFrame, glbl=GLUCOSE_COL, **kwargs): # pylint: disable=unused-argument
+def plot_trend_by_weekday(df: pd.DataFrame, glbl=GLUCOSE_COL):
     """Plots the glucose trend for each weekday (Monday to Sunday) as
     a box plot for each weekday.
 
-    This function uses `@autoplot`. To prevent it from automatically showing
-    the plot, call it with `autoplot=False`.
-
     Args:
         df (pd.DataFrame): the glucose dataframe.
         glbl (str, optional): the glucose column name. Defaults to GLUCOSE_COL.
     """
-    plot_comparison(
-        df=df,
-        glbl=glbl,
-        compare_by=_WEEKDAY_COL,
-        outliers=False,
-        label_map=None,
-        method="box",
-        sort_vals=False,
-    )
+    plot_comparison(df=df, glbl=glbl, compare_by=_WEEKDAY_COL, outliers=False, label_map=None, method='box', sort_vals = False)
 
 
-@autoplot
-def plot_trend_by_day(df: pd.DataFrame, glbl=GLUCOSE_COL, **kwargs): # pylint: disable=unused-argument
+def plot_trend_by_day(df: pd.DataFrame, glbl=GLUCOSE_COL):
     """Plots the glucose trend for each weekday (Monday to Sunday) as
-    a box plot for each day.
-
-    This function uses `@autoplot`. To prevent it from automatically showing
-    the plot, call it with `autoplot=False`.
+    a box plot for each weekday.
 
     Args:
         df (pd.DataFrame): the glucose dataframe.
         glbl (str, optional): the glucose column name. Defaults to GLUCOSE_COL.
     """
-    plot_comparison(
-        df=df,
-        glbl=glbl,
-        compare_by=_DATE_COL,
-        outliers=False,
-        label_map=None,
-        method="box",
-        sort_vals=False,
-    )
+    plot_comparison(df=df, glbl=glbl, compare_by=_DATE_COL, outliers=False, label_map=None, method='box', sort_vals = False)
 
 
-@autoplot
-def plot_percentiles( # pylint: disable=too-many-arguments,too-many-positional-arguments
-    df: pd.DataFrame,
-    stat_col: str,
-    percentiles: List[float],
-    group_by_col: str = _HOUR_COL,
-    color: str = "green",
-    label: str = None,
-    **kwargs, # pylint: disable=unused-argument
-):
+def plot_percentiles(df: pd.DataFrame, stat_col: str, percentiles: List[float], group_by_col: str=_HOUR_COL, color: str='green', label: str=None):
     """Groups glucose by a column column and plots percentiles of glucose.
     Percentiles are plotted using an area color between the main curve and each percentile.
-
-    This function uses `@autoplot`. To prevent it from automatically showing
-    the plot, call it with `autoplot=False`.
+    Does not show plot.
 
     Args:
         df (pd.DataFrame): the glucose dataframe.
@@ -961,90 +811,68 @@ def plot_percentiles( # pylint: disable=too-many-arguments,too-many-positional-a
         percentiles (List[float]): a list of percentiles to plot (each value between 0 and 1)
         group_by_col (str, optional): the name of the column to group values by (X-axis).
             Defaults to _HOUR_COL.
-        color (str, optional): the name of the color to use for the percentiles area.
+        color (str, optional): the name of the color to use for the percentiles area. 
             Defaults to 'green'.
-        label (str, optional): the title of the plot.
+        label (str, optional): the title of the plot. 
             Defaults to None.
     """
-    stats_df = df.pipe(
-        get_stats, stats_cols=stat_col, group_by_col=group_by_col, percentiles=percentiles
-    )
-    med = stats_df[(stat_col, "50%")]
-    med.plot(label="50%")
-    perc_l = [stats_df[(stat_col, f"{p*100}%")] for p in percentiles]
-    perc_h = [stats_df[(stat_col, f"{(1-p)*100}%")] for p in percentiles]
+    # TODO use only get_stats and remove get_percentiles_and_stats?
+    _, _, med, perc_l, perc_h = get_percentiles_and_stats(
+        df, percentiles, stat_col, group_by_col)
 
-    for i, p in enumerate(percentiles):
+    stats_df = df.pipe(
+        get_stats,
+        stats_cols=stat_col, 
+        group_by_col=group_by_col, 
+        percentiles=percentiles
+    )
+    
+
+    stats_df['50%'].plot(label='50%')
+    
+    for i in range(len(percentiles)):
         plt.fill_between(
-            med.index,
-            perc_l[i],
-            perc_h[i],
-            color=color,
-            alpha=0.2,
-            label=f"{int(p*100)}-{int((1-p)*100)}th percentile",
-        )
+            # TODO enable changing alpha and label
+            med.index, perc_l[i], perc_h[i], color=color, alpha=0.2, label=f"{100*(1-percentiles[i])}th")
     if not label:
-        label = (
-            f"Trend of {stat_col} for the percentiles: {', '.join([str(int(i*100)) for i in percentiles])}"
-            f" as well as {', '.join([str(int((1-i)*100)) for i in percentiles])}"
-        )
+        label = 'Trend of {} for the percentiles: {} as well as {}'.format(stat_col,
+                                                                         ', '.join(
+                                                                             [str(int(i*100)) for i in percentiles]),
+                                                                         ', '.join([str(int((1-i)*100)) for i in percentiles]))
     plt.title(label)
     plt.xlabel(group_by_col)
     plt.ylabel(stat_col)
 
 
-def plot_sleep_trends(
-    df: pd.DataFrame,
-    glbl: str = GLUCOSE_COL,
-    sleep_time_filter_col: str = f"shifted_{_HOUR_COL}",
-    sleep_time_hour: int = 24 - (_DEFAULT_SHIFT_HOURS + 2),
-):
+def plot_sleep_trends(df: pd.DataFrame, glbl: str = GLUCOSE_COL, sleep_time_filter_col: str = f'shifted_{_HOUR_COL}', sleep_time_hour: int = 24 - (_default_shift_hours + 2)):
     """Plots sleep
 
     Args:
         df (pd.DataFrame): _description_
         glbl (str, optional): _description_. Defaults to GLUCOSE_COL.
-        sleep_time_filter_col (str, optional): Column to use for filtering sleep time.
-        Defaults to f'shifted_{_HOUR_COL}'.
-        sleep_time_hour (int, optional): Total sleep hours to consider.
-        Defaults to 24-(_default_shift_hours + 2).
+        sleep_time_filter_col (str, optional): Column to use for filtering sleep time. Defaults to f'shifted_{_HOUR_COL}'.
+        sleep_time_hour (int, optional): Total sleep hours to consider. Defaults to 24-(_default_shift_hours + 2).
     """
     # filter sleep glucose data
     gdf = df[df[sleep_time_filter_col] >= sleep_time_hour]
     # make new plotting time
-    gdf.loc[:, "sleep_hours"] = gdf[sleep_time_filter_col] - gdf[sleep_time_filter_col].min()
-    plot_percentiles(
-        df=gdf,
-        stat_col=glbl,
-        group_by_col="sleep_hours",
-        percentiles=[0.01, 0.05],
-        label="Hourly trend of Glucose during Sleep",
-        autoplot=False,
-    )
-    plt.ylabel("Glucose during sleep")
-    plt.xlabel("Hours of sleep (from 0-8)")
+    gdf.loc[:, 'sleep_hours'] = gdf[sleep_time_filter_col]- gdf[sleep_time_filter_col].min()
+    plot_percentiles(df=gdf,
+                     stat_col=glbl,
+                     group_by_col='sleep_hours',
+                     percentiles=[0.01, 0.05],
+                     label='Hourly trend of Glucose during Sleep')
+    plt.ylabel('Glucose during sleep')
+    plt.xlabel('Hours of sleep (from 0-8)')
     end_plot()
-    plot_comparison(
-        df=gdf,
-        glbl=glbl,
-        compare_by=f"shifted_{_DATE_COL}_str",
-        outliers=False,
-        method="box",
-        sort_vals=False,
-        label="Daily trend of Glucose during Sleep",
-    )
-    plt.ylabel("Glucose during sleep")
-    plt.xlabel("Day (sleep from evening of this day)")
+    plot_comparison(df=gdf, glbl=glbl, compare_by=f'shifted_{_DATE_COL}_str', outliers=False,
+        method='box', sort_vals = False, label='Daily trend of Glucose during Sleep')
+    plt.ylabel('Glucose during sleep')
+    plt.xlabel('Day (sleep from evening of this day)')
     end_plot()
 
 
-def plot_day_curve(
-    df: pd.DataFrame,
-    day_str: str,
-    glbl: str = GLUCOSE_COL,
-    tlbl: str = TIMESTAMP_COL,
-    extended=False,
-):
+def plot_day_curve(df: pd.DataFrame, day_str: str, glbl: str = GLUCOSE_COL, tlbl: str = TIMESTAMP_COL, extended=False):
     """Plots a glucose curve for a specific day.
     Can be extended to show the following night as well.
 
@@ -1053,71 +881,84 @@ def plot_day_curve(
         day_str (str): Day string TODO: verify that this can be other than str
         glbl (str, optional): Name of the glucose column. Defaults to GLUCOSE_COL.
         tlbl (str, optional): Name of the timestamp column. Defaults to TIMESTAMP_COL.
-        extended (bool, optional): If true, shows the extended day with the
+        extended (bool, optional): If true, shows the extended day with the 
             nighttime (sleeping period). Defaults to False.
     """
     plot_df = df.loc[day_str]
-    # plt.axvline(d, color='brown', linestyle='--', alpha=0.5)
-    plt.axhline(plot_df[glbl].mean(), color="red", linestyle="--", alpha=0.5, label="Day Average")
-    plt.axhline(
-        df[glbl].mean(), color="brown", linestyle="--", alpha=0.2, label="Your general Average"
-    )
-    plt.axhline(
-        df[glbl].mean() + 2, color="green", linestyle="--", alpha=0.5, label="Recommended range"
-    )
-    plt.axhline(df[glbl].mean() - 1, color="green", linestyle="--", alpha=0.5)
+    #plt.axvline(d, color='brown', linestyle='--', alpha=0.5)
+    plt.axhline(plot_df[glbl].mean(), color='red', linestyle='--', alpha=0.5, label='Day Average')
+    plt.axhline(df[glbl].mean(), color='brown', linestyle='--', alpha=0.2, label='Your general Average')
+    plt.axhline(df[glbl].mean() + 2, color='green', linestyle='--', alpha=0.5, label='Recommended range')
+    plt.axhline(df[glbl].mean() - 1, color='green', linestyle='--', alpha=0.5)
     plt.plot(plot_df[tlbl], plot_df[glbl])
 
+    
     if extended:
-        xt = df.loc[
-            day_str : (dt.strptime(day_str, "%Y-%m-%d") + tdel(days=1, hours=7)).strftime(
-                "%Y-%m-%d %H"
-            )
-        ]
-        plt.plot(xt[tlbl], xt[glbl], color="brown", alpha=0.5, label="sleep")
+        xt = df.loc[day_str: (dt.strptime(day_str, '%Y-%m-%d')+tdel(days=1, hours=7)).strftime('%Y-%m-%d %H')]
+        plt.plot(xt[tlbl], xt[glbl], color='brown', alpha=0.5, label='sleep')
 
-
-def get_stats(
-    df: pd.DataFrame,
-    stats_cols: Union[List, str],
-    group_by_col: str = None,
-    percentiles: Optional[List[float]] = None,
-):
+def get_stats(df: pd.DataFrame, stats_cols: Union[List, str], group_by_col: str = None, percentiles: Optional[List[float]] = None):
     """Get descriptive statistics about specific columns of a dataframe.
 
     Args:
         df (pd.DataFrame): the glucose dataframe.
         stats_cols (Union[List[str], str]): the glucose column name, or a column name,
             or a list of column names for which to get stats.
-        group_by_col (str, optional): the name of the column to group values by.
+        group_by_col (str, optional): the name of the column to group values by. 
             Defaults to None.
-        percentiles (Optional[List[float]], optional): a list of percentiles to plot
+        percentiles (Optional[List[float]], optional): a list of percentiles to plot 
             (each value between 0 and 1). Defaults to None.
 
     Returns:
         pd.Series or pd.DataFrame: descriptive statistics grouped by the given column
     """
     if group_by_col:
-        return df.groupby(group_by_col)[stats_cols].describe(percentiles=percentiles)
+        return (df
+            .groupby(group_by_col)
+            [stats_cols]
+            .describe(percentiles=percentiles)
+        )
+
 
     #     grouped_df = df.groupby(group_by_col)[stats_cols]
     #     r= pd.concat([grouped_df.describe(percentiles=percentiles), grouped_df.sum()], axis=1)
     #     return r.reorder_levels([1, 0], axis=1).sort_index(axis=1, level=[0, 1])
     # return df[stats_cols].describe(percentiles=percentiles),  df[stats_cols].sum()
     return df[stats_cols].describe(percentiles=percentiles)
+    
+def get_percentiles_and_stats(df: pd.DataFrame, percentiles: List[float], stat_col: str, group_by_col: str):
+    """Get descriptive statistics about a specific column of a dataframe.
 
+    Args:
+        percentiles (Optional[List[float]], optional): a list of percentiles to plot 
+            (each value between 0 and 1). Defaults to None.
+        df (pd.DataFrame): the glucose dataframe.
+        percentiles (List[float]): a list of percentiles to plot (each value between 0 and 1).
+        stat_col (str): the glucose column name or a column name to get stats.
+        group_by_col (str): the name of the column to group values by. 
 
-def plot_comparison( # pylint: disable=too-many-arguments,too-many-positional-arguments
-    df: pd.DataFrame,
-    glbl: str = GLUCOSE_COL,
-    compare_by: str = _WEEKDAY_COL,
-    outliers: bool = False,
-    label_map: Union[Callable, Dict] = None,
-    method: str = "box",
-    sort_vals: bool = False,
-    label: Optional[str] = None,
-):
-    """Compares glucose values by a given field, for example by weekday.
+    Returns:
+        Tuple[float]: mean, standard deviation, percentiles, 1-percentiles
+    """
+    # TODO replace completely with get_stats?
+    grouped = df.groupby([group_by_col])[stat_col]
+    mean = grouped.mean()
+    med = grouped.median()
+    dev = grouped.std()
+    perc_l = [grouped.quantile(q) for q in percentiles]
+    perc_h = [grouped.quantile(1-q) for q in percentiles]
+    return mean, dev, med, perc_l, perc_h
+
+def plot_comparison(df: pd.DataFrame, glbl: str=GLUCOSE_COL, compare_by: str=_WEEKDAY_COL, outliers: bool=False, label_map: Union[Callable, Dict]=None, method: str='box', sort_vals: bool = False, label: Optional[str] = None):
+    """
+
+    :param df: dataframe containing the values to be compared and the comparison field
+    :param glbl: 
+    :param compare_by: 
+    :param outliers: boolean to show or not show outliers, defaults to False
+    :param label_map: 
+    defaults to None (showing original)
+    :return:
 
     Args:
         df (pd.DataFrame): dataframe with values to be compared and the comparison field.
@@ -1140,38 +981,22 @@ def plot_comparison( # pylint: disable=too-many-arguments,too-many-positional-ar
         NotImplementedError: if the method used for comparison is not implemented.
     """
     all_vals = df[compare_by].unique()
-    if sort_vals:
-        all_vals.sort()
-    if method == "box":
-        plt.boxplot(
-            [df[df[compare_by] == i][glbl].dropna() for i in all_vals],
-            labels=all_vals if label_map is None else [label_map(i) for i in all_vals],
-            showfliers=outliers,
-        )
+    if sort_vals: all_vals.sort()
+    if method == 'box':
+        plt.boxplot([df[df[compare_by] == i][glbl].dropna() for i in all_vals],
+                    labels=all_vals if label_map is None else [
+                        label_map(i) for i in all_vals],
+                    showfliers=outliers)
     else:
-        raise NotImplementedError(
-            f"Method {method} not implemented for comparison please use one of: 'box'"
-        )
+        raise NotImplementedError(f"Method {method} not implemented for comparison please use one of: 'box'")
     plt.ylabel(f"Trend for {glbl}")
     plt.xlabel(f"{compare_by}")
     if not label:
-        label = (
-            f"Comparing {glbl} by {compare_by}. "
-            f"Outliers are {'shown' if outliers else 'not shown'}."
-        )
-
+        label='Comparing {} by {}. Outliers are {}.'.format(glbl, compare_by, 'shown' if outliers else 'not shown')
     plt.title(label)
 
 
-def get_response_bounds( # pylint: disable=too-many-arguments,too-many-positional-arguments
-    df: pd.DataFrame,
-    event_time: pd.Timestamp,
-    pre_pad_min: int = 20,
-    post_pad_min: int = 0,
-    resp_time_min: int = 120,
-    glbl: str = GLUCOSE_COL,
-    t_lbl: str = TIMESTAMP_COL,
-):
+def get_response_bounds(df: pd.DataFrame, event_time: pd.Timestamp, pre_pad_min: int = 20, post_pad_min: int = 0, resp_time_min: int = 120, glbl: str = GLUCOSE_COL, t_lbl: str = TIMESTAMP_COL):
     """Finds the boundaries of a glucose response (used for plotting) by:
     - Finding the nearest time with a glucose value, 'g_event_time', to the event time 'event_time'.
     - Setting the start of the glucose bounds to: 'g_event_time - pre_pad_min'
@@ -1195,29 +1020,17 @@ def get_response_bounds( # pylint: disable=too-many-arguments,too-many-positiona
             - the nearest time to the event time with a glucose value in the dataframe.
     # TODO: find nearest takes a lot of time, use something easier
     """
-    g_event_time = find_nearest(df, event_time, glbl, t_lbl)
+    g_event_time = find_nearest(df, event_time, glbl, t_lbl, n_iter=100)
     start = g_event_time - tdel(minutes=pre_pad_min)
     end = g_event_time + tdel(minutes=resp_time_min) + tdel(minutes=post_pad_min)
     return start, end, g_event_time
 
 
-def plot_response_at_time( # pylint: disable=too-many-arguments,too-many-positional-arguments,too-many-locals
-    glucose_df: pd.DataFrame,
-    event_time: pd.Timestamp,
-    event_title: Optional[str] = None,
-    pre_pad_min: int = 20,
-    post_pad_min: int = 0,
-    resp_time_min: int = 120,
-    glbl: str = GLUCOSE_COL,
-    t_lbl: str = TIMESTAMP_COL,
-    auc_lim: int = DEFAULT_GLUC_LIMIT,
-    show_auc: bool = True,
-    use_local_min: bool = False,
-):
+def plot_response_at_time(glucose_df: pd.DataFrame, event_time: pd.Timestamp, event_title: Optional[str] = None, pre_pad_min: int = 20, post_pad_min: int = 0, resp_time_min: int = 120, glbl: str = GLUCOSE_COL, t_lbl: str = TIMESTAMP_COL, auc_lim: int=DEFAULT_GLUC_LIMIT, show_auc: bool=True, use_local_min: bool=False):
     """Plots the glucose response around a specific event given by its event time.
     Estimates the start and end of the glucose response to the event.
     TODO: clean inputs AUC/pre-pad, have multi-options large, medium, small
-
+    
     Args:
         glucose_df (pd.DataFrame): the glucose dataframe.
         event_time (pd.Timestamp): the time of the event to investigate.
@@ -1236,34 +1049,26 @@ def plot_response_at_time( # pylint: disable=too-many-arguments,too-many-positio
         use_local_min (bool, optional): whether or not to use the local glucose mean to plot the area under the curve.
             Overrides 'auc_lim'. Defaults to False.
     """
-    s, e, t = get_response_bounds(
-        glucose_df, event_time, pre_pad_min, post_pad_min, resp_time_min, glbl=glbl, t_lbl=t_lbl
-    )
+    s, e, t = get_response_bounds(glucose_df, event_time, pre_pad_min, post_pad_min, resp_time_min, glbl=glbl, t_lbl=t_lbl)
     plot_df = glucose_df.loc[s:e][glbl]
     plt.plot(plot_df)
     if show_auc:
-        alim = auc_lim if not (use_local_min) else plot_df.mean()
-        lim_df = plot_df.map(lambda x: x if x > alim else alim)
+        alim = auc_lim if not(use_local_min) else plot_df.mean()
+        lim_df = plot_df.map(lambda x: x if x>alim else alim)
         plt.gca()
-        plt.axhline(alim, color="red", label="limit", linestyle="--", alpha=0.3)
-        plt.fill_between(
-            lim_df.index,
-            lim_df,
-            [alim for a in lim_df.index],
-            color="green",
-            alpha=0.1,
-            label="Estimated glucose quantity consumed",
-        )
+        plt.axhline(alim, color='red', label='limit', linestyle='--', alpha=0.3)
+        plt.fill_between(lim_df.index,  lim_df, [alim for a in lim_df.index], color='green', alpha=0.1, label=f"Estimated glucose quantity consumed")
 
-    plt.axvline(t, color="black", label="Event time", linestyle="--", alpha=0.1)
+    plt.axvline(t, color='black', label='Event time', linestyle='--', alpha=0.1)
     if event_title:
         plt.title(event_title)
 
-
-# Outputs
-# - Write to a file
-# - Write image plot or responses
-def write_glucose(gdf: pd.DataFrame, output_file: str):
+"""
+Outputs
+- Write to a file
+- Write image plot or responses
+"""
+def write_glucose(gdf : pd.DataFrame, output_file : str):
     """Writes glucose to a csv file
 
     Args:
@@ -1273,24 +1078,21 @@ def write_glucose(gdf: pd.DataFrame, output_file: str):
     logger.info("Writing glucose data to %s", output_file)
     gdf.to_csv(output_file)
 
-
-# Day/Week Metrics
+"""
+Day/Week Metrics
+"""
 _summary_cols = [GLUCOSE_COL, _AUC_COL, _DG_COL, _DT_COL, _DGDT_COL]
 
 
-def get_metrics_by_day(
-    gdf: pd.DataFrame,
-    day_col: str = _DATE_COL,
-    percentiles: list | None = None,
-    summary_cols: list | None = None,
-):
+# TODO add fasting hours to day metrics
+def get_metrics_by_day(gdf : pd.DataFrame, day_col : str =_DATE_COL, percentiles: list = None, summary_cols : list = _summary_cols):
     """
     Get metrics and statistics by day related to specific columns of a dataframe.
 
     Args:
         gdf (pd.DataFrame): the glucose dataframe.
         day_col (str, optional): the day column name. Defaults to _HOUR_COL.
-        percentiles (Optional[List[float]], optional): a list of percentiles to plot
+        percentiles (Optional[List[float]], optional): a list of percentiles to plot 
             (each value between 0 and 1). Defaults to None.
         summary_cols (Union[List[str], str]): the glucose column name, or a column name,
             or a list of column names for which to get stats. Defaults to _summary_cols.
@@ -1298,23 +1100,16 @@ def get_metrics_by_day(
     Returns:
         pd.Series or pd.DataFrame: descriptive statistics grouped hour
     """
-    if summary_cols is None:
-        summary_cols = _summary_cols
     return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=day_col)
 
 
-def get_metrics_by_hour(
-    gdf: pd.DataFrame,
-    hour_col: str = _HOUR_COL,
-    percentiles: Optional[List[float]] = None,
-    summary_cols: Union[List[str], str] | None = None,
-):
+def get_metrics_by_hour(gdf : pd.DataFrame, hour_col : str =_HOUR_COL, percentiles : Optional[List[float]] = None, summary_cols : Union[List[str], str] = _summary_cols):
     """Get metrics and statistics by hour related to specific columns of a dataframe.
 
     Args:
         gdf (pd.DataFrame): the glucose dataframe.
         hour_col (str, optional): the hour column name. Defaults to _HOUR_COL.
-        percentiles (Optional[List[float]], optional): a list of percentiles to plot
+        percentiles (Optional[List[float]], optional): a list of percentiles to plot 
             (each value between 0 and 1). Defaults to None.
         summary_cols (Union[List[str], str]): the glucose column name, or a column name,
             or a list of column names for which to get stats. Defaults to _summary_cols.
@@ -1322,44 +1117,27 @@ def get_metrics_by_hour(
     Returns:
         pd.Series or pd.DataFrame: descriptive statistics grouped hour
     """
-    if summary_cols is None:
-        summary_cols = _summary_cols
     return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=hour_col)
 
 
-def get_metrics(
-    gdf: pd.DataFrame,
-    percentiles: Optional[List[float]] = None,
-    summary_cols: Union[List[str], str] | None = None,
-    group_by_col: Optional[str] = None,
-):
+def get_metrics(gdf : pd.DataFrame, percentiles : Optional[List[float]] = None, summary_cols : Union[List[str], str] = _summary_cols, group_by_col: Optional[str] = None):
     """Get metrics and statistics related to specific columns of a dataframe.
 
     Args:
         gdf (pd.DataFrame): the glucose dataframe.
-        percentiles (Optional[List[float]], optional): a list of percentiles to plot
+        percentiles (Optional[List[float]], optional): a list of percentiles to plot 
             (each value between 0 and 1). Defaults to None.
-        summary_cols (Union[List[str], str] | None): the glucose column name, or a column name,
+        summary_cols (Union[List[str], str]): the glucose column name, or a column name,
             or a list of column names for which to get stats. Defaults to _summary_cols.
-        group_by_col (str, optional): the name of the column to group values by.
+        group_by_col (str, optional): the name of the column to group values by. 
             Defaults to None.
 
     Returns:
        pd.Series or pd.DataFrame: descriptive statistics grouped by the given column
     """
-    if summary_cols is None:
-        summary_cols = _summary_cols
-    return get_stats(
-        gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=group_by_col
-    )
+    return get_stats(gdf, stats_cols=summary_cols, percentiles=percentiles, group_by_col=group_by_col)
 
-
-def describe_glucose(
-    df: pd.DataFrame,
-    glucose_col: str = GLUCOSE_COL,
-    timestamp_col: str = TIMESTAMP_COL,
-    default_unit: str = Units.mmolL.value,
-):
+def describe_glucose(df: pd.DataFrame, glucose_col: str = GLUCOSE_COL, timestamp_col: str = TIMESTAMP_COL, default_unit: str = Units.mmolL.value):
     """Describes the glucose DataFrame by providing a summary with the total number of days, start and end dates,
     and overall summary statistics of glucose including the unit of measurement.
 
@@ -1391,13 +1169,12 @@ def describe_glucose(
     table.add_column("Measure", style="dim")
     table.add_column(f"Value in {default_unit}")
 
-    for stat in ["mean", "std", "min", "25%", "50%", "75%", "max"]:
-        value = glucose_stats.get(stat, "N/A")
+    for stat in ['mean', 'std', 'min', '25%', '50%', '75%', 'max']:
+        value = glucose_stats.get(stat, 'N/A')
         table.add_row(stat.capitalize(), f"{value:.2f}")
 
     console.print(table)
     console.print(f"Columns in the data: [bold yellow]{', '.join(df.columns)}[/bold yellow]")
     console.print(
-        "[bold magenta]First rows in the data:[/bold magenta]\n",
-        df[[timestamp_col, glucose_col]].head(),
-    )
+        f"[bold magenta]First rows in the data:[/bold magenta]\n",
+        df[[timestamp_col, glucose_col]].head())
