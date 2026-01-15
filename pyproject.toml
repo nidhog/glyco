@@ -33,7 +33,7 @@ dependencies = [
     "matplotlib-inline",
     "rich",
     "seaborn"]
-requires-python = ">=3.7"
+requires-python = ">=3.10"
 
 [project.optional-dependencies]
 dev = ["black", "bumpver", "isort", "pip-tools", "pytest"]

@@ -55,33 +55,24 @@ units_to_mmolL_factor = {
 }
 
 
-def find_nearest(df: pd.DataFrame, pivot: pd.Timestamp, col: str, n_iter: int = 100):
+def find_nearest(df: pd.DataFrame, pivot: pd.Timestamp, col: str):
     """Finds nearest value to a pivot in a dataframe column
     Returns None if no value is found. Returns the column value otherwise.
+    **Assumes time is in the index of the dataframe.**
 
     Args:
         df (pd.DataFrame): dataframe to search in
         pivot (pd.Timestamp): timestamp to search for
         col (str): column of the dataframe to search in
-        n_iter (int, optional): number of iterations before saying there is nothing. Defaults to 100.
     """
-    items = list(df.index)
-    n = items.copy()
-    for i in range(n_iter):
-        m = min(n, key=lambda x: abs(x - pivot))
-        q = df.loc[m][col]
-        if type(q) == pd.Series:
-            q = q[0]
-        if pd.isna(q):
-            n.remove(m)
-        else:
-            return m
+    s = df[col].dropna()
+    if s.empty:
+        return None
+    return s.index[s.index.get_indexer([pivot], method="nearest")[0]]
 
 
 """Plotting Utils
 """
-
-
 def init_plot(l=8, w=6, gmin=PLOT_GMIN, gmax=PLOT_GMAX):
     """Initialize plot
 
@@ -121,7 +112,7 @@ def autoplot(
     r: int = 45,
     gmin: float = PLOT_GMIN,
     gmax: float = PLOT_GMAX,
-    legend: bool = True,
+    show_legend: bool = True,
     save_to: Optional[str] = None,
 ):
     """Decorator that automatically plots the decorated function.
@@ -157,7 +148,7 @@ def autoplot(
         r (int, optional): rotation angle of the xticks of the plot. Defaults to 45.
         gmin (float, optional): the minimum glucose value to plot (Y-axis). Defaults to PLOT_GMIN.
         gmax (float, optional): the maximum glucose value to plot (Y-axis). Defaults to PLOT_GMAX.
-        legend (bool, optional): whether or not to show legend when plotting. Defaults to True.
+        show_legend (bool, optional): whether or not to show legend when plotting. Defaults to True.
         save_to (str, optional): file to save the plot to (if None, does not save). Defaults to None.
     """
 
@@ -167,7 +158,7 @@ def autoplot(
             if kwargs.pop("autoplot", True):
                 init_plot(l, w, gmin, gmax)
                 fn(*args, **kwargs)
-                end_plot(r, legend, save_to)
+                end_plot(r=r, legend=kwargs.pop("show_legend", show_legend), save_to=save_to)
             else:
                 fn(*args, **kwargs)
 

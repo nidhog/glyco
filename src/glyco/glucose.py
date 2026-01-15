@@ -13,19 +13,22 @@ privacy-preserving workflows, unit normalization, and
 robust statistical summaries for exploratory and analytical use.
 """
 # pylint: disable=too-many-lines
+from __future__ import annotations
+
 import hashlib
 import logging
 from dataclasses import asdict, dataclass, field
 from datetime import date as date_type, datetime as dt, timedelta as tdel
-from typing import Callable, List, Optional, Union, Any, Dict
+from typing import Callable, Iterable, Optional, Tuple, Union, Any, Dict
 
 import pandas as pd
+import numpy as np
 from matplotlib import pyplot as plt
 from rich.console import Console
 from rich.table import Table
 
-from glyco.privacy import mask_private_information
-from glyco.utils import (
+from .privacy import mask_private_information
+from .utils import (
     Devices,
     Units,
     end_plot,
@@ -73,12 +76,12 @@ _ISWEEKEND_COL = "is_weekend"
 
 # Meals
 _MEAL_NOTE_COL = "Notes"
-_MEAL_REF_COL = "Reference"
+# _MEAL_REF_COL = "Reference" TODO remove unused
 _FREESTYLE_REC_TYPE_COL = (
     "Record Type"
 )
 _FREESTYLE_SERIALNUM_COL = "Serial Number"
-# _FREESTYLE_NOTE_REC_TYPE = 6
+# _FREESTYLE_NOTE_REC_TYPE = 6 TODO: remove unused
 _FREESTYLE_GLUCOSE_REC_TYPE = 0
 # _OPTIONAL_COLS = [_MEAL_NOTE_COL, _MEAL_REF_COL]
 # MEAL_DEFAULT_COLS = [TIMESTAMP_COL, _MEAL_REF_COL, _MEAL_REF_COL]
@@ -122,8 +125,6 @@ GeneralDateType = Union[str, pd.Timestamp, date_type]
 
 """File reading
 """
-
-
 def read_csv( # pylint: disable=too-many-arguments,too-many-positional-arguments,too-many-locals
     file_path: str,
     timestamp_col: str = DEFAULT_INPUT_TSP_COL,
@@ -202,7 +203,6 @@ def read_csv( # pylint: disable=too-many-arguments,too-many-positional-arguments
             along with the Generated Glucose Properties
     """
     df = pd.read_csv(filepath_or_buffer=file_path, delimiter=delimiter, skiprows=skiprows)
-
     df = read_df(
         df=df,
         timestamp_col=timestamp_col,
@@ -249,7 +249,7 @@ def validate_glucose_columns(df: pd.DataFrame, glucose_col: str, timestamp_col: 
     coerced = pd.to_numeric(df[glucose_col], errors="coerce")
     if coerced.isna().all():
         raise ValueError(
-            f"The Glucose column '{glucose_col}' does not seem to have numeric values."
+            f"The Glucose column '{glucose_col}' does not seem to have any numeric values."
         )
     if coerced.isna().any():
         logger.warning("The Glucose column '%s' contains some non-numeric values.", glucose_col)
@@ -333,7 +333,6 @@ def read_df( # pylint: disable=too-many-arguments,too-many-positional-arguments,
         private_info_kwargs = PrivateInfoKwargs()
 
     validate_glucose_columns(df=df, glucose_col=glucose_col, timestamp_col=timestamp_col)
-    # df = convert_tsp(ndf=df, tlbl=generated_timestamp_col, tsp_lbl=timestamp_col, timestamp_fmt=timestamp_fmt)
     if unit_autodetect:
         glucose_unit = autodetect_unit(df[glucose_col])
     logger.info("Using the glucose unit (%s)", glucose_unit)
@@ -482,7 +481,7 @@ def add_time_values( # pylint: disable=too-many-arguments,too-many-positional-ar
         ndf[tlbl] = ndf[tsp_lbl]
     # else convert timestamp using timestamp_fmt
     else:
-        ndf = convert_tsp(ndf=ndf, tlbl=tlbl, tsp_lbl=tsp_lbl, timestamp_fmt=timestamp_fmt)
+        ndf = convert_tsp(ndf, tsp_lbl, tlbl, timestamp_fmt)
     ndf[dlbl] = ndf[tlbl].dt.date
     ndf[f"{dlbl}_str"] = ndf[dlbl].map(
         lambda x: x.strftime(DEFAULT_OUT_DATE_FMT) if isinstance(x, (dt, pd.Timestamp, date_type)) else str(x)
@@ -497,37 +496,52 @@ def add_time_values( # pylint: disable=too-many-arguments,too-many-positional-ar
     return ndf
 
 
-def convert_tsp(ndf: pd.DataFrame, tlbl: str, tsp_lbl: str, timestamp_fmt: str) -> None:
+def convert_tsp(
+    df: pd.DataFrame,
+    source_col: str,
+    target_col: str,
+    timestamp_fmt: str,
+    *,
+    errors: str = "raise",
+    copy: bool = True,
+) -> pd.DataFrame:
     """
-    Convert a timestamp column in a DataFrame to datetime using a specified format.
+    Convert a timestamp column to pandas datetime using a specified format.
 
     Args:
-        ndf (pd.DataFrame): The DataFrame containing the timestamp column to convert.
-        tlbl (str): The label for the new column where the converted timestamps will be stored.
-        tsp_lbl (str): The label of the timestamp column to convert.
-        timestamp_fmt (str): The format to use for parsing the timestamps.
+        df: Input DataFrame.
+        source_col: Name of the column containing timestamps to parse.
+        target_col: Name of the column where parsed datetimes will be stored.
+        timestamp_fmt: Datetime format string (strftime-compatible).
+        errors: How to handle parsing errors: {"raise", "coerce"}. Defaults to "raise".
+        copy: Whether to operate on a copy of the DataFrame.
+
+    Returns:
+        DataFrame with the converted timestamp column added.
 
     Raises:
-        ValueError: If the timestamp conversion fails, this exception is raised with a detailed error message.
-
-    Example:
-    ```python
-    import pandas as pd
-
-    # Assuming you have a DataFrame `ndf`, column labels `tlbl`, `tsp_lbl`, and a valid `timestamp_fmt`.
-    convert_tsp(ndf, tlbl, tsp_lbl, timestamp_fmt)
-    ```
+        KeyError: If `source_col` does not exist.
+        ValueError: If parsing fails and `errors="raise"`.
     """
-    df = ndf.copy()
+    if source_col not in df.columns:
+        raise KeyError(f"Column '{source_col}' does not exist in DataFrame")
+
+    out = df.copy() if copy else df
+
     try:
-        df[tlbl] = pd.to_datetime(df[tsp_lbl], format=timestamp_fmt)
-        return df
+        out[target_col] = pd.to_datetime(
+            out[source_col],
+            format=timestamp_fmt,
+            errors=errors,
+        )
     except ValueError as e:
         raise ValueError(
-            f"Failed to convert timestamp '{tsp_lbl}' using the format '{timestamp_fmt}'. "
-            f"Error: '{e}'. "
-            "Verify that you are using the correct 'timestamp_fmt' as input"
+            f"Failed to convert column '{source_col}' to datetime "
+            f"using format '{timestamp_fmt}'."
+            " Verify that you are using the correct 'timestamp_fmt' as input"
         ) from e
+
+    return out
 
 
 def prepare_glucose( # pylint: disable=too-many-arguments,too-many-positional-arguments,too-many-locals
@@ -552,6 +566,7 @@ def prepare_glucose( # pylint: disable=too-many-arguments,too-many-positional-ar
     - Creates columns for shifted time if needed (used for certain computations).
     - Converts units if needed.
     - Adds interpolated glucose measures to fill in the gaps.
+    - Filters out unrealistic glucose values.
 
     Args:
         df (pd.DataFrame): the glucose dataframe
@@ -614,7 +629,7 @@ def prepare_glucose( # pylint: disable=too-many-arguments,too-many-positional-ar
         df[glbl] = df[glbl].rolling(window=rolling_avg).mean()
         df[glbl] = df[glbl].ffill().bfill()
         df[glbl] = df[glbl].interpolate(method=interp_met, order=interp_ord, limit_direction="both")
-        df = df[df[glbl].map(lambda g: 0 < g < 30)]
+        df = df[df[glbl].between(0, 30)]
     return df
 
 
@@ -647,72 +662,355 @@ def add_shifted_time(df: pd.DataFrame, tlbl: str, dlbl: str, shift_hours_back: i
 
 
 # Properties and Stats
-
-
-def set_derivative(df: pd.DataFrame, glucose_col: str, timestamp_col: str) -> pd.DataFrame:
-    """Sets the glucose time derivative (dG/dt)
-
-    Args:
-        df (pd.DataFrame): the glucose dataframe.
-        glucose_col (str): the glucose column name.
-        timestamp_col (str): the timestamp column name.
-
-    Returns:
-        pd.DataFrame: the pandas dataframe with extra columns for derivatives
-            - _DG_COL: the glucose diff dG.
-            - _DT_COL: the time diff dt.
-            - _DGDT_COL: the glucose time derivative dG/dt
+def set_derivative(
+    df: pd.DataFrame,
+    glucose_col: str,
+    timestamp_col: str,
+    *,
+    cols: Optional[DerivativeCols] = None,
+    time_unit: str = "s",
+    sort_by_time: bool = True,
+    copy: bool = False,
+) -> pd.DataFrame:
     """
-    df[_DG_COL], df[_DT_COL], df[_DGDT_COL] = compute_derivative(df, glucose_col, timestamp_col)
-    return df
+    Add derivative columns to df:
+      - dG: glucose difference
+      - dt: time delta in seconds/minutes
+      - dG/dt: rate of change
 
-
-def compute_derivative(df: pd.DataFrame, glucose_col: str, timestamp_col: str):
-    """Calculates the glucose time derivative (dG/dt)
-
-    Args:
-        df (pd.DataFrame): the glucose dataframe.
-        glucose_col (str): the glucose column name.
-        timestamp_col (str): the timestamp column name.
-
-    Returns:
-        (pd.Series, pd.Series, pd.Series): A tuple containing:
-            - The glucose diff dG.
-            - The time diff dt.
-            - The glucose time derivative dG/dt
+    By default mutates df (copy=False). Set copy=True to return a new DataFrame.
     """
-    dg = df[glucose_col].diff()
-    dt_s = df[timestamp_col].diff().dt.total_seconds()
-    return dg, dt_s, dg / dt_s
+    out = df.copy() if copy else df
+    dg, dt, dgdt = compute_derivative(
+        out,
+        glucose_col,
+        timestamp_col,
+        time_unit=time_unit,
+        sort_by_time=sort_by_time,
+    )
+    
+    if cols is None:
+        dg_col = globals().get("_DG_COL", "dG")
+        dt_col = globals().get("_DT_COL", f"dt_{time_unit}")
+        dgdt_col = globals().get("_DGDT_COL", f"dGdt_per_{time_unit}")
+    else:
+        dg_col, dt_col, dgdt_col = cols.dg, cols.dt, cols.dgdt
+
+    # Ensure columns exist
+    for c in (dg_col, dt_col, dgdt_col):
+        if c not in out.columns:
+            out[c] = np.nan
+    # If compute_derivative sorted, indices differ, align back onto out by timestamp order
+    if sort_by_time:
+        ts = out[timestamp_col]
+        if not pd.api.types.is_datetime64_any_dtype(ts):
+            ts = pd.to_datetime(ts, errors="raise")
+        order = ts.argsort(kind="mergesort") # safe with duplicates
+    else:
+        order = np.arange(len(out))
+
+    out.iloc[order, out.columns.get_loc(dg_col)] = dg.to_numpy()
+    out.iloc[order, out.columns.get_loc(dt_col)] = dt.to_numpy()
+    out.iloc[order, out.columns.get_loc(dgdt_col)] = dgdt.to_numpy()
+    return out
+
+
+@dataclass(frozen=True)
+class DerivativeCols:
+    dg: str
+    dt: str
+    dgdt: str
+
+
+# def compute_derivative(
+#     df: pd.DataFrame,
+#     glucose_col: str,
+#     timestamp_col: str,
+#     *,
+#     time_unit: str = "s",
+#     sort_by_time: bool = True,
+#     require_monotonic: bool = False,  # if True, raises when timestamps go backwards
+# ) -> Tuple[pd.Series, pd.Series, pd.Series]:
+#     """
+#     Compute glucose derivative from a glucose series and a timestamp series.
+
+#     Args:
+#         df: Input DataFrame.
+#         glucose_col: Glucose column name.
+#         timestamp_col: Timestamp column name.
+#         time_unit: Time unit for dt and dg/dt: "s" (seconds) or "min" (minutes).
+#         sort_by_time: If True, sort by timestamp before computing derivative.
+#         require_monotonic: If True, raise ValueError if timestamps are not monotonic increasing.
+
+#     Returns:
+#         dg: glucose difference (current - previous)
+#         dt: time difference in chosen time_unit (seconds or minutes)
+#         dgdt: dg / dt, with invalid divisions -> NaN
+#     """
+#     # column checks
+#     missing = [c for c in (glucose_col, timestamp_col) if c not in df.columns]
+#     if missing:
+#         raise KeyError(f"Missing columns: {missing}")
+
+#     # work on aligned view (and optionally sort)
+#     work = df[[timestamp_col, glucose_col]].copy()
+
+#     # ensure datetime
+#     if not pd.api.types.is_datetime64_any_dtype(work[timestamp_col]):
+#         work[timestamp_col] = pd.to_datetime(work[timestamp_col], errors="raise")
+
+#     if sort_by_time:
+#         work = work.sort_values(timestamp_col, kind="mergesort")  # stable sort
+
+#     # Optional monotonic check (after sorting, monotonic is guaranteed;
+#     # check on original order if you want strictness)
+#     if require_monotonic and not df[timestamp_col].is_monotonic_increasing:
+#         raise ValueError(f"'{timestamp_col}' must be monotonic increasing to compute derivatives safely.")
+
+#     # diffs
+#     dg = work[glucose_col].astype("float64").diff()
+#     dt = work[timestamp_col].diff()
+#     dt_seconds = dt.dt.total_seconds()
+#     if time_unit not in {"s", "min"}:
+#         raise ValueError("time_unit must be 's' or 'min'")
+#     dt_out = dt_seconds if time_unit == "s" else (dt_seconds / 60.0)
+
+#     # safe divide: handles dt==0, dt<0, NaNs
+#     # - dt==0 happens with duplicate timestamps
+#     # - dt<0 happens if data is not sorted and you didn't sort
+#     with np.errstate(divide="ignore", invalid="ignore"):
+#         dgdt = dg / dt_out
+
+#     invalid = (dt_out == 0) | (dt_out < 0) | dt_out.isna()
+#     dgdt = dgdt.mask(invalid)
+
+#     # return aligned to *work* index (if sorted); caller can reindex if needed.
+#     return dg, dt_out.rename(f"dt_{time_unit}"), dgdt.rename(f"dgdt_per_{time_unit}")
+# from typing import Optional, Tuple
+# import numpy as np
+# import pandas as pd
+
+def compute_derivative(
+    df: pd.DataFrame,
+    glucose_col: str,
+    timestamp_col: str,
+    *,
+    time_unit: str = "s",
+    sort_by_time: bool = True,
+    require_monotonic: bool = False,
+    max_dt: Optional[float] = None,          # e.g. 10*60 for 10 minutes if time_unit="s"
+    gap_factor: float = 3.0,                 # used only when max_dt is None
+) -> Tuple[pd.Series, pd.Series, pd.Series]:
+    # column checks
+    missing = [c for c in (glucose_col, timestamp_col) if c not in df.columns]
+    if missing:
+        raise KeyError(f"Missing columns: {missing}")
+
+    work = df[[timestamp_col, glucose_col]].copy()
+
+    if not pd.api.types.is_datetime64_any_dtype(work[timestamp_col]):
+        work[timestamp_col] = pd.to_datetime(work[timestamp_col], errors="raise")
+
+    if sort_by_time:
+        work = work.sort_values(timestamp_col, kind="mergesort")
+
+    if require_monotonic and not work[timestamp_col].is_monotonic_increasing:
+        raise ValueError(f"'{timestamp_col}' must be monotonic increasing.")
+
+    dg = work[glucose_col].astype("float64").diff()
+
+    dt = work[timestamp_col].diff()
+    dt_s = dt.dt.total_seconds()
+
+    if time_unit not in {"s", "min"}:
+        raise ValueError("time_unit must be 's' or 'min'")
+
+    dt_out = dt_s if time_unit == "s" else (dt_s / 60.0)
+
+    # ---- GAP HANDLING ----
+    # Decide a gap threshold. If not provided, infer it from typical sampling interval.
+    if max_dt is None:
+        typical = dt_out[(dt_out > 0) & dt_out.notna()].median()
+        # fallback if median can't be computed
+        if pd.isna(typical):
+            typical = 0
+        max_dt = typical * gap_factor if typical > 0 else None
+
+    invalid = (dt_out <= 0) | dt_out.isna()
+    if max_dt is not None:
+        invalid = invalid | (dt_out > max_dt)
+
+    with np.errstate(divide="ignore", invalid="ignore"):
+        dgdt = dg / dt_out
+
+    # Break derivatives on invalid or gap points
+    dgdt = dgdt.mask(invalid)
+    dt_out = dt_out.mask(invalid)
+
+    # Optional: also break dG at gap points so plots/logic don't treat it as a jump
+    dg = dg.mask(invalid)
+
+    return dg.rename("dG"), dt_out.rename(f"dt_{time_unit}"), dgdt.rename(f"dGdt_per_{time_unit}")
+
+
 
 
 def set_auc(
-    df: pd.DataFrame, glucose_col: str, timestamp_col: str, glucose_auc_lim: float
+    df: pd.DataFrame,
+    glucose_col: str,
+    timestamp_col: str,
+    glucose_auc_lim: float,
+    *,
+    copy: bool = False,
+    sort_by_time: bool = True,
 ) -> pd.DataFrame:
     """
-    Sets Area Under the Curve (integral).
-    Requires the derivative, will set automatically if not done.
+    Add AUC-like (area above baseline) columns.
+
+    Computes per-interval "excess area" using the rectangle rule:
+        area_i = max(g_i - baseline, 0) * dt_i
+
+    Baselines:
+      - mean baseline: baseline = mean(glucose)
+      - limit baseline: baseline = glucose_auc_lim
+      - min baseline: baseline = min(glucose)
+
+    Notes:
+      - Requires dt (time delta). If missing, will compute derivative (which sets dt).
+      - dt is assumed to be in seconds unless your _DT_COL is configured otherwise.
 
     Args:
-        df (pd.DataFrame): _description_
-        glucose_col (str): _description_
-        timestamp_col (str): _description_
-        glucose_auc_lim (float): _description_
+        df: Input DataFrame.
+        glucose_col: Glucose column name.
+        timestamp_col: Timestamp column name.
+        glucose_auc_lim: Baseline limit for the "limit" AUC column.
+        copy: If True, return a copy; otherwise mutate df.
+        sort_by_time: Ensure time ordering when computing dt/derivative if needed.
 
     Returns:
-        pd.DataFrame: _description_
+        DataFrame with added columns:
+          - _AUC_COL: area above mean baseline
+          - _AUCLIM_COL: area above glucose_auc_lim baseline
+          - _AUCMIN_MIN: area above min baseline
     """
-    if _DGDT_COL not in df.columns:
-        df = set_derivative(df, glucose_col, timestamp_col)
-    mean_g = df[glucose_col].mean()
-    min_g = df[glucose_col].min()
-    g_above_mean = df[glucose_col].map(lambda x: mean_g if x < mean_g else x)
-    g_above_lim = df[glucose_col].map(lambda x: glucose_auc_lim if x < glucose_auc_lim else x)
-    g_above_min = df[glucose_col].map(lambda x: min_g if x < min_g else x)
-    df[_AUC_COL] = (g_above_mean - mean_g) * df[_DT_COL]
-    df[_AUCLIM_COL] = (g_above_lim - glucose_auc_lim) * df[_DT_COL]
-    df[_AUCMIN_MIN] = (g_above_min - min_g) * df[_DT_COL]
-    return df
+    out = df.copy() if copy else df
+
+    # ensure we have dt available
+    if _DT_COL not in out.columns:
+        out = set_derivative(
+            out,
+            glucose_col=glucose_col,
+            timestamp_col=timestamp_col,
+            sort_by_time=sort_by_time,
+            copy=False,
+        )
+
+    # validate required inputs
+    if glucose_col not in out.columns:
+        raise KeyError(f"Missing column '{glucose_col}'")
+    if _DT_COL not in out.columns:
+        raise KeyError(f"Missing required dt column '{_DT_COL}' (expected set by set_derivative)")
+
+    g = out[glucose_col].astype("float64")
+    dt = out[_DT_COL].astype("float64")
+
+    # avoid negative/zero dt contributions (duplicates / out-of-order)
+    dt = dt.where(dt > 0)
+
+    mean_g = float(g.mean(skipna=True))
+    min_g = float(g.min(skipna=True))
+
+    # Excess above baseline (clipped at 0); NaNs propagate naturally
+    excess_mean = (g - mean_g).clip(lower=0.0)
+    excess_lim = (g - float(glucose_auc_lim)).clip(lower=0.0)
+    excess_min = (g - min_g).clip(lower=0.0)
+
+    out[_AUC_COL] = excess_mean * dt
+    out[_AUCLIM_COL] = excess_lim * dt
+    out[_AUCMIN_MIN] = excess_min * dt
+
+    return out
+
+
+def get_area_under_curve(
+    df: pd.DataFrame,
+    *,
+    start: Optional[pd.Timestamp] = None,
+    end: Optional[pd.Timestamp] = None,
+    timestamp_col: Optional[str] = None,
+    auc_cols: Optional[Iterable[str]] = None,
+    require_auc: bool = True,
+    normalize_by_time: bool = False,
+) -> Dict[str, float]:
+    """
+    Compute regional AUC metrics by summing precomputed AUC columns.
+
+    This function does NOT recompute AUC per interval.
+    It only aggregates existing AUC columns (e.g. from set_auc).
+
+    Args:
+        df: DataFrame containing AUC columns.
+        start: Optional start timestamp (inclusive).
+        end: Optional end timestamp (exclusive).
+        timestamp_col: Required if start/end are provided.
+        auc_cols: AUC columns to aggregate. Defaults to known AUC columns.
+        require_auc: If True, raises if AUC columns are missing.
+        normalize_by_time: If True, divide AUC by region duration (seconds).
+
+    Returns:
+        Dict[str, float]: aggregated AUC metrics.
+    """
+
+    if auc_cols is None:
+        auc_cols = [
+            c for c in (_AUC_COL, _AUCLIM_COL, _AUCMIN_MIN)
+            if c in df.columns
+        ]
+
+    if require_auc:
+        missing = [c for c in auc_cols if c not in df.columns]
+        if missing:
+            raise KeyError(
+                f"Missing AUC columns {missing}. "
+                f"Run set_auc() first."
+            )
+
+    view = df
+
+    # Time slicing
+    if start is not None or end is not None:
+        if timestamp_col is None:
+            raise ValueError("timestamp_col is required when using start/end")
+
+        ts = view[timestamp_col]
+        if not pd.api.types.is_datetime64_any_dtype(ts):
+            ts = pd.to_datetime(ts, errors="raise")
+
+        mask = pd.Series(True, index=view.index)
+        if start is not None:
+            mask &= ts >= start
+        if end is not None:
+            mask &= ts < end
+
+        view = view.loc[mask]
+
+    # Aggregate
+    out = {
+        col: float(view[col].sum(skipna=True))
+        for col in auc_cols
+    }
+
+    if normalize_by_time:
+        if _DT_COL not in view.columns:
+            raise KeyError("dt column required for normalization")
+
+        duration = view[_DT_COL].sum(skipna=True)
+        if duration > 0:
+            out = {k: v / duration for k, v in out.items()}
+        else:
+            out = {k: np.nan for k in out}
+
+    return out
 
 
 def get_properties(
@@ -720,22 +1018,66 @@ def get_properties(
     glbl: str = GLUCOSE_COL,
     tlbl: str = TIMESTAMP_COL,
     glim: float = DEFAULT_GLUC_LIMIT,
-):
+    *,
+    copy: bool = False,
+    sort_by_time: bool = True,
+) -> pd.DataFrame:
     """Adds the derivative columns and area under the curve columns to the dataframe.
-    Requires applying the prepare_glucose function first.
+    Assumes timestamps are parseable as datetimes and data is prepared (e.g. by using prepare_glucose).
 
     Args:
         df (pd.DataFrame): _description_
         glbl (str, optional): _description_. Defaults to GLUCOSE_COL.
         tlbl (str, optional): _description_. Defaults to TIMESTAMP_COL.
         glim (float, optional): _description_. Defaults to GLUCOSE_LIMIT_DEFAULT.
+        copy (bool): If True, operate on and return a copy of the dataframe.
+            If False, mutate the dataframe in place. Defaults to False.
+        sort_by_time (bool): If True, ensure data is sorted by timestamp before
+            computing derivatives and AUC. Defaults to True.
 
     Returns:
-        _type_: _description_
+        pd.DataFrame: The dataframe with derivative and AUC columns added or updated.
+
+    Logs warnings if derivative or AUC columns already exist and are recomputed.
     """
-    df = set_derivative(df, glbl, tlbl)
-    df = set_auc(df, glbl, tlbl, glim)
-    return df
+    out = df.copy() if copy else df
+
+    # Derivative columns
+    derivative_cols = {_DG_COL, _DT_COL, _DGDT_COL}
+    if derivative_cols.intersection(out.columns):
+        logger.warning(
+            "Derivative columns already exist (%s). Recomputing them.",
+            derivative_cols.intersection(out.columns),
+        )
+
+    if not derivative_cols.issubset(out.columns):
+        out = set_derivative(
+            out,
+            glucose_col=glbl,
+            timestamp_col=tlbl,
+            sort_by_time=sort_by_time,
+            copy=False,
+        )
+
+    # AUC columns
+    auc_cols = {_AUC_COL, _AUCLIM_COL, _AUCMIN_MIN}
+    if auc_cols.intersection(out.columns):
+        logger.warning(
+            "AUC columns already exist (%s). Recomputing them.",
+            auc_cols.intersection(out.columns),
+        )
+
+    if not auc_cols.issubset(out.columns):
+        out = set_auc(
+            out,
+            glucose_col=glbl,
+            timestamp_col=tlbl,
+            glucose_auc_lim=glim,
+            sort_by_time=sort_by_time,
+            copy=False,
+        )
+
+    return out
 
 
 def convert_to_mmoll(g: float, from_unit: str) -> float:
@@ -798,6 +1140,7 @@ def plot_glucose( # pylint: disable=too-many-arguments,too-many-positional-argum
     to_time: Optional[GeneralDateType] = None,
     title: Optional[str] = None,
     label: str = "Glucose in mmol/L",
+    show_full_day: bool = False,
     **kwargs, # pylint: disable=unused-argument
 ):
     """Plots the glucose curve for a given dataframe, and optional time frame
@@ -820,69 +1163,120 @@ def plot_glucose( # pylint: disable=too-many-arguments,too-many-positional-argum
             Defaults to None.
         label (str, optional): label of the lineplot.
             Defaults to Glucose in mmol/.
+        show_full_day (bool, optional): if True, shows full day boundaries even if from_time and to_time are within the same day.
+            Defaults to False.
+
+    Keyword arguments
         autoplot (bool, optional): if True, this automatically shows the plot and makes it more readable.
             This can be disabled for example to use this function along with other plots.
+            Defaults to True.
+        show_legend (bool, optional): if True, shows the legend on the plot.
             Defaults to True.
 
     Raises:
         KeyError: if the glucose column is not in the glucose dataframe
     """
-    plot_df = df[from_time:to_time]
+    if glbl not in df.columns:
+        raise KeyError(f"Glucose column '{glbl}' is not in the DataFrame.")
+    if tlbl not in df.columns:
+        raise KeyError(f"Timestamp column '{tlbl}' is not in the DataFrame.")
 
-    if glbl not in plot_df.keys():
-        raise KeyError(f"Glucose Column {glbl} does not seem to be in the DataFrame.")
-    for d in plot_df.date.unique():
-        plt.axvline(d, color="brown", linestyle="--", alpha=0.5)
-    medval = plot_df[glbl].median().round(2)
+    # build datetime timestamp series (don’t mutate caller df)
+    ts = df[tlbl]
+    if not pd.api.types.is_datetime64_any_dtype(ts):
+        ts = pd.to_datetime(ts, errors="coerce")
+    if ts.isna().all():
+        raise ValueError(f"Column '{tlbl}' could not be parsed as datetime.")
+
+    # filter by time using the timestamp column (not the index)
+    from_ts = pd.to_datetime(from_time) if from_time is not None else None
+    to_ts = pd.to_datetime(to_time) if to_time is not None else None
+
+    mask = ts.notna()
+    if from_ts is not None and to_ts is not None and from_ts == to_ts:
+        # same date or same timestamp
+        day_start = from_ts.normalize()
+        day_end = day_start + pd.Timedelta(days=1)
+        mask &= (ts >= day_start) & (ts < day_end)
+    else:
+        if from_ts is not None:
+            mask &= ts >= from_ts
+        if to_ts is not None:
+            mask &= ts <= to_ts
+    
+    plot_df = df.loc[mask].copy()
+    ts_plot = ts.loc[mask]
+
+    if plot_df.empty:
+        raise ValueError("No data to plot in the requested time range.")
+
+    # sort by time (important for line plots / fill_between)
+    order = ts_plot.argsort(kind="mergesort")
+    plot_df = plot_df.iloc[order]
+    ts_plot = ts_plot.iloc[order]
+
+    ax = plt.gca()
+
+    x_left = from_ts if from_ts is not None else ts_plot.iloc[0]
+    x_right = to_ts if to_ts is not None else ts_plot.iloc[-1]
+
+    if show_full_day:
+        day_start = pd.to_datetime(x_left).normalize()
+        day_end = day_start + pd.Timedelta(days=1)
+        x_left, x_right = day_start, day_end
+    else:
+        # small padding so the line doesn't touch the plot border
+        span = (pd.to_datetime(x_right) - pd.to_datetime(x_left))
+        pad = max(pd.Timedelta(minutes=5), span * 0.02)
+        x_left, x_right = pd.to_datetime(x_left) - pad, pd.to_datetime(x_right) + pad
+
+
+    # day boundaries: prefer existing date col if present, otherwise derive
+    if "date" in plot_df.columns and pd.api.types.is_datetime64_any_dtype(plot_df["date"]):
+        days = plot_df["date"].dropna().unique()
+    else:
+        days = ts_plot.dt.normalize().dropna().unique()
+
+    for d in days:
+        if x_left <= d <= x_right:
+            plt.axvline(d, color="brown", linestyle="--", alpha=0.5)
+
+    medval = plot_df[glbl].median()
     minval = plot_df[glbl].min()
     maxval = plot_df[glbl].max()
-    plt.axhline(
-        medval,
-        color="red",
-        linestyle="--",
-        alpha=0.5,
-        label=f"Glucose Median value: ({medval} mmol/L)",
-    )
-    plt.axhline(
-        minval,
-        color="orange",
-        linestyle="--",
-        alpha=0.5,
-        label=f"Glucose Minimum value: ({DEFAULT_GLUC_LIMIT - 1} mmol/L)",
-    )
-    plt.axhline(
-        maxval,
-        color="orange",
-        linestyle="--",
-        alpha=0.5,
-        label=f"Glucose Maximum value ({DEFAULT_GLUC_LIMIT + 1} mmol/L)",
-    )
-    plt.plot(plot_df[tlbl], plot_df[glbl], label=label)
 
-    # Fill area above the glucose limit
+    plt.axhline(medval, color="red", linestyle="--", alpha=0.5,
+                label=f"Glucose Median value: ({medval:.2f} mmol/L)")
+    plt.axhline(minval, color="orange", linestyle="--", alpha=0.5,
+                label=f"Glucose Minimum value: ({minval:.2f} mmol/L)")
+    plt.axhline(maxval, color="orange", linestyle="--", alpha=0.5,
+                label=f"Glucose Maximum value: ({maxval:.2f} mmol/L)")
+
+    plt.plot(ts_plot, plot_df[glbl], label=label)
+
     plt.fill_between(
-        plot_df[tlbl],
+        ts_plot,
         plot_df[glbl],
         medval,
         where=(plot_df[glbl] > medval),
-        color="green",
         alpha=0.2,
         interpolate=True,
-        label="Glucose above limit",
+        label="Glucose above median",
     )
-
+    ax.set_xlim(x_left, x_right)
     plt.xlabel("Time")
     plt.ylabel("Glucose")
+
     if title:
         plt.title(title)
     else:
-        plt.title(f"Glucose variation from: '{plot_df.index[0].date()}'' to:'{plot_df.index[-1].date()}'")
+        start = ts_plot.iloc[0].date()
+        end = ts_plot.iloc[-1].date()
+        plt.title(f"Glucose variation from {start} to {end}")
 
 
-@autoplot
 def plot_trend_by_hour(df: pd.DataFrame,
-                       glbl: str = GLUCOSE_COL,
-                       **kwargs): # pylint: disable=unused-argument
+                       glbl: str = GLUCOSE_COL): # pylint: disable=unused-argument
     """Plots the glucose hourly trend as an averaged curve for each hour
     with percentile distributions.
 
@@ -896,19 +1290,15 @@ def plot_trend_by_hour(df: pd.DataFrame,
     plot_percentiles(df, stat_col=glbl, group_by_col=_HOUR_COL, percentiles=[0.01, 0.05])
 
 
-@autoplot
-def plot_trend_by_weekday(df: pd.DataFrame, glbl=GLUCOSE_COL, **kwargs): # pylint: disable=unused-argument
+def plot_trend_by_weekday(df: pd.DataFrame, glbl=GLUCOSE_COL): # pylint: disable=unused-argument
     """Plots the glucose trend for each weekday (Monday to Sunday) as
     a box plot for each weekday.
-
-    This function uses `@autoplot`. To prevent it from automatically showing
-    the plot, call it with `autoplot=False`.
 
     Args:
         df (pd.DataFrame): the glucose dataframe.
         glbl (str, optional): the glucose column name. Defaults to GLUCOSE_COL.
     """
-    plot_comparison(
+    plot_compare_by(
         df=df,
         glbl=glbl,
         compare_by=_WEEKDAY_COL,
@@ -916,22 +1306,19 @@ def plot_trend_by_weekday(df: pd.DataFrame, glbl=GLUCOSE_COL, **kwargs): # pylin
         label_map=None,
         method="box",
         sort_vals=False,
+        show_legend=False
     )
 
 
-@autoplot
-def plot_trend_by_day(df: pd.DataFrame, glbl=GLUCOSE_COL, **kwargs): # pylint: disable=unused-argument
+def plot_trend_by_day(df: pd.DataFrame, glbl=GLUCOSE_COL): # pylint: disable=unused-argument
     """Plots the glucose trend for each weekday (Monday to Sunday) as
     a box plot for each day.
-
-    This function uses `@autoplot`. To prevent it from automatically showing
-    the plot, call it with `autoplot=False`.
 
     Args:
         df (pd.DataFrame): the glucose dataframe.
         glbl (str, optional): the glucose column name. Defaults to GLUCOSE_COL.
     """
-    plot_comparison(
+    plot_compare_by(
         df=df,
         glbl=glbl,
         compare_by=_DATE_COL,
@@ -939,6 +1326,7 @@ def plot_trend_by_day(df: pd.DataFrame, glbl=GLUCOSE_COL, **kwargs): # pylint: d
         label_map=None,
         method="box",
         sort_vals=False,
+        show_legend=False
     )
 
 
@@ -946,10 +1334,10 @@ def plot_trend_by_day(df: pd.DataFrame, glbl=GLUCOSE_COL, **kwargs): # pylint: d
 def plot_percentiles( # pylint: disable=too-many-arguments,too-many-positional-arguments
     df: pd.DataFrame,
     stat_col: str,
-    percentiles: List[float],
+    percentiles: list[float],
     group_by_col: str = _HOUR_COL,
     color: str = "green",
-    label: str = None,
+    title: str = None,
     **kwargs, # pylint: disable=unused-argument
 ):
     """Groups glucose by a column column and plots percentiles of glucose.
@@ -961,21 +1349,21 @@ def plot_percentiles( # pylint: disable=too-many-arguments,too-many-positional-a
     Args:
         df (pd.DataFrame): the glucose dataframe.
         stat_col (str): the glucose column name or column for which to get stats (Y-axis).
-        percentiles (List[float]): a list of percentiles to plot (each value between 0 and 1)
+        percentiles (list[float]): a list of percentiles to plot (each value between 0 and 1)
         group_by_col (str, optional): the name of the column to group values by (X-axis).
             Defaults to _HOUR_COL.
         color (str, optional): the name of the color to use for the percentiles area.
             Defaults to 'green'.
-        label (str, optional): the title of the plot.
+        title (str, optional): the title of the plot.
             Defaults to None.
     """
     stats_df = df.pipe(
-        get_stats, stats_cols=stat_col, group_by_col=group_by_col, percentiles=percentiles
+        get_stats, stats_cols=[stat_col], group_by_col=group_by_col, percentiles=percentiles
     )
     med = stats_df[(stat_col, "50%")]
     med.plot(label="50%")
-    perc_l = [stats_df[(stat_col, f"{p*100}%")] for p in percentiles]
-    perc_h = [stats_df[(stat_col, f"{(1-p)*100}%")] for p in percentiles]
+    perc_l = [stats_df[(stat_col, f"{int(p*100)}%")] for p in percentiles]
+    perc_h = [stats_df[(stat_col, f"{int((1-p)*100)}%")] for p in percentiles]
 
     for i, p in enumerate(percentiles):
         plt.fill_between(
@@ -986,12 +1374,12 @@ def plot_percentiles( # pylint: disable=too-many-arguments,too-many-positional-a
             alpha=0.2,
             label=f"{int(p*100)}-{int((1-p)*100)}th percentile",
         )
-    if not label:
-        label = (
+    if not title:
+        title = (
             f"Trend of {stat_col} for the percentiles: {', '.join([str(int(i*100)) for i in percentiles])}"
             f" as well as {', '.join([str(int((1-i)*100)) for i in percentiles])}"
         )
-    plt.title(label)
+    plt.title(title)
     plt.xlabel(group_by_col)
     plt.ylabel(stat_col)
 
@@ -1027,20 +1415,22 @@ def plot_sleep_trends(
     plt.ylabel("Glucose during sleep")
     plt.xlabel("Hours of sleep (from 0-8)")
     end_plot()
-    plot_comparison(
+    plot_compare_by(
         df=gdf,
         glbl=glbl,
         compare_by=f"shifted_{_DATE_COL}_str",
         outliers=False,
         method="box",
         sort_vals=False,
-        label="Daily trend of Glucose during Sleep",
+        title="Daily trend of Glucose during Sleep",
     )
     plt.ylabel("Glucose during sleep")
     plt.xlabel("Day (sleep from evening of this day)")
     end_plot()
 
 
+# TODO not looking great
+@autoplot
 def plot_day_curve(
     df: pd.DataFrame,
     day_str: str,
@@ -1080,37 +1470,54 @@ def plot_day_curve(
         plt.plot(xt[tlbl], xt[glbl], color="brown", alpha=0.5, label="sleep")
 
 
+def _normalize_percentiles(percentiles: list[float]) -> list[float]:
+    """
+    Ensure percentile symmetry: for each p include (1 - p),
+    remove duplicates, keep values in [0, 1], and sort.
+    """
+    if not percentiles:
+        return percentiles
+
+    pset = set()
+
+    for p in percentiles:
+        if not 0 <= p <= 1:
+            raise ValueError(f"Percentile {p} must be between 0 and 1")
+        pset.add(round(p, 10))
+        pset.add(round(1 - p, 10))
+
+    return sorted(pset)
+
+
 def get_stats(
     df: pd.DataFrame,
-    stats_cols: Union[List, str],
+    stats_cols: Union[list, str],
     group_by_col: str = None,
-    percentiles: Optional[List[float]] = None,
+    percentiles: Optional[list[float]] = None,
 ):
     """Get descriptive statistics about specific columns of a dataframe.
 
     Args:
         df (pd.DataFrame): the glucose dataframe.
-        stats_cols (Union[List[str], str]): the glucose column name, or a column name,
+        stats_cols (Union[list[str], str]): the glucose column name, or a column name,
             or a list of column names for which to get stats.
         group_by_col (str, optional): the name of the column to group values by.
             Defaults to None.
-        percentiles (Optional[List[float]], optional): a list of percentiles to plot
+        percentiles (Optional[list[float]], optional): a list of percentiles to plot
             (each value between 0 and 1). Defaults to None.
 
     Returns:
         pd.Series or pd.DataFrame: descriptive statistics grouped by the given column
     """
+    if percentiles is not None:
+        percentiles = _normalize_percentiles(percentiles)
     if group_by_col:
         return df.groupby(group_by_col)[stats_cols].describe(percentiles=percentiles)
-
-    #     grouped_df = df.groupby(group_by_col)[stats_cols]
-    #     r= pd.concat([grouped_df.describe(percentiles=percentiles), grouped_df.sum()], axis=1)
-    #     return r.reorder_levels([1, 0], axis=1).sort_index(axis=1, level=[0, 1])
-    # return df[stats_cols].describe(percentiles=percentiles),  df[stats_cols].sum()
     return df[stats_cols].describe(percentiles=percentiles)
 
 
-def plot_comparison( # pylint: disable=too-many-arguments,too-many-positional-arguments
+@autoplot
+def plot_compare_by( # pylint: disable=too-many-arguments,too-many-positional-arguments
     df: pd.DataFrame,
     glbl: str = GLUCOSE_COL,
     compare_by: str = _WEEKDAY_COL,
@@ -1118,9 +1525,13 @@ def plot_comparison( # pylint: disable=too-many-arguments,too-many-positional-ar
     label_map: Union[Callable, Dict] = None,
     method: str = "box",
     sort_vals: bool = False,
-    label: Optional[str] = None,
+    title: Optional[str] = None,
+    **kwargs, # pylint: disable=unused-argument
 ):
     """Compares glucose values by a given field, for example by weekday.
+    
+    This function uses `@autoplot`. To prevent it from automatically showing
+    the plot, call it with `autoplot=False`.
 
     Args:
         df (pd.DataFrame): dataframe with values to be compared and the comparison field.
@@ -1136,7 +1547,7 @@ def plot_comparison( # pylint: disable=too-many-arguments,too-many-positional-ar
             box plots as 'box'. Defaults to 'box'.
         sort_vals (bool, optional): wether or not to sort values plotted.
             Defaults to False.
-        label (Optional[str], optional): title of the plot, if None a default will be generated.
+        title (Optional[str], optional): title of the plot, if None a default will be generated.
             Defaults to None.
 
     Raises:
@@ -1149,7 +1560,7 @@ def plot_comparison( # pylint: disable=too-many-arguments,too-many-positional-ar
         plt.boxplot(
             [df[df[compare_by] == i][glbl].dropna() for i in all_vals],
             labels=all_vals if label_map is None else [label_map(i) for i in all_vals],
-            showfliers=outliers,
+            showfliers=outliers
         )
     else:
         raise NotImplementedError(
@@ -1157,13 +1568,13 @@ def plot_comparison( # pylint: disable=too-many-arguments,too-many-positional-ar
         )
     plt.ylabel(f"Trend for {glbl}")
     plt.xlabel(f"{compare_by}")
-    if not label:
-        label = (
+    if not title:
+        title = (
             f"Comparing {glbl} by {compare_by}. "
             f"Outliers are {'shown' if outliers else 'not shown'}."
         )
 
-    plt.title(label)
+    plt.title(title)
 
 
 def get_response_bounds( # pylint: disable=too-many-arguments,too-many-positional-arguments
@@ -1198,7 +1609,7 @@ def get_response_bounds( # pylint: disable=too-many-arguments,too-many-positiona
             - the nearest time to the event time with a glucose value in the dataframe.
     # TODO: find nearest takes a lot of time, use something easier
     """
-    g_event_time = find_nearest(df, event_time, glbl, t_lbl)
+    g_event_time = find_nearest(df, event_time, glbl)
     start = g_event_time - tdel(minutes=pre_pad_min)
     end = g_event_time + tdel(minutes=resp_time_min) + tdel(minutes=post_pad_min)
     return start, end, g_event_time
@@ -1293,9 +1704,9 @@ def get_metrics_by_day(
     Args:
         gdf (pd.DataFrame): the glucose dataframe.
         day_col (str, optional): the day column name. Defaults to _HOUR_COL.
-        percentiles (Optional[List[float]], optional): a list of percentiles to plot
+        percentiles (Optional[list[float]], optional): a list of percentiles to plot
             (each value between 0 and 1). Defaults to None.
-        summary_cols (Union[List[str], str]): the glucose column name, or a column name,
+        summary_cols (Union[list[str], str]): the glucose column name, or a column name,
             or a list of column names for which to get stats. Defaults to _summary_cols.
 
     Returns:
@@ -1309,17 +1720,17 @@ def get_metrics_by_day(
 def get_metrics_by_hour(
     gdf: pd.DataFrame,
     hour_col: str = _HOUR_COL,
-    percentiles: Optional[List[float]] = None,
-    summary_cols: Union[List[str], str] | None = None,
+    percentiles: Optional[list[float]] = None,
+    summary_cols: Union[list[str], str] | None = None,
 ):
     """Get metrics and statistics by hour related to specific columns of a dataframe.
 
     Args:
         gdf (pd.DataFrame): the glucose dataframe.
         hour_col (str, optional): the hour column name. Defaults to _HOUR_COL.
-        percentiles (Optional[List[float]], optional): a list of percentiles to plot
+        percentiles (Optional[list[float]], optional): a list of percentiles to plot
             (each value between 0 and 1). Defaults to None.
-        summary_cols (Union[List[str], str]): the glucose column name, or a column name,
+        summary_cols (Union[list[str], str]): the glucose column name, or a column name,
             or a list of column names for which to get stats. Defaults to _summary_cols.
 
     Returns:
@@ -1332,17 +1743,17 @@ def get_metrics_by_hour(
 
 def get_metrics(
     gdf: pd.DataFrame,
-    percentiles: Optional[List[float]] = None,
-    summary_cols: Union[List[str], str] | None = None,
+    percentiles: Optional[list[float]] = None,
+    summary_cols: Union[list[str], str] | None = None,
     group_by_col: Optional[str] = None,
 ):
     """Get metrics and statistics related to specific columns of a dataframe.
 
     Args:
         gdf (pd.DataFrame): the glucose dataframe.
-        percentiles (Optional[List[float]], optional): a list of percentiles to plot
+        percentiles (Optional[list[float]], optional): a list of percentiles to plot
             (each value between 0 and 1). Defaults to None.
-        summary_cols (Union[List[str], str] | None): the glucose column name, or a column name,
+        summary_cols (Union[list[str], str] | None): the glucose column name, or a column name,
             or a list of column names for which to get stats. Defaults to _summary_cols.
         group_by_col (str, optional): the name of the column to group values by.
             Defaults to None.

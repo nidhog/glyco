@@ -7,8 +7,8 @@ from glyco import meals
 
 def test_shift_time_fwd_and_bck():
     t = datetime(2023, 1, 1, 12, 0, 0)
-    assert meals.shift_time_fwd(t, h=2, m=30) == t + timedelta(hours=2, minutes=30)
-    assert meals.shift_time_bck(t, h=1, m=15) == t - timedelta(hours=1, minutes=15)
+    assert meals._shift_time_fwd(t, h=2, m=30) == t + timedelta(hours=2, minutes=30)
+    assert meals._shift_time_bck(t, h=1, m=15) == t - timedelta(hours=1, minutes=15)
 
 
 def test_validate_event_columns_success():
