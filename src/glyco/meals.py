@@ -380,7 +380,7 @@ def get_event_sessions(
     return edf
 
 
-def get_events_from_times(glucose_df: pd.DataFrame, event_times: Iterable):
+def read_events_from_times(glucose_df: pd.DataFrame, event_times: Iterable):
     """Create an Event Session DataFrame from a list of event timestamps.
     Usage:
     ```python
@@ -704,16 +704,16 @@ def _plot_auc_above_threshold(values: Iterable, threshold: float):
 
 """Event Pattern recognition
 """
-def auto_recognise_meals(
+def infer_events_from_glucose_excursions(
     glucose_df: pd.DataFrame,
     glucose_col: str = GLUCOSE_COL,
     timestamp_col: str = TIMESTAMP_COL,
     detection_threshold: Optional[float] = None,
     session_seconds: int = _default_event_session_seconds,
 ):
-    """Automatically recognises meals based on the change in glucose values.
-    Whenever glucose values start rising above a specific value and drop, this part will be considered a meal session.
-    See Automatic meal recognition documentation under [Meals and Events](docs/meals_and_events.md).
+    """Automatically infers events based on the change in glucose values.
+    Whenever glucose values start rising above a specific value and drop, this part will be considered an event session.
+    See Automatic event recognition documentation under [Meals and Events](docs/meals_and_events.md).
 
     Args:
         gdf (pd.DataFrame): the glucose dataframe.
@@ -729,6 +729,7 @@ def auto_recognise_meals(
         events_df=g_events, glucose_df=glucose_df, event_tsp=timestamp_col, session_seconds=session_seconds
     )
     # TODO select only some of the events instead of keeping all of them?
+    # TODO select only important columns?
     meal_events = e_sessions
     return meal_events
 

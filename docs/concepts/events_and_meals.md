@@ -38,7 +38,46 @@ As a result `glyco` will generate a **Meals dataframe**, with:
     * Above mean
   * Ingestion speed
   * Clearance speed
+## How _glyco_ reads events and meals
+Here is a summary of all the ways glyco can read events and meals, either from:
+* A structured CSV file `read_events_csv` or from a dataframe using `read_events_df`.
+* Notes embedded in Glucose data `` (such as Freestyle libre data's note column)
+* Folder or meal pictures `read_meals_from_folder`: if you have a folder that contains pictures of meals where the timestamp is the time the picture was taken by a phone or other device.
+* Manual list of timestamps `read_events_from_times`: where each time corresponds to an event or meal.
+* Automatic detection from glucose data `get_events_from_glucose_excursions`: based on the times where glucose rises, events and meals can be inferred.
+```mermaid
+flowchart TD
+  A[Start with event or meal information] --> B{Choose event source}
 
+  B -->|Structured CSV file| C[Load events file into a table]
+  C --> D[Verify timestamp and reference columns]
+  D --> E[Parse timestamps into datetime]
+  E --> F[Generate time-based columns]
+  F --> G[Create standardized reference and notes fields]
+
+  B -->|Notes embedded in glucose data| H[Select rows representing event or note records]
+  H --> I[Optionally filter notes by text pattern]
+  I --> J[Extract timestamp and notes as events]
+  J --> F
+
+  B -->|Folder of meal pictures| K[List files in folder]
+  K --> L[Create one event per file]
+  L --> M[Assign event time from file modification time]
+  M --> N[Optionally shift time for timezone correction]
+  N --> O[Use filename as reference and notes]
+  O --> F
+
+  B -->|Manual list of timestamps| P[Create events table from timestamps]
+  P --> Q[Use timestamps as event references]
+  Q --> F
+
+  B -->|Automatic detection from glucose data| R[Identify glucose values above detection threshold]
+  R --> S[Treat high-glucose periods as candidate events]
+  S --> T[Convert detected points into event records]
+  T --> F
+
+  G --> U[Output standardized events dataframe]
+```
 ## Meal feature calculation
 ### Estimate quantity of glucose in the meal
 Theoretically, the area under the curve of glucose is:
