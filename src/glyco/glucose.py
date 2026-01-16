@@ -679,6 +679,16 @@ def set_derivative(
       - dG/dt: rate of change
 
     By default mutates df (copy=False). Set copy=True to return a new DataFrame.
+    Args:
+        df: Input Glucose DataFrame.
+        glucose_col: Glucose column name.
+        timestamp_col: Timestamp column name.
+        cols: Optional names for the derivative columns.
+        time_unit: Time unit for dt and dg/dt: "s" (seconds) or "min" (minutes).
+        sort_by_time: If True, sort by timestamp before computing derivative.
+        copy: If True, return a new DataFrame; else mutate df in place.
+    Returns:
+        DataFrame with derivative columns added.
     """
     out = df.copy() if copy else df
     dg, dt, dgdt = compute_derivative(
@@ -721,74 +731,6 @@ class DerivativeCols:
     dt: str
     dgdt: str
 
-
-# def compute_derivative(
-#     df: pd.DataFrame,
-#     glucose_col: str,
-#     timestamp_col: str,
-#     *,
-#     time_unit: str = "s",
-#     sort_by_time: bool = True,
-#     require_monotonic: bool = False,  # if True, raises when timestamps go backwards
-# ) -> Tuple[pd.Series, pd.Series, pd.Series]:
-#     """
-#     Compute glucose derivative from a glucose series and a timestamp series.
-
-#     Args:
-#         df: Input DataFrame.
-#         glucose_col: Glucose column name.
-#         timestamp_col: Timestamp column name.
-#         time_unit: Time unit for dt and dg/dt: "s" (seconds) or "min" (minutes).
-#         sort_by_time: If True, sort by timestamp before computing derivative.
-#         require_monotonic: If True, raise ValueError if timestamps are not monotonic increasing.
-
-#     Returns:
-#         dg: glucose difference (current - previous)
-#         dt: time difference in chosen time_unit (seconds or minutes)
-#         dgdt: dg / dt, with invalid divisions -> NaN
-#     """
-#     # column checks
-#     missing = [c for c in (glucose_col, timestamp_col) if c not in df.columns]
-#     if missing:
-#         raise KeyError(f"Missing columns: {missing}")
-
-#     # work on aligned view (and optionally sort)
-#     work = df[[timestamp_col, glucose_col]].copy()
-
-#     # ensure datetime
-#     if not pd.api.types.is_datetime64_any_dtype(work[timestamp_col]):
-#         work[timestamp_col] = pd.to_datetime(work[timestamp_col], errors="raise")
-
-#     if sort_by_time:
-#         work = work.sort_values(timestamp_col, kind="mergesort")  # stable sort
-
-#     # Optional monotonic check (after sorting, monotonic is guaranteed;
-#     # check on original order if you want strictness)
-#     if require_monotonic and not df[timestamp_col].is_monotonic_increasing:
-#         raise ValueError(f"'{timestamp_col}' must be monotonic increasing to compute derivatives safely.")
-
-#     # diffs
-#     dg = work[glucose_col].astype("float64").diff()
-#     dt = work[timestamp_col].diff()
-#     dt_seconds = dt.dt.total_seconds()
-#     if time_unit not in {"s", "min"}:
-#         raise ValueError("time_unit must be 's' or 'min'")
-#     dt_out = dt_seconds if time_unit == "s" else (dt_seconds / 60.0)
-
-#     # safe divide: handles dt==0, dt<0, NaNs
-#     # - dt==0 happens with duplicate timestamps
-#     # - dt<0 happens if data is not sorted and you didn't sort
-#     with np.errstate(divide="ignore", invalid="ignore"):
-#         dgdt = dg / dt_out
-
-#     invalid = (dt_out == 0) | (dt_out < 0) | dt_out.isna()
-#     dgdt = dgdt.mask(invalid)
-
-#     # return aligned to *work* index (if sorted); caller can reindex if needed.
-#     return dg, dt_out.rename(f"dt_{time_unit}"), dgdt.rename(f"dgdt_per_{time_unit}")
-# from typing import Optional, Tuple
-# import numpy as np
-# import pandas as pd
 
 def compute_derivative(
     df: pd.DataFrame,
@@ -851,8 +793,6 @@ def compute_derivative(
     dg = dg.mask(invalid)
 
     return dg.rename("dG"), dt_out.rename(f"dt_{time_unit}"), dgdt.rename(f"dGdt_per_{time_unit}")
-
-
 
 
 def set_auc(
@@ -1130,7 +1070,6 @@ def autodetect_unit(glucose_values: pd.Series) -> str:
 
 
 # Plotting
-
 @autoplot
 def plot_glucose( # pylint: disable=too-many-arguments,too-many-positional-arguments
     df: pd.DataFrame,

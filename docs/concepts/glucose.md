@@ -7,7 +7,7 @@ Glyco does all the preprocessing and cleaning necessary to generate a glucose da
 We will call this the **Generated Glucose Dataframe**, **Universal Glucose Dataframe** or for simplification we will sometimes refer to it as the **Glucose Dataframe**.
 
 This is a pandas Dataframe that is generated either from: another pandas Dataframe or a glucose CSV file (such as Freestyle Libre data, or Dexcom data). The file or dataframe MUST contain the required columns:
-* **A glucose column** see [the possible units here](./units.md).
+* **A glucose column** see [the possible units here](./default_values.md).
 * **A timestamp column** with both time and date.
 
 For example a dataframe:
@@ -25,13 +25,64 @@ From the above, Glyco generates the glucose dataframe
 
 This resulting glucose dataframe will contain both the original columns and some new columns we will call the **Generated Glucose Properties**
 
+## Cleaning and Preprocessing
+### A summary of the cleaning and preprocessing steps
+When you read data using glyco, the following steps cleaning and processing steps are applied:
+```mermaid
+flowchart LR
+  A[Load glucose data and verify columns] --> 
+  B[Normalize Glucose values and units] --> 
+  C[Optionally apply privacy protection and timestamp shifting] --> 
+  D[Generate time features and clean time series using smoothing and interpolation] --> 
+  E[Compute glucose dynamics and area-based metrics and output prepared dataframe]
+```
+### A detailed diagram of the cleaning and preprocessing steps
+```mermaid
+flowchart TD
+  A[Start with glucose data input] --> B[Load data into a table and Verify columns]
+  B --> F[Coerce non-numeric glucose values, or warn]
+
+  F --> G{Infer glucose unit automatically}
+  G -->|Yes| H[Estimate unit from sample statistics]
+  G -->|No| I[Use user-provided glucose unit]
+
+  H --> J[Optionally filter out non-glucose rows]
+  I --> J
+
+  J --> K{Mask private or sensitive information}
+  K -->|Yes| L[Replace selected columns with irreversible hashes and Remove selected identifying columns]
+  L --> M[Shift timestamps to a new start date]
+  M --> N[Add small random noise to glucose values]
+  K -->|No| P[Keep original values]
+
+  N --> Q[Parse timestamps into canonical datetime]
+  P --> Q
+
+  Q --> R[Generate time-based columns - date, hour, weekday, weekend flag]
+  R --> S[Optionally create shifted-time view for day boundaries]
+  S --> T[Ensure glucose values are numeric]
+  T --> U[Convert glucose values to mmol-L]
+
+  U --> W{Apply smoothing and gap filling}
+  W -->|Yes| X[Apply rolling average smoothing]
+  X --> Y[Forward-fill and backward-fill missing values]
+  Y --> Z[Interpolate remaining gaps]
+  W -->|No| AB[Skip smoothing and interpolation]
+
+  Z --> AC[Compute glucose metrics - e.g.:change between consecutive points]
+  AB --> AC
+  AC --> AF[Handle duplicate timestamps and large time gaps]
+  AF --> AG[Compute per-interval excess glucose areas above baselines]
+  AG --> AH[Output the prepared Glucose Dataframe]
+
+```
 ## The Generated Glucose Dataframe
 Here is a list of all the columns contained in a universal glucose dataframe:
 * **The original columns** including the original glucose column and the original timestamp column.
 * **Index column** by timestamp: *datetime.datetime*
 * `tsp` timestamp (same as index), generated from the timestamp in the original data based on a given time format: *datetime.datetime*
 *  . original format 
-* `glucose` corrected glucose in mmol/L (see [the implemented units here](./units.md)) using interpolation and averaging to avoid outliers, errors and missing data. *float*
+* `glucose` corrected glucose in mmol/L (see [the implemented units here](./default_values.md)) using interpolation and averaging to avoid outliers, errors and missing data. *float*
 * **Time related** these are all derived from the timestamp:
   * `date`: It holds the date component. *datetime.date*  e.g.: `2019-12-31`
   * `date_str`: string representation of the date. *str*, e.g: `05-12-2019 (Thursday)`
@@ -51,7 +102,7 @@ Here is a list of all the columns contained in a universal glucose dataframe:
 
 When you read glucose data you generate a Generated Glucose Dataframe containing your data along with other useful properties. You can either read glucose data from: 
 * a pandas Dataframe containing glucose data
-* a glucose CSV file (such as Freestyle Libre data, or Dexcom data). The file or dataframe MUST contain the required columns: a **glucose column** (see [the possible units here](./units.md)) and a **timestamp column** with both time and date.
+* a glucose CSV file (such as Freestyle Libre data, or Dexcom data). The file or dataframe MUST contain the required columns: a **glucose column** (see [the possible units here](./default_values.md)) and a **timestamp column** with both time and date.
 ### Read a CSV file
 You can read glucose data from a CSV file using the `read_csv` Function
 
